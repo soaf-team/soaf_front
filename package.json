@@ -1,0 +1,39 @@
+{
+  "name": "soaf-front",
+  "version": "0.0.0",
+  "workspaces": [
+    "packages/**/*",
+    "services/**/*"
+  ],
+  "scripts": {
+    "affected:build": "nx affected -t build",
+    "affected:test": "nx affected -t test",
+    "build:packages": "nx run-many --target=build --projects='@soaf/themes,@soaf/react-hooks-*,@soaf/react-components-*'",
+    "build:local": "nx build",
+    "graph": "nx run-many --target=build --graph",
+    "dev:all": "yarn dev:storybook & yarn dev:packages",
+    "dev:soaf": "nx dev --project=@soaf/soaf_web",
+    "dev:packages": "nx run-many --target=dev --projects='@soaf/react-hooks-*,@soaf/react-components-*'"
+  },
+  "packageManager": "yarn@4.1.1",
+  "devDependencies": {
+    "@storybook/addon-docs": "^7.4.0",
+    "@typescript-eslint/eslint-plugin": "^6.5.0",
+    "@typescript-eslint/parser": "^6.5.0",
+    "eslint": "^8.48.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-json-format": "^2.0.1",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "eslint-plugin-storybook": "^0.6.13",
+    "nx": "^16.8.1",
+    "prettier": "^3.0.3",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "vite": "^4.4.9"
+  }
+}

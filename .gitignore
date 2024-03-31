@@ -1,0 +1,33 @@
+*.DS_Store
+*.log
+*.tsbuildinfo
+
+.pnp.*
+.yarn/install-state.gz
+.yarn/unplugged
+.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+**/packge-lock.json
+**/node_modules/
+
+**/dist/*
+dist
+
+# storybook
+**/storybook-static/
+
+# next.js
+**/.next/
+**/out/
+
+# production
+**/build
+
+.env
+**/.env
+
+.nx/
