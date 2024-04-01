@@ -17,7 +17,7 @@ export const PageLayout = ({ children, header }: PageLayoutProps) => {
           {header.title}
         </Header>
       )}
-      <main className="py-[18px]">{children}</main>
+      <main className="px-[18px]">{children}</main>
     </>
   );
 };
