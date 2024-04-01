@@ -3,6 +3,7 @@ import { basicRendererPlugin } from "@stackflow/plugin-renderer-basic";
 import { basicUIPlugin } from "@stackflow/plugin-basic-ui";
 
 import Main from "@pages/Main";
+import Article from "./pages/Article";
 
 export const { Stack, useFlow } = stackflow({
   transitionDuration: 350,
@@ -14,6 +15,7 @@ export const { Stack, useFlow } = stackflow({
   ],
   activities: {
     Main,
+    Article,
   },
   initialActivity: () => "Main",
 });
