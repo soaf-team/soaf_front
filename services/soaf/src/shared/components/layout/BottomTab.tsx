@@ -48,6 +48,10 @@ export const BottomTab = () => {
   const mainTab = TABS.find((tab) => tab.activity === currentActivityName);
 
   const handleTabClick = (activity: string) => {
+    if (activity === currentActivityName) {
+      return;
+    }
+
     push(activity, {}, { animate: false });
   };
 
