@@ -1,4 +1,5 @@
 import { PageLayout } from "@src/shared/components";
+import CheckBox from "@src/shared/components/ui/CheckBox";
 
 const MyHome = () => {
   return (
@@ -9,7 +10,10 @@ const MyHome = () => {
         rightSlot: "아이콘",
       }}
     >
-      <div>MyHome</div>
+      <div>
+        MyHome
+        <CheckBox isChecked label="똥" />
+      </div>
     </PageLayout>
   );
 };
