@@ -9,7 +9,7 @@ import ChatActive from "@assets/icons/bottom-tab/chatActive.svg";
 import MyHome from "@assets/icons/bottom-tab/myHome.svg";
 import MyHomeActive from "@assets/icons/bottom-tab/myHomeActive.svg";
 import { useFlow } from "@src/stackflow";
-import { useActivity, useStack } from "@stackflow/react";
+import { useActivity } from "@stackflow/react";
 import { ACTIVITY } from "@src/shared/constants/activity";
 
 const TABS = [
@@ -52,6 +52,7 @@ export const BottomTab = () => {
       return;
     }
 
+    // @ts-ignore
     push(activity, {}, { animate: false });
   };
 
@@ -72,6 +73,7 @@ export const BottomTab = () => {
 
         return (
           <button
+            className="w-[67px] h-[40px]"
             key={tab.activity}
             onClick={() => handleTabClick(tab.activity)}
           >
