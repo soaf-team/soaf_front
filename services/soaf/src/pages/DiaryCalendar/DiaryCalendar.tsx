@@ -1,5 +1,5 @@
 import { PageLayout } from "@src/shared/components";
-import { Button } from "@src/shared/components/ui/button";
+import { Button } from "@src/shared/components/Button";
 
 const DiaryCalendar = () => {
   return (
