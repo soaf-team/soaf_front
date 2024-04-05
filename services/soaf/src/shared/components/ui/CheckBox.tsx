@@ -16,8 +16,9 @@ const CheckBox = ({
   return (
     <div className="flex items-center gap-2">
       <div
-        className={`${className} w-6 h-6 rounded-lg flex items-center justify-center`}
-        style={{ backgroundColor: `${isChecked ? "#8CE3FF" : "#E2E3E9"}` }} // TODO: 컬러 토큰 적용
+        className={`${className} w-6 h-6 rounded-lg flex items-center justify-center
+                    ${isChecked ? "bg-main_gradient" : "bg-gray-100"}
+        `}
       >
         <button
           type="button"
