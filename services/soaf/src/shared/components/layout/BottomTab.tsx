@@ -8,11 +8,13 @@ import Chat from "@assets/icons/bottom-tab/chat.svg";
 import ChatActive from "@assets/icons/bottom-tab/chatActive.svg";
 import MyHome from "@assets/icons/bottom-tab/myHome.svg";
 import MyHomeActive from "@assets/icons/bottom-tab/myHomeActive.svg";
-import { useFlow } from "@src/stackflow";
-import { useActivity } from "@stackflow/react";
-import { ACTIVITY } from "@src/shared/constants/activity";
 
-const TABS = [
+import { ACTIVITY } from "@shared/constants/activity";
+import { Stack } from "@stackflow/core";
+import { useActiveActivity } from "@shared/hooks";
+import { useFlow } from "@/pages/stackflow";
+
+export const TABS = [
   {
     icon: DiaryCalendar,
     activeIcon: DiaryCalendarActive,
@@ -40,15 +42,12 @@ const TABS = [
   },
 ];
 
-export const BottomTab = () => {
-  const activity = useActivity();
+export const BottomTab = ({ stack }: { stack: Stack }) => {
   const { push } = useFlow();
-
-  const currentActivityName = activity?.name;
-  const mainTab = TABS.find((tab) => tab.activity === currentActivityName);
+  const { isBottomTabAcitivity, activeActivity } = useActiveActivity(stack);
 
   const handleTabClick = (activity: string) => {
-    if (activity === currentActivityName) {
+    if (activity === activeActivity.name) {
       return;
     }
 
@@ -56,7 +55,7 @@ export const BottomTab = () => {
     push(activity, {}, { animate: false });
   };
 
-  if (!mainTab) {
+  if (!isBottomTabAcitivity) {
     return null;
   }
 
@@ -64,12 +63,12 @@ export const BottomTab = () => {
     <div
       className="fixed bottom-0 left-0 right-0 h-[83px] rounded-t-[24px]
                     flex items-center justify-around bg-white shadow-2xl
-                    px-[18px] pb-[12px]
+                    px-[18px] pb-[12px] z-[1000] max-w-full
                     "
     >
       {TABS.map((tab) => {
         const Icon =
-          tab.activity === currentActivityName ? tab.activeIcon : tab.icon;
+          tab.activity === activeActivity.name ? tab.activeIcon : tab.icon;
 
         return (
           <button

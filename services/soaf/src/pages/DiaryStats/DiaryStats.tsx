@@ -1,4 +1,4 @@
-import { PageLayout } from "@src/shared/components";
+import { PageLayout } from "@shared/components";
 
 const DiaryStats = () => {
   return (

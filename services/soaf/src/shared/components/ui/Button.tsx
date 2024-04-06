@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { VariantProps, cva } from "class-variance-authority";
 
-import { cn } from "@src/shared/utils";
+import { cn } from "@shared/utils";
 
 const buttonVariants = cva(
   `inline-flex items-center justify-center whitespace-nowrap rounded-[16px] 

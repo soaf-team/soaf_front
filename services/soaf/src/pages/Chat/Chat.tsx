@@ -1,5 +1,6 @@
-import { PageLayout } from "@src/shared/components";
-import SpeechBubble from "@/src/shared/components/ui/SpeechBubble";
+
+import { PageLayout } from "@shared/components";
+import SpeechBubble from "@shared/components/ui/SpeechBubble";
 
 const DUMMY_CHAT = [
   { message: "안녕", sentAt: new Date().toISOString(), userId: 1 },
