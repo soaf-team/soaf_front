@@ -1,5 +1,4 @@
 import { AppScreen } from "@stackflow/plugin-basic-ui";
-import { BottomTab } from "./BottomTab";
 import { Header } from "./Header";
 
 type PageLayoutProps = {
@@ -20,7 +19,6 @@ export const PageLayout = ({ children, header }: PageLayoutProps) => {
         </Header>
       ) : null}
       <main className="px-[18px]">{children}</main>
-      <BottomTab />
     </AppScreen>
   );
 };
