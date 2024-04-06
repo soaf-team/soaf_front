@@ -1,7 +1,12 @@
+import { RecoilRoot } from "recoil";
 import { Stack } from "@src/stackflow";
 
 function App() {
-  return <Stack />;
+  return (
+    <RecoilRoot>
+      <Stack />
+    </RecoilRoot>
+  );
 }
 
 export default App;
