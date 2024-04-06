@@ -17,16 +17,19 @@ type PageLayoutProps = {
 export const PageLayout = ({ children, header }: PageLayoutProps) => {
   const stack = useStack();
   const { isBottomTabAcitivity } = useActiveActivity(stack);
-  const marginBottom = isBottomTabAcitivity ? "103px" : "20px";
+  const paddingBottom = isBottomTabAcitivity ? "pb-[83px]" : "pb-0";
+  const paddingTop = header != null ? "pt-[56px]" : "pt-0";
 
   return (
     <AppScreen>
-      {header != null ? (
-        <Header leftSlot={header.leftSlot} rightSlot={header.rightSlot}>
-          {header.title}
-        </Header>
-      ) : null}
-      <main className={cn(["px-[18px]", marginBottom])}>{children}</main>
+      <div className={cn(["h-screen box-border", paddingBottom, paddingTop])}>
+        {header != null ? (
+          <Header leftSlot={header.leftSlot} rightSlot={header.rightSlot}>
+            {header.title}
+          </Header>
+        ) : null}
+        <main className={"px-[18px] h-full"}>{children}</main>
+      </div>
     </AppScreen>
   );
 };
