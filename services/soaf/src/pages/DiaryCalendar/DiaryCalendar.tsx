@@ -1,7 +1,12 @@
-import { PageLayout } from "@src/shared/components";
-import { Button } from "@src/shared/components/ui/button";
+import { Button, PageLayout } from "@shared/components";
+import { Flex } from "@soaf/react-components-layout";
+import { useToast } from "@shared/hooks";
+import { useFlow } from "@/pages/stackflow";
 
 const DiaryCalendar = () => {
+  const { toast } = useToast();
+  const { push } = useFlow();
+
   return (
     <PageLayout
       header={{
@@ -11,7 +16,16 @@ const DiaryCalendar = () => {
       }}
     >
       <div>DiaryCalendar</div>
-      <Button>버튼</Button>
+      <Flex direction="column" gap={10} justify="flex-end" className="h-full">
+        <Button
+          onClick={() => {
+            console.log("버튼 클릭");
+            push("Asdf", {});
+          }}
+        >
+          버튼
+        </Button>
+      </Flex>
     </PageLayout>
   );
 };

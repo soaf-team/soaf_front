@@ -8,9 +8,11 @@ import Chat from "@assets/icons/bottom-tab/chat.svg";
 import ChatActive from "@assets/icons/bottom-tab/chatActive.svg";
 import MyHome from "@assets/icons/bottom-tab/myHome.svg";
 import MyHomeActive from "@assets/icons/bottom-tab/myHomeActive.svg";
-import { useFlow } from "@src/stackflow";
-import { ACTIVITY } from "@src/shared/constants/activity";
+
+import { ACTIVITY } from "@shared/constants/activity";
 import { Stack } from "@stackflow/core";
+import { useActiveActivity } from "@shared/hooks";
+import { useFlow } from "@/pages/stackflow";
 
 export const TABS = [
   {
@@ -42,20 +44,10 @@ export const TABS = [
 
 export const BottomTab = ({ stack }: { stack: Stack }) => {
   const { push } = useFlow();
-
-  const currentActivityName =
-    stack.activities.find((activity) => activity.isActive)?.name || "";
-
-  const isBottomTabAcitivity = [
-    "DiaryCalendar",
-    "DiaryStats",
-    "SoafExplore",
-    "Chat",
-    "MyHome",
-  ].includes(currentActivityName);
+  const { isBottomTabAcitivity, activeActivity } = useActiveActivity(stack);
 
   const handleTabClick = (activity: string) => {
-    if (activity === currentActivityName) {
+    if (activity === activeActivity.name) {
       return;
     }
 
@@ -76,7 +68,7 @@ export const BottomTab = ({ stack }: { stack: Stack }) => {
     >
       {TABS.map((tab) => {
         const Icon =
-          tab.activity === currentActivityName ? tab.activeIcon : tab.icon;
+          tab.activity === activeActivity.name ? tab.activeIcon : tab.icon;
 
         return (
           <button

@@ -1,26 +1,16 @@
 import {
-  TABS,
   Toast,
   ToastDescription,
   ToastProvider,
   ToastTitle,
   ToastViewport,
 } from "@shared/components";
-import { useToast } from "@shared/hooks";
+import { useActiveActivity, useToast } from "@shared/hooks";
 import { Stack } from "@stackflow/core";
 
 export function Toaster({ stack }: { stack: Stack }) {
   const { toasts } = useToast();
-  const currentActivityName =
-    stack.activities.find((activity) => activity.isActive)?.name || "";
-
-  const isBottomTabAcitivity = [
-    "DiaryCalendar",
-    "DiaryStats",
-    "SoafExplore",
-    "Chat",
-    "MyHome",
-  ].includes(currentActivityName);
+  const { isBottomTabAcitivity } = useActiveActivity(stack);
 
   return (
     <ToastProvider duration={2000}>
@@ -40,6 +30,7 @@ export function Toaster({ stack }: { stack: Stack }) {
       <ToastViewport
         style={{
           bottom: isBottomTabAcitivity ? "93px" : "10px",
+          zIndex: 10000,
         }}
       />
     </ToastProvider>

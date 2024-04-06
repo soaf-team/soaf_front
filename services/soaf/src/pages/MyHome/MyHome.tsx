@@ -1,5 +1,5 @@
-import { PageLayout } from "@src/shared/components";
-import CheckBox from "@src/shared/components/ui/CheckBox";
+import { PageLayout } from "@shared/components";
+import CheckBox from "@shared/components/ui/CheckBox";
 
 const MyHome = () => {
   return (

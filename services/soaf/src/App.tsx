@@ -1,5 +1,5 @@
 import { RecoilRoot } from "recoil";
-import { Stack } from "@src/stackflow";
+import { Stack } from "@pages/stackflow";
 
 function App() {
   return (

@@ -1,4 +1,4 @@
-import { useFlow } from "@src/stackflow";
+import { useFlow } from "@pages/stackflow";
 
 type HeaderProps = {
   children: React.ReactNode;
