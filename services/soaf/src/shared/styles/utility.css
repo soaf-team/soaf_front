@@ -1,0 +1,59 @@
+.body4 {
+  @apply text-[12px] font-normal leading-[16px];
+}
+
+.body3 {
+  @apply text-[14px] font-normal leading-[20px];
+}
+
+.body2 {
+  @apply text-[16px] font-normal leading-[24px];
+}
+
+.body1 {
+  @apply text-[18px] font-normal leading-[28px];
+}
+
+.head4 {
+  @apply text-[20px] font-semibold leading-[28px];
+}
+
+.head3 {
+  @apply text-[22px] font-bold leading-[32px];
+}
+
+.head2 {
+  @apply text-[24px] font-bold leading-[36px];
+}
+
+.head1 {
+  @apply text-[36px] font-bold leading-[48px];
+}
+
+.display3 {
+  @apply text-[36px] font-bold leading-[48px];
+}
+
+.display2 {
+  @apply text-[48px] font-bold leading-[60px];
+}
+
+.display1 {
+  @apply text-[60px] font-bold leading-[72px];
+}
+
+.label4 {
+  @apply text-[12px] font-semibold leading-[16px];
+}
+
+.label3 {
+  @apply text-[14px] font-semibold leading-[20px];
+}
+
+.label2 {
+  @apply text-[16px] font-semibold leading-[20px];
+}
+
+.label1 {
+  @apply text-[18px] font-semibold leading-[24px];
+}

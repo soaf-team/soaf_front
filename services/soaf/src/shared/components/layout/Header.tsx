@@ -10,7 +10,7 @@ export const Header = (props: HeaderProps) => {
   const { children, leftSlot = <BackIcon />, rightSlot } = props;
 
   return (
-    <div className="relative flex items-center justify-center h-14">
+    <div className="fixed top-0 left-0 right-0 flex items-center justify-center h-[56px]">
       {leftSlot && (
         <div className="absolute left-[18px] top-1/2 translate-y-[-50%]">
           {leftSlot}

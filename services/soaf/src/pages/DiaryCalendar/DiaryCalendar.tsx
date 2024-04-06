@@ -1,7 +1,9 @@
-import { Button, PageLayout } from "@shared/components";
+import { LoadingSpinner, PageLayout } from "@shared/components";
 import { Flex } from "@soaf/react-components-layout";
 import { useToast } from "@shared/hooks";
-import { useFlow } from "@/pages/stackflow";
+import { useFlow } from "@pages/stackflow";
+
+import Hamburger from "@assets/icons/header/hamburger.svg";
 
 const DiaryCalendar = () => {
   const { toast } = useToast();
@@ -12,24 +14,24 @@ const DiaryCalendar = () => {
       header={{
         title: "",
         leftSlot: null,
-        rightSlot: "아이콘",
+        rightSlot: (
+          <img
+            src={Hamburger}
+            alt="hamburger"
+            onClick={() => toast({ description: "Hamburger clicked" })}
+          />
+        ),
       }}
     >
-      <div>DiaryCalendar</div>
-      <Flex direction="column" gap={10} justify="flex-end" className="h-full">
-        <Button
-          onClick={() => {
-            console.log("버튼 클릭");
-            push("Asdf", {});
-          }}
-        >
-          버튼
-        </Button>
+      <Flex
+        direction="column"
+        gap={10}
+        justify="center"
+        align="center"
+        className="h-full"
+      >
+        <LoadingSpinner text="소프를 찾는 중이에요" size="md" />
       </Flex>
-      <Button>버튼</Button>
-      <div className="pt-4" />
-      <Stars size={26} onChange={(value) => console.log(value)} />
-      <div className="pt-4" />
     </PageLayout>
   );
 };
