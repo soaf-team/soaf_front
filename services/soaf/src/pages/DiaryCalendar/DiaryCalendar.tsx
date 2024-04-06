@@ -26,6 +26,10 @@ const DiaryCalendar = () => {
           버튼
         </Button>
       </Flex>
+      <Button>버튼</Button>
+      <div className="pt-4" />
+      <Stars size={26} onChange={(value) => console.log(value)} />
+      <div className="pt-4" />
     </PageLayout>
   );
 };
