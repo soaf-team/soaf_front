@@ -1,7 +1,7 @@
 // TODO: 글자 스타일링 필요함
 
 import dayjs from "dayjs";
-import { cn } from "@src/shared/utils";
+import { cn } from "@shared/utils";
 import { VariantProps, cva } from "class-variance-authority";
 
 const bubbleVariants = cva(
