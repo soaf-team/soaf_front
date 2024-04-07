@@ -1414,6 +1414,39 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@radix-ui/react-dialog@npm:^1.0.4, @radix-ui/react-dialog@npm:^1.0.5":
+  version: 1.0.5
+  resolution: "@radix-ui/react-dialog@npm:1.0.5"
+  dependencies:
+    "@babel/runtime": "npm:^7.13.10"
+    "@radix-ui/primitive": "npm:1.0.1"
+    "@radix-ui/react-compose-refs": "npm:1.0.1"
+    "@radix-ui/react-context": "npm:1.0.1"
+    "@radix-ui/react-dismissable-layer": "npm:1.0.5"
+    "@radix-ui/react-focus-guards": "npm:1.0.1"
+    "@radix-ui/react-focus-scope": "npm:1.0.4"
+    "@radix-ui/react-id": "npm:1.0.1"
+    "@radix-ui/react-portal": "npm:1.0.4"
+    "@radix-ui/react-presence": "npm:1.0.1"
+    "@radix-ui/react-primitive": "npm:1.0.3"
+    "@radix-ui/react-slot": "npm:1.0.2"
+    "@radix-ui/react-use-controllable-state": "npm:1.0.1"
+    aria-hidden: "npm:^1.1.1"
+    react-remove-scroll: "npm:2.5.5"
+  peerDependencies:
+    "@types/react": "*"
+    "@types/react-dom": "*"
+    react: ^16.8 || ^17.0 || ^18.0
+    react-dom: ^16.8 || ^17.0 || ^18.0
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+    "@types/react-dom":
+      optional: true
+  checksum: 10c0/c5b3069397379e79857a3203f3ead4d12d87736b59899f02a63e620a07dd1e6704e15523926cdf8e39afe1c945a7ff0f2533c5ea5be1e17c3114820300a51133
+  languageName: node
+  linkType: hard
+
 "@radix-ui/react-direction@npm:1.0.1":
   version: 1.0.1
   resolution: "@radix-ui/react-direction@npm:1.0.1"
@@ -1511,6 +1544,28 @@ __metadata:
     "@types/react-dom":
       optional: true
   checksum: 10c0/bfff46919666c122f5b812ee427494ae8408c0eebee30337bd2ce0eedf539f0feaa242f790304ef9df15425b837010ffc6061ce467bedd2c5fd9373bee2b95da
+  languageName: node
+  linkType: hard
+
+"@radix-ui/react-focus-scope@npm:1.0.4":
+  version: 1.0.4
+  resolution: "@radix-ui/react-focus-scope@npm:1.0.4"
+  dependencies:
+    "@babel/runtime": "npm:^7.13.10"
+    "@radix-ui/react-compose-refs": "npm:1.0.1"
+    "@radix-ui/react-primitive": "npm:1.0.3"
+    "@radix-ui/react-use-callback-ref": "npm:1.0.1"
+  peerDependencies:
+    "@types/react": "*"
+    "@types/react-dom": "*"
+    react: ^16.8 || ^17.0 || ^18.0
+    react-dom: ^16.8 || ^17.0 || ^18.0
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+    "@types/react-dom":
+      optional: true
+  checksum: 10c0/2fce0bafcab4e16cf4ed7560bda40654223f3d0add6b231e1c607433030c14e6249818b444b7b58ee7a6ff6bbf8e192c9c81d22c3a5c88c2daade9d1f881b5be
   languageName: node
   linkType: hard
 
@@ -2329,6 +2384,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@soaf/soaf_web@workspace:services/soaf"
   dependencies:
+    "@radix-ui/react-dialog": "npm:^1.0.5"
     "@radix-ui/react-slot": "npm:^1.0.2"
     "@radix-ui/react-toast": "npm:^1.1.5"
     "@soaf/react-components-button": "workspace:^"
@@ -2340,6 +2396,7 @@ __metadata:
     "@soaf/themes": "workspace:^"
     "@stackflow/core": "npm:^1.0.10"
     "@stackflow/plugin-basic-ui": "npm:^1.5.3"
+    "@stackflow/plugin-devtools": "npm:^0.1.8"
     "@stackflow/plugin-renderer-basic": "npm:^1.1.8"
     "@stackflow/react": "npm:^1.1.8"
     "@types/react": "npm:^18.2.66"
@@ -2363,6 +2420,7 @@ __metadata:
     tailwindcss: "npm:latest"
     tailwindcss-animate: "npm:^1.0.7"
     typescript: "npm:^5.2.2"
+    vaul: "npm:^0.9.0"
     vite: "npm:^5.2.0"
     vite-tsconfig-paths: "npm:^4.3.2"
   languageName: unknown
@@ -2401,6 +2459,15 @@ __metadata:
     "@types/react": ">=16.8.0"
     react: ">=16.8.0"
   checksum: 10c0/6c563b762db2da37f81ae65da0125386da5e475b09903cc07e30d67e43ce3c8abdf15593c56f49997e43d77fc5217e5f52348ac71dfce0c4348940aa3eada151
+  languageName: node
+  linkType: hard
+
+"@stackflow/plugin-devtools@npm:^0.1.8":
+  version: 0.1.8
+  resolution: "@stackflow/plugin-devtools@npm:0.1.8"
+  peerDependencies:
+    "@stackflow/core": ^1.0.10
+  checksum: 10c0/7acb65b18dd89eb4d4afb8fcc4a20a11207760f9b3d26325977d63d76b8d722ac7415bf2a5568496f815ef7fa9298e7dbf52633e7930b9e4627fdafaf5644ffc
   languageName: node
   linkType: hard
 
@@ -9573,6 +9640,18 @@ __metadata:
   version: 2.3.0
   resolution: "v8-compile-cache@npm:2.3.0"
   checksum: 10c0/b2d866febf943fbbf0b5e8d43ae9a9b0dacd11dd76e6a9c8e8032268f0136f081e894a2723774ae2d86befa994be4d4046b0717d82df4f3a10e067994ad5c688
+  languageName: node
+  linkType: hard
+
+"vaul@npm:^0.9.0":
+  version: 0.9.0
+  resolution: "vaul@npm:0.9.0"
+  dependencies:
+    "@radix-ui/react-dialog": "npm:^1.0.4"
+  peerDependencies:
+    react: ^16.8 || ^17.0 || ^18.0
+    react-dom: ^16.8 || ^17.0 || ^18.0
+  checksum: 10c0/3b4290f7bbc984c7ab3784e6b5a16f6cd2f380798d8c0d1a01818f215f473ecefc6a3f5ccf6724107282a9ceb1a7f8fce8f841ae3eb70cc63b23776bd42fd9e7
   languageName: node
   linkType: hard
 
