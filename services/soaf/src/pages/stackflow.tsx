@@ -16,6 +16,7 @@ export const { Stack, useFlow, useStepFlow } = stackflow({
     basicRendererPlugin(),
     basicUIPlugin({
       theme: "android",
+      rootClassName: "screen",
     }),
     () => {
       return {
