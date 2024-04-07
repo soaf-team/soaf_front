@@ -86,3 +86,8 @@
     --ring: 0 0% 83.1%;
   }
 }
+
+.screen {
+  min-height: 100vh;
+  min-width: 100vw;
+}

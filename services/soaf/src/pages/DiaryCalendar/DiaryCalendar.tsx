@@ -1,9 +1,15 @@
-import { LoadingSpinner, PageLayout } from "@shared/components";
+import { Button, PageLayout } from "@shared/components";
 import { Flex } from "@soaf/react-components-layout";
 import { useToast } from "@shared/hooks";
 import { useFlow } from "@pages/stackflow";
 
 import Hamburger from "@assets/icons/header/hamburger.svg";
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerTrigger,
+} from "@/shared/components/dialog";
 
 const DiaryCalendar = () => {
   const { toast } = useToast();
@@ -30,7 +36,22 @@ const DiaryCalendar = () => {
         align="center"
         className="h-full"
       >
-        <LoadingSpinner text="소프를 찾는 중이에요" size="md" />
+        <Drawer snapPoints={[0.6, 1]} fadeFromIndex={0}>
+          <DrawerTrigger>Open</DrawerTrigger>
+          <DrawerContent className="max-h-[90vh] h-full border-none text-center">
+            <Flex
+              direction="column"
+              justify="space-between"
+              gap={40}
+              className="h-full"
+            >
+              드로어
+              <DrawerClose>
+                <Button>확인</Button>
+              </DrawerClose>
+            </Flex>
+          </DrawerContent>
+        </Drawer>
       </Flex>
     </PageLayout>
   );
