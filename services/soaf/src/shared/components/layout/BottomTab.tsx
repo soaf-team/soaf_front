@@ -43,7 +43,7 @@ export const TABS = [
 ];
 
 export const BottomTab = ({ stack }: { stack: Stack }) => {
-  const { push } = useFlow();
+  const { replace } = useFlow();
   const { isBottomTabAcitivity, activeActivity } = useActiveActivity(stack);
 
   const handleTabClick = (activity: string) => {
@@ -52,7 +52,7 @@ export const BottomTab = ({ stack }: { stack: Stack }) => {
     }
 
     // @ts-ignore
-    push(activity, {}, { animate: false });
+    replace(activity, {}, { animate: false });
   };
 
   if (!isBottomTabAcitivity) {
