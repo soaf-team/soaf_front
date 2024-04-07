@@ -22,8 +22,7 @@ export const { Stack, useFlow, useStepFlow } = stackflow({
         key: "my-plugin",
         render({ stack }) {
           return (
-            <div className="my-rendering">
-              {stack.render().activities[0].render()}
+            <div className="layout">
               <BottomTab stack={stack} />
               <Toaster stack={stack} />
             </div>
