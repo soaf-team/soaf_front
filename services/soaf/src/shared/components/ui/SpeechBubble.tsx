@@ -5,8 +5,7 @@ import { cn } from "@src/shared/utils";
 import { VariantProps, cva } from "class-variance-authority";
 
 const bubbleVariants = cva(
-  `inline-flex items-center justify-center whitespace-nowrap rounded-[16px] 
-   max-w-[80%] py-[8px] px-[12px]`,
+  `inline-flex items-center justify-center rounded-[16px] py-[8px] px-[12px]`,
   {
     variants: {
       variant: {
@@ -27,12 +26,16 @@ interface Props
   nickname?: string;
   message: string;
   sentAt: string;
+  isLast?: boolean;
+  isGap?: boolean;
 }
 
 const SpeechBubble = ({
   nickname,
   message,
   sentAt,
+  isLast,
+  isGap,
   variant,
   order,
   className,
@@ -42,21 +45,29 @@ const SpeechBubble = ({
 
   return (
     <article
-      className={`flex gap-[4px] ${isMine ? "flex-row-reverse" : "flex-col"}`}
+      className={`flex gap-[4px] ${isMine ? "flex-row-reverse" : "flex-col"} ${isGap ? "mb-[16px]" : "mb-[8px]"}`}
     >
       {!isMine && (
         <div className="leading-[16px] text-#1212129C">{nickname}</div>
       )}
 
-      <div className={`flex items-end gap-[4px]`}>
-        {isMine && <div>{dayjs(sentAt).format("a HH:mm")}</div>}
+      <div className="flex items-end gap-[4px] max-w-[90%]">
+        {isMine && isLast && (
+          <div className="text-[10px] whitespace-nowrap">
+            {dayjs(sentAt).format("a HH:mm")}
+          </div>
+        )}
         <div
           {...props}
           className={cn(bubbleVariants({ variant, order, className }))}
         >
           <div>{message}</div>
         </div>
-        {!isMine && <div>{dayjs(sentAt).format("a HH:mm")}</div>}
+        {!isMine && isLast && (
+          <div className="text-[10px] whitespace-nowrap">
+            {dayjs(sentAt).format("a HH:mm")}
+          </div>
+        )}
       </div>
     </article>
   );
