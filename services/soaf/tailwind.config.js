@@ -42,6 +42,13 @@ module.exports = {
         sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
+        "loading-dots": {
+          "0%, 100%": { transform: "scale(0.8)", bgColor: "#57C2FF" },
+          "50%": {
+            transform: "scale(1)",
+            bgColor: "linear-gradient(90deg, #8CE3FF 0%, #57C2FF 100%)",
+          },
+        },
         "accordion-down": {
           from: { height: "0" },
           to: { height: "var(--radix-accordion-content-height)" },
@@ -57,6 +64,7 @@ module.exports = {
       },
       animation: {
         spin: "spin 1s linear infinite",
+        "loading-dots": "loading-dots 1s infinite",
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
