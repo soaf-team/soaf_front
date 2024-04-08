@@ -4,16 +4,16 @@ import { useToast } from "@shared/hooks";
 import { useFlow } from "@pages/stackflow";
 
 import Hamburger from "@assets/icons/header/hamburger.svg";
-import {
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerTrigger,
-} from "@/shared/components/dialog";
+import { EmotionButton } from "@/features/diary/components/emotion/EmotionButton";
+import { useState } from "react";
+import { Emotion } from "@/features/diary/components";
 
 const DiaryCalendar = () => {
   const { toast } = useToast();
   const { push } = useFlow();
+  const [selectedEmotions, setSelectedEmotions] = useState<Emotion[]>([
+    "행복한",
+  ]);
 
   return (
     <PageLayout
@@ -36,25 +36,40 @@ const DiaryCalendar = () => {
         align="center"
         className="h-full"
       >
-        <Drawer snapPoints={[0.6, 1]} fadeFromIndex={0}>
-          <DrawerTrigger>Open</DrawerTrigger>
-          <DrawerContent className="max-h-[90vh] h-full border-none text-center">
-            <Flex
-              direction="column"
-              justify="space-between"
-              gap={40}
-              className="h-full"
-            >
-              드로어
-              <DrawerClose>
-                <Button>확인</Button>
-              </DrawerClose>
-            </Flex>
-          </DrawerContent>
-        </Drawer>
+        <div className="grid grid-cols-2 gap-y-2 gap-x-3">
+          {EMOTIONS.map((emotion) => (
+            <EmotionButton
+              key={emotion}
+              emotion={emotion}
+              selected={selectedEmotions.includes(emotion)}
+              onClick={(emotion) =>
+                setSelectedEmotions((prev) =>
+                  prev.includes(emotion)
+                    ? prev.filter((prevEmotion) => prevEmotion !== emotion)
+                    : [...prev, emotion],
+                )
+              }
+            />
+          ))}
+        </div>
       </Flex>
     </PageLayout>
   );
 };
 
 export default DiaryCalendar;
+
+const EMOTIONS: Emotion[] = [
+  "행복한",
+  "기분좋은",
+  "즐거운",
+  "설레는",
+  "뿌듯한",
+  "편안한",
+  "피곤한",
+  "외로운",
+  "슬픈",
+  "우울한",
+  "불안한",
+  "화난",
+];
