@@ -1,8 +1,6 @@
 import { Button, PageLayout } from "@shared/components";
 import { Flex } from "@soaf/react-components-layout";
 import { useToast } from "@shared/hooks";
-import { useFlow } from "@pages/stackflow";
-
 import Hamburger from "@assets/icons/header/hamburger.svg";
 import { EmotionButton } from "@/features/diary/components/emotion/EmotionButton";
 import { useState } from "react";
