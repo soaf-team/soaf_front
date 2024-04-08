@@ -1,5 +1,3 @@
-// TODO: 글자 스타일링 필요함
-
 import dayjs from "dayjs";
 import { cn } from "@shared/utils";
 import { VariantProps, cva } from "class-variance-authority";
@@ -48,12 +46,14 @@ const SpeechBubble = ({
       className={`flex gap-[4px] ${isMine ? "flex-row-reverse" : "flex-col"} ${isGap ? "mb-[16px]" : "mb-[8px]"}`}
     >
       {!isMine && (
-        <div className="leading-[16px] text-#1212129C">{nickname}</div>
+        <div className="leading-[16px] text-[12px] text-gray400">
+          {nickname}
+        </div>
       )}
 
       <div className="flex items-end gap-[4px] max-w-[90%]">
         {isMine && isLast && (
-          <div className="text-[10px] whitespace-nowrap">
+          <div className="text-[10px] whitespace-nowrap text-gray400">
             {dayjs(sentAt).format("a HH:mm")}
           </div>
         )}
@@ -61,10 +61,10 @@ const SpeechBubble = ({
           {...props}
           className={cn(bubbleVariants({ variant, order, className }))}
         >
-          <div>{message}</div>
+          <div className="text-[16px]">{message}</div>
         </div>
         {!isMine && isLast && (
-          <div className="text-[10px] whitespace-nowrap">
+          <div className="text-[10px] whitespace-nowrap text-gray400">
             {dayjs(sentAt).format("a HH:mm")}
           </div>
         )}
