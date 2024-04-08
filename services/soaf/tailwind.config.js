@@ -41,6 +41,9 @@ module.exports = {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      boxShadow: {
+        shadow1: "0px 1px 16px 0px rgba(62, 62, 62, 0.16)",
+      },
       keyframes: {
         "loading-dots": {
           "0%, 100%": { transform: "scale(0.8)", bgColor: "#57C2FF" },
