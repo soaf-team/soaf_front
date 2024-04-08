@@ -1,8 +1,6 @@
 import { Button, PageLayout } from "@shared/components";
 import { Flex } from "@soaf/react-components-layout";
 import { useToast } from "@shared/hooks";
-import { useFlow } from "@pages/stackflow";
-
 import Hamburger from "@assets/icons/header/hamburger.svg";
 import {
   Drawer,
@@ -10,10 +8,10 @@ import {
   DrawerContent,
   DrawerTrigger,
 } from "@/shared/components/dialog";
+import { Badge } from "@shared/components/ui/Badge";
 
 const DiaryCalendar = () => {
   const { toast } = useToast();
-  const { push } = useFlow();
 
   return (
     <PageLayout
@@ -36,6 +34,7 @@ const DiaryCalendar = () => {
         align="center"
         className="h-full"
       >
+        <Badge variant="chat">1</Badge>
         <Drawer snapPoints={[0.6, 1]} fadeFromIndex={0}>
           <DrawerTrigger>Open</DrawerTrigger>
           <DrawerContent className="max-h-[90vh] h-full border-none text-center">
