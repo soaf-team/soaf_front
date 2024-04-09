@@ -1,3 +1,7 @@
+.body5 {
+  @apply text-[10px] font-normal leading-[12px];
+}
+
 .body4 {
   @apply text-[12px] font-normal leading-[16px];
 }
@@ -12,6 +16,30 @@
 
 .body1 {
   @apply text-[18px] font-normal leading-[28px];
+}
+
+.heade6bb {
+  @apply text-[16px] font-black leading-[20px];
+}
+
+.head6b {
+  @apply text-[16px] font-bold leading-[20px];
+}
+
+.heade6sb {
+  @apply text-[16px] font-semibold leading-[20px];
+}
+
+.head5b {
+  @apply text-[18px] font-bold leading-[24px];
+}
+
+.head5 {
+  @apply text-[18px] font-normal leading-[26px];
+}
+
+.head4b {
+  @apply text-[20px] font-bold leading-[28px];
 }
 
 .head4 {
@@ -42,16 +70,20 @@
   @apply text-[60px] font-bold leading-[72px];
 }
 
-.label4 {
-  @apply text-[12px] font-semibold leading-[16px];
+.label5 {
+  @apply text-[10px] font-semibold leading-[12px];
+}
+
+.label4eb {
+  @apply text-[12px] font-extrabold leading-[16px];
 }
 
 .label3 {
-  @apply text-[14px] font-semibold leading-[20px];
+  @apply text-[14px] font-medium leading-[20px];
 }
 
 .label2 {
-  @apply text-[16px] font-semibold leading-[20px];
+  @apply text-[16px] font-medium leading-[20px];
 }
 
 .label1 {

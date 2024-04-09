@@ -5,6 +5,8 @@ import Hamburger from "@assets/icons/header/hamburger.svg";
 import { EmotionButton } from "@/features/diary/components/emotion/EmotionButton";
 import { useState } from "react";
 import { Emotion } from "@/features/diary/components";
+import { Input } from "@/shared/components/ui/Input";
+import { useFlow } from "../stackflow";
 
 const DiaryCalendar = () => {
   const { toast } = useToast();
@@ -12,6 +14,8 @@ const DiaryCalendar = () => {
   const [selectedEmotions, setSelectedEmotions] = useState<Emotion[]>([
     "행복한",
   ]);
+
+  const [value, setValue] = useState("");
 
   return (
     <PageLayout
@@ -50,6 +54,12 @@ const DiaryCalendar = () => {
             />
           ))}
         </div>
+        <Input
+          placeholder="직접 입력할게요"
+          value={value}
+          onChange={(value) => setValue(value)}
+          isResetButton
+        />
       </Flex>
     </PageLayout>
   );
