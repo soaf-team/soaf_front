@@ -1,18 +1,21 @@
-import { Button, PageLayout } from "@shared/components";
+import { EmotionButton, PageLayout } from "@shared/components";
 import { Flex } from "@soaf/react-components-layout";
 import { useToast } from "@shared/hooks";
 import Hamburger from "@assets/icons/header/hamburger.svg";
-import { EmotionButton } from "@/features/diary/components/emotion/EmotionButton";
 import { useState } from "react";
-import { Emotion } from "@/features/diary/components";
 import { Input } from "@/shared/components/ui/Input";
-import { useFlow } from "../stackflow";
+import { Emotion } from "@/shared/types";
+import EmotionSticker from "@/shared/components/emotion/EmotionSticker";
 
 const DiaryCalendar = () => {
   const { toast } = useToast();
-  const { push } = useFlow();
   const [selectedEmotions, setSelectedEmotions] = useState<Emotion[]>([
     "행복한",
+    "기분좋은",
+    "슬픈",
+    "불안한",
+    "화난",
+    "외로운",
   ]);
 
   const [value, setValue] = useState("");
@@ -54,6 +57,21 @@ const DiaryCalendar = () => {
             />
           ))}
         </div>
+
+        <Flex direction="row">
+          {selectedEmotions.map((emotion, index) => (
+            <EmotionSticker
+              key={emotion}
+              emotion={emotion}
+              size="sm"
+              style={{
+                transform: `translateX(${index * -5}px)`,
+                zIndex: selectedEmotions.length - index,
+              }}
+            />
+          ))}
+        </Flex>
+
         <Input
           placeholder="직접 입력할게요"
           value={value}
