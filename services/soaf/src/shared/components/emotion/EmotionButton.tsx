@@ -1,7 +1,6 @@
-import { EMOTION_ICON } from "@/shared/constants/emotion";
-
+import { EMOTION_ICON } from "@/shared/constants";
+import { Emotion } from "@/shared/types";
 import { cn } from "@/shared/utils";
-import { Emotion } from "./types";
 
 type EmotionButtonProps = {
   emotion: Emotion;

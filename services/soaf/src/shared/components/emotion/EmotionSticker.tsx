@@ -1,5 +1,5 @@
-import { Emotion } from "@/features/diary/components/emotion/types";
-import { EMOTION_ICON } from "@/shared/constants/emotion";
+import { EMOTION_ICON } from "@/shared/constants";
+import { Emotion } from "@/shared/types";
 import { cn } from "@/shared/utils";
 
 interface Props extends React.HTMLAttributes<HTMLDivElement> {
