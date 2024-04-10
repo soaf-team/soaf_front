@@ -6,3 +6,5 @@ export * from "./ToggleButton.tsx";
 export * from "./Stars.tsx";
 export * from "./SpeechBubble.tsx";
 export * from "./Badge.tsx";
+export * from "./Input.tsx";
+export * from "./EmotionSticker.tsx";
