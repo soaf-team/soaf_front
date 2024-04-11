@@ -43,6 +43,7 @@ module.exports = {
       },
       boxShadow: {
         shadow1: "0px 1px 16px 0px rgba(62, 62, 62, 0.16)",
+        bottomTab: "0px 1px 24px 0px rgba(62, 62, 62, 0.1)",
       },
       keyframes: {
         "loading-dots": {
