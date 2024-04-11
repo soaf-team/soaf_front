@@ -1,10 +1,7 @@
 // Inspired by react-hot-toast library
 import * as React from "react";
 
-import type {
-  ToastActionElement,
-  ToastProps,
-} from "@/src/shared/components/ui/Toast";
+import type { ToastActionElement, ToastProps } from "@shared/components";
 
 const TOAST_LIMIT = 1;
 

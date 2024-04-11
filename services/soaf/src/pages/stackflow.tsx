@@ -8,7 +8,6 @@ import { DiaryStats } from "./DiaryStats";
 import { SoafExplore } from "./SoafExplore";
 import { Chat } from "./Chat";
 import { MyHome } from "./MyHome";
-import Asdf from "./DiaryCalendar/Asdf";
 
 export const { Stack, useFlow, useStepFlow } = stackflow({
   transitionDuration: 300,
@@ -38,7 +37,6 @@ export const { Stack, useFlow, useStepFlow } = stackflow({
     SoafExplore,
     Chat,
     MyHome,
-    Asdf,
   },
   initialActivity: () => "DiaryCalendar",
 });
