@@ -62,7 +62,7 @@ export const BottomTab = ({ stack }: { stack: Stack }) => {
   return (
     <div
       className="fixed bottom-0 left-0 right-0 h-[83px] rounded-t-[24px]
-                    flex items-center justify-around bg-white shadow-2xl
+                    flex items-center justify-around bg-white shadow-bottomTab
                     px-[18px] pb-[12px] z-[1000] max-w-full
                     "
     >
