@@ -8,8 +8,8 @@ import { useActiveActivity } from "@shared/hooks";
 type PageLayoutProps = {
   children: React.ReactNode;
   header?: {
-    title: React.ReactNode;
-    leftSlot?: React.ReactNode;
+    title?: React.ReactNode;
+    leftSlot?: React.ReactNode | "back";
     rightSlot?: React.ReactNode;
   };
 };
