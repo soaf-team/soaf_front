@@ -78,12 +78,20 @@
   @apply text-[12px] font-extrabold leading-[16px];
 }
 
+.label4 {
+  @apply text-[12px] font-semibold leading-[16px];
+}
+
 .label3 {
   @apply text-[14px] font-medium leading-[20px];
 }
 
 .label2 {
   @apply text-[16px] font-medium leading-[20px];
+}
+
+.label1sb {
+  @apply text-[18px] font-semibold leading-[24px];
 }
 
 .label1 {
