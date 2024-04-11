@@ -2,18 +2,18 @@ import { useFlow } from "@pages/stackflow";
 
 type HeaderProps = {
   children: React.ReactNode;
-  leftSlot?: React.ReactNode;
+  leftSlot?: React.ReactNode | "back";
   rightSlot?: React.ReactNode;
 };
 
 export const Header = (props: HeaderProps) => {
-  const { children, leftSlot = <BackIcon />, rightSlot } = props;
+  const { children, leftSlot, rightSlot } = props;
 
   return (
     <div className="fixed top-0 left-0 right-0 flex items-center justify-center h-[56px]">
       {leftSlot && (
         <div className="absolute left-[18px] top-1/2 translate-y-[-50%]">
-          {leftSlot}
+          {leftSlot === "back" ? <BackIcon /> : leftSlot}
         </div>
       )}
       {children}
