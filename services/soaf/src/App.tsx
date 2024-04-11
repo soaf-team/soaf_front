@@ -1,13 +1,12 @@
 import { RecoilRoot } from "recoil";
 import { Stack } from "@pages/stackflow";
-import { useAppBridge } from "./shared/hooks";
 
 function App() {
-  useAppBridge();
-
   return (
     <RecoilRoot>
-      <Stack />
+      <div className="relative max-w-[440px] mx-auto shadow-shadow1">
+        <Stack />
+      </div>
     </RecoilRoot>
   );
 }
