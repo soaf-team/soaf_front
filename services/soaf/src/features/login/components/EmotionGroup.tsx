@@ -1,5 +1,5 @@
 import { Flex } from "@soaf/react-components-layout";
-import EmotionSticker from "@/shared/components/emotion/EmotionSticker";
+import { EmotionSticker } from "@/shared/components";
 
 const EmotionGroup = () => {
   return (
