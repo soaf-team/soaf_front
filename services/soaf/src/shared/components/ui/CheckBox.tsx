@@ -1,4 +1,7 @@
+import { Flex } from "@soaf/react-components-layout";
 import CheckIcon from "@assets/icons/check-box/CheckIcon.svg";
+import NoneCheck from "@assets/icons/check-box/check-gray.svg";
+import Checked from "@assets/icons/check-box/check-primary.svg";
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   label?: React.ReactNode;
@@ -14,7 +17,7 @@ const CheckBox = ({
   ...props
 }: Props) => {
   return (
-    <div className="flex items-center gap-2">
+    <Flex direction="row" align="center" gap={8}>
       <div
         className={`${className} w-6 h-6 rounded-lg flex items-center justify-center
                     ${isChecked ? "bg-main_gradient" : "bg-gray-100"}
@@ -32,8 +35,24 @@ const CheckBox = ({
       </div>
 
       <span>{label}</span>
-    </div>
+    </Flex>
   );
 };
 
-export default CheckBox;
+const Check = ({ isChecked, label, onClick, className, ...props }: Props) => {
+  return (
+    <Flex direction="row" align="center" gap={8}>
+      <button type="button" className={className} onClick={onClick} {...props}>
+        <img
+          src={isChecked ? Checked : NoneCheck}
+          width={24}
+          alt="check-icon"
+        />
+      </button>
+
+      <span>{label}</span>
+    </Flex>
+  );
+};
+
+export { CheckBox, Check };
