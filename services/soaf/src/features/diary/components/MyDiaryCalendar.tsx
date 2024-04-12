@@ -8,12 +8,13 @@ import { EmotionSticker } from "@/shared/components";
 import { useFlow } from "@/pages/stackflow";
 
 import plus from "@assets/icons/plus.svg";
+import { Diary } from "@/shared/types";
 
 export const MyDiaryCalendar = () => {
   const { push } = useFlow();
   const { myDiaries } = useDiaryQuery();
 
-  const handleDiaryClick = (diary, isToday: boolean) => {
+  const handleDiaryClick = (diary: Diary, isToday: boolean) => {
     if (isToday) return push("NewDiary", {});
 
     push("DiaryDetail", { diaryId: diary.id });
@@ -27,7 +28,7 @@ export const MyDiaryCalendar = () => {
             ? "text-white bg-gray600 rounded-full"
             : "text-gray200";
 
-          const diaryAtDate = myDiaries.find((diary) => {
+          const diaryAtDate = myDiaries.find((diary: Diary) => {
             const diaryDate = new Date(diary.date);
             return (
               day?.getFullYear() === diaryDate.getFullYear() &&
