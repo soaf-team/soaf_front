@@ -1,13 +1,12 @@
 import { Stack } from "@pages/stackflow";
 import Providers from "./shared/providers";
+import { worker } from "@mocks/browser";
 
-if (import.meta.env.VITE_ENV === "development") {
-  import("./mocks/browser").then(({ worker }) => {
-    worker.start();
-  });
+if (import.meta.env.MODE === "development") {
+  worker.start();
 }
 
-if (import.meta.env.VITE_ENV === "production") {
+if (import.meta.env.MODE === "production") {
   console.log = () => {};
 }
 
