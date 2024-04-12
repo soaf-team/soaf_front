@@ -2,7 +2,10 @@ import { Stack } from "@pages/stackflow";
 import Providers from "./shared/providers";
 import { worker } from "@mocks/browser";
 
-if (import.meta.env.MODE === "development") {
+if (
+  import.meta.env.MODE === "production" ||
+  import.meta.env.MODE === "development"
+) {
   worker.start();
 }
 
