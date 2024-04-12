@@ -1,13 +1,15 @@
 import { useState } from "react";
 
 type CalendarHookReturn = {
+  today: Date;
   currentDate: Date;
   getMonthMatrix: () => Date[][];
   handleYearMonthChange: (newYearMonth: string) => void;
 };
 
 export const useCalendar = (): CalendarHookReturn => {
-  const [currentDate, setCurrentDate] = useState(new Date());
+  const today = new Date();
+  const [currentDate, setCurrentDate] = useState(today);
 
   const year = currentDate.getFullYear();
   const month = currentDate.getMonth();
@@ -33,5 +35,5 @@ export const useCalendar = (): CalendarHookReturn => {
     setCurrentDate(new Date(+newYear, +newMonth - 1));
   };
 
-  return { currentDate, getMonthMatrix, handleYearMonthChange };
+  return { today, currentDate, getMonthMatrix, handleYearMonthChange };
 };
