@@ -5,25 +5,61 @@
     "title": "title1",
     "photos": ["photo1", "photo2"],
     "content": "content1",
-    "emotions": ["angry"],
+    "emotions": ["화난"],
     "reactions": ["reaction1", "reaction2"]
   },
   {
-    "id": "1",
-    "date": "2024.04.05",
+    "id": "2",
+    "date": "2024.04.02",
     "title": "title2",
     "photos": ["photo1", "photo2"],
     "content": "content2",
-    "emotions": ["tired"],
+    "emotions": ["피곤한"],
     "reactions": ["reaction1", "reaction2"]
   },
   {
-    "id": "1",
-    "date": "2024.04.10",
+    "id": "3",
+    "date": "2024.04.4",
     "title": "title3",
     "photos": ["photo1", "photo2"],
     "content": "content3",
-    "emotions": ["happy"],
+    "emotions": ["슬픈"],
+    "reactions": ["reaction1", "reaction2"]
+  },
+  {
+    "id": "4",
+    "date": "2024.04.6",
+    "title": "title3",
+    "photos": ["photo1", "photo2"],
+    "content": "content3",
+    "emotions": ["행복한"],
+    "reactions": ["reaction1", "reaction2"]
+  },
+  {
+    "id": "5",
+    "date": "2024.04.7",
+    "title": "title4",
+    "photos": ["photo1", "photo2"],
+    "content": "content3",
+    "emotions": ["외로운"],
+    "reactions": ["reaction1", "reaction2"]
+  },
+  {
+    "id": "6",
+    "date": "2024.04.9",
+    "title": "title5",
+    "photos": ["photo1", "photo2"],
+    "content": "content5",
+    "emotions": ["설레는"],
+    "reactions": ["reaction1", "reaction2"]
+  },
+  {
+    "id": "7",
+    "date": "2024.04.10",
+    "title": "title5",
+    "photos": ["photo1", "photo2"],
+    "content": "content5",
+    "emotions": ["뿌듯한"],
     "reactions": ["reaction1", "reaction2"]
   }
 ]
