@@ -13,36 +13,36 @@ const Login = () => {
 
   return (
     <PageLayout>
-      <div className="absolute left-0 right-0 bottom-10 px-[18px]">
+      <Flex
+        direction="column"
+        align="center"
+        justify="center"
+        gap={20}
+        className="h-[70vh]"
+      >
+        <EmotionGroup />
+
         <Flex
           direction="column"
-          align="center"
-          justify="center"
-          gap={20}
-          className="mb-20"
+          className="font-bold text-[22px] text-black leading-[32px]"
         >
-          <EmotionGroup />
-
-          <Flex
-            direction="column"
-            className="font-bold text-[22px] text-black leading-[32px]"
-          >
-            <p>소프에 오신것을</p>
-            <p>환영해요!</p>
-          </Flex>
-
-          <p className="text-[16px] leading-5 font-medium text-gray200">
-            감정과 취향이 맞는 소울프렌드를 찾아보세요
-          </p>
+          <p>소프에 오신것을</p>
+          <p>환영해요!</p>
         </Flex>
 
-        <OAuthButtonGroup
-          onKakaoClick={handleButtonClick}
-          onGoogleClick={handleButtonClick}
-          onNaverClick={handleButtonClick}
-          onAppleClick={handleButtonClick}
-        />
-      </div>
+        <p className="text-[16px] leading-5 font-medium text-gray200">
+          감정과 취향이 맞는 소울프렌드를 찾아보세요
+        </p>
+
+        <div className="fixed left-0 right-0 bottom-10 px-[18px]">
+          <OAuthButtonGroup
+            onKakaoClick={handleButtonClick}
+            onGoogleClick={handleButtonClick}
+            onNaverClick={handleButtonClick}
+            onAppleClick={handleButtonClick}
+          />
+        </div>
+      </Flex>
     </PageLayout>
   );
 };

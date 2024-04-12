@@ -37,8 +37,15 @@ const NickName = () => {
           <p>좋을까요?</p>
         </Flex>
 
-        <Flex direction="column" gap={5} className="mb-[20px]">
+        <Flex direction="column" className="mb-[20px]">
+          <label
+            htmlFor="nickname"
+            className="text-gray400 font-medium text-[14px] leading-5 -mb-[10px]"
+          >
+            닉네임
+          </label>
           <Input
+            id="nickname"
             ref={inputRef}
             value={value}
             onChange={(e) => setValue(e)}
