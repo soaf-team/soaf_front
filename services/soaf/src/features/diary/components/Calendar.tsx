@@ -6,38 +6,50 @@ import {
   DrawerContent,
   DrawerTrigger,
 } from "@/shared/components/dialog";
+import triangle from "@assets/icons/triangle.svg";
+import { cn } from "@/shared/utils";
 
 type CalendarProps = {
-  render: (day: Date, index: number) => JSX.Element;
+  render: (day: Date, index: number, isToday: boolean) => JSX.Element;
 };
 
 export const Calendar = ({ render }: CalendarProps) => {
-  const { currentDate, getMonthMatrix, handleYearMonthChange } = useCalendar();
+  const { today, currentDate, getMonthMatrix, handleYearMonthChange } =
+    useCalendar();
 
   return (
     <Drawer>
       <div className="flex flex-col items-center justify-center w-full">
         <DrawerTrigger>
-          <h2 className="label1sb">
-            {currentDate.getFullYear()}.
-            {currentDate.getMonth() + 1 < 10
-              ? `0${currentDate.getMonth() + 1}`
-              : `${currentDate.getMonth() + 1}`}
-          </h2>
+          <Flex align="center" gap={4}>
+            <h2 className="label1sb">
+              {currentDate.getFullYear()}.
+              {currentDate.getMonth() + 1 < 10
+                ? `0${currentDate.getMonth() + 1}`
+                : `${currentDate.getMonth() + 1}`}
+            </h2>
+            <img src={triangle} alt="triangle" className="w-[8px] h-[5px]" />
+          </Flex>
         </DrawerTrigger>
         <div className="grid grid-cols-7 gap-x-2 gap-y-4 mt-[22px] w-full">
           {["일", "월", "화", "수", "목", "금", "토"].map((day) => (
-            <span key={day} className="label4 text-gray200 text-center">
+            <span key={day} className={cn(["label text-center text-gray200"])}>
               {day}
             </span>
           ))}
           {getMonthMatrix()
             .flat()
-            .map((day, index) => render(day, index))}
+            .map((day, index) => {
+              const isToday =
+                today?.toISOString().slice(0, 10) ===
+                day?.toISOString().slice(0, 10);
+              return render(day, index, isToday);
+            })}
         </div>
       </div>
-      <DrawerContent className="pb-[20px]">
-        <Flex direction="column" gap={16} align="center" paddingBottom={12}>
+
+      <DrawerContent>
+        <Flex direction="column" gap={16} align="center" className="pb-[12px]">
           <h2 className="label1">월 선택하기</h2>
           <Flex
             direction="column"
@@ -51,9 +63,8 @@ export const Calendar = ({ render }: CalendarProps) => {
                 : "body1";
 
               return (
-                <DrawerClose>
+                <DrawerClose key={i}>
                   <Flex
-                    key={i}
                     direction="row"
                     justify="space-between"
                     align="center"

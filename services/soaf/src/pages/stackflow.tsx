@@ -3,7 +3,7 @@ import { basicRendererPlugin } from "@stackflow/plugin-renderer-basic";
 import { basicUIPlugin } from "@stackflow/plugin-basic-ui";
 
 import { BottomTab, Toaster } from "../shared/components";
-import { DiaryCalendar } from "./DiaryCalendar";
+import { DiaryCalendar, DiaryDetail, NewDiary } from "./DiaryCalendar";
 import { DiaryStats } from "./DiaryStats";
 import { SoafExplore } from "./SoafExplore";
 import { Chat } from "./Chat";
@@ -37,6 +37,8 @@ export const { Stack, useFlow, useStepFlow } = stackflow({
     SoafExplore,
     Chat,
     MyHome,
+    DiaryDetail,
+    NewDiary,
   },
   initialActivity: () => "DiaryCalendar",
 });
