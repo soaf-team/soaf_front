@@ -58,10 +58,13 @@ export const MyDiaryCalendar = () => {
                 align="center"
                 justify="center"
                 onClick={() => handleDiaryClick(diaryAtDate, isToday)}
-                className="relative h-10 w-10 bg-gray50 rounded-full"
+                className="relative h-[40px] w-[40px] bg-gray50 rounded-full"
               >
                 {diaryAtDate?.emotions[0] && (
-                  <EmotionSticker emotion={diaryAtDate?.emotions[0]} />
+                  <EmotionSticker
+                    emotion={diaryAtDate?.emotions[0]}
+                    className="absolute"
+                  />
                 )}
                 {isToday && !diaryAtDate?.emotions[0] && (
                   <img
