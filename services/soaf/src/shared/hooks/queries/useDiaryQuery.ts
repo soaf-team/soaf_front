@@ -5,7 +5,7 @@ import { QUERY_KEY } from "@/shared/constants";
 
 export const useDiaryQuery = () => {
   const fetchDiary = async () => {
-    const response = await axiosBase("/diary");
+    const response = await axiosBase.get("/diary");
     return response.data;
   };
 
