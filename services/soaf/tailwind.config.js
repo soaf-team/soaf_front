@@ -32,6 +32,8 @@ module.exports = {
         gray600: "#414658",
         gray700: "#2C2F3A",
         gray800: "#2C2F3A",
+        kakao: "#FFEB00",
+        naver: "#2DB400",
       },
       backgroundImage: {
         main_gradient: "linear-gradient(90deg, #8CE3FF 0%, #57C2FF 100%)",
