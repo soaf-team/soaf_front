@@ -3,11 +3,9 @@ import diary from "./diary.json";
 
 export const handlers = [
   http.get("/diary", async () => {
-    await delay(500);
     return HttpResponse.json(diary, { status: 200 });
   }),
   http.post("/diary", async () => {
-    await delay(500);
     diary.push({
       id: "4",
       date: "2024.04.12",
