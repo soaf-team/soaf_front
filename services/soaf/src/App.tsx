@@ -1,6 +1,7 @@
 import { Stack } from "@pages/stackflow";
 import Providers from "./shared/providers";
 import { worker } from "@mocks/browser";
+import { useHandleBackButton } from "./shared/hooks";
 
 if (
   import.meta.env.MODE === "production" ||
@@ -14,6 +15,8 @@ if (import.meta.env.MODE === "production") {
 }
 
 function App() {
+  useHandleBackButton();
+
   return (
     <Providers>
       <div className="relative max-w-[440px] mx-auto shadow-shadow1">
