@@ -1,7 +1,7 @@
 import { PageLayout } from "@shared/components";
 import Hamburger from "@assets/icons/header/hamburger.svg";
-import { MyDiaryCalendar } from "@/features/diary/components";
 import { useToast } from "@/shared/hooks";
+import { MyDiaryCalendar } from "@/features/diary";
 
 const DiaryCalendar = () => {
   const { toast } = useToast();
