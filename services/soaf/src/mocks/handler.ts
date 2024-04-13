@@ -1,4 +1,4 @@
-import { HttpResponse, delay, http } from "msw";
+import { HttpResponse, http } from "msw";
 import diary from "./diary.json";
 
 export const handlers = [
