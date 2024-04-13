@@ -1,3 +1,5 @@
+/* typography */
+
 .body5 {
   @apply text-[10px] font-normal leading-[12px];
 }
@@ -96,4 +98,14 @@
 
 .label1 {
   @apply text-[18px] font-semibold leading-[24px];
+}
+
+/* position */
+
+.absolute_center {
+  @apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2;
+}
+
+.flex_center {
+  @apply flex items-center justify-center;
 }
