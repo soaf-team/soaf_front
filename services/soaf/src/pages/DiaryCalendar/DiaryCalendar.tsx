@@ -1,10 +1,10 @@
 import { PageLayout } from "@shared/components";
 import Hamburger from "@assets/icons/header/hamburger.svg";
-import { useToast } from "@/shared/hooks";
 import { MyDiaryCalendar } from "@/features/diary";
+import { useFlow } from "../stackflow";
 
 const DiaryCalendar = () => {
-  const { toast } = useToast();
+  const { push } = useFlow();
 
   return (
     <PageLayout
@@ -13,7 +13,7 @@ const DiaryCalendar = () => {
           <img
             src={Hamburger}
             alt="hamburger"
-            onClick={() => toast({ description: "Hamburger clicked" })}
+            onClick={() => push("Login", {})}
           />
         ),
       }}

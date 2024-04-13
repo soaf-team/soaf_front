@@ -46,5 +46,5 @@ export const { Stack, useFlow, useStepFlow } = stackflow({
     DiaryDetail,
     NewDiary,
   },
-  initialActivity: () => "Login",
+  initialActivity: () => "DiaryCalendar",
 });
