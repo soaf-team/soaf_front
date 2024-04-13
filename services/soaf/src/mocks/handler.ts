@@ -1,8 +1,10 @@
 import { HttpResponse, http } from "msw";
 import diary from "./diary.json";
 
+const BASE_URL = "http://soaf:3000";
+
 export const handlers = [
-  http.get("/diary", async () => {
+  http.get(`${BASE_URL}/diary`, async () => {
     return HttpResponse.json(diary, { status: 200 });
   }),
   http.post("/diary", async () => {
