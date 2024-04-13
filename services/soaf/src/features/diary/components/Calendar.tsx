@@ -1,11 +1,7 @@
 import { Flex } from "@soaf/react-components-layout";
 import { useCalendar } from "../hooks";
-import {
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerTrigger,
-} from "@/shared/components/dialog";
+import { Drawer, DrawerTrigger } from "@/shared/components/dialog";
+import { YearMonthSelectDrawer } from "./YearMonthSelectDrawer";
 import triangle from "@assets/icons/triangle.svg";
 import { cn } from "@/shared/utils";
 import { getDateStatus } from "../utils";
@@ -53,55 +49,5 @@ export const Calendar = ({ render }: CalendarProps) => {
         </div>
       </div>
     </>
-  );
-};
-
-type YearMonthSelectDrawerProps = {
-  currentDate: Date;
-  handleYearMonthChange: (date: string) => void;
-};
-
-const YearMonthSelectDrawer = ({
-  currentDate,
-  handleYearMonthChange,
-}: YearMonthSelectDrawerProps) => {
-  return (
-    <DrawerContent>
-      <Flex direction="column" gap={16} align="center" className="pb-[12px]">
-        <h2 className="label1">월 선택하기</h2>
-        <Flex
-          direction="column"
-          gap={16}
-          className="overflow-scroll h-[300px] w-full items-center"
-        >
-          {Array.from({ length: 10 }, (_, i) => {
-            const isSelected = currentDate.getMonth() === i;
-            const textClass = isSelected
-              ? "text-primary font-bold text-[18px] leading-[28px]"
-              : "body1";
-
-            return (
-              <DrawerClose key={i}>
-                <Flex
-                  direction="row"
-                  justify="space-between"
-                  align="center"
-                  gap={16}
-                  onClick={() => {
-                    handleYearMonthChange(
-                      `${currentDate.getFullYear()}.${i + 1}`,
-                    );
-                  }}
-                >
-                  <span className={textClass}>
-                    {currentDate.getFullYear()}년 {i + 1}월
-                  </span>
-                </Flex>
-              </DrawerClose>
-            );
-          })}
-        </Flex>
-      </Flex>
-    </DrawerContent>
   );
 };
