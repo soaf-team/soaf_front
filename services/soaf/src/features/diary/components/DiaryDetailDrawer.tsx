@@ -51,7 +51,10 @@ export const DiaryDetailDrawer = ({ diary }: DiaryDetailDrawerProps) => {
 
   return (
     <DrawerContent>
-      <Flex direction="column" className="h-[100vh] justify-between pb-[10vh]">
+      <Flex
+        direction="column"
+        className="h-[100vh] justify-between pb-[10vh] pt-[2px]"
+      >
         <Flex direction="column">
           <EmotionSticker
             emotion={diary.emotions[0] as Emotion}
