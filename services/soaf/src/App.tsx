@@ -13,12 +13,7 @@ function App() {
   useHandleBackButton();
 
   useEffect(() => {
-    if (
-      import.meta.env.MODE === "production" ||
-      import.meta.env.MODE === "development"
-    ) {
-      worker.start().then(() => setWorkerReady(true));
-    }
+    worker.start().then(() => setWorkerReady(true));
   }, []);
 
   if (!workerReady) return null;
