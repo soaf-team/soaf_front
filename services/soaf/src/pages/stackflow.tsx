@@ -8,9 +8,7 @@ import { DiaryStats } from "./DiaryStats";
 import { SoafExplore } from "./SoafExplore";
 import { Chat } from "./Chat";
 import { MyHome } from "./MyHome";
-import { Login } from "./Login";
-import { Terms } from "./Terms";
-import { NickName } from "./NickName";
+import { Login, Terms, NickName } from "./Login";
 
 export const { Stack, useFlow, useStepFlow } = stackflow({
   transitionDuration: 300,
