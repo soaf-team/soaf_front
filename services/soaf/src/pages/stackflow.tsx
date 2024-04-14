@@ -1,6 +1,7 @@
 import { stackflow } from "@stackflow/react";
 import { basicRendererPlugin } from "@stackflow/plugin-renderer-basic";
 import { basicUIPlugin } from "@stackflow/plugin-basic-ui";
+import { historySyncPlugin } from "@stackflow/plugin-history-sync";
 
 import { BottomTab, Toaster } from "../shared/components";
 import { DiaryCalendar, DiaryDetail, NewDiary } from "./DiaryCalendar";
@@ -19,6 +20,21 @@ export const { Stack, useFlow, useStepFlow } = stackflow({
     basicUIPlugin({
       theme: "android",
       rootClassName: "screen",
+    }),
+    historySyncPlugin({
+      routes: {
+        DiaryCalendar: "/diary-calendar",
+        DiaryStats: "/diary-stats",
+        SoafExplore: "/soaf-explore",
+        Chat: "/chat",
+        MyHome: "/my-home",
+        Login: "/auth/login",
+        Terms: "/auth/terms",
+        NickName: "/auth/nick-name",
+        DiaryDetail: "/diary-detail/:diaryId",
+        NewDiary: "/new-diary",
+      },
+      fallbackActivity: () => "DiaryCalendar",
     }),
     () => {
       return {
