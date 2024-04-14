@@ -2,12 +2,11 @@ name: CI
 on:
   push:
     branches:
-      - master
       - dev
   pull_request:
 
 jobs:
-  main:
+  dev:
     runs-on: ubuntu-latest
     permissions:
       contents: "read"
@@ -31,4 +30,4 @@ jobs:
         run: yarn install --immutable
 
       - name: Build
-        run: yarn affected:build --parallel=5
+        run: yarn affected:build --base=dev --head=HEAD --parallel=5
