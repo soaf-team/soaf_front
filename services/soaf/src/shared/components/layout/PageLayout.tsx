@@ -12,9 +12,14 @@ type PageLayoutProps = {
     leftSlot?: React.ReactNode | "back";
     rightSlot?: React.ReactNode;
   };
+  className?: string;
 };
 
-export const PageLayout = ({ children, header }: PageLayoutProps) => {
+export const PageLayout = ({
+  children,
+  header,
+  className,
+}: PageLayoutProps) => {
   const stack = useStack();
   const { isBottomTabAcitivity } = useActiveActivity(stack);
   const paddingBottom = isBottomTabAcitivity ? "pb-[83px]" : "pb-0";
@@ -22,7 +27,14 @@ export const PageLayout = ({ children, header }: PageLayoutProps) => {
 
   return (
     <AppScreen>
-      <div className={cn(["h-screen box-border", paddingBottom, paddingTop])}>
+      <div
+        className={cn([
+          "h-screen box-border",
+          paddingBottom,
+          paddingTop,
+          className,
+        ])}
+      >
         {header != null ? (
           <Header leftSlot={header.leftSlot} rightSlot={header.rightSlot}>
             {header.title}
