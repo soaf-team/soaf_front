@@ -1,6 +1,9 @@
+import dayjs from "dayjs";
+
+import { useState } from "react";
 import { useFlow } from "@/pages/stackflow";
 import { useCalendar } from "@/features/diary/hooks";
-import { useDiaryQuery } from "@/shared/hooks";
+import { useDiaryQueryByMonth } from "@/shared/hooks";
 import triangle from "@assets/icons/triangle.svg";
 import { YearMonthSelectDrawer, DiaryCard } from "@/features/diary/components";
 import { PageLayout, Button } from "@shared/components";
@@ -8,20 +11,44 @@ import { IconBack } from "@stackflow/plugin-basic-ui";
 import { Flex } from "@soaf/react-components-layout";
 import { Drawer, DrawerTrigger } from "@/shared/components/dialog";
 import { Diary } from "@/shared/types";
+import { NoneDiary } from "@/features/explore/components";
 
 const SoafExplore = () => {
   const { replace } = useFlow();
   const { currentDate, handleYearMonthChange } = useCalendar();
-  const { myDiaries } = useDiaryQuery();
+  const { diariesByMonth } = useDiaryQueryByMonth({
+    params: dayjs(currentDate).format("YYYY.MM"),
+  });
+
+  const [isSelected, setIsSelected] = useState<Diary[]>([]);
+
+  const handleDiarySelect = (index: number) => {
+    setIsSelected((prev) => {
+      if (prev.includes(diariesByMonth[index])) {
+        return prev.filter((diary) => diary !== diariesByMonth[index]);
+      } else {
+        return [...prev, diariesByMonth[index]];
+      }
+    });
+  };
+
+  const handleButtonClick = () => {
+    if (diariesByMonth.length === 0) {
+      replace("NewDiary", {});
+      return;
+    }
+
+    // TODO: 소프 탐색 기능 추가
+  };
 
   return (
     <PageLayout
       header={{
         title: "",
         leftSlot: (
-          <div onClick={() => replace("DiaryCalendar", {}, { animate: false })}>
+          <button onClick={() => replace("DiaryCalendar", {})}>
             <IconBack />
-          </div>
+          </button>
         ),
         rightSlot: null,
       }}
@@ -60,19 +87,45 @@ const SoafExplore = () => {
           />
         </Drawer>
 
-        <Flex direction="column" gap={12}>
-          {myDiaries.map((diary: Diary, index: number) => (
-            <DiaryCard
-              key={diary.id}
-              diary={diary}
-              isCheckable
-              className={`${index === myDiaries.length - 1 ? "mb-[100px]" : ""}`}
-            />
-          ))}
-        </Flex>
+        {diariesByMonth.length === 0 ? (
+          <div className="w-full absolute_center">
+            <NoneDiary />
+          </div>
+        ) : (
+          <Flex
+            direction="column"
+            align="center"
+            justify="center"
+            gap={12}
+            className="w-[95%]"
+          >
+            {diariesByMonth.map((diary: Diary, index: number) => (
+              <DiaryCard
+                key={diary.id}
+                diary={diary}
+                isCheckable
+                isSelected={isSelected.includes(diary)}
+                onClick={() => handleDiarySelect(index)}
+                className={
+                  index === diariesByMonth.length - 1 ? "mb-[100px]" : ""
+                }
+              />
+            ))}
+          </Flex>
+        )}
 
-        <div className="bg-white h-[80px] pt-[8px] px-[18px] fixed left-0 right-0 bottom-0 z-50">
-          <Button>소프 탐색</Button>
+        <div className="fixed_bottom_button">
+          <Button
+            variant={
+              diariesByMonth.length > 0 && isSelected.length === 0
+                ? "primary_disabled"
+                : "primary"
+            }
+            disabled={diariesByMonth.length > 0 && isSelected.length === 0}
+            onClick={handleButtonClick}
+          >
+            {diariesByMonth.length === 0 ? "일기 작성" : "소프 탐색"}
+          </Button>
         </div>
       </Flex>
     </PageLayout>
