@@ -50,7 +50,7 @@ export const DiaryDetailDrawer = ({ diary }: DiaryDetailDrawerProps) => {
   };
 
   return (
-    <DrawerContent>
+    <DrawerContent className="shadow-shadow1">
       <Flex
         direction="column"
         className="h-[100vh] justify-between pb-[10vh] pt-[2px]"
@@ -60,14 +60,20 @@ export const DiaryDetailDrawer = ({ diary }: DiaryDetailDrawerProps) => {
             emotion={diary.emotions[0] as Emotion}
             className="mb-[10px]"
           />
-          <span className="head3 mb-[16px]">
-            <span>{monthDay}</span> <span className="text-gray300">{week}</span>
-            <h1>{diary.title}</h1>
-          </span>
-          <div
-            dangerouslySetInnerHTML={{ __html: diary.content }}
-            className="body2 "
-          />
+          <DrawerClose
+            onClick={handleClick}
+            className="flex flex-col text-left"
+          >
+            <span className="head3 mb-[20px] gap-[4px]">
+              <span>{monthDay}</span>{" "}
+              <span className="text-gray300">{week}</span>
+              <h1>{diary.title}</h1>
+            </span>
+            <div
+              dangerouslySetInnerHTML={{ __html: diary.content }}
+              className="body2 "
+            />
+          </DrawerClose>
         </Flex>
         <DrawerClose ref={ref} onClick={handleClick} />
       </Flex>
