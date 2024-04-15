@@ -1,5 +1,6 @@
 import { Flex } from "@soaf/react-components-layout";
 import { DrawerClose, DrawerContent } from "@/shared/components/dialog";
+import { Check } from "@/shared/components";
 
 type YearMonthSelectDrawerProps = {
   currentDate: Date;
@@ -31,7 +32,7 @@ export const YearMonthSelectDrawer = ({
                   direction="row"
                   justify="space-between"
                   align="center"
-                  gap={16}
+                  gap={8}
                   onClick={() => {
                     handleYearMonthChange(
                       `${currentDate.getFullYear()}.${i + 1}`,
@@ -41,6 +42,7 @@ export const YearMonthSelectDrawer = ({
                   <span className={textClass}>
                     {currentDate.getFullYear()}년 {i + 1}월
                   </span>
+                  {isSelected && <Check isChecked />}
                 </Flex>
               </DrawerClose>
             );
