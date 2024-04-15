@@ -10,25 +10,11 @@ if (import.meta.env.MODE === "production") {
 
 function App() {
   const [workerReady, setWorkerReady] = useState(false);
-  const [workerStarted, setWorkerStarted] = useState(false);
   useHandleBackButton();
 
   useEffect(() => {
-    if (
-      import.meta.env.MODE === "production" ||
-      import.meta.env.MODE === "development"
-    ) {
-      // worker.start() 호출 전에 worker가 이미 시작되었는지 확인
-      if (!workerStarted) {
-        worker.start().then(() => {
-          setWorkerReady(true);
-          setWorkerStarted(true);
-        });
-      } else {
-        setWorkerReady(true);
-      }
-    }
-  }, [workerStarted]);
+    worker.start().then(() => setWorkerReady(true));
+  }, []);
 
   if (!workerReady) return null;
 
