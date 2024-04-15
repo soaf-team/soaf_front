@@ -1,4 +1,6 @@
 import dayjs from "dayjs";
+
+import { useFlow } from "@/pages/stackflow";
 import { Flex } from "@soaf/react-components-layout";
 import { EmotionSticker, CheckBox, Card } from "@/shared/components";
 import { Diary } from "@/shared/types";
@@ -7,15 +9,27 @@ import { cn, removeHtmlTags } from "@/shared/utils";
 interface Props {
   diary: Diary;
   isCheckable?: boolean;
+  isSelected?: boolean;
+  onClick?: () => void;
   className?: string;
 }
 
-export const DiaryCard = ({ diary, isCheckable = false, className }: Props) => {
+export const DiaryCard = ({
+  diary,
+  isCheckable = false,
+  isSelected = false,
+  onClick,
+  className,
+}: Props) => {
+  const { push } = useFlow();
+
   return (
     <Card
       direction="row"
       gap={12}
       shadow
+      isSelected={isSelected}
+      onClick={() => push("DiaryDetail", { diaryId: diary.id })}
       className={cn(["relative w-full", className])}
     >
       <Flex
@@ -51,8 +65,8 @@ export const DiaryCard = ({ diary, isCheckable = false, className }: Props) => {
           </Flex>
 
           {isCheckable && (
-            <div className="absolute top-[16px] right-[8px]">
-              <CheckBox isChecked />
+            <div className="absolute top-[16px] right-[16px]">
+              <CheckBox isChecked={isSelected} onClick={onClick} />
             </div>
           )}
         </Flex>
