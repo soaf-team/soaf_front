@@ -20,7 +20,9 @@ export const MyDiaryCalendar = () => {
   const [selectedDiary, setSelectedDiary] = useState<Diary | null>(null);
 
   const handleDateClick = (diaryAtDate: Diary, isFuture: boolean) => {
-    setSelectedDiary(diaryAtDate);
+    if (diaryAtDate) {
+      setSelectedDiary(diaryAtDate);
+    }
     if (isFuture || diaryAtDate) return;
     push("NewDiary", {});
   };
@@ -33,10 +35,11 @@ export const MyDiaryCalendar = () => {
 
   return (
     <Drawer
-      snapPoints={[0.5, 0.9]}
+      snapPoints={[0.25, 0.5, 0.95]}
       closeThreshold={0.6}
-      fadeFromIndex={0}
+      fadeFromIndex={4}
       onClose={resetSelectedDiary}
+      activeSnapPoint={0.5}
     >
       <Flex direction="column" className="h-full">
         <Calendar
