@@ -34,7 +34,7 @@ const Login = () => {
           감정과 취향이 맞는 소울프렌드를 찾아보세요
         </p>
 
-        <div className="fixed left-0 right-0 bottom-10 px-[18px]">
+        <div className="fixed_bottom">
           <OAuthButtonGroup
             onKakaoClick={handleButtonClick}
             onGoogleClick={handleButtonClick}

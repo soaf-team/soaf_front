@@ -6,12 +6,10 @@ import { historySyncPlugin } from "@stackflow/plugin-history-sync";
 import { BottomTab, Toaster } from "../shared/components";
 import { DiaryCalendar, DiaryDetail, NewDiary } from "./DiaryCalendar";
 import { DiaryStats } from "./DiaryStats";
-import { SoafExplore } from "./SoafExplore";
+import { SoafExplore, MatchedUser } from "./SoafExplore";
 import { Chat } from "./Chat";
-import { MyHome } from "./MyHome";
-import { Login } from "./Login";
-import { Terms } from "./Terms";
-import { NickName } from "./NickName";
+import { MyHome, UserHome } from "./MyHome";
+import { Login, Terms, NickName } from "./Login";
 
 export const { Stack, useFlow, useStepFlow } = stackflow({
   transitionDuration: 300,
@@ -61,6 +59,8 @@ export const { Stack, useFlow, useStepFlow } = stackflow({
     NickName,
     DiaryDetail,
     NewDiary,
+    MatchedUser,
+    UserHome,
   },
   initialActivity: () => "DiaryCalendar",
 });

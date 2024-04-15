@@ -7,7 +7,6 @@ export const useActiveActivity = (stack: Stack) => {
   const isBottomTabAcitivity = [
     "DiaryCalendar",
     "DiaryStats",
-    "SoafExplore",
     "Chat",
     "MyHome",
   ].includes(activeActivity.name);

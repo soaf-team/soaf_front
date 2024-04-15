@@ -34,7 +34,7 @@ const CheckBox = ({
         </button>
       </div>
 
-      <span>{label}</span>
+      {label && <span>{label}</span>}
     </Flex>
   );
 };
@@ -50,7 +50,7 @@ const Check = ({ isChecked, label, onClick, className, ...props }: Props) => {
         />
       </button>
 
-      <span>{label}</span>
+      {label && <span>{label}</span>}
     </Flex>
   );
 };
