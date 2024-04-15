@@ -1,5 +1,6 @@
 import { HttpResponse, http } from "msw";
 import diary from "./diary.json";
+import matchedUser from "./matchedUser.json";
 
 export const handlers = [
   http.get("/diary", async () => {
@@ -17,5 +18,26 @@ export const handlers = [
     });
 
     return HttpResponse.json(diary);
+  }),
+
+  // 월 별 일기 데이터 조회
+  http.get("/diary/:date", async (req) => {
+    const { date } = req.params;
+
+    const diaryByDate = diary.filter((diary) =>
+      diary.date.includes(date as string),
+    );
+
+    if (!diaryByDate) {
+      return HttpResponse.json(
+        { message: "아직 작성된 일기가 없어요." },
+        { status: 404 },
+      );
+    }
+
+    return HttpResponse.json(diaryByDate, { status: 200 });
+  }),
+  http.get("/soaf-explore", async () => {
+    return HttpResponse.json(matchedUser, { status: 200 });
   }),
 ];
