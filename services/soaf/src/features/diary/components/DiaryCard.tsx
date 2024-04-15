@@ -29,7 +29,9 @@ export const DiaryCard = ({
       gap={12}
       shadow
       isSelected={isSelected}
-      onClick={() => push("DiaryDetail", { diaryId: diary.id })}
+      onClick={() => {
+        push("DiaryDetail", { diaryId: diary.id });
+      }}
       className={cn(["relative w-full", className])}
     >
       <Flex
@@ -66,7 +68,13 @@ export const DiaryCard = ({
 
           {isCheckable && (
             <div className="absolute top-[16px] right-[16px]">
-              <CheckBox isChecked={isSelected} onClick={onClick} />
+              <CheckBox
+                isChecked={isSelected}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onClick?.();
+                }}
+              />
             </div>
           )}
         </Flex>
