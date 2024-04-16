@@ -122,3 +122,7 @@
 .full_img_cover {
   @apply object-cover w-full h-full;
 }
+
+.full_img_contain {
+  @apply object-contain w-full h-full;
+}
