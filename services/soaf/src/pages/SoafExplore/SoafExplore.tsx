@@ -14,7 +14,7 @@ import { Diary } from "@/shared/types";
 import { NoneDiary } from "@/features/explore/components";
 
 const SoafExplore = () => {
-  const { replace } = useFlow();
+  const { replace, push } = useFlow();
   const { currentDate, handleYearMonthChange } = useCalendar();
   const { diariesByMonth } = useDiaryQueryByMonth({
     params: dayjs(currentDate).format("YYYY.MM"),
@@ -39,6 +39,7 @@ const SoafExplore = () => {
     }
 
     // TODO: 소프 탐색 기능 추가
+    push("MatchedUser", {});
   };
 
   return (
