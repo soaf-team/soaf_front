@@ -117,3 +117,8 @@
 .flex_center {
   @apply flex items-center justify-center;
 }
+
+/* image */
+.full_img_cover {
+  @apply object-cover w-full h-full;
+}
