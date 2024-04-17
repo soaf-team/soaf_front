@@ -11,6 +11,7 @@ type PageLayoutProps = {
     title?: React.ReactNode;
     leftSlot?: React.ReactNode | "back";
     rightSlot?: React.ReactNode;
+    headerClass?: string;
   };
   className?: string;
 };
@@ -36,7 +37,11 @@ export const PageLayout = ({
         ])}
       >
         {header != null ? (
-          <Header leftSlot={header.leftSlot} rightSlot={header.rightSlot}>
+          <Header
+            leftSlot={header.leftSlot}
+            rightSlot={header.rightSlot}
+            className={header.headerClass}
+          >
             {header.title}
           </Header>
         ) : null}

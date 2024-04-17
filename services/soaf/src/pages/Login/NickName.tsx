@@ -20,7 +20,7 @@ const NickName = () => {
       header={{
         title: "",
         leftSlot: (
-          <div onClick={() => pop({ animate: false })}>
+          <div onClick={pop}>
             <IconBack />
           </div>
         ),
@@ -67,11 +67,7 @@ const NickName = () => {
           </Flex>
         </Flex>
 
-        <Button
-          onClick={() => replace("DiaryCalendar", {}, { animate: false })}
-        >
-          완료
-        </Button>
+        <Button onClick={() => replace("DiaryCalendar", {})}>완료</Button>
       </Flex>
     </PageLayout>
   );

@@ -42,7 +42,7 @@ const Terms = () => {
       header={{
         title: "",
         leftSlot: (
-          <div onClick={() => pop({ animate: false })}>
+          <div onClick={pop}>
             <IconBack />
           </div>
         ),
@@ -88,7 +88,7 @@ const Terms = () => {
                   <img
                     src={ChevronRight}
                     alt="chevron-right"
-                    className="object-cover w-full h-full"
+                    className="full_img_cover"
                   />
                 </div>
               </a>
@@ -99,7 +99,7 @@ const Terms = () => {
 
       <div className="absolute left-0 right-0 bottom-10 px-[18px]">
         <Button
-          onClick={() => push("NickName", {}, { animate: false })}
+          onClick={() => push("NickName", {})}
           variant={allChecked ? "primary" : "primary_disabled"}
           disabled={!allChecked}
         >

@@ -1,16 +1,23 @@
 import { useFlow } from "@pages/stackflow";
+import { cn } from "@/shared/utils";
 
 type HeaderProps = {
   children: React.ReactNode;
   leftSlot?: React.ReactNode | "back";
   rightSlot?: React.ReactNode;
+  className?: string;
 };
 
 export const Header = (props: HeaderProps) => {
-  const { children, leftSlot, rightSlot } = props;
+  const { children, leftSlot, rightSlot, className } = props;
 
   return (
-    <div className="fixed top-0 left-0 right-0 flex items-center justify-center h-[56px] bg-white z-50">
+    <div
+      className={cn([
+        "fixed top-0 left-0 right-0 flex items-center justify-center h-[56px] bg-white z-50",
+        className,
+      ])}
+    >
       {leftSlot && (
         <div className="absolute left-[18px] top-1/2 translate-y-[-50%]">
           {leftSlot === "back" ? <BackIcon /> : leftSlot}
