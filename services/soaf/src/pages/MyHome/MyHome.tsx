@@ -1,4 +1,7 @@
+import { useState, useRef } from "react";
+
 import dayjs from "dayjs";
+import Draggable from "react-draggable";
 
 import mainDay from "@/assets/icons/my-home/interior/main-day.svg";
 import mainNight from "@/assets/icons/my-home/interior/main-night.svg";
@@ -21,6 +24,8 @@ import { Flex } from "@soaf/react-components-layout";
 const MyHome = () => {
   const isAfter6PM = dayjs().hour() >= 18;
   const backgroundClass = isAfter6PM ? "bg-[#BECFDC]" : "bg-[#D3E6F4]";
+  const dragRef = useRef<HTMLDivElement>(null);
+  const [isDraggable, setIsDraggable] = useState(false);
 
   return (
     <PageLayout
@@ -31,9 +36,15 @@ const MyHome = () => {
       className={cn(["relative", backgroundClass])}
     >
       {/* interior img */}
-      <div className="absolute w-1/4 top-10">
-        <img src={books} alt="books" className="full_img_contain" />
-      </div>
+      <Draggable>
+        <div
+          className="absolute w-1/4 top-16"
+          onClick={() => setIsDraggable((prev) => !prev)}
+          ref={dragRef}
+        >
+          <img src={books} alt="books" className="full_img_contain" />
+        </div>
+      </Draggable>
 
       <div className="absolute w-1/5 left-[45%]">
         <img src={picture} alt="picture" className="full_img_contain" />
@@ -47,7 +58,7 @@ const MyHome = () => {
         />
       </div>
 
-      <div className="absolute w-1/5 top-[15%] left-[10%]">
+      <div className="absolute w-1/5 top-[18%] left-[10%]">
         <img src={music} alt="music" className="full_img_contain" />
       </div>
 
