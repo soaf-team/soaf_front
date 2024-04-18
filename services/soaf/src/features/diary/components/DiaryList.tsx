@@ -24,13 +24,7 @@ export const DiaryList = ({
   };
 
   return (
-    <Flex
-      direction="column"
-      align="center"
-      justify="center"
-      gap={12}
-      className="w-[95%]"
-    >
+    <Flex direction="column" align="center" justify="center" gap={12}>
       {diariesByMonth.map((diary: Diary, index: number) => (
         <DiaryCard
           key={diary.id}
