@@ -10,6 +10,7 @@ interface Props {
   diary: Diary;
   isCheckable?: boolean;
   isSelected?: boolean;
+  shadow?: boolean;
   onClick?: () => void;
   className?: string;
 }
@@ -18,6 +19,7 @@ export const DiaryCard = ({
   diary,
   isCheckable = false,
   isSelected = false,
+  shadow,
   onClick,
   className,
 }: Props) => {
@@ -27,7 +29,7 @@ export const DiaryCard = ({
     <Card
       direction="row"
       gap={12}
-      shadow
+      shadow={shadow}
       isSelected={isSelected}
       onClick={() => {
         push("DiaryDetail", { diaryId: diary.id });
