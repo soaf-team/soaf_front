@@ -2,22 +2,25 @@ import { useDiaryQuery } from "@/shared/hooks";
 import { Flex } from "@soaf/react-components-layout";
 import { useState } from "react";
 
-import { cn } from "@/shared/utils";
 import { getDateStatus } from "./utils";
+import { cn } from "@/shared/utils";
 import { Diary } from "@/shared/types";
-
-import { Calendar } from "./components/Calendar";
-import { EmotionSticker } from "@/shared/components";
 import { useFlow } from "@/pages/stackflow";
 
+import { Calendar, DiaryDetailDrawer } from "./components";
+import {
+  Drawer,
+  DrawerTrigger,
+  YearMonthSelect,
+  EmotionSticker,
+} from "@/shared/components";
 import plus from "@assets/icons/plus.svg";
-import { Drawer, DrawerTrigger } from "@/shared/components/dialog";
-import { DiaryDetailDrawer } from "./components";
 
 export const MyDiaryCalendar = () => {
   const { push } = useFlow();
   const { myDiaries } = useDiaryQuery();
   const [selectedDiary, setSelectedDiary] = useState<Diary | null>(null);
+  const [currentDate, setCurrentDate] = useState(new Date());
 
   const handleDateClick = (diaryAtDate: Diary, isFuture: boolean) => {
     if (diaryAtDate) {
@@ -41,8 +44,13 @@ export const MyDiaryCalendar = () => {
       onClose={resetSelectedDiary}
       activeSnapPoint={0.5}
     >
-      <Flex direction="column" className="h-full">
+      <Flex direction="column" className="h-full items-center">
+        <YearMonthSelect
+          currentDate={currentDate}
+          handleCurrentDate={setCurrentDate}
+        />
         <Calendar
+          currentDate={currentDate}
           render={(day, index, isToday) => {
             const isFuture = day && getDateStatus(day, new Date()) === "future";
             const diaryAtDate = myDiaries.find(

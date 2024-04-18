@@ -2,20 +2,17 @@ import dayjs from "dayjs";
 
 import { useState } from "react";
 import { useFlow } from "@/pages/stackflow";
-import { useCalendar } from "@/features/diary/hooks";
 import { useDiaryQueryByMonth } from "@/shared/hooks";
-import triangle from "@assets/icons/triangle.svg";
-import { YearMonthSelectDrawer, DiaryCard } from "@/features/diary/components";
-import { PageLayout, Button } from "@shared/components";
+import { PageLayout, Button, YearMonthSelect } from "@shared/components";
 import { IconBack } from "@stackflow/plugin-basic-ui";
 import { Flex } from "@soaf/react-components-layout";
-import { Drawer, DrawerTrigger } from "@/shared/components/dialog";
 import { Diary } from "@/shared/types";
 import { NoneDiary } from "@/features/explore/components";
+import { DiaryCard } from "@/features/diary/components";
 
 const SoafExplore = () => {
   const { replace, push } = useFlow();
-  const { currentDate, handleYearMonthChange } = useCalendar();
+  const [currentDate, setCurrentDate] = useState(new Date());
   const { diariesByMonth } = useDiaryQueryByMonth({
     params: dayjs(currentDate).format("YYYY.MM"),
   });
@@ -70,23 +67,10 @@ const SoafExplore = () => {
           </Flex>
         </Flex>
 
-        <Drawer>
-          <DrawerTrigger className="mb-[24px]">
-            <Flex align="center" gap={4}>
-              <h2 className="label1sb">
-                {currentDate.getFullYear()}.
-                {currentDate.getMonth() + 1 < 10
-                  ? `0${currentDate.getMonth() + 1}`
-                  : `${currentDate.getMonth() + 1}`}
-              </h2>
-              <img src={triangle} alt="triangle" className="w-[8px] h-[5px]" />
-            </Flex>
-          </DrawerTrigger>
-          <YearMonthSelectDrawer
-            currentDate={currentDate}
-            handleYearMonthChange={handleYearMonthChange}
-          />
-        </Drawer>
+        <YearMonthSelect
+          currentDate={currentDate}
+          handleCurrentDate={setCurrentDate}
+        />
 
         {diariesByMonth.length === 0 ? (
           <div className="w-full absolute_center">
