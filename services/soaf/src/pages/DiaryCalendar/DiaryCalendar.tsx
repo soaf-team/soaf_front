@@ -1,20 +1,20 @@
 import { PageLayout } from "@shared/components";
-import Hamburger from "@assets/icons/header/hamburger.svg";
+import ListIcon from "@assets/icons/header/list.svg";
 import { MyDiaryCalendar } from "@/features/diary";
 import { useFlow } from "../stackflow";
 
 const DiaryCalendar = () => {
   const { push } = useFlow();
 
+  const handleClickListButton = () => {
+    push("DiaryList", {});
+  };
+
   return (
     <PageLayout
       header={{
         rightSlot: (
-          <img
-            src={Hamburger}
-            alt="hamburger"
-            onClick={() => push("Login", {})}
-          />
+          <img src={ListIcon} alt="list" onClick={handleClickListButton} />
         ),
       }}
     >
