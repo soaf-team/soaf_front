@@ -7,7 +7,7 @@ const DiaryCalendar = () => {
   const { push } = useFlow();
 
   const handleClickListButton = () => {
-    push("DiaryList", {});
+    push("DiaryListPage", {});
   };
 
   return (
