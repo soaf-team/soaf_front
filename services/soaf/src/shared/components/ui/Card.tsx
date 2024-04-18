@@ -19,7 +19,9 @@ const Card = (
   }: CardProps,
   ref: Ref<HTMLDivElement>,
 ) => {
-  const shadowClass = shadow ? "shadow-shadow1" : "";
+  const shadowClass = shadow
+    ? "shadow-shadow1"
+    : "outline outline-1 outline-[rgba(138,145,168,0.2)]";
 
   // TODO: 그라이데이션 컬러 checkbox 추가
   const selectedClass = isSelected ? "outline outline-2 outline-primary " : "";
