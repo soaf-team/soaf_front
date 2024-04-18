@@ -22,9 +22,7 @@ const Card = (
   const shadowClass = shadow ? "shadow-shadow1" : "";
 
   // TODO: 그라이데이션 컬러 checkbox 추가
-  const selectedClass = isSelected
-    ? "border-primary border-[2px] border-solid"
-    : "";
+  const selectedClass = isSelected ? "outline outline-2 outline-primary " : "";
 
   return (
     <Flex
