@@ -1,75 +1,82 @@
 import dayjs from "dayjs";
 
+import check from "@/assets/icons/my-home/header/check.svg";
+import x from "@/assets/icons/header/x.svg";
+
 import {
-  Interior,
   DeskAndChair,
   Soaf,
   UpButton,
   HeaderActionButtons,
 } from "@/features/myHome/components";
+import { InteriorItems } from "@/features/myHome";
 import { PageLayout } from "@shared/components";
 
 import { useState } from "react";
 
 import { cn } from "@/shared/utils";
 
-const MyHome = () => {
-  const isAfter6PM = dayjs().hour() >= 18;
-  const backgroundClass = isAfter6PM ? "bg-[#BECFDC]" : "bg-[#D3E6F4]";
+const isAfter6PM = dayjs().hour() >= 18;
+const backgroundClass = isAfter6PM ? "bg-[#BECFDC]" : "bg-[#D3E6F4]";
 
+const MyHome = () => {
   const [isEdit, setIsEdit] = useState(false);
+
+  const [positions, setPositions] = useState<{
+    [key: string]: { x: number; y: number };
+  }>({});
+
+  const [prevPositions, setPrevPositions] = useState<{
+    [key: string]: { x: number; y: number };
+  }>({});
 
   return (
     <PageLayout
       header={{
         title: isEdit ? <span className="head6b">방 꾸미기</span> : null,
-        rightSlot: <HeaderActionButtons onBrushClick={() => setIsEdit(true)} />,
+        leftSlot: isEdit ? (
+          <button
+            className="w-[12px] h-[12px]"
+            onClick={() => {
+              setIsEdit(false);
+              Object.keys(prevPositions).forEach((key) => {
+                setPositions((prevPositions) => ({
+                  ...prevPositions,
+                  [key]: prevPositions[key],
+                }));
+              });
+            }}
+          >
+            <img src={x} alt="x-icon" className="full_img_cover" />
+          </button>
+        ) : null,
+        rightSlot: isEdit ? (
+          <button
+            className="w-[24px] h-[24px]"
+            onClick={() => setIsEdit(false)}
+          >
+            <img src={check} alt="check-icon" className="full_img_cover" />
+          </button>
+        ) : (
+          <HeaderActionButtons onBrushClick={() => setIsEdit(true)} />
+        ),
         headerClass: "bg-transparent",
       }}
       className={cn(["relative", backgroundClass])}
     >
-      <Interior src="books" isEdit={isEdit} className="absolute w-1/4 top-16" />
-      <Interior
-        src="movie"
+      <InteriorItems
         isEdit={isEdit}
-        className="absolute z-10 w-1/4 top-1/3"
+        isAfter6PM={isAfter6PM}
+        positions={positions}
+        setPositions={setPositions}
+        setPrevPositions={setPrevPositions}
       />
-      <Interior
-        src="music"
-        isEdit={isEdit}
-        className="absolute w-1/5 top-[18%] left-[10%]"
-      />
-      <Interior
-        src="picture"
-        isEdit={isEdit}
-        className="absolute w-1/5 left-[45%]"
-      />
-      <Interior
-        src="plant"
-        isEdit={isEdit}
-        className="absolute z-10 top-[35%] right-1/4 w-1/10"
-      />
-      <Interior
-        src="sofa"
-        isEdit={isEdit}
-        className="absolute right-[5%] top-1/3 z-10"
-      />
-      <Interior
-        src={isAfter6PM ? "windowNight" : "windowDay"}
-        isEdit={isEdit}
-        className="absolute w-1/4 top-14 right-4"
-      />
-      <Interior
-        src="youtube"
-        isEdit={isEdit}
-        className="absolute w-[15%] left-1/2 top-1/4"
-      />
-      <Soaf className="absolute left-0 right-0 z-10 w-1/2 top-1/2" />
+      <Soaf className="z-10 w-1/2 absolute_center" />
       <DeskAndChair
         isAfter6PM={isAfter6PM}
         className="absolute bottom-0 left-0 right-0 w-full max-w-[440px] h-[60%] my-0 mx-auto"
       />
-      <UpButton onClick={() => console.log("hi")} />
+      {isEdit === false && <UpButton onClick={() => console.log("hi")} />}
     </PageLayout>
   );
 };
