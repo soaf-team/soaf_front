@@ -10,6 +10,7 @@ import { SoafExplore, MatchedUser } from "./SoafExplore";
 import { Chat } from "./Chat";
 import { MyHome, UserHome } from "./MyHome";
 import { Login, Terms, NickName } from "./Login";
+import DiaryList from "./DiaryCalendar/DiaryList";
 
 export const { Stack, useFlow, useStepFlow } = stackflow({
   transitionDuration: 300,
@@ -31,6 +32,7 @@ export const { Stack, useFlow, useStepFlow } = stackflow({
         Terms: "/auth/terms",
         NickName: "/auth/nick-name",
         DiaryDetail: "/diary-detail/:diaryId",
+        DiaryList: "/diary-list",
         NewDiary: "/new-diary",
         MatchedUser: "/matched-user",
       },
@@ -60,6 +62,7 @@ export const { Stack, useFlow, useStepFlow } = stackflow({
     Terms,
     NickName,
     DiaryDetail,
+    DiaryList,
     NewDiary,
     MatchedUser,
     UserHome,
