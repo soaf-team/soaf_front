@@ -31,7 +31,7 @@ const SoafExplore = () => {
 
   const handleButtonClick = () => {
     if (diariesByMonth.length === 0) {
-      replace("NewDiary", {});
+      replace("NewDiaryStep1", {});
       return;
     }
 
