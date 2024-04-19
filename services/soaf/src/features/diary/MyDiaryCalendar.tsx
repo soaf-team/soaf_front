@@ -27,7 +27,7 @@ export const MyDiaryCalendar = () => {
       setSelectedDiary(diaryAtDate);
     }
     if (isFuture || diaryAtDate) return;
-    push("NewDiaryPage", { step: 1 });
+    push("NewDiaryStep1", {});
   };
 
   const resetSelectedDiary = () => {
