@@ -13,7 +13,7 @@ type DiaryFormType = {
 
 type DiaryRatingStore = {
   diary: DiaryFormType;
-  handleSelectedRating: (rating: number) => void;
+  handleRating: (rating: number) => void;
   handleEmotions: (emotions: Emotion[]) => void;
   handleTitle: (title: string) => void;
   handleContent: (content: string) => void;
@@ -32,7 +32,7 @@ export const useDiaryStore = create<DiaryRatingStore>((set) => {
 
   return {
     diary: defaultDiary,
-    handleSelectedRating: (rating) =>
+    handleRating: (rating) =>
       set((state) => ({
         diary: {
           ...state.diary,
