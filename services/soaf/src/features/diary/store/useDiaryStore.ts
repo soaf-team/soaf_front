@@ -17,7 +17,7 @@ type DiaryRatingStore = {
   handleEmotions: (emotions: Emotion[]) => void;
   handleTitle: (title: string) => void;
   handleContent: (content: string) => void;
-  resetAll: () => void;
+  resetAllDiaryState: () => void;
 };
 
 export const useDiaryStore = create<DiaryRatingStore>((set) => {
@@ -61,7 +61,7 @@ export const useDiaryStore = create<DiaryRatingStore>((set) => {
         },
       })),
 
-    resetAll: () =>
+    resetAllDiaryState: () =>
       set({
         diary: defaultDiary,
       }),
