@@ -28,7 +28,7 @@ export const MyDiaryList = ({ currentDate }: MyDiaryListProps) => {
             <p>오늘의 일기를 작성해보실래요?</p>
           </NonDataFallback>
         </div>
-        <div className="flex fixed left-[18px] right-[18px] bottom-[50px]">
+        <div className="fixed_bottom_button">
           <Button variant="primary" onClick={handleClickWriteDiaryButton}>
             일기 작성
           </Button>

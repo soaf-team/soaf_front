@@ -35,7 +35,7 @@ export const DiaryList = ({
             isSelected === undefined ? false : isSelected.includes(diary)
           }
           onClick={() => _handleDiarySelect(index)}
-          className={index === diariesByMonth.length - 1 ? "mb-[100px]" : ""}
+          className={index === diariesByMonth.length - 1 ? "mb-[50px]" : ""}
         />
       ))}
     </Flex>
