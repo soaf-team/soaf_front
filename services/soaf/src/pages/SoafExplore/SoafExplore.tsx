@@ -85,7 +85,7 @@ const SoafExplore = () => {
             align="center"
             justify="center"
             gap={12}
-            className="w-[95%]"
+            className="w-[95%] mt-[24px]"
           >
             {diariesByMonth.map((diary: Diary, index: number) => (
               <DiaryCard
