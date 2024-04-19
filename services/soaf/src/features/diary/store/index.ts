@@ -1,1 +1,1 @@
-export * from "./useDiaryRatingStore";
+export * from "./useDiaryStore";
