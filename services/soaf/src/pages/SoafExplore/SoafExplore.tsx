@@ -95,7 +95,7 @@ const SoafExplore = () => {
                 isSelected={isSelected.includes(diary)}
                 onClick={() => handleDiarySelect(index)}
                 className={
-                  index === diariesByMonth.length - 1 ? "mb-[100px]" : ""
+                  index === diariesByMonth.length - 1 ? "mb-[120px]" : ""
                 }
               />
             ))}

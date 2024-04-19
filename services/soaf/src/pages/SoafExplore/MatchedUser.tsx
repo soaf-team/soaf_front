@@ -59,7 +59,7 @@ const MatchedUser = () => {
                 onClick={() => handleSelect(user.id)}
                 isSelected={selectedUser === user.id}
                 className={
-                  index === matchedUsers.length - 1 ? "mb-[100px]" : ""
+                  index === matchedUsers.length - 1 ? "mb-[120px]" : ""
                 }
               />
             ))}
