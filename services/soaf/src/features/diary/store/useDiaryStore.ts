@@ -13,7 +13,11 @@ type DiaryFormType = {
 
 type DiaryRatingStore = {
   diary: DiaryFormType;
-  setSelectedRating: (rating: number) => void;
+  handleSelectedRating: (rating: number) => void;
+  handleEmotions: (emotions: Emotion[]) => void;
+  handleTitle: (title: string) => void;
+  handleContent: (content: string) => void;
+  resetAll: () => void;
 };
 
 export const useDiaryStore = create<DiaryRatingStore>((set) => {
@@ -28,28 +32,28 @@ export const useDiaryStore = create<DiaryRatingStore>((set) => {
 
   return {
     diary: defaultDiary,
-    setSelectedRating: (rating) =>
+    handleSelectedRating: (rating) =>
       set((state) => ({
         diary: {
           ...state.diary,
           rating,
         },
       })),
-    setEmotions: (emotions: Emotion[]) =>
+    handleEmotions: (emotions: Emotion[]) =>
       set((state) => ({
         diary: {
           ...state.diary,
           emotions,
         },
       })),
-    setTitle: (title: string) =>
+    handleTitle: (title: string) =>
       set((state) => ({
         diary: {
           ...state.diary,
           title,
         },
       })),
-    setContent: (content: string) =>
+    handleContent: (content: string) =>
       set((state) => ({
         diary: {
           ...state.diary,
