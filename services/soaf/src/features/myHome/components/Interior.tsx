@@ -7,7 +7,7 @@ import sofa from "@/assets/icons/my-home/interior/sofa.svg";
 import windowDay from "@/assets/icons/my-home/interior/window-day.svg";
 import windowNight from "@/assets/icons/my-home/interior/window-night.svg";
 import youtube from "@/assets/icons/my-home/interior/youtube.svg";
-import remove from "@/assets/icons/my-home/delete.svg";
+// import remove from "@/assets/icons/my-home/delete.svg";
 import drag from "@/assets/icons/my-home/move.svg";
 
 import { useState } from "react";
