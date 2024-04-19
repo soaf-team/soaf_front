@@ -95,7 +95,7 @@ const MyHome = () => {
       <Soaf className="z-10 w-1/2 absolute_center" />
       <DeskAndChair
         isAfter6PM={isAfter6PM}
-        className="absolute bottom-0 left-0 right-0 w-full max-w-[440px] h-[60%] my-0 mx-auto"
+        className="absolute bottom-0 left-0 right-0 w-full max-w-window h-[60%] my-0 mx-auto"
       />
       {!isEdit && <UpButton onClick={() => console.log("hi")} />}
     </PageLayout>

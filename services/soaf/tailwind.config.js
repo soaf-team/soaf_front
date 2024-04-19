@@ -48,6 +48,9 @@ module.exports = {
         bottomTab: "0px 1px 24px 0px rgba(62, 62, 62, 0.1)",
         hover: "0px 0px 8px 3px rgba(87, 164, 255, 0.5)",
       },
+      maxWidth: {
+        window: "440px",
+      },
       keyframes: {
         "loading-dots": {
           "0%, 100%": { transform: "scale(0.8)", bgColor: "#57C2FF" },
