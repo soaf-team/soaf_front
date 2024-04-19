@@ -1,14 +1,20 @@
+import { ActivityComponentType } from "@stackflow/react";
 import { useState } from "react";
 
-import { AsyncBoundary, PageLayout, YearMonthSelect } from "@shared/components";
+import {
+  AsyncBoundary,
+  BackButton,
+  PageLayout,
+  YearMonthSelect,
+} from "@shared/components";
 import { MyDiaryList } from "@/features/diary";
 import { Flex } from "@soaf/react-components-layout";
 
-const DiaryListPage = () => {
+const DiaryListPage: ActivityComponentType = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
 
   return (
-    <PageLayout header={{ leftSlot: "back" }}>
+    <PageLayout header={{ leftSlot: <BackButton /> }}>
       <Flex direction="column" align="center" gap={22}>
         <YearMonthSelect
           currentDate={currentDate}

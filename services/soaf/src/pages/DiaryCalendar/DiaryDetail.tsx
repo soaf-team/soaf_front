@@ -1,10 +1,11 @@
-import { PageLayout } from "@/shared/components";
+import { ActivityComponentType } from "@stackflow/react";
+import { BackButton, PageLayout } from "@/shared/components";
 
-const DiaryDetail = () => {
+const DiaryDetail: ActivityComponentType = () => {
   return (
     <PageLayout
       header={{
-        leftSlot: "back",
+        leftSlot: <BackButton />,
         rightSlot: "아이콘",
       }}
     >

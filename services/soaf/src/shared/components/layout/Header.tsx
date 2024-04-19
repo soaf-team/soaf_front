@@ -1,9 +1,8 @@
-import { useFlow } from "@pages/stackflow";
 import { cn } from "@/shared/utils";
 
 type HeaderProps = {
   children: React.ReactNode;
-  leftSlot?: React.ReactNode | "back";
+  leftSlot?: React.ReactNode;
   rightSlot?: React.ReactNode;
   className?: string;
 };
@@ -20,7 +19,7 @@ export const Header = (props: HeaderProps) => {
     >
       {leftSlot && (
         <div className="absolute left-[18px] top-1/2 translate-y-[-50%]">
-          {leftSlot === "back" ? <BackIcon /> : leftSlot}
+          {leftSlot}
         </div>
       )}
       {children}
@@ -30,28 +29,5 @@ export const Header = (props: HeaderProps) => {
         </div>
       )}
     </div>
-  );
-};
-
-const BackIcon = () => {
-  const { pop } = useFlow();
-
-  return (
-    <button onClick={pop}>
-      <svg
-        className="w-6 h-6"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M15 19l-7-7 7-7"
-        />
-      </svg>
-    </button>
   );
 };
