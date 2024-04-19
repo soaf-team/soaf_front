@@ -8,11 +8,13 @@ import {
   Soaf,
   UpButton,
   HeaderActionButtons,
+  BottomActionButtons,
 } from "@/features/myHome/components";
 import { InteriorItems } from "@/features/myHome";
 import { PageLayout } from "@shared/components";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useInteriorItems } from "@/features/myHome/queries";
 
 import { cn } from "@/shared/utils";
 
@@ -20,23 +22,16 @@ const isAfter6PM = dayjs().hour() >= 18;
 const backgroundClass = isAfter6PM ? "bg-[#BECFDC]" : "bg-[#D3E6F4]";
 
 const MyHome = () => {
+  const { interiorItems } = useInteriorItems();
   const [isEdit, setIsEdit] = useState(false);
+  const [isDraggable, setIsDraggable] = useState<{ [key: string]: boolean }>(
+    {},
+  );
 
   // 인테리어 요소들의 초기 위치 (불변)
-  // 추후 서버에서 받아온 좌표 값으로 적용
-  // 서버에 저장된 좌표 값이 없으면, x: 0, y: 0으로 적용
-  const [initialPositions] = useState<{
+  const [initialPositions, setInitialPositions] = useState<{
     [key: string]: { x: number; y: number };
-  }>({
-    books: { x: 0, y: 0 },
-    movie: { x: 0, y: 0 },
-    music: { x: 0, y: 0 },
-    picture: { x: 0, y: 0 },
-    plant: { x: 0, y: 0 },
-    sofa: { x: 0, y: 0 },
-    window: { x: 0, y: 0 },
-    youtube: { x: 0, y: 0 },
-  });
+  }>({});
 
   // 인테리어 요소들의 위치 (가변)
   const [positions, setPositions] = useState<{
@@ -54,6 +49,7 @@ const MyHome = () => {
 
   const handleCancelEdit = () => {
     setIsEdit(false);
+    setIsDraggable({});
     setPositions(initialPositions);
   };
 
@@ -64,6 +60,36 @@ const MyHome = () => {
   const handleSaveEdit = () => {
     setIsEdit(false);
   };
+
+  // 서버에서 받아온 인테리어 아이템 데이터의 위치를 초기 위치로 설정
+  useEffect(() => {
+    if (interiorItems.length > 0) {
+      const initialPositions = interiorItems.reduce(
+        (acc, item) => {
+          acc[item.name] = item.position;
+          return acc;
+        },
+        {} as { [key: string]: { x: number; y: number } },
+      );
+
+      setInitialPositions(initialPositions);
+    }
+  }, [interiorItems]);
+
+  // 각 아이템들의 초기 draggable 상태 설정
+  useEffect(() => {
+    if (interiorItems.length > 0) {
+      setIsDraggable(
+        interiorItems.reduce(
+          (acc, item) => {
+            acc[item.name] = false;
+            return acc;
+          },
+          {} as { [key: string]: boolean },
+        ),
+      );
+    }
+  }, [interiorItems]);
 
   return (
     <PageLayout
@@ -86,8 +112,11 @@ const MyHome = () => {
       className={cn(["relative", backgroundClass])}
     >
       <InteriorItems
+        interiorItems={interiorItems}
         isEdit={isEdit}
         isAfter6PM={isAfter6PM}
+        isDraggable={isDraggable}
+        setIsDraggable={setIsDraggable}
         positions={positions}
         initialPositions={initialPositions}
         setPositions={setPositions}
@@ -97,7 +126,11 @@ const MyHome = () => {
         isAfter6PM={isAfter6PM}
         className="absolute bottom-0 left-0 right-0 w-full max-w-[440px] h-[60%] my-0 mx-auto"
       />
-      {!isEdit && <UpButton onClick={() => console.log("hi")} />}
+      {isEdit === false ? (
+        <UpButton onClick={() => console.log("hi")} />
+      ) : (
+        <BottomActionButtons interiorItems={interiorItems} />
+      )}
     </PageLayout>
   );
 };
