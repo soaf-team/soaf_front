@@ -102,7 +102,7 @@
 
 /* button */
 .fixed_bottom_button {
-  @apply bg-white h-[80px] pt-[8px] px-[18px] fixed left-0 right-0 bottom-0 z-50;
+  @apply bg-white h-[110px] pt-[8px] px-[18px] fixed left-0 right-0 bottom-0 z-50;
 }
 
 /* position */

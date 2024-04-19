@@ -22,7 +22,7 @@ export const MyDiaryList = ({ currentDate }: MyDiaryListProps) => {
   if (diariesByMonth.length === 0) {
     return (
       <>
-        <div className="absolute_center">
+        <div className="w-full absolute_center">
           <NonDataFallback>
             <p>아직 작성된 일기가 없어요.</p>
             <p>오늘의 일기를 작성해보실래요?</p>

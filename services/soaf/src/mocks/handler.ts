@@ -1,11 +1,15 @@
 import { HttpResponse, http } from "msw";
 import diary from "./diary.json";
 import matchedUser from "./matchedUser.json";
+import interior from "./interior.json";
 
 export const handlers = [
+  // 일기 조회
   http.get("/diary", async () => {
     return HttpResponse.json(diary, { status: 200 });
   }),
+
+  // 일기 작성
   http.post("/diary", async () => {
     diary.push({
       id: "4",
@@ -37,7 +41,33 @@ export const handlers = [
 
     return HttpResponse.json(diaryByDate, { status: 200 });
   }),
+
+  // 소프 탐색
   http.get("/soaf-explore", async () => {
     return HttpResponse.json(matchedUser, { status: 200 });
   }),
+
+  // 인테리어 아이템 조회
+  http.get("/interior-items", async () => {
+    return HttpResponse.json(interior, { status: 200 });
+  }),
+
+  // 인테리어 visible 변경
+  // http.put("/interior-items/:id", async (req) => {
+  //   const { id } = req.params;
+  //   const { isVisible } = req.body;
+
+  //   const item = interior.find((item) => item.id === Number(id));
+
+  //   if (!item) {
+  //     return HttpResponse.json(
+  //       { message: "해당 아이템을 찾을 수 없습니다." },
+  //       { status: 404 },
+  //     );
+  //   }
+
+  //   item.isVisible = isVisible;
+
+  //   return HttpResponse.json(interior, { status: 200 });
+  // }),
 ];
