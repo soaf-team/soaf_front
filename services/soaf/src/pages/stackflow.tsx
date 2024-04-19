@@ -7,8 +7,10 @@ import { BottomTab, Toaster } from "../shared/components";
 import {
   DiaryCalendar,
   DiaryDetail,
-  NewDiaryPage,
   DiaryListPage,
+  NewDiaryPage,
+  NewDiaryStep1,
+  NewDiaryStep2,
 } from "./DiaryCalendar";
 import { DiaryStats } from "./DiaryStats";
 import { SoafExplore, MatchedUser } from "./SoafExplore";
@@ -26,19 +28,29 @@ export const { Stack, useFlow, useStepFlow } = stackflow({
     }),
     historySyncPlugin({
       routes: {
+        /*** 메인 탭 ***/
         DiaryCalendar: "/diary-calendar",
         DiaryStats: "/diary-stats",
         SoafExplore: "/soaf-explore",
         Chat: "/chat",
         MyHome: "/my-home",
-        UserHome: "/user-home/:userId",
+
+        /*** 인증 ***/
         Login: "/auth/login",
         Terms: "/auth/terms",
         NickName: "/auth/nick-name",
+
+        /*** 다이어리 ***/
         DiaryDetail: "/diary-detail/:diaryId",
         DiaryListPage: "/diary-list",
-        NewDiaryPage: "/new-diary",
+        // 다이어리 작성
+        NewDiaryStep1: "/new-diary/step1",
+        NewDiaryStep2: "/new-diary/step2",
+        NewDiaryPage: "/new-diary/form",
+
+        /*** 유저 ***/
         MatchedUser: "/matched-user",
+        UserHome: "/user-home/:userId",
       },
       fallbackActivity: () => "DiaryCalendar",
     }),
@@ -57,17 +69,27 @@ export const { Stack, useFlow, useStepFlow } = stackflow({
     },
   ],
   activities: {
+    /*** 메인 탭 ***/
     DiaryCalendar,
     DiaryStats,
     SoafExplore,
     Chat,
     MyHome,
+
+    /*** 인증 ***/
     Login,
     Terms,
     NickName,
-    DiaryDetail,
+
+    /*** 다이어리 ***/
     DiaryListPage,
+    DiaryDetail,
+    // 다이어리 작성
+    NewDiaryStep1,
+    NewDiaryStep2,
     NewDiaryPage,
+
+    /*** 유저 ***/
     MatchedUser,
     UserHome,
   },
