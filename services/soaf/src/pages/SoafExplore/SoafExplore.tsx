@@ -7,8 +7,8 @@ import { PageLayout, Button, YearMonthSelect } from "@shared/components";
 import { IconBack } from "@stackflow/plugin-basic-ui";
 import { Flex } from "@soaf/react-components-layout";
 import { Diary } from "@/shared/types";
-import { NoneDiary } from "@/features/explore/components";
 import { DiaryCard } from "@/features/diary/components";
+import { NonDataFallback } from "@shared/components";
 
 const SoafExplore = () => {
   const { replace, push } = useFlow();
@@ -74,7 +74,10 @@ const SoafExplore = () => {
 
         {diariesByMonth.length === 0 ? (
           <div className="w-full absolute_center">
-            <NoneDiary />
+            <NonDataFallback>
+              <p>아직 작성된 일기가 없어요.</p>
+              <p>일기를 먼저 작성해야 탐색이 가능해요.</p>
+            </NonDataFallback>
           </div>
         ) : (
           <Flex
