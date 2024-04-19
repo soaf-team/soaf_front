@@ -20,7 +20,7 @@ function App() {
 
   return (
     <Providers>
-      <div className="relative max-w-[440px] mx-auto shadow-shadow1">
+      <div className="relative max-w-window mx-auto shadow-shadow1">
         <Stack />
       </div>
     </Providers>
