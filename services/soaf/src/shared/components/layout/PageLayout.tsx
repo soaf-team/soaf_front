@@ -9,7 +9,7 @@ type PageLayoutProps = {
   children: React.ReactNode;
   header?: {
     title?: React.ReactNode;
-    leftSlot?: React.ReactNode | "back";
+    leftSlot?: React.ReactNode;
     rightSlot?: React.ReactNode;
     headerClass?: string;
   };
