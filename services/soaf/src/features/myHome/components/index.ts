@@ -3,3 +3,4 @@ export * from "./DeskAndChair";
 export * from "./UpButton";
 export * from "./Soaf";
 export * from "./Interior";
+export * from "./BottomActionButtons";
