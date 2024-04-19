@@ -20,9 +20,9 @@ interface InteriorProps extends React.HTMLAttributes<HTMLDivElement> {
   src: string;
   isEdit?: boolean;
   imgClass?: string;
+  position?: { x: number; y: number };
   initialPosition?: { x: number; y: number };
   handleDrag: (data: DraggableData) => void;
-  onDragStart?: () => void;
 }
 
 const images: { [key: string]: string } = {
@@ -43,9 +43,9 @@ export const Interior = (props: InteriorProps) => {
     isEdit,
     className,
     imgClass = "full_img_contain",
+    position,
     initialPosition,
     handleDrag,
-    onDragStart,
     ...rest
   } = props;
 
@@ -74,12 +74,12 @@ export const Interior = (props: InteriorProps) => {
 
   return isDraggable ? (
     <Draggable
-      position={initialPosition}
+      defaultPosition={initialPosition}
+      position={position}
       handle=".handle"
       bounds="body"
       disabled={!isEdit && !isDraggable}
       onDrag={(_, data) => handleDrag(data)}
-      onStart={onDragStart}
     >
       {content}
     </Draggable>

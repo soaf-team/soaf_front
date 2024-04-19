@@ -9,12 +9,10 @@ interface Props {
   positions: {
     [key: string]: { x: number; y: number };
   };
+  initialPositions: {
+    [key: string]: { x: number; y: number };
+  };
   setPositions: React.Dispatch<
-    React.SetStateAction<{
-      [key: string]: { x: number; y: number };
-    }>
-  >;
-  setPrevPositions: React.Dispatch<
     React.SetStateAction<{
       [key: string]: { x: number; y: number };
     }>
@@ -25,8 +23,8 @@ export const InteriorItems = ({
   isEdit,
   isAfter6PM,
   positions,
+  initialPositions,
   setPositions,
-  setPrevPositions,
 }: Props) => {
   const { debounced: handleOnDrag } = useDebounce(
     (id: string, data: DraggableData) => {
@@ -38,75 +36,71 @@ export const InteriorItems = ({
     100,
   );
 
-  const handleOnDragStart = () => {
-    setPrevPositions(positions);
-  };
-
   return (
     <>
       <Interior
         src="books"
         isEdit={isEdit}
         className="absolute w-1/4 top-16"
-        initialPosition={positions["books"]}
+        position={positions["books"]}
+        initialPosition={initialPositions["books"]}
         handleDrag={(data) => handleOnDrag("books", data)}
-        onDragStart={handleOnDragStart}
       />
       <Interior
         src="movie"
         isEdit={isEdit}
         className="absolute z-10 w-1/4 top-1/3"
-        initialPosition={positions["movie"]}
+        position={positions["movie"]}
+        initialPosition={initialPositions["movie"]}
         handleDrag={(data) => handleOnDrag("movie", data)}
-        onDragStart={handleOnDragStart}
       />
       <Interior
         src="music"
         isEdit={isEdit}
         className="absolute w-1/5 top-[18%] left-[10%]"
-        initialPosition={positions["music"]}
+        position={positions["music"]}
+        initialPosition={initialPositions["music"]}
         handleDrag={(data) => handleOnDrag("music", data)}
-        onDragStart={handleOnDragStart}
       />
       <Interior
         src="picture"
         isEdit={isEdit}
         className="absolute w-1/5 left-[45%]"
-        initialPosition={positions["picture"]}
+        position={positions["picture"]}
+        initialPosition={initialPositions["picture"]}
         handleDrag={(data) => handleOnDrag("picture", data)}
-        onDragStart={handleOnDragStart}
       />
       <Interior
         src="plant"
         isEdit={isEdit}
         className="absolute z-10 top-[35%] right-1/4 w-1/10"
-        initialPosition={positions["plant"]}
+        position={positions["plant"]}
+        initialPosition={initialPositions["plant"]}
         handleDrag={(data) => handleOnDrag("plant", data)}
-        onDragStart={handleOnDragStart}
       />
       <Interior
         src="sofa"
         isEdit={isEdit}
         className="absolute right-[5%] top-1/3 z-10"
-        initialPosition={positions["sofa"]}
+        position={positions["sofa"]}
+        initialPosition={initialPositions["sofa"]}
         handleDrag={(data) => handleOnDrag("sofa", data)}
-        onDragStart={handleOnDragStart}
       />
       <Interior
         src={isAfter6PM ? "windowNight" : "windowDay"}
         isEdit={isEdit}
         className="absolute w-1/4 top-14 right-4"
-        initialPosition={positions["window"]}
+        position={positions["window"]}
+        initialPosition={initialPositions["window"]}
         handleDrag={(data) => handleOnDrag("window", data)}
-        onDragStart={handleOnDragStart}
       />
       <Interior
         src="youtube"
         isEdit={isEdit}
         className="absolute w-[15%] left-1/2 top-1/4"
-        initialPosition={positions["youtube"]}
+        position={positions["youtube"]}
+        initialPosition={initialPositions["youtube"]}
         handleDrag={(data) => handleOnDrag("youtube", data)}
-        onDragStart={handleOnDragStart}
       />
     </>
   );
