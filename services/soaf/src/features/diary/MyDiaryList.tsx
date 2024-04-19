@@ -16,7 +16,7 @@ export const MyDiaryList = ({ currentDate }: MyDiaryListProps) => {
   const { push } = useFlow();
 
   const handleClickWriteDiaryButton = () => {
-    push("NewDiary", {});
+    push("NewDiaryPage", { step: 1 });
   };
 
   if (diariesByMonth.length === 0) {

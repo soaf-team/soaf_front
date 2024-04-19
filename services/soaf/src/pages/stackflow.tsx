@@ -7,7 +7,7 @@ import { BottomTab, Toaster } from "../shared/components";
 import {
   DiaryCalendar,
   DiaryDetail,
-  NewDiary,
+  NewDiaryPage,
   DiaryListPage,
 } from "./DiaryCalendar";
 import { DiaryStats } from "./DiaryStats";
@@ -37,7 +37,7 @@ export const { Stack, useFlow, useStepFlow } = stackflow({
         NickName: "/auth/nick-name",
         DiaryDetail: "/diary-detail/:diaryId",
         DiaryListPage: "/diary-list",
-        NewDiary: "/new-diary",
+        NewDiaryPage: "/new-diary",
         MatchedUser: "/matched-user",
       },
       fallbackActivity: () => "DiaryCalendar",
@@ -67,7 +67,7 @@ export const { Stack, useFlow, useStepFlow } = stackflow({
     NickName,
     DiaryDetail,
     DiaryListPage,
-    NewDiary,
+    NewDiaryPage,
     MatchedUser,
     UserHome,
   },

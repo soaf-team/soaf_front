@@ -1,6 +1,6 @@
 import DiaryCalendar from "./DiaryCalendar";
 import DiaryDetail from "./DiaryDetail";
-import NewDiary from "./NewDiary";
+import NewDiaryPage from "./NewDiaryPage";
 import DiaryListPage from "./DiaryListPage";
 
-export { DiaryCalendar, DiaryDetail, NewDiary, DiaryListPage };
+export { DiaryCalendar, DiaryDetail, NewDiaryPage, DiaryListPage };
