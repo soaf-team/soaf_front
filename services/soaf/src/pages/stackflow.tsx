@@ -4,7 +4,12 @@ import { basicUIPlugin } from "@stackflow/plugin-basic-ui";
 import { historySyncPlugin } from "@stackflow/plugin-history-sync";
 
 import { BottomTab, Toaster } from "../shared/components";
-import { DiaryCalendar, DiaryDetail, NewDiary } from "./DiaryCalendar";
+import {
+  DiaryCalendar,
+  DiaryDetail,
+  NewDiary,
+  DiaryListPage,
+} from "./DiaryCalendar";
 import { DiaryStats } from "./DiaryStats";
 import { SoafExplore, MatchedUser } from "./SoafExplore";
 import { Chat } from "./Chat";
@@ -31,6 +36,7 @@ export const { Stack, useFlow, useStepFlow } = stackflow({
         Terms: "/auth/terms",
         NickName: "/auth/nick-name",
         DiaryDetail: "/diary-detail/:diaryId",
+        DiaryListPage: "/diary-list",
         NewDiary: "/new-diary",
         MatchedUser: "/matched-user",
       },
@@ -60,6 +66,7 @@ export const { Stack, useFlow, useStepFlow } = stackflow({
     Terms,
     NickName,
     DiaryDetail,
+    DiaryListPage,
     NewDiary,
     MatchedUser,
     UserHome,

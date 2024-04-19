@@ -1,40 +1,37 @@
-import { Flex } from "@soaf/react-components-layout";
-import { useCalendar } from "../hooks";
-import { Drawer, DrawerTrigger } from "@/shared/components/dialog";
-import { YearMonthSelectDrawer } from "./YearMonthSelectDrawer";
-import triangle from "@assets/icons/triangle.svg";
 import { cn } from "@/shared/utils";
 import { getDateStatus } from "../utils";
 
 type CalendarProps = {
+  currentDate: Date;
   render: (day: Date, index: number, isToday: boolean) => JSX.Element;
 };
 
-export const Calendar = ({ render }: CalendarProps) => {
-  const { today, currentDate, getMonthMatrix, handleYearMonthChange } =
-    useCalendar();
+export const Calendar = ({ currentDate, render }: CalendarProps) => {
+  const today = new Date();
+
+  const getMonthMatrix = () => {
+    const year = currentDate.getFullYear();
+    const month = currentDate.getMonth();
+
+    const matrix = [];
+    const firstDayOfMonth = new Date(year, month, 1).getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+    let week = Array(firstDayOfMonth).fill(null);
+    for (let day = 1; day <= daysInMonth; day++) {
+      week.push(new Date(year, month, day));
+      if (week.length === 7 || day === daysInMonth) {
+        matrix.push(week);
+        week = [];
+      }
+    }
+    return matrix;
+  };
 
   return (
     <>
       <div className="flex flex-col items-center justify-center w-full">
-        <Drawer>
-          <DrawerTrigger>
-            <Flex align="center" gap={4}>
-              <h2 className="label1sb">
-                {currentDate.getFullYear()}.
-                {currentDate.getMonth() + 1 < 10
-                  ? `0${currentDate.getMonth() + 1}`
-                  : `${currentDate.getMonth() + 1}`}
-              </h2>
-              <img src={triangle} alt="triangle" className="w-[8px] h-[5px]" />
-            </Flex>
-          </DrawerTrigger>
-          <YearMonthSelectDrawer
-            currentDate={currentDate}
-            handleYearMonthChange={handleYearMonthChange}
-          />
-        </Drawer>
-        <div className="grid grid-cols-7 gap-x-2 gap-y-4 mt-[22px] w-full">
+        <div className="grid grid-cols-7 gap-x-2 gap-y-4 py-[22px] w-full">
           {["일", "월", "화", "수", "목", "금", "토"].map((day) => (
             <span key={day} className={cn(["label text-center text-gray200"])}>
               {day}
