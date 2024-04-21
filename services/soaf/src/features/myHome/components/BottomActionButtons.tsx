@@ -48,7 +48,7 @@ export const BottomActionButtons = ({ interiorItems }: Props) => {
           justify="center"
           className={`min-w-[32px] w-[32px] h-[32px] ${
             visibility[key] === true
-              ? "border border-solid border-primary bg-[#B2DFFF] rounded-[4px]"
+              ? "border border-solid border-[#AEDDF9] bg-[#E2F2F6] rounded-[4px]"
               : ""
           }`}
           onClick={() =>
