@@ -127,7 +127,7 @@ const MyHome = () => {
         className="absolute bottom-0 left-0 right-0 w-full max-w-window h-[60%] my-0 mx-auto"
       />
       {isEdit === false ? (
-        <UpButton onClick={() => console.log("hi")} />
+        <UpButton />
       ) : (
         <BottomActionButtons interiorItems={interiorItems} />
       )}
