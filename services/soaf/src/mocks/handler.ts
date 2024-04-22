@@ -19,6 +19,7 @@ export const handlers = [
       content: "content4",
       emotions: ["tired"],
       reactions: ["reaction1", "reaction2"],
+      isPrivate: false,
     });
 
     return HttpResponse.json(diary);
@@ -52,22 +53,23 @@ export const handlers = [
     return HttpResponse.json(interior, { status: 200 });
   }),
 
-  // 인테리어 visible 변경
-  // http.put("/interior-items/:id", async (req) => {
-  //   const { id } = req.params;
-  //   const { isVisible } = req.body;
+  // isPrivate와 date 에 따른 일기 조회
+  http.get("/diary/:isPrivate/:date", async (req) => {
+    const { isPrivate, date } = req.params;
 
-  //   const item = interior.find((item) => item.id === Number(id));
+    const filteredDiary = diary.filter(
+      (diary) =>
+        diary.isPrivate.toString() === isPrivate &&
+        diary.date.includes(date as string),
+    );
 
-  //   if (!item) {
-  //     return HttpResponse.json(
-  //       { message: "해당 아이템을 찾을 수 없습니다." },
-  //       { status: 404 },
-  //     );
-  //   }
+    if (!filteredDiary) {
+      return HttpResponse.json(
+        { message: "해당하는 일기가 없어요." },
+        { status: 404 },
+      );
+    }
 
-  //   item.isVisible = isVisible;
-
-  //   return HttpResponse.json(interior, { status: 200 });
-  // }),
+    return HttpResponse.json(filteredDiary, { status: 200 });
+  }),
 ];
