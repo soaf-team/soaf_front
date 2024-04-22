@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 
 import { useState } from "react";
 import { useFlow } from "@/pages/stackflow";
-import { useDiaryQueryByMonth } from "@/shared/hooks";
+import { useDiaryQueryByMonth } from "@/features/diary/queries";
 import { PageLayout, Button, YearMonthSelect } from "@shared/components";
 import { IconBack } from "@stackflow/plugin-basic-ui";
 import { Flex } from "@soaf/react-components-layout";
