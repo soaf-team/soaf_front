@@ -6,11 +6,10 @@ import {
   UpButton,
   HeaderActionButtons,
   BottomActionButtons,
-  Xbutton,
   CheckButton,
 } from "@/features/myHome/components";
 import { InteriorItems } from "@/features/myHome";
-import { PageLayout } from "@shared/components";
+import { PageLayout, XButton } from "@shared/components";
 
 import { useState, useEffect } from "react";
 import { useBottomTabStore } from "@/shared/store";
@@ -62,6 +61,7 @@ const MyHome = () => {
 
   const handleSaveEdit = () => {
     setIsEdit(false);
+    setIsDraggable({});
   };
 
   // 서버에서 받아온 인테리어 아이템 데이터의 위치를 초기 위치로 설정
@@ -98,7 +98,7 @@ const MyHome = () => {
     <PageLayout
       header={{
         title: isEdit ? <span className="head6b">방 꾸미기</span> : null,
-        leftSlot: isEdit ? <Xbutton onClick={handleCancelEdit} /> : null,
+        leftSlot: isEdit ? <XButton onClick={handleCancelEdit} /> : null,
         rightSlot: isEdit ? (
           <CheckButton onClick={handleSaveEdit} />
         ) : (
