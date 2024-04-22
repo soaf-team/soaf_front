@@ -1,19 +1,19 @@
 import dayjs from "dayjs";
 
-import check from "@/assets/icons/my-home/header/check.svg";
-import x from "@/assets/icons/header/x.svg";
-
 import {
   DeskAndChair,
   Soaf,
   UpButton,
   HeaderActionButtons,
   BottomActionButtons,
+  Xbutton,
+  CheckButton,
 } from "@/features/myHome/components";
 import { InteriorItems } from "@/features/myHome";
 import { PageLayout } from "@shared/components";
 
 import { useState, useEffect } from "react";
+import { useBottomTabStore } from "@/shared/store";
 import { useInteriorItems } from "@/features/myHome/queries";
 
 import { cn } from "@/shared/utils";
@@ -23,6 +23,8 @@ const backgroundClass = isAfter6PM ? "bg-[#BECFDC]" : "bg-[#D3E6F4]";
 
 const MyHome = () => {
   const { interiorItems } = useInteriorItems();
+  const { isOpen, handleClose } = useBottomTabStore();
+
   const [isEdit, setIsEdit] = useState(false);
   const [isDraggable, setIsDraggable] = useState<{ [key: string]: boolean }>(
     {},
@@ -55,6 +57,7 @@ const MyHome = () => {
 
   const handleStartEdit = () => {
     setIsEdit(true);
+    handleClose();
   };
 
   const handleSaveEdit = () => {
@@ -95,15 +98,9 @@ const MyHome = () => {
     <PageLayout
       header={{
         title: isEdit ? <span className="head6b">방 꾸미기</span> : null,
-        leftSlot: isEdit ? (
-          <button className="w-[12px] h-[12px]" onClick={handleCancelEdit}>
-            <img src={x} alt="x-icon" className="full_img_cover" />
-          </button>
-        ) : null,
+        leftSlot: isEdit ? <Xbutton onClick={handleCancelEdit} /> : null,
         rightSlot: isEdit ? (
-          <button className="w-[24px] h-[24px]" onClick={handleSaveEdit}>
-            <img src={check} alt="check-icon" className="full_img_cover" />
-          </button>
+          <CheckButton onClick={handleSaveEdit} />
         ) : (
           <HeaderActionButtons onBrushClick={handleStartEdit} />
         ),
@@ -126,11 +123,9 @@ const MyHome = () => {
         isAfter6PM={isAfter6PM}
         className="absolute bottom-0 left-0 right-0 w-full max-w-window h-[60%] my-0 mx-auto"
       />
-      {isEdit === false ? (
-        <UpButton />
-      ) : (
-        <BottomActionButtons interiorItems={interiorItems} />
-      )}
+      {!isEdit && !isOpen && <UpButton />}
+
+      {isEdit && <BottomActionButtons interiorItems={interiorItems} />}
     </PageLayout>
   );
 };
