@@ -8,7 +8,7 @@ const Login = () => {
   const { push } = useFlow();
 
   const handleButtonClick = () => {
-    push("Terms", {}, { animate: false });
+    push("Terms", {});
   };
 
   return (
