@@ -16,7 +16,7 @@ import { useBottomTabStore } from "@/shared/store";
 import { useFlow } from "@/pages/stackflow";
 
 export const BottomTab = ({ stack }: { stack: Stack }) => {
-  const { replace } = useFlow();
+  const { push } = useFlow();
   const { isBottomTabAcitivity, activeActivity } = useActiveActivity(stack);
   const { isOpen } = useBottomTabStore();
 
@@ -26,7 +26,7 @@ export const BottomTab = ({ stack }: { stack: Stack }) => {
     }
 
     // @ts-ignore
-    replace(activity, {}, { animate: false });
+    push(activity, {}, { animate: false });
   };
 
   if (!isBottomTabAcitivity) {
