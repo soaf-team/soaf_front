@@ -2,8 +2,9 @@ import { useFlow } from "@/pages/stackflow";
 import { EmotionSticker } from "@/shared/components";
 import { DrawerClose, DrawerContent } from "@/shared/components/dialog";
 import { Diary, Emotion } from "@/shared/types";
+import { cn } from "@/shared/utils";
 import { Flex } from "@soaf/react-components-layout";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type DiaryDetailDrawerProps = {
   diary: Diary;
@@ -12,6 +13,9 @@ type DiaryDetailDrawerProps = {
 export const DiaryDetailDrawer = ({ diary }: DiaryDetailDrawerProps) => {
   const ref = useRef(null);
   const { push } = useFlow();
+  const [shouldDisappear, setShouldDisappear] = useState(false);
+  const opacity = shouldDisappear ? "opacity-0" : "opacity-100";
+  const rounded = shouldDisappear ? "rounded-none" : "rounded-[28px]";
 
   const monthDay = new Date(diary.date).toLocaleDateString("ko-KR", {
     month: "short",
@@ -45,12 +49,20 @@ export const DiaryDetailDrawer = ({ diary }: DiaryDetailDrawerProps) => {
     };
   }, [diary, ref]);
 
-  const handleClick = () => {
-    push("DiaryDetail", { diaryId: diary.id });
+  const handleClick = (animate?: boolean) => {
+    push("DiaryDetail", { diaryId: diary.id }, { animate });
+    setShouldDisappear(true);
   };
 
   return (
-    <DrawerContent className="shadow-shadow1">
+    <DrawerContent
+      className={cn([
+        "shadow-shadow1 transition-all duration-300",
+        opacity,
+        rounded,
+      ])}
+      overlayStyle="bg-transparent"
+    >
       <Flex
         direction="column"
         className="h-[100vh] justify-between pb-[10vh] pt-[2px]"
@@ -61,7 +73,7 @@ export const DiaryDetailDrawer = ({ diary }: DiaryDetailDrawerProps) => {
             className="mb-[10px]"
           />
           <DrawerClose
-            onClick={handleClick}
+            onClick={() => handleClick(true)}
             className="flex flex-col text-left"
           >
             <span className="head3 mb-[20px] gap-[4px]">
@@ -75,7 +87,7 @@ export const DiaryDetailDrawer = ({ diary }: DiaryDetailDrawerProps) => {
             />
           </DrawerClose>
         </Flex>
-        <DrawerClose ref={ref} onClick={handleClick} />
+        <DrawerClose ref={ref} onClick={() => handleClick(false)} />
       </Flex>
     </DrawerContent>
   );
