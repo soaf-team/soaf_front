@@ -6,7 +6,7 @@ import { historySyncPlugin } from "@stackflow/plugin-history-sync";
 import { BottomTab, Toaster } from "../shared/components";
 import {
   DiaryCalendar,
-  DiaryDetail,
+  DiaryDetailPage,
   DiaryListPage,
   NewDiaryPage,
   NewDiaryStep1,
@@ -41,7 +41,7 @@ export const { Stack, useFlow, useStepFlow } = stackflow({
         NickName: "/auth/nick-name",
 
         /*** 다이어리 ***/
-        DiaryDetail: "/diary-detail/:diaryId",
+        DiaryDetailPage: "/diary-detail/:diaryId",
         DiaryListPage: "/diary-list",
         // 다이어리 작성
         NewDiaryStep1: "/new-diary/step1",
@@ -83,7 +83,7 @@ export const { Stack, useFlow, useStepFlow } = stackflow({
 
     /*** 다이어리 ***/
     DiaryListPage,
-    DiaryDetail,
+    DiaryDetailPage,
     // 다이어리 작성
     NewDiaryStep1,
     NewDiaryStep2,
