@@ -32,7 +32,7 @@ export const DiaryCard = ({
       shadow={shadow}
       isSelected={isSelected}
       onClick={() => {
-        push("DiaryDetail", { diaryId: diary.id });
+        push("DiaryDetailPage", { diaryId: diary.id });
       }}
       className={cn(["relative w-full", className])}
     >
