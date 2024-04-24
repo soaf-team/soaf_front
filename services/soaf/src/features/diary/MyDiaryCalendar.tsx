@@ -38,9 +38,9 @@ export const MyDiaryCalendar = () => {
 
   return (
     <Drawer
-      snapPoints={[0.25, 0.5, 0.95]}
+      snapPoints={[0.25, 0.5, 0.92]}
       closeThreshold={0.6}
-      fadeFromIndex={4}
+      fadeFromIndex={3}
       onClose={resetSelectedDiary}
       activeSnapPoint={0.5}
     >
