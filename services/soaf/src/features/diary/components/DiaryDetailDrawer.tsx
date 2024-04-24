@@ -1,7 +1,7 @@
 import { useFlow } from "@/pages/stackflow";
-import { EmotionSticker } from "@/shared/components";
 import { DrawerClose, DrawerContent } from "@/shared/components/dialog";
-import { Diary, Emotion } from "@/shared/types";
+import { Diary } from "@/shared/types";
+import { cn } from "@/shared/utils";
 import { Flex } from "@soaf/react-components-layout";
 import { useEffect, useRef, useState } from "react";
 import { DiaryDetail } from "./DiaryDetail";
@@ -13,14 +13,9 @@ type DiaryDetailDrawerProps = {
 export const DiaryDetailDrawer = ({ diary }: DiaryDetailDrawerProps) => {
   const ref = useRef(null);
   const { push } = useFlow();
-
-  const monthDay = new Date(diary.date).toLocaleDateString("ko-KR", {
-    month: "short",
-    day: "numeric",
-  });
-  const week = new Date(diary.date).toLocaleDateString("ko-KR", {
-    weekday: "long",
-  });
+  const [shouldDisappear, setShouldDisappear] = useState(false);
+  const opacity = shouldDisappear ? "opacity-0" : "opacity-100";
+  const rounded = shouldDisappear ? "rounded-none" : "rounded-[28px]";
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -52,7 +47,14 @@ export const DiaryDetailDrawer = ({ diary }: DiaryDetailDrawerProps) => {
   };
 
   return (
-    <DrawerContent className="shadow-shadow1">
+    <DrawerContent
+      className={cn([
+        "shadow-shadow1 transition-all duration-300",
+        opacity,
+        rounded,
+      ])}
+      overlayStyle="bg-transparent"
+    >
       <Flex
         direction="column"
         className="h-[100vh] justify-between pb-[10vh] pt-[2px]"
