@@ -21,6 +21,9 @@ export const MyDiaryCalendar = () => {
   const { myDiaries } = useDiaryQuery();
   const [selectedDiary, setSelectedDiary] = useState<Diary | null>(null);
   const [currentDate, setCurrentDate] = useState(new Date());
+  const [activeSnapPoint, setActiveSnapPoint] = useState<
+    string | number | null
+  >(0.5);
 
   const handleDateClick = (diaryAtDate: Diary, isFuture: boolean) => {
     if (diaryAtDate) {
@@ -42,7 +45,8 @@ export const MyDiaryCalendar = () => {
       closeThreshold={0.6}
       fadeFromIndex={3}
       onClose={resetSelectedDiary}
-      activeSnapPoint={0.5}
+      activeSnapPoint={activeSnapPoint}
+      setActiveSnapPoint={setActiveSnapPoint}
     >
       <Flex direction="column" className="h-full items-center">
         <YearMonthSelect
