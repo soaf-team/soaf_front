@@ -1,7 +1,7 @@
 import { ActivityComponentType } from "@stackflow/react";
 import { BackButton, DotVerticalButton, PageLayout } from "@/shared/components";
 import { useDiaryQuery } from "@/shared/hooks";
-import { DiaryDetail } from "@/features/diary/components";
+import { DiaryDetail, DiaryReaction } from "@/features/diary/components";
 
 const DiaryDetailPage: ActivityComponentType = () => {
   const { myDiaries } = useDiaryQuery();
@@ -15,7 +15,10 @@ const DiaryDetailPage: ActivityComponentType = () => {
         rightSlot: <DotVerticalButton />,
       }}
     >
-      <DiaryDetail diary={diary} />
+      <div className="flex flex-col justify-between h-full">
+        {diary && <DiaryDetail diary={diary} />}
+        <DiaryReaction />
+      </div>
     </PageLayout>
   );
 };
