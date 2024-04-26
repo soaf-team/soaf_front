@@ -34,10 +34,12 @@ DrawerOverlay.displayName = DrawerPrimitive.Overlay.displayName;
 
 const DrawerContent = React.forwardRef<
   React.ElementRef<typeof DrawerPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Content>
->(({ className, children, ...props }, ref) => (
+  React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Content> & {
+    overlayStyle?: string;
+  }
+>(({ className, children, overlayStyle, ...props }, ref) => (
   <DrawerPortal>
-    <DrawerOverlay className="max-w-window mx-auto" />
+    <DrawerOverlay className={cn(["max-w-window mx-auto", overlayStyle])} />
     <DrawerPrimitive.Content
       ref={ref}
       className={cn(
