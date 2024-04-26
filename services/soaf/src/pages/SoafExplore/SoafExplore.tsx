@@ -1,10 +1,16 @@
 import dayjs from "dayjs";
 
+import { cn } from "@/shared/utils";
+
 import { useState } from "react";
 import { useFlow } from "@/pages/stackflow";
-import { useDiaryQueryByMonth } from "@/shared/hooks";
-import { PageLayout, Button, YearMonthSelect } from "@shared/components";
-import { IconBack } from "@stackflow/plugin-basic-ui";
+import { useDiaryQueryByMonth } from "@/features/diary/queries";
+import {
+  PageLayout,
+  Button,
+  YearMonthSelect,
+  BackButton,
+} from "@shared/components";
 import { Flex } from "@soaf/react-components-layout";
 import { Diary } from "@/shared/types";
 import { DiaryCard } from "@/features/diary/components";
@@ -42,13 +48,7 @@ const SoafExplore = () => {
   return (
     <PageLayout
       header={{
-        title: "",
-        leftSlot: (
-          <button onClick={() => replace("DiaryCalendar", {})}>
-            <IconBack />
-          </button>
-        ),
-        rightSlot: null,
+        leftSlot: <BackButton />,
       }}
       className="overflow-y-auto"
     >
@@ -102,7 +102,7 @@ const SoafExplore = () => {
           </Flex>
         )}
 
-        <div className="fixed_bottom_button">
+        <div className={cn("fixed_bottom_button")}>
           <Button
             variant={
               diariesByMonth.length > 0 && isSelected.length === 0

@@ -15,7 +15,15 @@ import {
 import { DiaryStats } from "./DiaryStats";
 import { SoafExplore, MatchedUser } from "./SoafExplore";
 import { Chat } from "./Chat";
-import { MyHome, UserHome } from "./MyHome";
+import {
+  MyHome,
+  MyBooks,
+  MyMovie,
+  MyMusic,
+  MyYoutube,
+  MyDiary,
+  UserHome,
+} from "./MyHome";
 import { Login, Terms, NickName } from "./Login";
 
 export const { Stack, useFlow, useStepFlow } = stackflow({
@@ -51,6 +59,13 @@ export const { Stack, useFlow, useStepFlow } = stackflow({
         /*** 유저 ***/
         MatchedUser: "/matched-user",
         UserHome: "/user-home/:userId",
+
+        /*** 마이 홈 ***/
+        MyBooks: "/my-home/books",
+        MyMovie: "/my-home/movie",
+        MyMusic: "/my-home/music",
+        MyYoutube: "/my-home/youtube",
+        MyDiary: "/my-home/diary",
       },
       fallbackActivity: () => "DiaryCalendar",
     }),
@@ -92,6 +107,13 @@ export const { Stack, useFlow, useStepFlow } = stackflow({
     /*** 유저 ***/
     MatchedUser,
     UserHome,
+
+    /*** 마이 홈 ***/
+    MyBooks,
+    MyMovie,
+    MyMusic,
+    MyYoutube,
+    MyDiary,
   },
   initialActivity: () => "DiaryCalendar",
 });

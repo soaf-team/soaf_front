@@ -1,3 +1,4 @@
+import { useFlow } from "@/pages/stackflow";
 import { useDebounce } from "@/shared/hooks";
 
 import { Interior } from "./components";
@@ -35,6 +36,8 @@ export const InteriorItems = ({
   initialPositions,
   setPositions,
 }: Props) => {
+  const { push } = useFlow();
+
   const { debounced: handleOnDrag } = useDebounce(
     (name: string, data: DraggableData) => {
       setPositions((prevPositions) => ({
@@ -44,6 +47,41 @@ export const InteriorItems = ({
     },
     100,
   );
+
+  const handleDraggable = (name: string) => {
+    setIsDraggable((prev) => ({
+      ...prev,
+      [name]: !prev[name],
+    }));
+  };
+
+  const handleHobbyItemClick = (name: string) => {
+    switch (name) {
+      case "books":
+        push("MyBooks", {});
+        break;
+      case "movie":
+        push("MyMovie", {});
+        break;
+      case "music":
+        push("MyMusic", {});
+        break;
+      case "youtube":
+        push("MyYoutube", {});
+        break;
+      default:
+        break;
+    }
+  };
+
+  const handleItemClick = (name: string, isEdit: boolean) => {
+    if (isEdit === true) {
+      handleDraggable(name);
+      return;
+    }
+
+    handleHobbyItemClick(name);
+  };
 
   return (
     <>
@@ -62,11 +100,11 @@ export const InteriorItems = ({
             type={item.type}
             isEdit={isEdit}
             isDraggable={isDraggable}
-            setIsDraggable={setIsDraggable}
             position={positions[item.name]}
             initialPosition={initialPositions[item.name]}
             className={CLASS_NAMES[item.name]}
             handleDrag={(data) => handleOnDrag(item.name, data)}
+            onItemClick={() => handleItemClick(item.name, isEdit)}
           />
         );
       })}

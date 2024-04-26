@@ -1,18 +1,30 @@
 import dayjs from "dayjs";
 
-import { useDiaryQueryByMonth } from "@/shared/hooks";
+import {
+  useDiaryQueryByMonth,
+  useFilterdDiary,
+} from "@/features/diary/queries";
 import { DiaryList } from "./components";
 import { Button, NonDataFallback } from "@/shared/components";
 import { useFlow } from "@/pages/stackflow";
 
 type MyDiaryListProps = {
   currentDate: Date;
+  isPrivate?: boolean;
 };
 
-export const MyDiaryList = ({ currentDate }: MyDiaryListProps) => {
+export const MyDiaryList = ({ currentDate, isPrivate }: MyDiaryListProps) => {
+  const formattedDate = dayjs(currentDate).format("YYYY.MM");
+
   const { diariesByMonth } = useDiaryQueryByMonth({
-    params: dayjs(currentDate).format("YYYY.MM"),
+    params: formattedDate,
   });
+
+  const { diaries: filterdDiaries } = useFilterdDiary({
+    isPrivate: isPrivate?.toString(),
+    date: formattedDate,
+  });
+
   const { push } = useFlow();
 
   const handleClickWriteDiaryButton = () => {
@@ -37,5 +49,12 @@ export const MyDiaryList = ({ currentDate }: MyDiaryListProps) => {
     );
   }
 
-  return <DiaryList diariesByMonth={diariesByMonth} shadow={false} />;
+  return (
+    <DiaryList
+      diariesByMonth={
+        filterdDiaries.length > 0 ? filterdDiaries : diariesByMonth
+      }
+      shadow={false}
+    />
+  );
 };

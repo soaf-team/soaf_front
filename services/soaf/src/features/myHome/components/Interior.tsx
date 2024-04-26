@@ -22,12 +22,10 @@ interface InteriorProps extends React.HTMLAttributes<HTMLDivElement> {
   type: InteriorType;
   isEdit: boolean;
   isDraggable: { [key: string]: boolean };
-  setIsDraggable: React.Dispatch<
-    React.SetStateAction<{ [key: string]: boolean }>
-  >;
   position: { x: number; y: number };
   initialPosition?: { x: number; y: number };
   handleDrag: (data: DraggableData) => void;
+  onItemClick: () => void;
 }
 
 const images: { [key: string]: string } = {
@@ -49,22 +47,13 @@ export const Interior = (props: InteriorProps) => {
     type,
     isEdit,
     isDraggable,
-    setIsDraggable,
     className,
     position,
     initialPosition,
     handleDrag,
+    onItemClick,
     ...rest
   } = props;
-
-  const handleDraggable = (name: string, isEdit: boolean) => {
-    if (isEdit === true) {
-      setIsDraggable((prev) => ({
-        ...prev,
-        [name]: !prev[name],
-      }));
-    }
-  };
 
   const imageSrc = images[name as keyof typeof images];
 
@@ -78,7 +67,7 @@ export const Interior = (props: InteriorProps) => {
           "border-solid border-2 border-gray300",
         className,
       )}
-      onClick={() => handleDraggable(name, isEdit)}
+      onClick={onItemClick}
     >
       <img src={imageSrc} alt={name} className="full_img_contain" />
       {isEdit && isDraggable[name] === true && type === "hobby" && (
