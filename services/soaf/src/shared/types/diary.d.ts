@@ -7,4 +7,7 @@ export type Diary = {
   photos: string[];
   emotions: Emotion[];
   date: string;
+  reactions: {
+    [key: string]: number;
+  };
 };

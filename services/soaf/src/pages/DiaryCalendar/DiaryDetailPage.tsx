@@ -1,12 +1,22 @@
+/* eslint-disable react/prop-types */
+
 import { ActivityComponentType } from "@stackflow/react";
-import { BackButton, DotVerticalButton, PageLayout } from "@/shared/components";
-import { useDiaryQuery } from "@/features/diary/queries";
-import { DiaryDetail } from "@/features/diary/components";
+import {
+  AsyncBoundary,
+  BackButton,
+  DotVerticalButton,
+  PageLayout,
+} from "@/shared/components";
+import { DiaryDetail } from "@/features/diary";
 
-const DiaryDetailPage: ActivityComponentType = () => {
-  const { myDiaries } = useDiaryQuery();
+type DiaryDetailPageParams = {
+  diaryId: string;
+};
 
-  const diary = myDiaries[0];
+const DiaryDetailPage: ActivityComponentType<DiaryDetailPageParams> = ({
+  params,
+}) => {
+  const diaryId = params.diaryId;
 
   return (
     <PageLayout
@@ -15,7 +25,9 @@ const DiaryDetailPage: ActivityComponentType = () => {
         rightSlot: <DotVerticalButton />,
       }}
     >
-      <DiaryDetail diary={diary} />
+      <AsyncBoundary>
+        <DiaryDetail diaryId={diaryId} />
+      </AsyncBoundary>
     </PageLayout>
   );
 };

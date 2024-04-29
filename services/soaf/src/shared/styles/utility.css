@@ -81,7 +81,7 @@
 }
 
 .label4 {
-  @apply text-[12px] font-semibold leading-[16px];
+  @apply text-[12px] font-medium leading-[16px];
 }
 
 .label3 {

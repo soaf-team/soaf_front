@@ -2,11 +2,11 @@ import { EmotionSticker } from "@/shared/components";
 import { Diary, Emotion } from "@/shared/types";
 import { Flex } from "@soaf/react-components-layout";
 
-type DiaryDetailProps = {
+type DiaryContentProps = {
   diary: Diary;
 };
 
-export const DiaryDetail = ({ diary }: DiaryDetailProps) => {
+export const DiaryContent = ({ diary }: DiaryContentProps) => {
   const monthDay = new Date(diary.date).toLocaleDateString("ko-KR", {
     month: "short",
     day: "numeric",

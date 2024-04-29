@@ -1,4 +1,4 @@
-import { useDiaryQuery } from "@/features/diary/queries";
+import { useDiaryListQuery } from "@/features/diary/queries";
 import { Flex } from "@soaf/react-components-layout";
 import { useState } from "react";
 
@@ -7,7 +7,7 @@ import { cn } from "@/shared/utils";
 import { Diary } from "@/shared/types";
 import { useFlow } from "@/pages/stackflow";
 
-import { Calendar, DiaryDetailDrawer } from "./components";
+import { Calendar, DiaryContentDrawer } from "./components";
 import {
   Drawer,
   DrawerTrigger,
@@ -18,11 +18,15 @@ import plus from "@assets/icons/plus.svg";
 
 export const MyDiaryCalendar = () => {
   const { push } = useFlow();
-  const { myDiaries } = useDiaryQuery();
+  const { myDiaries } = useDiaryListQuery();
   const [selectedDiary, setSelectedDiary] = useState<Diary | null>(null);
   const [currentDate, setCurrentDate] = useState(new Date());
+  const [activeSnapPoint, setActiveSnapPoint] = useState<
+    string | number | null
+  >(0.5);
 
   const handleDateClick = (diaryAtDate: Diary, isFuture: boolean) => {
+    setActiveSnapPoint(0.5);
     if (diaryAtDate) {
       setSelectedDiary(diaryAtDate);
     }
@@ -42,7 +46,8 @@ export const MyDiaryCalendar = () => {
       closeThreshold={0.6}
       fadeFromIndex={3}
       onClose={resetSelectedDiary}
-      activeSnapPoint={0.5}
+      activeSnapPoint={activeSnapPoint}
+      setActiveSnapPoint={setActiveSnapPoint}
     >
       <Flex direction="column" className="items-center h-full">
         <YearMonthSelect
@@ -110,7 +115,7 @@ export const MyDiaryCalendar = () => {
         />
       </Flex>
 
-      {selectedDiary && <DiaryDetailDrawer diary={selectedDiary} />}
+      {selectedDiary && <DiaryContentDrawer diary={selectedDiary} />}
     </Drawer>
   );
 };

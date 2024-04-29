@@ -16,6 +16,15 @@ function App() {
     worker.start().then(() => setWorkerReady(true));
   }, []);
 
+  useEffect(() => {
+    const modalDiv = document.getElementById("modal");
+    if (!modalDiv) {
+      const div = document.createElement("div");
+      div.id = "modal";
+      document.body.appendChild(div);
+    }
+  }, []);
+
   if (!workerReady) return null;
 
   return (
