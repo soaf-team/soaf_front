@@ -8,28 +8,25 @@ import {
   DrawerTrigger,
   DrawerContent,
   DrawerClose,
+  AsyncBoundary,
 } from "@/shared/components";
 
 import { useState } from "react";
 import { useDebounce } from "@/shared/hooks";
-import { useGetMusics } from "../queries";
 
 interface Props {
   type: "music" | "movie" | "book" | "youtube";
+  setSearchQuery: React.Dispatch<React.SetStateAction<string>>;
+  list: React.ReactNode;
 }
 
-export const MyHomeDrawer = ({ type }: Props) => {
+export const MyHomeDrawer = ({ type, setSearchQuery, list }: Props) => {
   const [inputValue, setInputValue] = useState("");
-  const [searchQuery, setSearchQuery] = useState("");
   const [isSearch, setIsSearch] = useState(false);
 
   const { debounced: debouncedInputChange } = useDebounce((value: string) => {
     setSearchQuery(value);
   });
-
-  const { musics } = useGetMusics({ value: searchQuery });
-
-  console.log(musics);
 
   const placeholder = {
     music: "좋아하는 음악을 검색해보세요",
@@ -49,9 +46,13 @@ export const MyHomeDrawer = ({ type }: Props) => {
       <DrawerTrigger>
         <PlusButton />
       </DrawerTrigger>
-      <DrawerContent>
-        <Flex direction="column" gap={14} align="center">
-          <Flex gap={13} align="center" className="w-full">
+      <DrawerContent className="overflow-auto min-h-[92%] max-h-[92%] after:content-none">
+        <Flex direction="column">
+          <Flex
+            gap={13}
+            align="center"
+            className="sticky py-[20px] top-0 bg-white"
+          >
             <Input
               variant="box"
               leftSlot={
@@ -74,16 +75,7 @@ export const MyHomeDrawer = ({ type }: Props) => {
             )}
           </Flex>
 
-          <DrawerClose>
-            {musics !== undefined && (
-              <img
-                src={musics.track.album.image[3]["#text"]}
-                alt="dd"
-                width={100}
-                height={100}
-              />
-            )}
-          </DrawerClose>
+          <AsyncBoundary loadingFallback={<>로딩중..</>}>{list}</AsyncBoundary>
         </Flex>
       </DrawerContent>
     </Drawer>
