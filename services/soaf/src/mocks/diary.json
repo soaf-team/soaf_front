@@ -14,7 +14,8 @@
       "외로운",
       "피곤한"
     ],
-    "reactions": ["reaction1", "reaction2"]
+    "reactions": ["reaction1", "reaction2"],
+    "isPrivate": false
   },
   {
     "id": "2",
@@ -23,7 +24,8 @@
     "photos": ["https://source.unsplash.com/random/48x48"],
     "content": "<p>오늘은 뭘 잘못먹었는지 배가 고프다.</p><p>근데 오늘 축구해서 그건 좋다!</p><p>오늘은 뭘 잘못먹었는지 배가 고프다.</p><p>근데 오늘 축구해서 그건 좋다!</p>",
     "emotions": ["피곤한"],
-    "reactions": ["reaction1", "reaction2"]
+    "reactions": ["reaction1", "reaction2"],
+    "isPrivate": true
   },
   {
     "id": "3",
@@ -32,7 +34,8 @@
     "photos": ["https://source.unsplash.com/random/48x48"],
     "content": "<p>오늘은 뭘 잘못먹었는지 배가 고프다.</p><p>근데 오늘 축구해서 그건 좋다!</p><p>오늘은 뭘 잘못먹었는지 배가 고프다.</p><p>근데 오늘 축구해서 그건 좋다!</p>",
     "emotions": ["슬픈"],
-    "reactions": ["reaction1", "reaction2"]
+    "reactions": ["reaction1", "reaction2"],
+    "isPrivate": false
   },
   {
     "id": "4",
@@ -41,7 +44,8 @@
     "photos": ["https://source.unsplash.com/random/48x48"],
     "content": "<p>오늘은 뭘 잘못먹었는지 배가 고프다.</p><p>근데 오늘 축구해서 그건 좋다!</p><p>오늘은 뭘 잘못먹었는지 배가 고프다.</p><p>근데 오늘 축구해서 그건 좋다!</p>",
     "emotions": ["행복한"],
-    "reactions": ["reaction1", "reaction2"]
+    "reactions": ["reaction1", "reaction2"],
+    "isPrivate": false
   },
   {
     "id": "5",
@@ -50,7 +54,8 @@
     "photos": ["https://source.unsplash.com/random/48x48"],
     "content": "<p>오늘은 뭘 잘못먹었는지 배가 고프다.</p><p>근데 오늘 축구해서 그건 좋다!</p><p>오늘은 뭘 잘못먹었는지 배가 고프다.</p><p>근데 오늘 축구해서 그건 좋다!</p>",
     "emotions": ["외로운"],
-    "reactions": ["reaction1", "reaction2"]
+    "reactions": ["reaction1", "reaction2"],
+    "isPrivate": false
   },
   {
     "id": "6",
@@ -59,7 +64,8 @@
     "photos": ["https://source.unsplash.com/random/48x48"],
     "content": "<p>오늘은 뭘 잘못먹었는지 배가 고프다.</p><p>근데 오늘 축구해서 그건 좋다!</p><p>오늘은 뭘 잘못먹었는지 배가 고프다.</p><p>근데 오늘 축구해서 그건 좋다!</p>",
     "emotions": ["설레는"],
-    "reactions": ["reaction1", "reaction2"]
+    "reactions": ["reaction1", "reaction2"],
+    "isPrivate": false
   },
   {
     "id": "7",
@@ -68,6 +74,7 @@
     "photos": ["https://source.unsplash.com/random/48x48"],
     "content": "<p>오늘은 뭘 잘못먹었는지 배가 고프다.</p><p>근데 오늘 축구해서 그건 좋다!</p><p>오늘은 뭘 잘못먹었는지 배가 고프다.</p><p>근데 오늘 축구해서 그건 좋다!</p>",
     "emotions": ["뿌듯한"],
-    "reactions": ["reaction1", "reaction2"]
+    "reactions": ["reaction1", "reaction2"],
+    "isPrivate": false
   }
 ]

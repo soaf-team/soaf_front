@@ -1,7 +1,7 @@
 import { ActivityComponentType } from "@stackflow/react";
 import { BackButton, DotVerticalButton, PageLayout } from "@/shared/components";
-import { useDiaryQuery } from "@/shared/hooks";
 import { DiaryDetail, DiaryReaction } from "@/features/diary/components";
+import { useDiaryQuery } from "@/features/diary/queries";
 
 const DiaryDetailPage: ActivityComponentType = () => {
   const { myDiaries } = useDiaryQuery();

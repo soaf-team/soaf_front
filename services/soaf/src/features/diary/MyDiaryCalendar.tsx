@@ -1,4 +1,4 @@
-import { useDiaryQuery } from "@/shared/hooks";
+import { useDiaryQuery } from "@/features/diary/queries";
 import { Flex } from "@soaf/react-components-layout";
 import { useState } from "react";
 
@@ -49,7 +49,7 @@ export const MyDiaryCalendar = () => {
       activeSnapPoint={activeSnapPoint}
       setActiveSnapPoint={setActiveSnapPoint}
     >
-      <Flex direction="column" className="h-full items-center">
+      <Flex direction="column" className="items-center h-full">
         <YearMonthSelect
           currentDate={currentDate}
           handleCurrentDate={setCurrentDate}
