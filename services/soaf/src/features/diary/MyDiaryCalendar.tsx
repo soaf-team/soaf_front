@@ -26,6 +26,7 @@ export const MyDiaryCalendar = () => {
   >(0.5);
 
   const handleDateClick = (diaryAtDate: Diary, isFuture: boolean) => {
+    setActiveSnapPoint(0.5);
     if (diaryAtDate) {
       setSelectedDiary(diaryAtDate);
     }
