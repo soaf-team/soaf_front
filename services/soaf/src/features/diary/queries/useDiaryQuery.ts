@@ -1,4 +1,4 @@
-import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
+import { useSuspenseQuery } from "@tanstack/react-query";
 
 // import { axiosBase } from "@/shared/apis";
 import { QUERY_KEY } from "@/shared/constants";
@@ -8,6 +8,7 @@ export const useDiaryQuery = ({ diaryId }: { diaryId: string }) => {
   const fetchDiary = async (diaryId: string) => {
     // const response = await axiosBase.get("/diary");
     // return response.data;
+    console.log(diaryId);
 
     return {
       id: "1",
