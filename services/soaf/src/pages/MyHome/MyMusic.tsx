@@ -1,15 +1,11 @@
 import { Flex } from "@soaf/react-components-layout";
-import { BackButton, PageLayout } from "@/shared/components";
+import { BackButton, PageLayout, AsyncBoundary } from "@/shared/components";
 import { MyHomeDrawer, MusicList } from "@/features/myHome/components";
 
 import { useState } from "react";
-import { useGetMusics } from "@/features/myHome/queries";
 
 const MyMusic = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const { musics } = useGetMusics({ value: searchQuery });
-
-  console.log(musics);
 
   return (
     <PageLayout
@@ -20,7 +16,11 @@ const MyMusic = () => {
           <MyHomeDrawer
             type="music"
             setSearchQuery={setSearchQuery}
-            list={<MusicList musics={musics} />}
+            list={
+              <AsyncBoundary loadingFallback={<>로딩중 ..</>}>
+                <MusicList searchQuery={searchQuery} />
+              </AsyncBoundary>
+            }
           />
         ),
       }}
@@ -29,7 +29,7 @@ const MyMusic = () => {
         direction="column"
         gap={8}
         align="center"
-        className="body2m text-gray200 mt-"
+        className="body2m text-gray200 mt-[16px]"
       >
         <p>좋아하는 음악을 추가해</p>
         <p>나만의 취향 목록을 만들어보세요</p>

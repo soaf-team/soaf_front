@@ -1,14 +1,20 @@
+import { useGetMusics } from "@/features/myHome/queries";
+
 import { Flex } from "@soaf/react-components-layout";
 
-import { MusicList as MusicListType } from "@/shared/types";
 import { MusicItem } from "./MusicItem";
+import { Music } from "@/shared/types";
 
-export const MusicList = ({ musics }: { musics: MusicListType["musics"] }) => {
+export const MusicList = ({ searchQuery }: { searchQuery: string }) => {
+  const { musics } = useGetMusics({ value: searchQuery });
+
+  console.log(musics);
+
   if (!musics) return null;
 
   return (
     <Flex direction="column">
-      {musics.map((music) => (
+      {musics.map((music: Music) => (
         <MusicItem
           key={music.url}
           url={music.url}
