@@ -38,9 +38,9 @@ export const YearMonthSelect = ({
           <Flex
             direction="column"
             gap={16}
-            className="overflow-scroll h-[300px] w-full items-center"
+            className="overflow-scroll h-[330px] w-full items-center"
           >
-            {Array.from({ length: 10 }, (_, i) => {
+            {Array.from({ length: 12 }, (_, i) => {
               const isSelected = currentDate.getMonth() === i;
               const textClass = isSelected
                 ? "text-primary font-bold text-[18px] leading-[28px]"
@@ -72,6 +72,7 @@ export const YearMonthSelect = ({
                 </DrawerClose>
               );
             })}
+            <div className="absolute bottom-[40px] h-[50px] w-full bg-gradient-to-b from-transparent to-white" />
           </Flex>
         </Flex>
       </DrawerContent>
