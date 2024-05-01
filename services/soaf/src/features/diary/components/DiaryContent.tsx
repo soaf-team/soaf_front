@@ -4,9 +4,13 @@ import { Flex } from "@soaf/react-components-layout";
 
 type DiaryContentProps = {
   diary: Diary;
+  isImageClickable?: boolean;
 };
 
-export const DiaryContent = ({ diary }: DiaryContentProps) => {
+export const DiaryContent = ({
+  diary,
+  isImageClickable,
+}: DiaryContentProps) => {
   const monthDay = new Date(diary.date).toLocaleDateString("ko-KR", {
     month: "short",
     day: "numeric",
@@ -28,12 +32,23 @@ export const DiaryContent = ({ diary }: DiaryContentProps) => {
         </span>
         <Flex gap={8} className="mb-[16px]">
           {diary.photos.map((photo, index) => (
-            <Image
-              key={index}
-              src={photo}
-              alt={photo}
-              className="w-[92px] h-[92px] rounded-[16px]"
-            />
+            <>
+              {isImageClickable ? (
+                <Image
+                  key={index}
+                  src={photo}
+                  alt={photo}
+                  className="w-[92px] h-[92px] rounded-[16px]"
+                />
+              ) : (
+                <img
+                  key={index}
+                  src={photo}
+                  alt={photo}
+                  className="w-[92px] h-[92px] rounded-[16px]"
+                />
+              )}
+            </>
           ))}
         </Flex>
         <div

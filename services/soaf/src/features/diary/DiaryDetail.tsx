@@ -12,7 +12,7 @@ export const DiaryDetail = ({ diaryId }: DiaryDetailProps) => {
 
   return (
     <div className="flex flex-col justify-between h-full">
-      {diary && <DiaryContent diary={diary} />}
+      {diary && <DiaryContent diary={diary} isImageClickable />}
       <DiaryReaction reactions={reactions} />
     </div>
   );
