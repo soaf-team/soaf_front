@@ -52,7 +52,7 @@ export const MusicItem = ({
       </div>
 
       <Flex
-        direction="comlumn"
+        direction="column"
         justify={cn({
           "space-between": type === "list",
         })}
