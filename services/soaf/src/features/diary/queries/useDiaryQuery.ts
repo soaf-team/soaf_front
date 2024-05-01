@@ -14,7 +14,9 @@ export const useDiaryQuery = ({ diaryId }: { diaryId: string }) => {
       id: "1",
       date: "2024.04.01",
       title: "화난 하루",
-      photos: ["https://source.unsplash.com/random/48x48"],
+      photos: [
+        "https://i.namu.wiki/i/ChtFsNWqngkfb34jrULVZvSewLOld-k6JT9kWPcuvNaRKEHqVQRDcct_iZttEvYzWKJlt6TTQMzGzHBsOfdBBh9NhJPmlhjrfHlB1Chpoy9HY3_JSUphum-URp-gF15LE437fh2jUn1IZv1A0kMYbQ.webp",
+      ],
       content:
         "<p>오늘은 뭘 잘못먹었는지 배가 고프다.</p><p>근데 오늘 축구해서 그건 좋다!</p><p>오늘은 뭘 잘못먹었는지 배가 고프다.</p><p>근데 오늘 축구해서 그건 좋다!</p>",
       emotions: [

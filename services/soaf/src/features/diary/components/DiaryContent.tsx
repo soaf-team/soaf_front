@@ -1,4 +1,4 @@
-import { EmotionSticker } from "@/shared/components";
+import { EmotionSticker, Image } from "@/shared/components";
 import { Diary, Emotion } from "@/shared/types";
 import { Flex } from "@soaf/react-components-layout";
 
@@ -28,7 +28,7 @@ export const DiaryContent = ({ diary }: DiaryContentProps) => {
         </span>
         <Flex gap={8} className="mb-[16px]">
           {diary.photos.map((photo, index) => (
-            <img
+            <Image
               key={index}
               src={photo}
               alt={photo}
