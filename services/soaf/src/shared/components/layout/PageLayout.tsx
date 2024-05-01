@@ -28,14 +28,7 @@ export const PageLayout = ({
 
   return (
     <AppScreen>
-      <div
-        className={cn([
-          "h-screen box-border",
-          paddingBottom,
-          paddingTop,
-          className,
-        ])}
-      >
+      <div className={cn(["h-screen box-border", paddingBottom, paddingTop])}>
         {header != null ? (
           <Header
             leftSlot={header.leftSlot}
@@ -45,7 +38,7 @@ export const PageLayout = ({
             {header.title}
           </Header>
         ) : null}
-        <main className={"px-[18px] h-full"}>{children}</main>
+        <main className={cn(["px-[18px] h-full", className])}>{children}</main>
       </div>
     </AppScreen>
   );
