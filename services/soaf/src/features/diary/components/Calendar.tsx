@@ -29,22 +29,20 @@ export const Calendar = ({ currentDate, render }: CalendarProps) => {
   };
 
   return (
-    <>
-      <div className="flex flex-col items-center justify-center w-full">
-        <div className="grid grid-cols-7 gap-x-2 gap-y-4 py-[22px] w-full">
-          {["일", "월", "화", "수", "목", "금", "토"].map((day) => (
-            <span key={day} className={cn(["label text-center text-gray200"])}>
-              {day}
-            </span>
-          ))}
-          {getMonthMatrix()
-            .flat()
-            .map((day, index) => {
-              const isToday = day && getDateStatus(day, today) === "today";
-              return render(day, index, isToday);
-            })}
-        </div>
+    <div className="flex flex-col items-center justify-center w-full">
+      <div className="grid grid-cols-7 gap-x-2 gap-y-4 py-[22px] w-full">
+        {["일", "월", "화", "수", "목", "금", "토"].map((day) => (
+          <span key={day} className={cn(["label text-center text-gray200"])}>
+            {day}
+          </span>
+        ))}
+        {getMonthMatrix()
+          .flat()
+          .map((day, index) => {
+            const isToday = day && getDateStatus(day, today) === "today";
+            return render(day, index, isToday);
+          })}
       </div>
-    </>
+    </div>
   );
 };
