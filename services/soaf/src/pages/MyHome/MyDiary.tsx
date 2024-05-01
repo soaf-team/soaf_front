@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useFilterdDiary } from "@/features/diary/queries";
 
 import {
   PageLayout,
@@ -7,12 +8,17 @@ import {
   AsyncBoundary,
 } from "@/shared/components";
 import { Flex } from "@soaf/react-components-layout";
-import { MyDiaryList } from "@/features/diary";
 import { DiaryFilter } from "@/features/myHome/components";
+import { DiaryList } from "@/features/diary/components";
 
 const MyDiary = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [isPrivate, setIsPrivate] = useState(true);
+
+  const { diaries } = useFilterdDiary({
+    isPrivate: isPrivate.toString(),
+    date: String(currentDate.getMonth() + 1),
+  });
 
   return (
     <PageLayout
@@ -30,7 +36,7 @@ const MyDiary = () => {
         />
 
         <AsyncBoundary loadingFallback={<div>로딩중...</div>}>
-          <MyDiaryList currentDate={currentDate} isPrivate={isPrivate} />
+          <DiaryList diariesByMonth={diaries} />
         </AsyncBoundary>
       </Flex>
     </PageLayout>
