@@ -6,8 +6,8 @@ interface Props {
 
 export const PlusButton = ({ onClick }: Props) => {
   return (
-    <div onClick={onClick}>
+    <button type="button" onClick={onClick}>
       <img src={plus} alt="plus" className="w-[20px] h-[20px]" />
-    </div>
+    </button>
   );
 };

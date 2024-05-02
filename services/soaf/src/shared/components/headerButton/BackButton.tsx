@@ -1,10 +1,22 @@
 import { useFlow } from "@/pages/stackflow";
 
-export const BackButton = () => {
+interface Props {
+  onClick?: () => void;
+}
+
+export const BackButton = ({ onClick }: Props) => {
   const { pop } = useFlow();
 
+  const handleBackClick = () => {
+    if (onClick) {
+      onClick();
+    } else {
+      pop();
+    }
+  };
+
   return (
-    <button onClick={pop}>
+    <button type="button" onClick={handleBackClick}>
       <svg
         className="w-6 h-6"
         fill="none"
