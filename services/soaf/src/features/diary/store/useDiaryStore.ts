@@ -9,14 +9,16 @@ export type DiaryFormType = {
   photos: string[];
   emotions: Emotion[];
   reactions: any[];
-  date: string;
+  date: Date | string;
 };
 
 type DiaryRatingStore = {
   diary: DiaryFormType;
+  onChangeDate: (date: Date | string) => void;
   onChangeRating: (rating: number) => void;
   onChangeEmotions: (emotions: Emotion[]) => void;
   onChangeEmotionOrder: (emotions: Emotion[]) => void;
+  onChangePhotos: (photos: string[]) => void;
   onChangeTitle: (title: string) => void;
   onChangeContent: (content: string) => void;
   resetAllDiaryState: () => void;
@@ -40,6 +42,13 @@ export const useDiaryStore = create<DiaryRatingStore>((set) => {
 
   return {
     diary: defaultDiary,
+    onChangeDate: (date) =>
+      set((state) => ({
+        diary: {
+          ...state.diary,
+          date,
+        },
+      })),
     onChangeRating: (rating) =>
       set((state) => ({
         diary: {
@@ -59,6 +68,13 @@ export const useDiaryStore = create<DiaryRatingStore>((set) => {
         diary: {
           ...state.diary,
           emotions: reorderEmotions(emotions),
+        },
+      })),
+    onChangePhotos: (photos: string[]) =>
+      set((state) => ({
+        diary: {
+          ...state.diary,
+          photos,
         },
       })),
     onChangeTitle: (title: string) =>
