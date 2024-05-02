@@ -1,22 +1,24 @@
 import { Emotion } from "@/shared/types";
 import { create } from "zustand";
 
-type DiaryFormType = {
+export type DiaryFormType = {
   id?: string;
   rating: number | null;
   title: string;
   content: string;
   photos: string[];
   emotions: Emotion[];
+  reactions: any[];
   date: string;
 };
 
 type DiaryRatingStore = {
   diary: DiaryFormType;
-  handleRating: (rating: number) => void;
-  handleEmotions: (emotions: Emotion[]) => void;
-  handleTitle: (title: string) => void;
-  handleContent: (content: string) => void;
+  onChangeRating: (rating: number) => void;
+  onChangeEmotions: (emotions: Emotion[]) => void;
+  onChangeEmotionOrder: (emotions: Emotion[]) => void;
+  onChangeTitle: (title: string) => void;
+  onChangeContent: (content: string) => void;
   resetAllDiaryState: () => void;
 };
 
@@ -27,33 +29,46 @@ export const useDiaryStore = create<DiaryRatingStore>((set) => {
     content: "",
     photos: [],
     emotions: [],
+    reactions: [],
     date: "",
+  };
+
+  const reorderEmotions = (emotions: Emotion[]) => {
+    const [first, ...rest] = emotions;
+    return [...rest, first];
   };
 
   return {
     diary: defaultDiary,
-    handleRating: (rating) =>
+    onChangeRating: (rating) =>
       set((state) => ({
         diary: {
           ...state.diary,
           rating,
         },
       })),
-    handleEmotions: (emotions: Emotion[]) =>
+    onChangeEmotions: (emotions: Emotion[]) =>
       set((state) => ({
         diary: {
           ...state.diary,
           emotions,
         },
       })),
-    handleTitle: (title: string) =>
+    onChangeEmotionOrder: (emotions: Emotion[]) =>
+      set((state) => ({
+        diary: {
+          ...state.diary,
+          emotions: reorderEmotions(emotions),
+        },
+      })),
+    onChangeTitle: (title: string) =>
       set((state) => ({
         diary: {
           ...state.diary,
           title,
         },
       })),
-    handleContent: (content: string) =>
+    onChangeContent: (content: string) =>
       set((state) => ({
         diary: {
           ...state.diary,

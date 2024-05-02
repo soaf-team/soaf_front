@@ -7,7 +7,7 @@ import { useDiaryStore } from "@/features/diary/store";
 import { useFlow } from "../stackflow";
 
 const NewDiaryStep1: ActivityComponentType = () => {
-  const { diary, handleRating, resetAllDiaryState } = useDiaryStore();
+  const { diary, onChangeRating, resetAllDiaryState } = useDiaryStore();
   const { push, pop } = useFlow();
   const nickname = "뽀송하루";
 
@@ -17,7 +17,7 @@ const NewDiaryStep1: ActivityComponentType = () => {
   };
 
   const handleSelectRating = (rating: number) => {
-    handleRating(rating);
+    onChangeRating(rating);
     push("NewDiaryStep2", {});
   };
 

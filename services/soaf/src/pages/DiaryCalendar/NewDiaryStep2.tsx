@@ -12,7 +12,7 @@ import { Flex } from "@soaf/react-components-layout";
 import { Emotion } from "@/shared/types";
 
 const NewDiaryStep2: ActivityComponentType = () => {
-  const { diary, resetAllDiaryState, handleEmotions } = useDiaryStore();
+  const { diary, resetAllDiaryState, onChangeEmotions } = useDiaryStore();
   const { push, pop } = useFlow();
 
   const handleXButtonClick = () => {
@@ -25,7 +25,7 @@ const NewDiaryStep2: ActivityComponentType = () => {
       ? diary.emotions.filter((e) => e !== emotion)
       : [...diary.emotions, emotion];
 
-    handleEmotions(newEmotions);
+    onChangeEmotions(newEmotions);
   };
 
   const handleActionButtonClick = () => {
