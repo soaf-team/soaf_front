@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
+import { MusicList } from "@/shared/types";
 
 export const useGetMusics = ({ value }: { value: string }) => {
   const fetchMusics = async (value: string) => {
@@ -14,7 +15,7 @@ export const useGetMusics = ({ value }: { value: string }) => {
     }
   };
 
-  const { data: musics } = useQuery({
+  const { data: musics = [] as MusicList[] } = useQuery({
     queryKey: ["musics", value],
     queryFn: () => fetchMusics(value),
     staleTime: Infinity,

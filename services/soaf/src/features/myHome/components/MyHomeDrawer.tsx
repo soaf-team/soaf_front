@@ -8,7 +8,6 @@ import {
   DrawerTrigger,
   DrawerContent,
   DrawerClose,
-  AsyncBoundary,
 } from "@/shared/components";
 
 import { useState } from "react";
@@ -75,7 +74,7 @@ export const MyHomeDrawer = ({ type, setSearchQuery, list }: Props) => {
             )}
           </Flex>
 
-          <AsyncBoundary loadingFallback={<>로딩중..</>}>{list}</AsyncBoundary>
+          <div>{list}</div>
         </Flex>
       </DrawerContent>
     </Drawer>
