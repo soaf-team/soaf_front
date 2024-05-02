@@ -25,6 +25,7 @@ import {
   UserHome,
 } from "./MyHome";
 import { Login, Terms, NickName } from "./Login";
+import { ImageDetailPage } from "./Common";
 
 export const { Stack, useFlow, useStepFlow } = stackflow({
   transitionDuration: 300,
@@ -66,6 +67,9 @@ export const { Stack, useFlow, useStepFlow } = stackflow({
         MyMusic: "/my-home/music",
         MyYoutube: "/my-home/youtube",
         MyDiary: "/my-home/diary",
+
+        /*** 기타  ***/
+        ImageDetailPage: "/image-detail/:src/:alt",
       },
       fallbackActivity: () => "DiaryCalendar",
     }),
@@ -114,6 +118,9 @@ export const { Stack, useFlow, useStepFlow } = stackflow({
     MyMusic,
     MyYoutube,
     MyDiary,
+
+    /*** 기타 ***/
+    ImageDetailPage,
   },
   initialActivity: () => "DiaryCalendar",
 });

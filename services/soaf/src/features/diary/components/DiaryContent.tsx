@@ -1,12 +1,16 @@
-import { EmotionSticker } from "@/shared/components";
+import { EmotionSticker, Image } from "@/shared/components";
 import { Diary, Emotion } from "@/shared/types";
 import { Flex } from "@soaf/react-components-layout";
 
-type DiaryDetailProps = {
+type DiaryContentProps = {
   diary: Diary;
+  isImageClickable?: boolean;
 };
 
-export const DiaryDetail = ({ diary }: DiaryDetailProps) => {
+export const DiaryContent = ({
+  diary,
+  isImageClickable,
+}: DiaryContentProps) => {
   const monthDay = new Date(diary.date).toLocaleDateString("ko-KR", {
     month: "short",
     day: "numeric",
@@ -28,12 +32,23 @@ export const DiaryDetail = ({ diary }: DiaryDetailProps) => {
         </span>
         <Flex gap={8} className="mb-[16px]">
           {diary.photos.map((photo, index) => (
-            <img
-              key={index}
-              src={photo}
-              alt={photo}
-              className="w-[92px] h-[92px] rounded-[16px]"
-            />
+            <>
+              {isImageClickable ? (
+                <Image
+                  key={index}
+                  src={photo}
+                  alt={photo}
+                  className="w-[92px] h-[92px] rounded-[16px]"
+                />
+              ) : (
+                <img
+                  key={index}
+                  src={photo}
+                  alt={photo}
+                  className="w-[92px] h-[92px] rounded-[16px]"
+                />
+              )}
+            </>
           ))}
         </Flex>
         <div

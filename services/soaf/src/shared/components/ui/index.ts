@@ -9,4 +9,3 @@ export * from "./Badge.tsx";
 export * from "./Input.tsx";
 export * from "./Card.tsx";
 export * from "./TabButton.tsx";
-export * from "./Divider.tsx";

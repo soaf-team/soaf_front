@@ -36,8 +36,6 @@ const NewDiaryStep2: ActivityComponentType = () => {
     push("NewDiaryPage", {});
   };
 
-  console.log(diary.emotions);
-
   return (
     <PageLayout
       header={{

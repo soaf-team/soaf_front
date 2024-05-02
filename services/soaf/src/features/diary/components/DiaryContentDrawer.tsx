@@ -4,13 +4,13 @@ import { Diary } from "@/shared/types";
 import { cn } from "@/shared/utils";
 import { Flex } from "@soaf/react-components-layout";
 import { useEffect, useRef, useState } from "react";
-import { DiaryDetail } from "./DiaryDetail";
+import { DiaryContent } from "./DiaryContent";
 
-type DiaryDetailDrawerProps = {
+type DiaryContentDrawerProps = {
   diary: Diary;
 };
 
-export const DiaryDetailDrawer = ({ diary }: DiaryDetailDrawerProps) => {
+export const DiaryContentDrawer = ({ diary }: DiaryContentDrawerProps) => {
   const ref = useRef(null);
   const { push } = useFlow();
   const [shouldDisappear, setShouldDisappear] = useState(false);
@@ -41,7 +41,7 @@ export const DiaryDetailDrawer = ({ diary }: DiaryDetailDrawerProps) => {
     };
   }, [diary, ref]);
 
-  const handleClick = (animate?: boolean) => {
+  const handleClick = ({ animate }: { animate?: boolean }) => {
     push("DiaryDetailPage", { diaryId: diary.id }, { animate });
     setShouldDisappear(true);
   };
@@ -59,8 +59,13 @@ export const DiaryDetailDrawer = ({ diary }: DiaryDetailDrawerProps) => {
         direction="column"
         className="h-[100vh] justify-between pb-[10vh] pt-[2px]"
       >
-        <DiaryDetail diary={diary} />
-        <DrawerClose ref={ref} onClick={() => handleClick(false)} />
+        <DrawerClose onClick={() => handleClick({ animate: true })}>
+          <DiaryContent diary={diary} />
+        </DrawerClose>
+        <DrawerClose
+          ref={ref}
+          onClick={() => handleClick({ animate: false })}
+        />
       </Flex>
     </DrawerContent>
   );
