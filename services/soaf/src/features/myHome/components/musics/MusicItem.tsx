@@ -43,7 +43,7 @@ export const MusicItem = ({
     <Flex
       direction="row"
       gap={16}
-      align="center"
+      align={type === "search" ? "center" : "flex-start"}
       className="py-[8px] border-solid border-b border-border"
       onClick={onClick}
     >
@@ -57,7 +57,7 @@ export const MusicItem = ({
           "space-between": type === "list",
         })}
       >
-        <Flex direction="column" align="left" gap={4}>
+        <Flex direction="column" align="left" gap={4} className="py-[8px]">
           <p className={cn("line-clamp-1", titleClass)}>{name}</p>
           <p className={cn("line-clamp-1", artistClass)}>{artist}</p>
         </Flex>
