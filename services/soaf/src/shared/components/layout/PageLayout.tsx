@@ -21,7 +21,7 @@ export const PageLayout = ({
   header,
   className,
 }: PageLayoutProps) => {
-  const isMyHome = window.location.pathname.includes("my-home");
+  const isMyHome = window.location.pathname === "/my-home/";
   const stack = useStack();
   const { isBottomTabAcitivity } = useActiveActivity(stack);
   const paddingBottom =
@@ -30,7 +30,10 @@ export const PageLayout = ({
 
   return (
     <AppScreen>
-      <div className={cn(["h-screen box-border", paddingBottom, paddingTop])}>
+      <div
+        className={cn(["h-screen box-border", paddingBottom, paddingTop])}
+        vaul-drawer-wrapper="" // eslint-disable-line
+      >
         {header != null ? (
           <Header
             leftSlot={header.leftSlot}
