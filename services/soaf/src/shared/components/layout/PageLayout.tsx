@@ -21,14 +21,19 @@ export const PageLayout = ({
   header,
   className,
 }: PageLayoutProps) => {
+  const isMyHome = window.location.pathname === "/my-home/";
   const stack = useStack();
   const { isBottomTabAcitivity } = useActiveActivity(stack);
-  const paddingBottom = isBottomTabAcitivity ? "pb-[83px]" : "pb-0";
-  const paddingTop = header != null ? "pt-[56px]" : "pt-0";
+  const paddingBottom =
+    isBottomTabAcitivity && !isMyHome ? "pb-[83px]" : "pb-0";
+  const paddingTop = header !== null && !isMyHome ? "pt-[56px]" : "pt-0";
 
   return (
     <AppScreen>
-      <div className={cn(["h-screen box-border", paddingBottom, paddingTop])}>
+      <div
+        className={cn(["h-screen box-border", paddingBottom, paddingTop])}
+        vaul-drawer-wrapper="" // eslint-disable-line
+      >
         {header != null ? (
           <Header
             leftSlot={header.leftSlot}

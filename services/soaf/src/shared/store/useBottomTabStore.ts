@@ -23,7 +23,7 @@ export const useBottomTabStore = () => {
     } else {
       handleOpen();
     }
-  }, [handleOpen, handleClose]);
+  }, [handleOpen, handleClose, window.location.pathname]); // eslint-disable-line
 
   return { isOpen, handleOpen, handleClose };
 };

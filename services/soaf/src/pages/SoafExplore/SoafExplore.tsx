@@ -1,7 +1,5 @@
 import dayjs from "dayjs";
 
-import { cn } from "@/shared/utils";
-
 import { useState } from "react";
 import { useFlow } from "@/pages/stackflow";
 import { useDiaryQueryByMonth } from "@/features/diary/queries";
@@ -95,14 +93,14 @@ const SoafExplore = () => {
                 isSelected={isSelected.includes(diary)}
                 onClick={() => handleDiarySelect(index)}
                 className={
-                  index === diariesByMonth.length - 1 ? "mb-[120px]" : ""
+                  index === diariesByMonth.length - 1 ? "mb-[100px]" : ""
                 }
               />
             ))}
           </Flex>
         )}
 
-        <div className={cn("fixed_bottom_button")}>
+        <div className="bg-white fixed left-0 right-0 bottom-0 z-50 h-[150px] px-[16px]">
           <Button
             variant={
               diariesByMonth.length > 0 && isSelected.length === 0
