@@ -1,28 +1,14 @@
 import { Flex } from "@soaf/react-components-layout";
-import { BackButton, PageLayout, AsyncBoundary } from "@/shared/components";
-import { MyHomeDrawer, MusicList } from "@/features/myHome/components";
-
-import { useState } from "react";
+import { BackButton, PageLayout } from "@/shared/components";
+import { MyHomeDrawer, RegisterMusicForm } from "@/features/myHome/components";
 
 const MyMusic = () => {
-  const [searchQuery, setSearchQuery] = useState("");
-
   return (
     <PageLayout
       header={{
         leftSlot: <BackButton />,
-        title: <span className="head6b">나의 음악</span>,
-        rightSlot: (
-          <MyHomeDrawer
-            type="music"
-            setSearchQuery={setSearchQuery}
-            list={
-              <AsyncBoundary loadingFallback={<>로딩중 ..</>}>
-                <MusicList searchQuery={searchQuery} />
-              </AsyncBoundary>
-            }
-          />
-        ),
+        title: <h1 className="head6b">나의 음악</h1>,
+        rightSlot: <MyHomeDrawer component={<RegisterMusicForm />} />,
       }}
     >
       <Flex

@@ -1,2 +1,4 @@
 export * from "./MusicItem";
-export * from "./MusicList";
+export * from "./SearchMusicList";
+export * from "./RegisterMusicForm";
+export * from "./SetMusicInfo";
