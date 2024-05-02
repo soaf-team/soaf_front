@@ -1,6 +1,8 @@
 import * as React from "react";
 import { Drawer as DrawerPrimitive } from "vaul";
 
+import { useMyHomeActivity } from "@/features/myHome/hooks";
+
 import { cn } from "@shared/utils";
 
 const Drawer = ({
@@ -37,26 +39,30 @@ const DrawerContent = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Content> & {
     overlayStyle?: string;
   }
->(({ className, children, overlayStyle, ...props }, ref) => (
-  <DrawerPortal>
-    <DrawerOverlay className={cn(["max-w-window mx-auto", overlayStyle])} />
-    <DrawerPrimitive.Content
-      ref={ref}
-      className={cn(
-        "fixed inset-x-0 bottom-0 z-[9999] flex h-auto flex-col rounded-t-[28px] border bg-white max-w-window mx-auto",
-        className,
-      )}
-      {...props}
-    >
-      {!window.location.pathname.includes("/my-home") && (
-        <div className="mx-auto mt-[8px] mb-[16px] h-[3px] w-[40px] rounded-full bg-gray200" />
-      )}
-      <div data-vaul-no-drag className="px-[18px] pb-[28px] grid gap-1.5">
-        {children}
-      </div>
-    </DrawerPrimitive.Content>
-  </DrawerPortal>
-));
+>(({ className, children, overlayStyle, ...props }, ref) => {
+  const { isMyHome } = useMyHomeActivity();
+
+  return (
+    <DrawerPortal>
+      <DrawerOverlay className={cn(["max-w-window mx-auto", overlayStyle])} />
+      <DrawerPrimitive.Content
+        ref={ref}
+        className={cn(
+          "fixed inset-x-0 bottom-0 z-[9999] flex h-auto flex-col rounded-t-[28px] border bg-white max-w-window mx-auto",
+          className,
+        )}
+        {...props}
+      >
+        {!isMyHome && (
+          <div className="mx-auto mt-[8px] mb-[16px] h-[3px] w-[40px] rounded-full bg-gray200" />
+        )}
+        <div data-vaul-no-drag className="px-[18px] pb-[28px] grid gap-1.5">
+          {children}
+        </div>
+      </DrawerPrimitive.Content>
+    </DrawerPortal>
+  );
+});
 DrawerContent.displayName = "DrawerContent";
 
 export {
