@@ -1,3 +1,10 @@
+import { useEffect } from "react";
+import { ActivityComponentType } from "@stackflow/react";
+
+import { useFlow } from "../stackflow";
+import { Emotion } from "@/shared/types";
+import { useDiaryStore } from "@/features/diary/store";
+
 import {
   BackButton,
   Button,
@@ -5,15 +12,12 @@ import {
   PageLayout,
   XButton,
 } from "@/shared/components";
-import { ActivityComponentType } from "@stackflow/react";
-import { useFlow } from "../stackflow";
-import { useDiaryStore } from "@/features/diary/store";
 import { Flex } from "@soaf/react-components-layout";
-import { Emotion } from "@/shared/types";
 
 const NewDiaryStep2: ActivityComponentType = () => {
   const { diary, resetAllDiaryState, onChangeEmotions } = useDiaryStore();
-  const { push, pop } = useFlow();
+  const { push, pop, replace } = useFlow();
+  const isUnusualApproach = diary.rating === 0;
 
   const handleXButtonClick = () => {
     pop(2);
@@ -32,9 +36,22 @@ const NewDiaryStep2: ActivityComponentType = () => {
     if (diary.emotions.length === 0) {
       return;
     }
-
     push("NewDiaryPage", {});
   };
+
+  useEffect(() => {
+    if (isUnusualApproach) {
+      replace("DiaryCalendar", {});
+    }
+
+    return () => {
+      resetAllDiaryState();
+    };
+  }, []);
+
+  if (isUnusualApproach) {
+    return null;
+  }
 
   return (
     <PageLayout
