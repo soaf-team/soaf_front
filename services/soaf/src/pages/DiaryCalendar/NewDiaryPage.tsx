@@ -1,16 +1,57 @@
 /* eslint-disable react/prop-types */
+import { useEffect } from "react";
 import { ActivityComponentType } from "@stackflow/react";
 
-import { BackButton, PageLayout } from "@/shared/components";
+import { useFlow } from "../stackflow";
+import { useDiaryStore } from "@/features/diary/store";
+
+import { BackButton, PageLayout, XButton } from "@/shared/components";
+import { DiaryForm } from "@/features/diary/components";
 
 const NewDiaryPage: ActivityComponentType = () => {
+  const { pop, replace } = useFlow();
+  const {
+    diary,
+    onChangeEmotionOrder,
+    onChangeTitle,
+    onChangeContent,
+    onChangePhotos,
+    resetAllDiaryState,
+  } = useDiaryStore();
+  const isUnusualApproach = diary.emotions.length === 0 || diary.rating === 0;
+
+  const handleXButtonClick = () => {
+    pop(3);
+  };
+
+  useEffect(() => {
+    if (isUnusualApproach) {
+      replace("DiaryCalendar", {});
+    }
+
+    return () => {
+      resetAllDiaryState();
+    };
+  }, []);
+
+  if (isUnusualApproach) {
+    return null;
+  }
+
   return (
     <PageLayout
       header={{
         leftSlot: <BackButton />,
+        rightSlot: <XButton onClick={handleXButtonClick} />,
       }}
     >
-      <div>작성</div>
+      <DiaryForm
+        diary={diary}
+        handleReorderEmotions={onChangeEmotionOrder}
+        handleTitleChange={onChangeTitle}
+        handleContentChange={onChangeContent}
+        handlePhotosChange={onChangePhotos}
+      />
     </PageLayout>
   );
 };
