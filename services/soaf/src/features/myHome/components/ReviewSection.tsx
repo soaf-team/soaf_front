@@ -16,14 +16,14 @@ export const ReviewSection = ({ type }: Props) => {
     movie: "영화를 본 후 어떤 생각이 드셨나요?",
     book: "책을 읽은 후 어떤 생각이 드셨나요?",
     youtube: "영상을 본 후 어떤 생각이 드셨나요?",
-  };
+  } as const;
 
   const autoResizeTextarea = () => {
     const textarea = textareaRef.current;
 
     if (textarea) {
       textarea.style.height = "auto";
-      textarea.style.height = `${textarea.style.height}px`;
+      textarea.style.height = `${textarea.scrollHeight}px`;
     }
   };
 
