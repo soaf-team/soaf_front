@@ -17,8 +17,12 @@ export const RegisterMusicForm = () => {
     setStep(STEP[0]);
   };
 
+  const handleSubmit = () => {
+    // TODO: Submit 로직
+  };
+
   return (
-    <GenericForm formOptions={{ mode: "onSubmit" }}>
+    <GenericForm formOptions={{ mode: "onSubmit" }} onSubmit={handleSubmit}>
       <Funnel>
         <Step name={STEP[0]}>
           <SearchMusicList onNextStep={handleNextStep} />
