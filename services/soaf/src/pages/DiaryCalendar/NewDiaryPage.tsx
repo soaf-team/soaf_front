@@ -18,7 +18,8 @@ const NewDiaryPage: ActivityComponentType = () => {
     onChangePhotos,
     resetAllDiaryState,
   } = useDiaryStore();
-  const isUnusualApproach = diary.emotions.length === 0 || diary.rating === 0;
+  const isUnusualApproach =
+    diary.emotions.length === 0 || diary.rating === 0 || !diary.date;
 
   const handleXButtonClick = () => {
     pop(3);
@@ -27,11 +28,8 @@ const NewDiaryPage: ActivityComponentType = () => {
   useEffect(() => {
     if (isUnusualApproach) {
       replace("DiaryCalendar", {});
-    }
-
-    return () => {
       resetAllDiaryState();
-    };
+    }
   }, []);
 
   if (isUnusualApproach) {
