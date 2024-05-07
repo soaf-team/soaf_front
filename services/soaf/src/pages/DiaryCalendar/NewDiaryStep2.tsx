@@ -17,7 +17,7 @@ import { Flex } from "@soaf/react-components-layout";
 const NewDiaryStep2: ActivityComponentType = () => {
   const { diary, resetAllDiaryState, onChangeEmotions } = useDiaryStore();
   const { push, pop, replace } = useFlow();
-  const isUnusualApproach = diary.rating === 0;
+  const isUnusualApproach = diary.rating === 0 || !diary.date;
 
   const handleXButtonClick = () => {
     pop(2);
@@ -42,11 +42,8 @@ const NewDiaryStep2: ActivityComponentType = () => {
   useEffect(() => {
     if (isUnusualApproach) {
       replace("DiaryCalendar", {});
-    }
-
-    return () => {
       resetAllDiaryState();
-    };
+    }
   }, []);
 
   if (isUnusualApproach) {
@@ -68,7 +65,7 @@ const NewDiaryStep2: ActivityComponentType = () => {
           가장 먼저 선택한 감정이 일기 캘린더에 표시돼요.
         </p>
       </Flex>
-      <div className="grid grid-cols-2 gap-x-[12px] gap-y-[10px] w-full">
+      <div className="grid grid-cols-2 gap-x-[12px] gap-y-[10px] w-full mb-[150px]">
         {EMOTIONS.map((emotion: Emotion) => {
           const isSelected = diary.emotions.includes(emotion);
 
