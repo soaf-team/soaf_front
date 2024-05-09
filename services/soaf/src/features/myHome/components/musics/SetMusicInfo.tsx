@@ -1,3 +1,5 @@
+import { useMusicDetail } from "../../queries";
+
 import { Flex } from "@soaf/react-components-layout";
 import { Header, BackButton } from "@/shared/components";
 
@@ -6,9 +8,16 @@ import { ReviewSection } from "../ReviewSection";
 
 interface Props {
   onPrevStep: () => void;
+  music: Record<string, string>;
 }
 
-export const SetMusicInfo = ({ onPrevStep }: Props) => {
+export const SetMusicInfo = ({ onPrevStep, music }: Props) => {
+  const { musicInfo } = useMusicDetail({
+    name: music.name,
+    artist: music.artist,
+  });
+
+  if (!musicInfo) return null;
 
   return (
     <>
@@ -24,10 +33,7 @@ export const SetMusicInfo = ({ onPrevStep }: Props) => {
       </Header>
 
       <Flex direction="column" gap={32} className="pt-[58px]">
-        <MusicItem
-          type="detail"
-          music={music}
-        />
+        <MusicItem type="detail" music={musicInfo} />
 
         <ReviewSection type="music" />
       </Flex>

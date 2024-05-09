@@ -9,11 +9,20 @@ import { SearchInput } from "../SearchInput";
 
 interface Props {
   onNextStep: () => void;
+  setMusic: React.Dispatch<React.SetStateAction<Record<string, string>>>;
 }
 
-export const SearchMusicList = ({ onNextStep }: Props) => {
+export const SearchMusicList = ({ onNextStep, setMusic }: Props) => {
   const [searchQuery, setSearchQuery] = useState("");
   const { musics } = useGetMusics({ value: searchQuery });
+
+  const handleItemClick = (music: Album) => {
+    setMusic({
+      name: music.name,
+      artist: music.artist,
+    });
+    onNextStep();
+  };
 
   if (!musics) return null;
 
@@ -26,7 +35,7 @@ export const SearchMusicList = ({ onNextStep }: Props) => {
           type="search"
           key={music.url}
           music={music}
-          onClick={onNextStep}
+          onClick={() => handleItemClick(music)}
         />
       ))}
     </Flex>

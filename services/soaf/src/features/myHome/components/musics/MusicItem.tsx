@@ -1,10 +1,10 @@
 import { Flex } from "@soaf/react-components-layout";
-import { Album } from "@/shared/types";
+import { Album, IAlbumDetail } from "@/shared/types";
 
 import { cn } from "@/shared/utils";
 
 interface Props {
-  music: Album;
+  music: Album | IAlbumDetail;
   type?: "search" | "list" | "detail";
   onClick?: () => void;
   review?: string;
@@ -14,7 +14,7 @@ export const MusicItem = ({
   type = "search",
   onClick,
   music,
-  review
+  review,
 }: Props) => {
   const coverClass = cn({
     "min-w-[56px] w-[56px] h-[56px] rounded-[4px]": type === "search",
@@ -48,7 +48,7 @@ export const MusicItem = ({
       onClick={onClick}
     >
       <div className={coverClass}>
-        <img src={music.image[3]['#text']} alt="cover" className={coverClass} />
+        <img src={music.image[3]["#text"]} alt="cover" className={coverClass} />
       </div>
 
       <Flex
@@ -58,7 +58,9 @@ export const MusicItem = ({
         })}
       >
         <Flex direction="column" align="left" gap={4} className="py-[8px]">
-          <p className={cn("line-clamp-1", titleClass)}>{music.name === '(null)' ? '제목 불명' : music.name}</p>
+          <p className={cn("line-clamp-1", titleClass)}>
+            {music.name === "(null)" ? "제목 불명" : music.name}
+          </p>
           <p className={cn("line-clamp-1", artistClass)}>{music.artist}</p>
         </Flex>
 
