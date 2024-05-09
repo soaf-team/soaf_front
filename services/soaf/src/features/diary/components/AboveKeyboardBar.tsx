@@ -16,7 +16,6 @@ type AboveKeyboardBarProps = {
 
 export const AboveKeyboardBar = ({
   diary,
-  handleAddPhoto,
   handleSaveDiary,
   togglePrivate,
 }: AboveKeyboardBarProps) => {
