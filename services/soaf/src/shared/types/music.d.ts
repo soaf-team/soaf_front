@@ -47,8 +47,13 @@ export interface AlbumDetail {
 interface IAlbumDetail {
   artist: string;
   mbid: string;
-  tags: string;
+  tags: Tag;
   name: string;
   image: AlbumImage[];
   tracks: Track[];
+}
+
+interface Tag {
+  name: string;
+  url: string;
 }
