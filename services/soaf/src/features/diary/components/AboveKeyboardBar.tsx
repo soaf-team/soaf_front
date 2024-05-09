@@ -5,7 +5,7 @@ import { Flex } from "@soaf/react-components-layout";
 
 import photo from "@assets/icons/shared/photo.svg";
 import lock from "@assets/icons/shared/lock.svg";
-import unLock from "@assets/icons/shared/unlock.svg";
+import unLock from "@assets/icons/shared/unLock.svg";
 
 type AboveKeyboardBarProps = {
   diary: DiaryFormType;
