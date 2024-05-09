@@ -20,7 +20,7 @@ export const AboveKeyboardBar = ({
   handleSaveDiary,
   togglePrivate,
 }: AboveKeyboardBarProps) => {
-  const { keyboardHeight, a } = useKeboardHeight();
+  const { keyboardHeight } = useKeboardHeight();
   const contentLengthColor =
     diary.content.length > 2000 ? "text-red" : "text-gray300";
 
