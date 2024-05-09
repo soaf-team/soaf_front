@@ -1,5 +1,3 @@
-import { useMusicStore } from "../../store";
-
 import { Flex } from "@soaf/react-components-layout";
 import { Header, BackButton } from "@/shared/components";
 
@@ -11,7 +9,6 @@ interface Props {
 }
 
 export const SetMusicInfo = ({ onPrevStep }: Props) => {
-  const { music } = useMusicStore();
 
   return (
     <>
@@ -29,11 +26,7 @@ export const SetMusicInfo = ({ onPrevStep }: Props) => {
       <Flex direction="column" gap={32} className="pt-[58px]">
         <MusicItem
           type="detail"
-          url={music.url}
-          name={music.name}
-          artist={music.artist}
-          image={music.image[3]["#text"]}
-          review={music.review}
+          music={music}
         />
 
         <ReviewSection type="music" />
