@@ -1,13 +1,16 @@
 import { ActivityComponentType } from "@stackflow/react";
+import { useEffect } from "react";
+import { useFlow } from "../stackflow";
+
+import { useDiaryStore } from "@/features/diary/store";
 
 import { Flex } from "@soaf/react-components-layout";
 import { DailyRaitingWidget } from "@/features/diary/components";
 import { PageLayout, Spacing, XButton } from "@/shared/components";
-import { useDiaryStore } from "@/features/diary/store";
-import { useFlow } from "../stackflow";
 
 const NewDiaryStep1: ActivityComponentType = () => {
-  const { diary, handleRating, resetAllDiaryState } = useDiaryStore();
+  const { diary, onChangeRating, resetAllDiaryState, onChangeDate } =
+    useDiaryStore();
   const { push, pop } = useFlow();
   const nickname = "뽀송하루";
 
@@ -17,9 +20,13 @@ const NewDiaryStep1: ActivityComponentType = () => {
   };
 
   const handleSelectRating = (rating: number) => {
-    handleRating(rating);
+    onChangeRating(rating);
     push("NewDiaryStep2", {});
   };
+
+  useEffect(() => {
+    onChangeDate(new Date());
+  }, []);
 
   return (
     <PageLayout

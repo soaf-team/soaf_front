@@ -18,8 +18,6 @@ export const XButton = ({ onClick }: XButtonProps) => {
   };
 
   return (
-    <button onClick={handleClick}>
-      <img src={x} alt="x" className="w-[12px] h-[12px]" />
-    </button>
+    <img onClick={handleClick} src={x} alt="x" className="w-[12px] h-[12px]" />
   );
 };

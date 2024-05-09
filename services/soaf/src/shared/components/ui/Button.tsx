@@ -10,16 +10,16 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        primary: "bg-main_gradient text-white font-bold",
-        primary_disabled: "bg-gray100 text-white font-bold",
-        secondary: "bg-gray50 text-black font-semibold",
-        warn: "bg-warn text-white font-semibold",
-        ghost: "bg-transparent tex-black font-semibold",
+        primary: "bg-main_gradient text-white",
+        primary_disabled: "bg-gray100 text-white",
+        secondary: "bg-gray50 text-black",
+        warn: "bg-warn text-white",
+        ghost: "bg-transparent tex-black",
       },
       size: {
-        md: "h-[52px] text-[18px]",
-        sm: "h-[48px] text-[18px]",
-        xs: "h-[42px] text-[14px]",
+        md: "h-[52px] head6sb",
+        sm: "h-[48px] head6sb",
+        xs: "h-[42px] head6sb",
       },
     },
     defaultVariants: {

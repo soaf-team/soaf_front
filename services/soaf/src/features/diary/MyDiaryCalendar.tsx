@@ -66,9 +66,9 @@ export const MyDiaryCalendar = () => {
             const dayTextClass = isToday
               ? "text-white bg-gray600 rounded-full"
               : "text-gray200";
-            // const dayCircleClass = isFuture
-            //   ? "cursor-default"
-            //   : "cursor-pointer transition-all duration-200 ease-in-out hover:shadow-hover";
+            const dayCircleClass = isFuture
+              ? "cursor-default bg-[#F0F1F466]"
+              : "cursor-pointer transition-all duration-200 ease-in-out hover:shadow-hover bg-gray50";
 
             return (
               <Flex
@@ -92,8 +92,8 @@ export const MyDiaryCalendar = () => {
                   justify="center"
                   onClick={() => handleDateClick(diaryAtDate, isFuture)}
                   className={cn([
-                    "relative h-[40px] w-[40px] bg-gray50 rounded-full",
-                    // dayCircleClass,
+                    "relative h-[40px] w-[40px] rounded-full",
+                    dayCircleClass,
                   ])}
                 >
                   <DrawerTrigger disabled={!diaryAtDate}>
