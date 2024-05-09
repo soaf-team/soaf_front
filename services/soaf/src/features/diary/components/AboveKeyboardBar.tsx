@@ -6,6 +6,7 @@ import { Flex } from "@soaf/react-components-layout";
 import photo from "@assets/icons/shared/photo.svg";
 import lock from "@assets/icons/shared/lock.svg";
 import unLock from "@assets/icons/shared/unLock.svg";
+import { useKeboardHeight } from "@/shared/hooks";
 
 type AboveKeyboardBarProps = {
   diary: DiaryFormType;
@@ -19,13 +20,20 @@ export const AboveKeyboardBar = ({
   handleSaveDiary,
   togglePrivate,
 }: AboveKeyboardBarProps) => {
+  const keboardHeight = useKeboardHeight();
+  const bottomPosition = keboardHeight
+    ? `bottom-${keboardHeight}px`
+    : "bottom-0";
   const contentLengthColor =
     diary.content.length > 2000 ? "text-red" : "text-gray300";
 
   return (
     <Flex
       justify="space-between"
-      className="fixed bottom-0 left-0 right-0 w-full h-[39px] border-t border-solid border-gray100 px-[18px]"
+      className={cn([
+        "fixed left-0 right-0 w-full h-[39px] border-t border-solid border-gray100 px-[18px]",
+        bottomPosition,
+      ])}
     >
       <Flex align="center" gap={16}>
         <img src={photo} alt="photo" onClick={() => {}} />
