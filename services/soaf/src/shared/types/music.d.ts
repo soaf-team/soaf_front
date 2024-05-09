@@ -39,3 +39,16 @@ interface AlbumImage {
 interface Attr {
   for: string;
 }
+
+export interface AlbumDetail {
+  album: IAlbumDetail;
+}
+
+interface IAlbumDetail {
+  artist: string;
+  mbid: string;
+  tags: string;
+  name: string;
+  image: AlbumImage[];
+  tracks: Track[];
+}
