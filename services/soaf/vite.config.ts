@@ -6,6 +6,16 @@ import { VitePWA } from "vite-plugin-pwa";
 // https://vitejs.dev/config/
 export default defineConfig({
   base: "./",
+  resolve: {
+    alias: {
+      "@": "/src",
+      "@assets": "/src/assets",
+      "@features": "/src/features",
+      "@pages": "/src/pages",
+      "@shared": "/src/shared",
+      "@mocks": "/src/mocks",
+    },
+  },
   plugins: [
     react(),
     tsconfigPaths(),
