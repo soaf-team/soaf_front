@@ -19,7 +19,7 @@ const calculateStarValue = (
   return offsetX < rect.width / 2 ? index + 0.5 : index + 1;
 };
 
-const StarRating = ({ size = 16, onChange }: Props) => {
+export const StarRating = ({ size = 16, onChange }: Props) => {
   const [rating, setRating] = useState<number | null>(null);
   const [hover, setHover] = useState<number | null>(null);
 
@@ -87,5 +87,3 @@ const StarRating = ({ size = 16, onChange }: Props) => {
     </div>
   );
 };
-
-export default StarRating;
