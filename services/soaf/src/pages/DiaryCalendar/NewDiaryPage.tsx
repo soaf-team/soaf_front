@@ -19,7 +19,7 @@ import {
   PageLayout,
   XButton,
 } from "@/shared/components";
-import { DiaryForm } from "@/features/diary/components";
+import { DiaryForm, AboveKeyboardBar } from "@/features/diary/components";
 import { Flex } from "@soaf/react-components-layout";
 
 const NewDiaryPage: ActivityComponentType = () => {
@@ -30,6 +30,7 @@ const NewDiaryPage: ActivityComponentType = () => {
     onChangeTitle,
     onChangeContent,
     onChangePhotos,
+    togglePrivate,
     resetAllDiaryState,
   } = useDiaryStore();
   const isUnusualApproach =
@@ -69,6 +70,12 @@ const NewDiaryPage: ActivityComponentType = () => {
           handleTitleChange={onChangeTitle}
           handleContentChange={onChangeContent}
           handlePhotosChange={onChangePhotos}
+        />
+        <AboveKeyboardBar
+          diary={diary}
+          handleAddPhoto={onChangePhotos}
+          handleSaveDiary={() => {}}
+          togglePrivate={togglePrivate}
         />
       </PageLayout>
 
