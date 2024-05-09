@@ -3,7 +3,6 @@ export * from "./Button.tsx";
 export * from "./Toast.tsx";
 export * from "./Toaster.tsx";
 export * from "./ToggleButton.tsx";
-export * from "./Stars.tsx";
 export * from "./SpeechBubble.tsx";
 export * from "./Badge.tsx";
 export * from "./Input.tsx";
