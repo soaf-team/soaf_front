@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useGetMovies } from "../../queries";
+import { useMovieStore } from "../../store";
 
 import { Flex } from "@soaf/react-components-layout";
 
@@ -12,16 +13,14 @@ interface Props {
 }
 
 export const SearchMovieList = ({ onNextStep }: Props) => {
-  //   const { setMusic } = useMusicStore();
+  const { setMovie } = useMovieStore();
   const [searchQuery, setSearchQuery] = useState("");
   const { movies } = useGetMovies({ value: searchQuery });
 
-  console.log(movies);
-
-  //   const handleSelectMusic = (music: Music) => {
-  //     setMusic(music);
-  //     onNextStep();
-  //   };
+  const handleSelectMovie = (movie: Movie) => {
+    setMovie(movie);
+    onNextStep();
+  };
 
   if (!movies) return null;
 
@@ -36,7 +35,7 @@ export const SearchMovieList = ({ onNextStep }: Props) => {
           release_date={movie.release_date}
           overview={movie.overview}
           poster_path={movie.poster_path}
-          onClick={() => onNextStep()}
+          onClick={() => handleSelectMovie(movie)}
         />
       ))}
     </Flex>
