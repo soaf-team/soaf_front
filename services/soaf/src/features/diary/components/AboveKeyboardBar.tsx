@@ -21,19 +21,16 @@ export const AboveKeyboardBar = ({
   togglePrivate,
 }: AboveKeyboardBarProps) => {
   const keboardHeight = useKeboardHeight();
-  const bottomPosition = keboardHeight
-    ? `bottom-${keboardHeight}px`
-    : "bottom-0";
   const contentLengthColor =
     diary.content.length > 2000 ? "text-red" : "text-gray300";
 
   return (
     <Flex
       justify="space-between"
-      className={cn([
-        "fixed left-0 right-0 w-full h-[39px] border-t border-solid border-gray100 px-[18px]",
-        bottomPosition,
-      ])}
+      className="fixed left-0 right-0 w-full h-[39px] border-t border-solid border-gray100 px-[18px]"
+      style={{
+        bottom: keboardHeight,
+      }}
     >
       <Flex align="center" gap={16}>
         <img src={photo} alt="photo" onClick={() => {}} />
