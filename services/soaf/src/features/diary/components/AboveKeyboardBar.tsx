@@ -20,7 +20,7 @@ export const AboveKeyboardBar = ({
   handleSaveDiary,
   togglePrivate,
 }: AboveKeyboardBarProps) => {
-  const keboardHeight = useKeboardHeight();
+  const { keyboardHeight, a } = useKeboardHeight();
   const contentLengthColor =
     diary.content.length > 2000 ? "text-red" : "text-gray300";
 
@@ -29,7 +29,7 @@ export const AboveKeyboardBar = ({
       justify="space-between"
       className="fixed left-0 right-0 w-full h-[39px] border-t border-solid border-gray100 px-[18px]"
       style={{
-        bottom: keboardHeight,
+        bottom: keyboardHeight,
       }}
     >
       <Flex align="center" gap={16}>
