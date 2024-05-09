@@ -1,3 +1,10 @@
+import { useEffect } from "react";
+import { ActivityComponentType } from "@stackflow/react";
+
+import { useFlow } from "../stackflow";
+import { Emotion } from "@/shared/types";
+import { useDiaryStore } from "@/features/diary/store";
+
 import {
   BackButton,
   Button,
@@ -5,15 +12,12 @@ import {
   PageLayout,
   XButton,
 } from "@/shared/components";
-import { ActivityComponentType } from "@stackflow/react";
-import { useFlow } from "../stackflow";
-import { useDiaryStore } from "@/features/diary/store";
 import { Flex } from "@soaf/react-components-layout";
-import { Emotion } from "@/shared/types";
 
 const NewDiaryStep2: ActivityComponentType = () => {
-  const { diary, resetAllDiaryState, handleEmotions } = useDiaryStore();
-  const { push, pop } = useFlow();
+  const { diary, resetAllDiaryState, onChangeEmotions } = useDiaryStore();
+  const { push, pop, replace } = useFlow();
+  const isUnusualApproach = diary.rating === 0 || !diary.date;
 
   const handleXButtonClick = () => {
     pop(2);
@@ -25,16 +29,26 @@ const NewDiaryStep2: ActivityComponentType = () => {
       ? diary.emotions.filter((e) => e !== emotion)
       : [...diary.emotions, emotion];
 
-    handleEmotions(newEmotions);
+    onChangeEmotions(newEmotions);
   };
 
   const handleActionButtonClick = () => {
     if (diary.emotions.length === 0) {
       return;
     }
-
     push("NewDiaryPage", {});
   };
+
+  useEffect(() => {
+    if (isUnusualApproach) {
+      replace("DiaryCalendar", {});
+      resetAllDiaryState();
+    }
+  }, []);
+
+  if (isUnusualApproach) {
+    return null;
+  }
 
   return (
     <PageLayout
@@ -51,7 +65,7 @@ const NewDiaryStep2: ActivityComponentType = () => {
           가장 먼저 선택한 감정이 일기 캘린더에 표시돼요.
         </p>
       </Flex>
-      <div className="grid grid-cols-2 gap-x-[12px] gap-y-[10px] w-full">
+      <div className="grid grid-cols-2 gap-x-[12px] gap-y-[10px] w-full mb-[150px]">
         {EMOTIONS.map((emotion: Emotion) => {
           const isSelected = diary.emotions.includes(emotion);
 

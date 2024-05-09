@@ -24,7 +24,7 @@ export const EmotionButton = ({
     <button
       {...props}
       className={cn([
-        "relative flex items-center rounded-[16px] h-[52px] p-[15px] overflow-hidden min-w-[163px] transition-all duration-200 ease-in-out",
+        "relative flex items-center rounded-[16px] h-[52px] p-[15px] overflow-hidden min-w-[163px] transition-all duration-100 ease-in-out",
         colorStyle,
       ])}
       onClick={() => onClick?.(emotion)}

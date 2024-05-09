@@ -1,23 +1,29 @@
 import { Emotion } from "@/shared/types";
 import { create } from "zustand";
 
-type DiaryFormType = {
+export type DiaryFormType = {
   id?: string;
   rating: number | null;
   title: string;
   content: string;
   photos: string[];
   emotions: Emotion[];
-  date: string;
+  reactions: any[];
+  date: Date | string;
+  private: boolean;
 };
 
 type DiaryRatingStore = {
   diary: DiaryFormType;
-  handleRating: (rating: number) => void;
-  handleEmotions: (emotions: Emotion[]) => void;
-  handleTitle: (title: string) => void;
-  handleContent: (content: string) => void;
+  onChangeDate: (date: Date | string) => void;
+  onChangeRating: (rating: number) => void;
+  onChangeEmotions: (emotions: Emotion[]) => void;
+  onChangeEmotionOrder: (emotions: Emotion[]) => void;
+  onChangePhotos: (photos: string[]) => void;
+  onChangeTitle: (title: string) => void;
+  onChangeContent: (content: string) => void;
   resetAllDiaryState: () => void;
+  togglePrivate: () => void;
 };
 
 export const useDiaryStore = create<DiaryRatingStore>((set) => {
@@ -27,40 +33,74 @@ export const useDiaryStore = create<DiaryRatingStore>((set) => {
     content: "",
     photos: [],
     emotions: [],
+    reactions: [],
     date: "",
+    private: false,
+  };
+
+  const reorderEmotions = (emotions: Emotion[]) => {
+    const [first, ...rest] = emotions;
+    return [...rest, first];
   };
 
   return {
     diary: defaultDiary,
-    handleRating: (rating) =>
+    onChangeDate: (date) =>
+      set((state) => ({
+        diary: {
+          ...state.diary,
+          date,
+        },
+      })),
+    onChangeRating: (rating) =>
       set((state) => ({
         diary: {
           ...state.diary,
           rating,
         },
       })),
-    handleEmotions: (emotions: Emotion[]) =>
+    onChangeEmotions: (emotions: Emotion[]) =>
       set((state) => ({
         diary: {
           ...state.diary,
           emotions,
         },
       })),
-    handleTitle: (title: string) =>
+    onChangeEmotionOrder: (emotions: Emotion[]) =>
+      set((state) => ({
+        diary: {
+          ...state.diary,
+          emotions: reorderEmotions(emotions),
+        },
+      })),
+    onChangePhotos: (photos: string[]) =>
+      set((state) => ({
+        diary: {
+          ...state.diary,
+          photos,
+        },
+      })),
+    onChangeTitle: (title: string) =>
       set((state) => ({
         diary: {
           ...state.diary,
           title,
         },
       })),
-    handleContent: (content: string) =>
+    onChangeContent: (content: string) =>
       set((state) => ({
         diary: {
           ...state.diary,
           content,
         },
       })),
-
+    togglePrivate: () =>
+      set((state) => ({
+        diary: {
+          ...state.diary,
+          private: !state.diary.private,
+        },
+      })),
     resetAllDiaryState: () =>
       set({
         diary: defaultDiary,
