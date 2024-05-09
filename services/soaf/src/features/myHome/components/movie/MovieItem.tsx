@@ -1,4 +1,5 @@
 import { Flex } from "@soaf/react-components-layout";
+import { StarRating } from "@/shared/components";
 import { Movie } from "@/shared/types";
 
 import { cn } from "@/shared/utils";
@@ -6,6 +7,9 @@ import { cn } from "@/shared/utils";
 interface Props extends Movie {
   type?: "search" | "set" | "detail";
   onClick?: () => void;
+  director?: string;
+  genre?: string;
+  rating?: number;
 }
 
 export const MovieItem = ({
@@ -15,6 +19,9 @@ export const MovieItem = ({
   release_date,
   overview,
   poster_path,
+  director,
+  genre,
+  // rating,
 }: Props) => {
   const posterClass = cn({
     "min-w-[92px] w-[92px] h-[134px] rounded-[8px]": type === "search",
@@ -51,12 +58,23 @@ export const MovieItem = ({
         gap={8}
         className="py-[8px]"
       >
-        <Flex direction="column" gap={4}>
+        <Flex direction="column" gap={type === "search" ? 4 : 8}>
           <p className={cn("line-clamp-1", titleClass)}>{title}</p>
-          <p className={cn("label4 text-gray400")}>{release_date}</p>
+          <Flex direction="column" gap={4}>
+            {director && <p className="label3 text-gray400">{director}</p>}
+            <p className="label4 text-gray400">{release_date}</p>
+          </Flex>
         </Flex>
-        {overview && <p className="line-clamp-3 body4">{overview}</p>}
+        {type === "search" && <p className="line-clamp-3 body4">{overview}</p>}
+        {type === "detail" && <StarRating size={24} onChange={() => {}} />}
       </Flex>
+
+      {type === "detail" && (
+        <Flex direction="column" justify="space-between" className="py-[8px]">
+          <p className="label4 text-gray400">장르</p>
+          <p className="label4 text-gray400">{genre}</p>
+        </Flex>
+      )}
     </Flex>
   );
 };
