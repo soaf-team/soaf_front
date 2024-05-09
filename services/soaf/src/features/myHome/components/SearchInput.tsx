@@ -45,10 +45,12 @@ export const SearchInput = ({ type, setSearchQuery }: Props) => {
       />
       {isSearch === false ? (
         <DrawerClose>
-          <span className="label2">취소</span>
+          <button type="button" className="label2">
+            취소
+          </button>
         </DrawerClose>
       ) : (
-        <button className="label2" onClick={() => {}}>
+        <button type="button" className="label2">
           검색
         </button>
       )}
