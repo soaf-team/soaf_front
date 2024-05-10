@@ -9,11 +9,17 @@ import { MovieItem } from "./MovieItem";
 
 interface Props {
   onNextStep: () => void;
+  setMovieId: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export const SearchMovieList = ({ onNextStep }: Props) => {
+export const SearchMovieList = ({ onNextStep, setMovieId }: Props) => {
   const [searchQuery, setSearchQuery] = useState("");
   const { movies } = useGetMovies({ value: searchQuery });
+
+  const handleItemClick = (movie: Movie) => {
+    setMovieId(movie.id.toString());
+    onNextStep();
+  };
 
   if (!movies) return null;
 
@@ -24,11 +30,8 @@ export const SearchMovieList = ({ onNextStep }: Props) => {
       {movies.map((movie: Movie) => (
         <MovieItem
           key={movie.id}
-          title={movie.title}
-          release_date={movie.release_date}
-          overview={movie.overview}
-          poster_path={movie.poster_path}
-          onClick={onNextStep}
+          movie={movie}
+          onClick={() => handleItemClick(movie)}
         />
       ))}
     </Flex>
