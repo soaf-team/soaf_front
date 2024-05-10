@@ -35,7 +35,11 @@ export const SetMusicInfo = ({ onPrevStep, music }: Props) => {
       <Flex direction="column" gap={32} className="pt-[58px]">
         <MusicItem type="detail" music={musicInfo} />
 
-        <ReviewSection type="music" />
+        <ReviewSection
+          title="감상평"
+          placeholder="음악 감상 후 어떤 생각이 드셨나요?"
+          className="h-[20px]"
+        />
       </Flex>
     </>
   );
