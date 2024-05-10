@@ -4,7 +4,6 @@ import { useState } from "react";
 
 import { DrawerClose, Input } from "@/shared/components";
 import { Flex } from "@soaf/react-components-layout";
-import { useDebounce } from "@/shared/hooks";
 
 interface Props {
   type: "music" | "movie" | "book" | "youtube";
@@ -22,14 +21,13 @@ export const SearchInput = ({ type, setSearchQuery }: Props) => {
   const [isSearch, setIsSearch] = useState(false);
   const [inputValue, setInputValue] = useState("");
 
-  const { debounced: debouncedInputChange } = useDebounce((value: string) => {
-    setSearchQuery(value);
-  });
-
   const handleInputChange = (value: string) => {
     setInputValue(value);
-    debouncedInputChange(value);
     setIsSearch(value.length > 0);
+  };
+
+  const handleSearchSubmit = () => {
+    setSearchQuery(inputValue);
   };
 
   return (
@@ -50,7 +48,7 @@ export const SearchInput = ({ type, setSearchQuery }: Props) => {
           </button>
         </DrawerClose>
       ) : (
-        <button type="button" className="label2">
+        <button type="button" className="label2" onClick={handleSearchSubmit}>
           검색
         </button>
       )}
