@@ -3,6 +3,7 @@ export * from "./buttons";
 export * from "./select";
 export * from "./musics";
 export * from "./movie";
+export * from "./books";
 export * from "./MyHomeDrawer";
 export * from "./SearchInput";
 export * from "./ReviewSection";
