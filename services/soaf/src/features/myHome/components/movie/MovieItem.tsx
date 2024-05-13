@@ -53,7 +53,7 @@ export const MovieItem = ({ type = "search", onClick, movie }: Props) => {
     <Flex
       direction="column"
       gap={16}
-      className="border-b border-solid border-border"
+      className="border-b border-solid border-border py-[8px]"
     >
       <Flex direction="row" gap={16} onClick={onClick}>
         <div className={posterClass}>
@@ -70,7 +70,7 @@ export const MovieItem = ({ type = "search", onClick, movie }: Props) => {
           gap={8}
           className="py-[8px]"
         >
-          <Flex direction="column" gap={type === "search" ? 4 : 8}>
+          <Flex direction="column" gap={8}>
             <p className={cn("line-clamp-1", titleClass)}>{movie.title}</p>
             <Flex direction="column" gap={4}>
               {isMovieDetail(movie) && (
@@ -80,7 +80,7 @@ export const MovieItem = ({ type = "search", onClick, movie }: Props) => {
             </Flex>
           </Flex>
           {type === "search" && (
-            <p className="line-clamp-3 body4">{movie.overview}</p>
+            <p className="line-clamp-4 body4">{movie.overview}</p>
           )}
           {type === "detail" && <StarRating size={24} onChange={() => {}} />}
         </Flex>
