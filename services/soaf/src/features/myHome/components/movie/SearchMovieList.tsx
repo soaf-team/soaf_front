@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { useGetMovies } from "../../queries";
 
-import { Flex } from "@soaf/react-components-layout";
-
 import { Movie } from "@/shared/types";
 import { SearchInput } from "../SearchInput";
 import { MovieItem } from "./MovieItem";
@@ -24,7 +22,8 @@ export const SearchMovieList = ({ onNextStep, setMovieId }: Props) => {
   if (!movies) return null;
 
   return (
-    <Flex direction="column">
+    // <Flex direction="column">
+    <>
       <SearchInput type="movie" setSearchQuery={setSearchQuery} />
 
       {movies.map((movie: Movie) => (
@@ -34,6 +33,7 @@ export const SearchMovieList = ({ onNextStep, setMovieId }: Props) => {
           onClick={() => handleItemClick(movie)}
         />
       ))}
-    </Flex>
+    </>
+    // </Flex>
   );
 };
