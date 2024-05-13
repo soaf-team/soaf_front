@@ -12,7 +12,9 @@ interface Props {
 }
 
 export const SetBookInfo = ({ onPrevStep, bookId }: Props) => {
-  const { bookInfo } = useBookDetail({ id: bookId.split(" ")[0] });
+  const { bookInfo } = useBookDetail({
+    id: bookId.split(" ")[0] || bookId.split(" ")[1],
+  });
 
   if (!bookInfo) return null;
 
