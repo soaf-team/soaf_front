@@ -22,7 +22,6 @@ export const SearchMovieList = ({ onNextStep, setMovieId }: Props) => {
   if (!movies) return null;
 
   return (
-    // <Flex direction="column">
     <>
       <SearchInput type="movie" setSearchQuery={setSearchQuery} />
 
@@ -34,6 +33,5 @@ export const SearchMovieList = ({ onNextStep, setMovieId }: Props) => {
         />
       ))}
     </>
-    // </Flex>
   );
 };
