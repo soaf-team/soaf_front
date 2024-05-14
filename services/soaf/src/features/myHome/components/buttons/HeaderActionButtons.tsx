@@ -11,7 +11,7 @@ interface Props {
 
 export const HeaderActionButtons = ({ onBrushClick }: Props) => {
   return (
-    <Flex gap={8}>
+    <Flex gap={14}>
       <button className="w-[24px] h-[24px]" onClick={onBrushClick}>
         <img src={brush} alt="brush-icon" className="full_img_cover" />
       </button>

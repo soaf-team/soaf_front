@@ -2,17 +2,21 @@ import { useState } from "react";
 import { useFunnel } from "@/shared/hooks";
 
 import { GenericForm } from "@/shared/components";
+import {
+  SearchYoutubeList,
+  SetYoutubeInfo,
+  YoutubeItemProps,
+} from "../youtube";
 
-import { SearchMusicList, SetMusicInfo } from "@/features/myHome/components";
+const STEP = ["유튜브 검색", "유튜브 등록"] as const;
 
-const STEP = ["음악 검색", "음악 등록"] as const;
-
-export const RegisterMusicForm = () => {
-  const [music, setMusic] = useState<Record<string, string>>({
-    name: "",
-    artist: "",
+export const RegisterYoutubeForm = () => {
+  const [youtubeInfo, setYoutubeInfo] = useState<YoutubeItemProps>({
+    title: "",
+    channelTitle: "",
+    publishedAt: "",
+    thumbnail: "",
   });
-
   const { Funnel, Step, setStep } = useFunnel(STEP[0]);
 
   const handleNextStep = () => {
@@ -31,10 +35,16 @@ export const RegisterMusicForm = () => {
     <GenericForm formOptions={{ mode: "onSubmit" }} onSubmit={handleSubmit}>
       <Funnel>
         <Step name={STEP[0]}>
-          <SearchMusicList onNextStep={handleNextStep} setMusic={setMusic} />
+          <SearchYoutubeList
+            onNextStep={handleNextStep}
+            setYoutubeInfo={setYoutubeInfo}
+          />
         </Step>
         <Step name={STEP[1]}>
-          <SetMusicInfo onPrevStep={handlePrevStep} music={music} />
+          <SetYoutubeInfo
+            onPrevStep={handlePrevStep}
+            youtubeInfo={youtubeInfo}
+          />
         </Step>
       </Funnel>
     </GenericForm>

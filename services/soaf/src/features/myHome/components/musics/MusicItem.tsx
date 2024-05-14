@@ -1,21 +1,17 @@
+import defaultImg from "@assets/icons/my-home/music-default.svg";
+
 import { Flex } from "@soaf/react-components-layout";
-import { Music } from "@/shared/types";
+import { Album, IAlbumDetail } from "@/shared/types";
 
 import { cn } from "@/shared/utils";
 
-interface Props extends Music {
+interface Props {
+  music: Album | IAlbumDetail;
   type?: "search" | "list" | "detail";
   onClick?: () => void;
 }
 
-export const MusicItem = ({
-  type = "search",
-  onClick,
-  name,
-  artist,
-  image,
-  review,
-}: Props) => {
+export const MusicItem = ({ type = "search", onClick, music }: Props) => {
   const coverClass = cn({
     "min-w-[56px] w-[56px] h-[56px] rounded-[4px]": type === "search",
     "w-[88px] h-[88px] rounded-[8px]": type === "list",
@@ -48,21 +44,22 @@ export const MusicItem = ({
       onClick={onClick}
     >
       <div className={coverClass}>
-        <img src={image} alt="cover" className={coverClass} />
+        <img
+          src={
+            music.image[3]["#text"] === ""
+              ? defaultImg
+              : music.image[3]["#text"]
+          }
+          alt="cover"
+          className={coverClass}
+        />
       </div>
 
-      <Flex
-        direction="column"
-        justify={cn({
-          "space-between": type === "list",
-        })}
-      >
-        <Flex direction="column" align="left" gap={4} className="py-[8px]">
-          <p className={cn("line-clamp-1", titleClass)}>{name}</p>
-          <p className={cn("line-clamp-1", artistClass)}>{artist}</p>
-        </Flex>
-
-        {review && <p className="body4">{review}</p>}
+      <Flex direction="column" align="left" gap={4} className="py-[8px]">
+        <p className={cn("line-clamp-1", titleClass)}>
+          {music.name === "(null)" ? "제목 불명" : music.name}
+        </p>
+        <p className={cn("line-clamp-1", artistClass)}>{music.artist}</p>
       </Flex>
     </Flex>
   );
