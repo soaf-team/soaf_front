@@ -5,3 +5,4 @@ export * from "./useGetMovies";
 export * from "./useMovieDetail";
 export * from "./useGetBooks";
 export * from "./useBookDetail";
+export * from "./useGetYoutube";
