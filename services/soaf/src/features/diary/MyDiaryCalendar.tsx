@@ -68,7 +68,7 @@ export const MyDiaryCalendar = () => {
               : "text-gray200";
             const dayCircleClass = isFuture
               ? "cursor-default bg-[#F0F1F466]"
-              : "cursor-pointer transition-all duration-200 ease-in-out hover:shadow-hover bg-gray50";
+              : "cursor-pointer transition-all duration-200 ease-in-out bg-gray50";
 
             return (
               <Flex
