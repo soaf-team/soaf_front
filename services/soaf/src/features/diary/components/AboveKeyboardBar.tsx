@@ -29,7 +29,7 @@ export const AboveKeyboardBar = ({
       justify="space-between"
       className="fixed left-0 right-0 w-full h-[39px] border-t border-solid border-gray100 px-[18px]"
       style={{
-        bottom: keyboardHeight,
+        bottom: keyboardHeight || 34,
       }}
     >
       <Flex align="center" gap={16}>
