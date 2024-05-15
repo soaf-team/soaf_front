@@ -79,7 +79,7 @@ export const DiaryForm = (props: DiaryFormProps) => {
         placeholder="오늘 하루는 어떘나요?"
         value={diary.content}
         onChange={(e) => handleContentChange(e.target.value)}
-        className="body2 focus:outline-none"
+        className="body2 resize-none focus:outline-none "
       />
     </Flex>
   );
@@ -112,7 +112,7 @@ const TitleInput = forwardRef(
         {...rest}
         ref={ref}
         value={diary.title}
-        className="focus:outline-none w-full caret-primary"
+        className="focus:outline-none w-full caret-primary resize-none"
         onChange={(e) => {
           adjustHeight();
           handleTitleChange(e.target.value);
