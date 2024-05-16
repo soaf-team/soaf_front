@@ -113,13 +113,13 @@ export const InteriorItems = ({
 };
 
 const CLASS_NAMES: Record<InteriorName, string> = {
-  books: "absolute w-1/4 top-16",
-  movie: "absolute w-1/4 top-1/3",
-  music: "absolute w-1/5 top-[18%] left-[10%]",
-  picture: "absolute w-1/5 left-[45%] top-[5%]",
+  books: "absolute w-1/3 top-[2%]",
+  movie: "absolute w-1/3 top-[30%]",
+  music: "absolute w-1/3 top-[15%] left-[5%]",
+  picture: "absolute w-1/5 left-[45%] top-[12%]",
   plant: "absolute top-[35%] right-1/4 w-1/6",
   sofa: "absolute right-[5%] top-1/3",
   windowNight: "absolute w-1/4 top-14 right-4",
   windowDay: "absolute w-1/4 top-14 right-4",
-  youtube: "absolute w-[15%] left-1/2 top-1/4",
+  youtube: "absolute w-1/4 left-[40%] top-[25%]",
 } as const;
