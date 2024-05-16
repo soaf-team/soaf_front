@@ -1,12 +1,14 @@
-import { DiaryFormType } from "../store";
+import { useRef } from "react";
+
+import { DiaryFormType, useDiaryStore } from "../store";
 import { cn } from "@/shared/utils";
+import { useKeboardHeight } from "@/shared/hooks";
 
 import { Flex } from "@soaf/react-components-layout";
 
 import photo from "@assets/icons/shared/photo.svg";
 import lock from "@assets/icons/shared/lock.svg";
 import unLock from "@assets/icons/shared/unLock.svg";
-import { useKeboardHeight } from "@/shared/hooks";
 
 type AboveKeyboardBarProps = {
   diary: DiaryFormType;
@@ -20,9 +22,24 @@ export const AboveKeyboardBar = ({
   handleSaveDiary,
   togglePrivate,
 }: AboveKeyboardBarProps) => {
+  const photoInputRef = useRef<HTMLInputElement>(null);
   const { keyboardHeight } = useKeboardHeight();
+  const { onChangePhotos } = useDiaryStore();
   const contentLengthColor =
-    diary.content.length > 2000 ? "text-red" : "text-gray300";
+    diary.content.length < 2000 ? "text-gray300" : "text-red";
+
+  const handleAddPhotoButtonClick = () => {
+    photoInputRef.current?.click();
+  };
+
+  const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files && event.target.files[0]) {
+      let img = event.target.files[0];
+      const newImage = URL.createObjectURL(img);
+
+      onChangePhotos([...diary.photos, newImage]);
+    }
+  };
 
   return (
     <Flex
@@ -33,7 +50,16 @@ export const AboveKeyboardBar = ({
       }}
     >
       <Flex align="center" gap={16}>
-        <img src={photo} alt="photo" onClick={() => {}} />
+        <div>
+          <input
+            ref={photoInputRef}
+            type="file"
+            accept="image/*"
+            onChange={handleImageChange}
+            hidden
+          />
+          <img src={photo} alt="photo" onClick={handleAddPhotoButtonClick} />
+        </div>
         <img
           src={diary.private ? lock : unLock}
           alt="emoji"
