@@ -1,8 +1,12 @@
-import { EmotionSticker } from "@/shared/components";
-import { Emotion } from "@/shared/types";
-import { Flex } from "@soaf/react-components-layout";
-import { DiaryFormType } from "../store";
 import { ForwardedRef, forwardRef, useEffect, useRef } from "react";
+import { Flex } from "@soaf/react-components-layout";
+
+import { Emotion } from "@/shared/types";
+import { DiaryFormType } from "../store";
+
+import { EmotionSticker } from "@/shared/components";
+
+import deletePhoto from "@assets/icons/shared/deletePhoto.svg";
 
 type DiaryFormProps = {
   diary: DiaryFormType;
@@ -18,6 +22,7 @@ export const DiaryForm = (props: DiaryFormProps) => {
     handleReorderEmotions,
     handleTitleChange,
     handleContentChange,
+    handlePhotosChange,
   } = props;
   const titleRef = useRef<HTMLTextAreaElement>(null);
   const contentRef = useRef<HTMLTextAreaElement>(null);
@@ -29,6 +34,11 @@ export const DiaryForm = (props: DiaryFormProps) => {
   const week = new Date(diary.date).toLocaleDateString("ko-KR", {
     weekday: "long",
   });
+
+  const handleDeletePhoto = (index: number) => {
+    const newPhotos = diary.photos.filter((_, i) => i !== index);
+    handlePhotosChange(newPhotos);
+  };
 
   useEffect(() => {
     contentRef.current?.focus();
@@ -65,12 +75,22 @@ export const DiaryForm = (props: DiaryFormProps) => {
       {diary.photos.length > 0 && (
         <Flex gap={8} className="mb-[16px]">
           {diary.photos.map((photo, index) => (
-            <img
+            <div
               key={index}
-              src={photo}
-              alt={photo}
-              className="w-[92px] h-[92px] rounded-[16px]"
-            />
+              className="w-[92px] h-[92px] rounded-[16px] overflow-hidden relative"
+            >
+              <div
+                onClick={() => handleDeletePhoto(index)}
+                className="absolute top-[8px] right-[8px] rounded-full w-[20px] h-[20px]"
+              >
+                <img src={deletePhoto} alt="delete_photo" />
+              </div>
+              <img
+                src={photo}
+                alt={photo}
+                className="object-cover w-full h-full"
+              />
+            </div>
           ))}
         </Flex>
       )}
@@ -79,7 +99,7 @@ export const DiaryForm = (props: DiaryFormProps) => {
         placeholder="오늘 하루는 어떘나요?"
         value={diary.content}
         onChange={(e) => handleContentChange(e.target.value)}
-        className="body2 focus:outline-none"
+        className="body2 resize-none focus:outline-none "
       />
     </Flex>
   );
@@ -112,7 +132,7 @@ const TitleInput = forwardRef(
         {...rest}
         ref={ref}
         value={diary.title}
-        className="focus:outline-none w-full caret-primary"
+        className="focus:outline-none w-full caret-primary resize-none"
         onChange={(e) => {
           adjustHeight();
           handleTitleChange(e.target.value);
