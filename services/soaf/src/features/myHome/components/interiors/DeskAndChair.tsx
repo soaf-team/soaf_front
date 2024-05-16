@@ -27,7 +27,7 @@ export const DeskAndChair = (props: Props) => {
       <img
         src={diary}
         alt="diary"
-        className="absolute_center ml-[10px] mt-[3px]"
+        className="absolute_center w-[36%] ml-[3%] mt-[3px]"
         onClick={() => push("MyDiary", {})}
       />
     </div>
