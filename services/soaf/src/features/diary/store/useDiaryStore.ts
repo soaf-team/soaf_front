@@ -35,7 +35,7 @@ export const useDiaryStore = create<DiaryRatingStore>((set) => {
     emotions: [],
     reactions: [],
     date: "",
-    private: false,
+    private: true,
   };
 
   const reorderEmotions = (emotions: Emotion[]) => {
