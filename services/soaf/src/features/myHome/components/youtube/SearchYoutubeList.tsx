@@ -13,7 +13,9 @@ interface Props {
 
 export const SearchYoutubeList = ({ onNextStep, setYoutubeInfo }: Props) => {
   const [searchQuery, setSearchQuery] = useState("");
-  const { youtube } = useGetYoutube({ videoId: searchQuery.split("v=")[1] });
+  const { youtube } = useGetYoutube({
+    videoId: searchQuery !== "" ? searchQuery.split("v=")[1].split("&")[0] : "",
+  });
 
   const handleItemClick = (video: Youtube["items"][0]) => {
     setYoutubeInfo({
