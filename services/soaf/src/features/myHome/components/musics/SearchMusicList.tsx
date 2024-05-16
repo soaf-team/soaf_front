@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useGetMusics } from "@/features/myHome/queries";
+import { useObserver } from "@/shared/hooks";
 
 import { Flex } from "@soaf/react-components-layout";
 
@@ -14,7 +15,10 @@ interface Props {
 
 export const SearchMusicList = ({ onNextStep, setMusic }: Props) => {
   const [searchQuery, setSearchQuery] = useState("");
-  const { musics } = useGetMusics({ value: searchQuery });
+  const { musics, handleFetchNextPage, isFetching } = useGetMusics({
+    value: searchQuery,
+  });
+  const pageRef = useObserver(() => handleFetchNextPage());
 
   const handleItemClick = (music: Album) => {
     setMusic({
@@ -24,13 +28,11 @@ export const SearchMusicList = ({ onNextStep, setMusic }: Props) => {
     onNextStep();
   };
 
-  if (!musics) return null;
-
   return (
     <Flex direction="column">
       <SearchInput type="music" setSearchQuery={setSearchQuery} />
 
-      {musics.map((music: Album) => (
+      {musics?.map((music: Album) => (
         <MusicItem
           type="search"
           key={music.url}
@@ -38,6 +40,11 @@ export const SearchMusicList = ({ onNextStep, setMusic }: Props) => {
           onClick={() => handleItemClick(music)}
         />
       ))}
+      {isFetching ? (
+        <div>로딩 중...</div>
+      ) : (
+        <div ref={pageRef} className="h-px" />
+      )}
     </Flex>
   );
 };
