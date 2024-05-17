@@ -1,3 +1,5 @@
+import defaultPoster from "@/assets/icons/my-home/movie-default.svg";
+
 import { useMemo } from "react";
 
 import { Flex } from "@soaf/react-components-layout";
@@ -58,7 +60,11 @@ export const MovieItem = ({ type = "search", onClick, movie }: Props) => {
       <Flex direction="row" gap={16} onClick={onClick}>
         <div className={posterClass}>
           <img
-            src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
+            src={
+              movie.poster_path !== null
+                ? `https://image.tmdb.org/t/p/w342${movie.poster_path}`
+                : defaultPoster
+            }
             alt="cover"
             className={posterClass}
           />
