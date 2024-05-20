@@ -16,6 +16,7 @@
     "dev:all": "yarn dev:storybook & yarn dev:packages",
     "dev:soaf": "nx dev --project=@soaf/soaf_web",
     "dev:packages": "nx run-many --target=dev --projects='@soaf/react-hooks-*,@soaf/react-components-*'",
+    "start:soaf": "cd services/soaf && yarn preview",
     "lint": "nx run-many --target=lint --all",
     "format": "nx format:write",
     "format:check": "nx format:check"
