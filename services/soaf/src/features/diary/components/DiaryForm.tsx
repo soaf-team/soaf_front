@@ -8,6 +8,8 @@ import { EmotionSticker } from "@/shared/components";
 
 import deletePhoto from "@assets/icons/shared/deletePhoto.svg";
 
+const CONTENT_PLACEHOLDER = "오늘 하루는 어땠나요?";
+
 type DiaryFormProps = {
   diary: DiaryFormType;
   handleReorderEmotions: (emotions: Emotion[]) => void;
@@ -76,7 +78,7 @@ export const DiaryForm = (props: DiaryFormProps) => {
         </Flex>
       )}
       <textarea
-        placeholder="오늘 하루는 어떘나요?"
+        placeholder={CONTENT_PLACEHOLDER}
         value={diary.content}
         onChange={(e) => handleContentChange(e.target.value)}
         className="body2 resize-none focus:outline-none "
