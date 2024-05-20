@@ -1,6 +1,6 @@
 export type ToggleProps = {
   isSelected?: boolean;
-}
+};
 
 export interface UseToggleReturn {
   readonly isSelected: boolean;

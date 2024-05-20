@@ -15,7 +15,7 @@ const MyMusic = () => {
         direction="column"
         gap={8}
         align="center"
-        justify='center'
+        justify="center"
         className="h-full body2m text-gray200"
       >
         <p>좋아하는 음악을 추가해</p>

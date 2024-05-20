@@ -2,12 +2,19 @@ import * as React from "react";
 import { ButtonProps } from "./types";
 import { clsx } from "clsx";
 import { assignInlineVars } from "@vanilla-extract/dynamic";
-import { activeColorVariant, buttonStyle, enableColorVariant, hoverColorVariant, spanStyle, spinnerStyle } from "./style.css";
+import {
+  activeColorVariant,
+  buttonStyle,
+  enableColorVariant,
+  hoverColorVariant,
+  spanStyle,
+  spinnerStyle,
+} from "./style.css";
 import { vars } from "@soaf/themes";
 import { useButton } from "@soaf/react-hooks-button";
 
 const Button = (props: ButtonProps, ref: React.Ref<HTMLButtonElement>) => {
-  const { buttonProps, } = useButton(props);
+  const { buttonProps } = useButton(props);
   const {
     variant = "solid",
     size = "md",
@@ -16,11 +23,14 @@ const Button = (props: ButtonProps, ref: React.Ref<HTMLButtonElement>) => {
     rightIcon,
     isLoading,
     children,
-    style
+    style,
   } = props;
 
   const endableColor = vars.colors.$scale[color][500];
-  const hoverColor = variant === "solid" ? vars.colors.$scale[color][600] : vars.colors.$scale[color][50];
+  const hoverColor =
+    variant === "solid"
+      ? vars.colors.$scale[color][600]
+      : vars.colors.$scale[color][50];
   const activeColor =
     variant === "solid"
       ? vars.colors.$scale[color][700]
@@ -52,8 +62,7 @@ const Button = (props: ButtonProps, ref: React.Ref<HTMLButtonElement>) => {
       {rightIcon && <span className={spanStyle({ size })}>{rightIcon}</span>}
     </button>
   );
-}
+};
 
 const _Button = React.forwardRef(Button);
 export { _Button as Button };
-

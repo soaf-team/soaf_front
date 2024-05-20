@@ -6,10 +6,10 @@ import { TextProps } from "../typography";
 export type BoxProps = AsElementProps & StyleProps;
 
 export type DividerProps = {
-  orientation?: 'horizontal' | 'vertical';
+  orientation?: "horizontal" | "vertical";
   color?: keyof typeof vars.colors.$scale;
   size?: number;
-  variant?: 'solid' | 'dashed';
+  variant?: "solid" | "dashed";
 } & React.HTMLAttributes<HTMLHRElement>;
 
 export type FlexProps = {
@@ -46,7 +46,6 @@ export type GridItemProps = {
   rowStart?: CSSProperties["gridRowStart"];
   rowSpan?: CSSProperties["gridRow"];
 } & BoxProps;
-
 
 export type ListProps = {
   variant?: "ordered" | "unordered";

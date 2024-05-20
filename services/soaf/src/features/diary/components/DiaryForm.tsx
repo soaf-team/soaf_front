@@ -8,6 +8,8 @@ import { EmotionSticker } from "@/shared/components";
 
 import deletePhoto from "@assets/icons/shared/deletePhoto.svg";
 
+const CONTENT_PLACEHOLDER = "오늘 하루는 어땠나요?";
+
 type DiaryFormProps = {
   diary: DiaryFormType;
   handleReorderEmotions: (emotions: Emotion[]) => void;
@@ -25,7 +27,6 @@ export const DiaryForm = (props: DiaryFormProps) => {
     handlePhotosChange,
   } = props;
   const titleRef = useRef<HTMLTextAreaElement>(null);
-  const contentRef = useRef<HTMLTextAreaElement>(null);
 
   const monthDay = new Date(diary.date).toLocaleDateString("ko-KR", {
     month: "short",
@@ -39,24 +40,6 @@ export const DiaryForm = (props: DiaryFormProps) => {
     const newPhotos = diary.photos.filter((_, i) => i !== index);
     handlePhotosChange(newPhotos);
   };
-
-  useEffect(() => {
-    contentRef.current?.focus();
-
-    const handleClickOutside = (event: any) => {
-      if (titleRef.current && titleRef.current.contains(event.target)) {
-        titleRef.current.focus();
-      } else {
-        contentRef.current?.focus();
-      }
-    };
-
-    document.addEventListener("click", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  }, []);
 
   return (
     <Flex direction="column" className="text-left">
@@ -95,8 +78,7 @@ export const DiaryForm = (props: DiaryFormProps) => {
         </Flex>
       )}
       <textarea
-        ref={contentRef}
-        placeholder="오늘 하루는 어떘나요?"
+        placeholder={CONTENT_PLACEHOLDER}
         value={diary.content}
         onChange={(e) => handleContentChange(e.target.value)}
         className="body2 resize-none focus:outline-none "

@@ -14,7 +14,9 @@ export const useInput = (props: UseInputProps): UseInputResult => {
   } = props;
 
   const isCountrolled = value !== undefined && onChange !== undefined;
-  const [uncontrolledValue, setUncontrolledValue] = useState(defaultValue ?? '');
+  const [uncontrolledValue, setUncontrolledValue] = useState(
+    defaultValue ?? "",
+  );
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (isCountrolled) {

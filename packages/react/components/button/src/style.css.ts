@@ -1,6 +1,6 @@
-import { recipe } from '@vanilla-extract/recipes';
-import { createVar, keyframes } from '@vanilla-extract/css';
-import { classes, vars } from '@soaf/themes';
+import { recipe } from "@vanilla-extract/recipes";
+import { createVar, keyframes } from "@vanilla-extract/css";
+import { classes, vars } from "@soaf/themes";
 
 export const enableColorVariant = createVar(); // 500
 export const hoverColorVariant = createVar(); // 600 outline 50 ghost 50
@@ -29,11 +29,11 @@ export const buttonStyle = recipe({
         opacity: 0,
       },
     },
-    '&:focus-visible': {
+    "&:focus-visible": {
       outline: "none",
 
       boxShadow: vars.box.shadows.outline,
-    }
+    },
   },
   variants: {
     size: {

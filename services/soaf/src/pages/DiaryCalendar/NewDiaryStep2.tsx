@@ -8,21 +8,19 @@ import { useDiaryStore } from "@/features/diary/store";
 import {
   BackButton,
   Button,
+  Dialog,
+  DialogTrigger,
   EmotionButton,
   PageLayout,
   XButton,
 } from "@/shared/components";
 import { Flex } from "@soaf/react-components-layout";
+import { DiaryWriteCancelDialog } from "@/features/diary/components";
 
 const NewDiaryStep2: ActivityComponentType = () => {
   const { diary, resetAllDiaryState, onChangeEmotions } = useDiaryStore();
-  const { push, pop, replace } = useFlow();
+  const { push, replace } = useFlow();
   const isUnusualApproach = diary.rating === 0 || !diary.date;
-
-  const handleXButtonClick = () => {
-    pop(2);
-    resetAllDiaryState();
-  };
 
   const handleEmotionButtonClick = (emotion: Emotion) => {
     const newEmotions = diary.emotions.includes(emotion)
@@ -51,43 +49,54 @@ const NewDiaryStep2: ActivityComponentType = () => {
   }
 
   return (
-    <PageLayout
-      header={{
-        leftSlot: <BackButton />,
-        rightSlot: <XButton onClick={handleXButtonClick} />,
-      }}
-    >
-      <p className="body2 text-gray300 text-center mb-[6px]">STEP 2/2</p>
-      <Flex direction="column" align="center" className="text-center mb-[20px]">
-        <h2 className="head3">좀 더 구체적인</h2>
-        <h2 className="head3">감정을 선택해주세요.</h2>
-        <p className="py-[8px] text-gray800 body3">
-          가장 먼저 선택한 감정이 일기 캘린더에 표시돼요.
-        </p>
-      </Flex>
-      <div className="grid grid-cols-2 gap-x-[12px] gap-y-[10px] w-full mb-[150px]">
-        {EMOTIONS.map((emotion: Emotion) => {
-          const isSelected = diary.emotions.includes(emotion);
-
-          return (
-            <EmotionButton
-              key={emotion}
-              emotion={emotion}
-              selected={isSelected}
-              onClick={handleEmotionButtonClick}
-            />
-          );
-        })}
-      </div>
-      <div className="fixed_bottom_button">
-        <Button
-          onClick={handleActionButtonClick}
-          variant={diary.emotions.length > 0 ? "primary" : "primary_disabled"}
+    <Dialog>
+      <PageLayout
+        header={{
+          leftSlot: <BackButton />,
+          rightSlot: (
+            <DialogTrigger>
+              <XButton onClick={() => {}} />
+            </DialogTrigger>
+          ),
+        }}
+      >
+        <p className="body2 text-gray300 text-center mb-[6px]">STEP 2/2</p>
+        <Flex
+          direction="column"
+          align="center"
+          className="text-center mb-[20px]"
         >
-          감정선택 완료
-        </Button>
-      </div>
-    </PageLayout>
+          <h2 className="head3">좀 더 구체적인</h2>
+          <h2 className="head3">감정을 선택해주세요.</h2>
+          <p className="py-[8px] text-gray800 body3">
+            가장 먼저 선택한 감정이 일기 캘린더에 표시돼요.
+          </p>
+        </Flex>
+        <div className="grid grid-cols-2 gap-x-[12px] gap-y-[10px] w-full mb-[150px]">
+          {EMOTIONS.map((emotion: Emotion) => {
+            const isSelected = diary.emotions.includes(emotion);
+
+            return (
+              <EmotionButton
+                key={emotion}
+                emotion={emotion}
+                selected={isSelected}
+                onClick={handleEmotionButtonClick}
+              />
+            );
+          })}
+        </div>
+        <div className="fixed_bottom_button">
+          <Button
+            onClick={handleActionButtonClick}
+            variant={diary.emotions.length > 0 ? "primary" : "primary_disabled"}
+          >
+            감정선택 완료
+          </Button>
+        </div>
+      </PageLayout>
+      <DiaryWriteCancelDialog />
+    </Dialog>
   );
 };
 

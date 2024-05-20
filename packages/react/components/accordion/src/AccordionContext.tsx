@@ -3,7 +3,7 @@ import { createContext, useContext } from "react";
 export type AccordionContextType = {
   activeItems: string[];
   setActiveItem: (item: string) => void;
-}
+};
 
 export const AccordionContext = createContext<AccordionContextType>({
   activeItems: [],

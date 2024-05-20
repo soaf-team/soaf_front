@@ -4,7 +4,7 @@ import { ToastPayload } from "./types";
 export type ToastConfigProps = {
   payload: ToastPayload;
   duration?: number;
-}
+};
 
 export type ToastContextType = {
   toast: (toastProps: ToastConfigProps) => void;
@@ -12,4 +12,4 @@ export type ToastContextType = {
 
 export const ToastContext = createContext<ToastContextType>({
   toast: () => {},
-}); 
+});

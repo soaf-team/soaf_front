@@ -1,10 +1,10 @@
 import * as React from "react";
 import { GridItemProps } from "./types";
-import { clsx } from 'clsx';
+import { clsx } from "clsx";
 import { BaseStyle, StyleSprinkles } from "../core/style.css";
 import { extractSprinkleProps } from "../utils/properties";
 import { vars } from "@soaf/themes";
- 
+
 const GridItem = (props: GridItemProps, ref: React.Ref<HTMLElement>) => {
   const {
     as = "div",

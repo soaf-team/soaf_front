@@ -6,8 +6,11 @@ import { useButton } from "@soaf/react-hooks-button";
 import { useAccordionContext } from "./AccordionContext";
 import { useCallback } from "react";
 
-const AccordionButton = (props: AccordionButtonProps, ref: React.Ref<HTMLButtonElement>) => {
-  const { className, itemName = '', onClick, children, ...rest } = props;
+const AccordionButton = (
+  props: AccordionButtonProps,
+  ref: React.Ref<HTMLButtonElement>,
+) => {
+  const { className, itemName = "", onClick, children, ...rest } = props;
 
   const { setActiveItem } = useAccordionContext();
 

@@ -5,7 +5,7 @@ type ImageProps = {
   alt: string;
 } & Omit<React.HTMLAttributes<HTMLImageElement>, "src" | "alt">;
 
-export const Image = ({ src, alt, ...props }: ImageProps) => {
+export const Image = ({ src, ...props }: ImageProps) => {
   const { push } = useFlow();
 
   const handleClickImage = () => {

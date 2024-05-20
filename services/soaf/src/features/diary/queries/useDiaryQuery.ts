@@ -12,6 +12,7 @@ export const useDiaryQuery = ({ diaryId }: { diaryId: string }) => {
 
     return {
       id: "1",
+      authorId: "1",
       date: "2024.04.01",
       title: "화난 하루",
       photos: [
