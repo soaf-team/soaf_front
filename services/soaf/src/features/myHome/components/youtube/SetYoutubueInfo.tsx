@@ -1,24 +1,15 @@
-import { useMusicDetail } from "../../queries";
-
 import { Flex } from "@soaf/react-components-layout";
 import { Header, BackButton } from "@/shared/components";
 
-import { MusicItem } from "./MusicItem";
 import { ReviewSection } from "../ReviewSection";
+import { YoutubeItem, YoutubeItemProps } from "./YoutubeItem";
 
 interface Props {
   onPrevStep: () => void;
-  music: Record<string, string>;
+  youtubeInfo: YoutubeItemProps;
 }
 
-export const SetMusicInfo = ({ onPrevStep, music }: Props) => {
-  const { musicInfo } = useMusicDetail({
-    name: music.name,
-    artist: music.artist,
-  });
-
-  if (!musicInfo) return null;
-
+export const SetYoutubeInfo = ({ onPrevStep, youtubeInfo }: Props) => {
   return (
     <>
       <Header
@@ -29,16 +20,16 @@ export const SetMusicInfo = ({ onPrevStep, music }: Props) => {
           </button>
         }
       >
-        <h1 className="head6b">나의 음악</h1>
+        <h1 className="head6b">새로운 리뷰</h1>
       </Header>
 
       <Flex direction="column" gap={32} className="pt-[58px]">
-        <MusicItem type="detail" music={musicInfo} />
+        <YoutubeItem type="search" youtube={youtubeInfo} />
 
         <ReviewSection
           title="감상평"
-          placeholder="음악 감상 후 어떤 생각이 드셨나요?"
-          className="h-[20px]"
+          placeholder="영상을 본 후 어떤 생각이 드셨나요?"
+          maxLength={2000}
         />
       </Flex>
     </>

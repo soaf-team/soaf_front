@@ -3,16 +3,12 @@ import { useFunnel } from "@/shared/hooks";
 
 import { GenericForm } from "@/shared/components";
 
-import { SearchMusicList, SetMusicInfo } from "@/features/myHome/components";
+import { SearchBookList, SetBookInfo } from "@/features/myHome/components";
 
-const STEP = ["음악 검색", "음악 등록"] as const;
+const STEP = ["도서 검색", "도서 등록"] as const;
 
-export const RegisterMusicForm = () => {
-  const [music, setMusic] = useState<Record<string, string>>({
-    name: "",
-    artist: "",
-  });
-
+export const RegisterBookForm = () => {
+  const [bookId, setBookId] = useState("" as string);
   const { Funnel, Step, setStep } = useFunnel(STEP[0]);
 
   const handleNextStep = () => {
@@ -31,10 +27,10 @@ export const RegisterMusicForm = () => {
     <GenericForm formOptions={{ mode: "onSubmit" }} onSubmit={handleSubmit}>
       <Funnel>
         <Step name={STEP[0]}>
-          <SearchMusicList onNextStep={handleNextStep} setMusic={setMusic} />
+          <SearchBookList onNextStep={handleNextStep} setBookId={setBookId} />
         </Step>
         <Step name={STEP[1]}>
-          <SetMusicInfo onPrevStep={handlePrevStep} music={music} />
+          <SetBookInfo onPrevStep={handlePrevStep} bookId={bookId} />
         </Step>
       </Funnel>
     </GenericForm>
