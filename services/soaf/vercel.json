@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/diary-calendar/:match*",
+      "destination": "/diary-calendar/index.html"
+    }
+  ]
+}
