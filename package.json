@@ -8,12 +8,17 @@
   "scripts": {
     "affected:build": "nx affected -t build",
     "affected:test": "nx affected -t test",
+    "build:all": "yarn build:packages && yarn build:soaf",
     "build:packages": "nx run-many --target=build --projects='@soaf/themes,@soaf/react-hooks-*,@soaf/react-components-*'",
+    "build:soaf": "nx build --project=@soaf/soaf_web",
     "build:local": "nx build",
     "graph": "nx run-many --target=build --graph",
     "dev:all": "yarn dev:storybook & yarn dev:packages",
     "dev:soaf": "nx dev --project=@soaf/soaf_web",
-    "dev:packages": "nx run-many --target=dev --projects='@soaf/react-hooks-*,@soaf/react-components-*'"
+    "dev:packages": "nx run-many --target=dev --projects='@soaf/react-hooks-*,@soaf/react-components-*'",
+    "lint": "nx run-many --target=lint --all",
+    "format": "nx format:write",
+    "format:check": "nx format:check"
   },
   "packageManager": "yarn@4.1.1",
   "devDependencies": {
