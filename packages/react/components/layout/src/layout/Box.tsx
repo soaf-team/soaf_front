@@ -1,10 +1,10 @@
 import * as React from "react";
 import { BoxProps } from "./types";
-import { clsx } from 'clsx';
+import { clsx } from "clsx";
 import { BaseStyle, StyleSprinkles } from "../core/style.css";
 import { extractSprinkleProps } from "../utils/properties";
 import { vars } from "@soaf/themes";
- 
+
 const Box = (props: BoxProps, ref: React.Ref<HTMLElement>) => {
   const { as = "div", color, background, children } = props;
 
@@ -15,7 +15,9 @@ const Box = (props: BoxProps, ref: React.Ref<HTMLElement>) => {
       ref,
       className: clsx([
         BaseStyle,
-        StyleSprinkles(extractSprinkleProps(props, Array.from(StyleSprinkles.properties))),
+        StyleSprinkles(
+          extractSprinkleProps(props, Array.from(StyleSprinkles.properties)),
+        ),
         props.className,
       ]),
       style: {
@@ -26,7 +28,7 @@ const Box = (props: BoxProps, ref: React.Ref<HTMLElement>) => {
     },
     children,
   );
-}
+};
 
 const _Box = React.forwardRef(Box);
 export { _Box as Box };

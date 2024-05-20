@@ -1,4 +1,4 @@
-import { vars } from "@soaf/themes"
+import { vars } from "@soaf/themes";
 
 export type ButtonProps = {
   color?: keyof typeof vars.colors.$scale;
