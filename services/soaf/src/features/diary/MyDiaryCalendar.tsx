@@ -70,6 +70,8 @@ export const MyDiaryCalendar = () => {
               ? "cursor-default bg-[#F0F1F466]"
               : "cursor-pointer transition-all duration-200 ease-in-out bg-gray50";
 
+            if (day == null) return <div key={index} />;
+
             return (
               <Flex
                 key={index}
