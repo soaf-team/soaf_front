@@ -38,10 +38,10 @@ const NewDiaryStep1: ActivityComponentType = () => {
     resetAllDiaryState();
   }
 
-  const handleSelectRating = (rating: number) => {
+  function handleSelectRating(rating: number) {
     onChangeRating(rating);
     push("NewDiaryStep2", {});
-  };
+  }
 
   useEffect(() => {
     onChangeDate(new Date());
