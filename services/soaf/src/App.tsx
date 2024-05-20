@@ -1,7 +1,6 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Stack } from "@pages/stackflow";
 import Providers from "./shared/providers";
-import { worker } from "@mocks/browser";
 import { useHandleBackButton } from "./shared/hooks";
 
 if (import.meta.env.MODE === "production") {
@@ -9,12 +8,7 @@ if (import.meta.env.MODE === "production") {
 }
 
 function App() {
-  const [workerReady, setWorkerReady] = useState(false);
   useHandleBackButton();
-
-  useEffect(() => {
-    worker.start().then(() => setWorkerReady(true));
-  }, []);
 
   useEffect(() => {
     const modalDiv = document.getElementById("modal");
@@ -24,8 +18,6 @@ function App() {
       document.body.appendChild(div);
     }
   }, []);
-
-  if (!workerReady) return null;
 
   return (
     <Providers>
