@@ -15,7 +15,7 @@ import {
   XButton,
 } from "@/shared/components";
 import { Flex } from "@soaf/react-components-layout";
-import { DiaryWriteCancelDialog } from "@/features/diary/components";
+import { DiaryCancelComfirmDialog } from "@/features/diary/components";
 
 const NewDiaryStep2: ActivityComponentType = () => {
   const { diary, resetAllDiaryState, onChangeEmotions } = useDiaryStore();
@@ -95,7 +95,7 @@ const NewDiaryStep2: ActivityComponentType = () => {
           </Button>
         </div>
       </PageLayout>
-      <DiaryWriteCancelDialog popCount={2} />
+      <DiaryCancelComfirmDialog popCount={2} />
     </Dialog>
   );
 };

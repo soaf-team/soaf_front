@@ -14,7 +14,7 @@ import {
 } from "@/shared/components";
 import {
   DailyRaitingWidget,
-  DiaryWriteCancelDialog,
+  DiaryCancelComfirmDialog,
 } from "@/features/diary/components";
 
 const 임시닉네임 = "뽀송하루";
@@ -62,7 +62,7 @@ const NewDiaryStep1: ActivityComponentType = () => {
           />
         </Flex>
       </PageLayout>
-      <DiaryWriteCancelDialog popCount={1} />
+      <DiaryCancelComfirmDialog popCount={1} />
     </Dialog>
   );
 };

@@ -11,7 +11,10 @@ import {
   PageLayout,
   XButton,
 } from "@/shared/components";
-import { DiaryForm, DiaryWriteCancelDialog } from "@/features/diary/components";
+import {
+  DiaryForm,
+  DiaryCancelComfirmDialog,
+} from "@/features/diary/components";
 
 const NewDiaryPage: ActivityComponentType = () => {
   const { replace } = useFlow();
@@ -58,7 +61,7 @@ const NewDiaryPage: ActivityComponentType = () => {
           handlePhotosChange={onChangePhotos}
           handleTogglePrivate={togglePrivate}
         />
-        <DiaryWriteCancelDialog popCount={3} />
+        <DiaryCancelComfirmDialog popCount={3} />
       </PageLayout>
     </Dialog>
   );
