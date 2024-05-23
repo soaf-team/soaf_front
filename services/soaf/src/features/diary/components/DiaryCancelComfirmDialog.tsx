@@ -14,24 +14,29 @@ import { Flex } from "@soaf/react-components-layout";
 
 type DiaryWriteCancelDialogProps = {
   popCount: number;
+  type?: "write" | "modify";
 };
 
-export const DiaryWriteCancelDialog = ({
-  popCount,
+export const DiaryCancelComfirmDialog = ({
+  popCount = 1,
+  type = "write",
 }: DiaryWriteCancelDialogProps) => {
   const { pop } = useFlow();
   const { resetAllDiaryState } = useDiaryStore();
 
   const handleCancelClick = () => {
     pop(popCount);
-    resetAllDiaryState();
+
+    if (type === "write") {
+      resetAllDiaryState();
+    }
   };
 
   return (
     <DialogContent className="sm:max-w-[425px]">
       <DialogHeader>
-        <DialogTitle>일기를 그만 쓸까요?</DialogTitle>
-        <DialogDescription>지금까지 입력한 내용이 사라져요</DialogDescription>
+        <DialogTitle>{TYPE_TITLE[type]}</DialogTitle>
+        <DialogDescription>{TYPE_DESCRIPTION[type]}</DialogDescription>
       </DialogHeader>
       <DialogFooter>
         <Flex gap={8} className="w-full">
@@ -49,4 +54,14 @@ export const DiaryWriteCancelDialog = ({
       </DialogFooter>
     </DialogContent>
   );
+};
+
+const TYPE_TITLE = {
+  write: "일기를 그만 쓸까요?",
+  modify: "수정을 취소할까요?",
+};
+
+const TYPE_DESCRIPTION = {
+  write: "지금까지 입력한 내용이 사라져요",
+  modify: "일기 내용은 원래대로 돌아가요",
 };
