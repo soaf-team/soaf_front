@@ -1,7 +1,6 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 import { DiaryFormType, useDiaryStore } from "../store";
-import { cn } from "@/shared/utils";
 import { useKeboardHeight } from "@/shared/hooks";
 
 import { Flex } from "@soaf/react-components-layout";
@@ -14,25 +13,28 @@ type AboveKeyboardBarProps = {
   diary: DiaryFormType;
   handleAddPhoto: (photos: string[]) => void;
   handleSaveDiary: () => void;
-  togglePrivate: () => void;
+  handleTogglePrivate: () => void;
+  handleKeepKeyboard: () => void;
 };
 
 export const AboveKeyboardBar = ({
   diary,
   handleSaveDiary,
-  togglePrivate,
+  handleTogglePrivate,
+  handleKeepKeyboard,
 }: AboveKeyboardBarProps) => {
   const photoInputRef = useRef<HTMLInputElement>(null);
-  const { keyboardHeight } = useKeboardHeight();
+  const { keyboardHeight, isOnKeyboard } = useKeboardHeight();
   const { onChangePhotos } = useDiaryStore();
-  const contentLengthColor =
-    diary.content.length < 2000 ? "text-gray300" : "text-red";
 
   const handleAddPhotoButtonClick = () => {
+    if (isOnKeyboard) {
+      handleKeepKeyboard();
+    }
     photoInputRef.current?.click();
   };
 
-  const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
       let img = event.target.files[0];
       const newImage = URL.createObjectURL(img);
@@ -40,6 +42,30 @@ export const AboveKeyboardBar = ({
       onChangePhotos([...diary.photos, newImage]);
     }
   };
+
+  const handleTogglePrivateButtonClick = () => {
+    if (isOnKeyboard) {
+      handleKeepKeyboard();
+    }
+    handleTogglePrivate();
+  };
+
+  useEffect(() => {
+    const mainEl = document.querySelector("main")!;
+
+    if (isOnKeyboard) {
+      mainEl.style.overflow = "hidden";
+      document.body.style.overflow = "hidden";
+    } else {
+      mainEl.style.overflow = "auto";
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      mainEl.style.overflow = "auto";
+      document.body.style.overflow = "auto";
+    };
+  }, [isOnKeyboard]);
 
   return (
     <Flex
@@ -55,7 +81,7 @@ export const AboveKeyboardBar = ({
             ref={photoInputRef}
             type="file"
             accept="image/*"
-            onChange={handleImageChange}
+            onChange={onImageChange}
             hidden
           />
           <img src={photo} alt="photo" onClick={handleAddPhotoButtonClick} />
@@ -63,12 +89,18 @@ export const AboveKeyboardBar = ({
         <img
           src={diary.private ? lock : unLock}
           alt="emoji"
-          onClick={togglePrivate}
+          onClick={handleTogglePrivateButtonClick}
         />
       </Flex>
       <Flex align="center" gap={16}>
         <span>
-          <span className={cn(contentLengthColor)}>{diary.content.length}</span>
+          <span
+            style={{
+              color: diary.content.length < 2000 ? "#8a91a8" : "#ff3c3c",
+            }}
+          >
+            {diary.content.length}
+          </span>
           /2000
         </span>
         <button className="head6sb" onClick={handleSaveDiary}>
