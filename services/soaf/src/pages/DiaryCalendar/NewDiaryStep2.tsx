@@ -15,7 +15,10 @@ import {
   XButton,
 } from "@/shared/components";
 import { Flex } from "@soaf/react-components-layout";
-import { DiaryCancelComfirmDialog } from "@/features/diary/components";
+import { DiaryCancelComfirmDialog, Step } from "@/features/diary/components";
+
+const STEP_MAIN_MESSAGE = `좀 더 구체적인\n감정을 선택해주세요.`;
+const STEP_SUB_MESSAGE = "가장 먼저 선택한 감정이 일기 캘린더에 표시돼요.";
 
 const NewDiaryStep2: ActivityComponentType = () => {
   const { diary, resetAllDiaryState, onChangeEmotions } = useDiaryStore();
@@ -60,17 +63,17 @@ const NewDiaryStep2: ActivityComponentType = () => {
           ),
         }}
       >
-        <p className="body2 text-gray300 text-center mb-[6px]">STEP 2/2</p>
         <Flex
           direction="column"
           align="center"
           className="text-center mb-[20px]"
         >
-          <h2 className="head3">좀 더 구체적인</h2>
-          <h2 className="head3">감정을 선택해주세요.</h2>
-          <p className="py-[8px] text-gray800 body3">
-            가장 먼저 선택한 감정이 일기 캘린더에 표시돼요.
-          </p>
+          <Step
+            currentStep={2}
+            totalStep={2}
+            mainMessage={STEP_MAIN_MESSAGE}
+            subMessage={STEP_SUB_MESSAGE}
+          />
         </Flex>
         <div className="grid grid-cols-2 gap-x-[12px] gap-y-[10px] w-full mb-[150px]">
           {EMOTIONS.map((emotion: Emotion) => {

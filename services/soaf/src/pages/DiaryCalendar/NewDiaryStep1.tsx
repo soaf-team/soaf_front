@@ -15,9 +15,11 @@ import {
 import {
   DailyRaitingWidget,
   DiaryCancelComfirmDialog,
+  Step,
 } from "@/features/diary/components";
 
-const 임시닉네임 = "뽀송하루";
+const NICK_NAME = "뽀송하루";
+const MAIN_MESSAGE = `${NICK_NAME}님,\n오늘 하루는 어떠셨나요?`;
 
 const NewDiaryStep1: ActivityComponentType = () => {
   const { diary, onChangeRating, resetAllDiaryState, onChangeDate } =
@@ -51,10 +53,8 @@ const NewDiaryStep1: ActivityComponentType = () => {
   return (
     <Dialog>
       <PageLayout header={{ rightSlot: headerRightButton }}>
-        <p className="body2 text-gray300 text-center mb-[6px]">STEP 1/2</p>
         <Flex direction="column" align="center" className="text-center">
-          <h2 className="head3">{임시닉네임}님,</h2>
-          <h2 className="head3">오늘 하루는 어떠셨나요?</h2>
+          <Step currentStep={1} totalStep={2} mainMessage={MAIN_MESSAGE} />
           <Spacing size={24} />
           <DailyRaitingWidget
             selectedRating={diary.rating}
