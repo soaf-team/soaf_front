@@ -25,27 +25,28 @@ const NewDiaryStep1: ActivityComponentType = () => {
   const { push, pop } = useFlow();
 
   const canBackWithoutDialog = diary.rating == null;
-  const headerRightButton = canBackWithoutDialog ? (
-    <XButton onClick={handleXButtonClick} />
-  ) : (
-    <DialogTrigger>
-      <XButton onClick={() => {}} />
-    </DialogTrigger>
-  );
 
-  function handleXButtonClick() {
+  const handleXButtonClick = () => {
     pop(1);
     resetAllDiaryState();
-  }
+  };
 
-  function handleSelectRating(rating: number) {
+  const handleSelectRating = (rating: number) => {
     onChangeRating(rating);
     push("NewDiaryStep2", {});
-  }
+  };
 
   useEffect(() => {
     onChangeDate(new Date());
   }, []);
+
+  const headerRightButton = canBackWithoutDialog ? (
+    <XButton onClick={handleXButtonClick} />
+  ) : (
+    <DialogTrigger>
+      <XButton />
+    </DialogTrigger>
+  );
 
   return (
     <Dialog>
