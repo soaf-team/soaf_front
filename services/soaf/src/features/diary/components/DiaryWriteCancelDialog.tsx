@@ -12,12 +12,18 @@ import {
 } from "@/shared/components";
 import { Flex } from "@soaf/react-components-layout";
 
-export const DiaryWriteCancelDialog = () => {
+type DiaryWriteCancelDialogProps = {
+  popCount: number;
+};
+
+export const DiaryWriteCancelDialog = ({
+  popCount,
+}: DiaryWriteCancelDialogProps) => {
   const { pop } = useFlow();
   const { resetAllDiaryState } = useDiaryStore();
 
   const handleCancelClick = () => {
-    pop(3);
+    pop(popCount);
     resetAllDiaryState();
   };
 

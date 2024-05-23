@@ -61,7 +61,7 @@ const NewDiaryStep1: ActivityComponentType = () => {
           />
         </Flex>
       </PageLayout>
-      <DiaryWriteCancelDialog />
+      <DiaryWriteCancelDialog popCount={1} />
     </Dialog>
   );
 };

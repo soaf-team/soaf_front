@@ -11,11 +11,7 @@ import {
   PageLayout,
   XButton,
 } from "@/shared/components";
-import {
-  DiaryForm,
-  AboveKeyboardBar,
-  DiaryWriteCancelDialog,
-} from "@/features/diary/components";
+import { DiaryForm, DiaryWriteCancelDialog } from "@/features/diary/components";
 
 const NewDiaryPage: ActivityComponentType = () => {
   const { replace } = useFlow();
@@ -60,14 +56,9 @@ const NewDiaryPage: ActivityComponentType = () => {
           handleTitleChange={onChangeTitle}
           handleContentChange={onChangeContent}
           handlePhotosChange={onChangePhotos}
+          handleTogglePrivate={togglePrivate}
         />
-        <AboveKeyboardBar
-          diary={diary}
-          handleAddPhoto={onChangePhotos}
-          handleSaveDiary={() => {}}
-          togglePrivate={togglePrivate}
-        />
-        <DiaryWriteCancelDialog />
+        <DiaryWriteCancelDialog popCount={3} />
       </PageLayout>
     </Dialog>
   );

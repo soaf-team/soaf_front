@@ -95,7 +95,7 @@ const NewDiaryStep2: ActivityComponentType = () => {
           </Button>
         </div>
       </PageLayout>
-      <DiaryWriteCancelDialog />
+      <DiaryWriteCancelDialog popCount={2} />
     </Dialog>
   );
 };
