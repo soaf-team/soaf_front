@@ -2,7 +2,7 @@ import { ForwardedRef, forwardRef, useEffect, useRef } from "react";
 import { Flex } from "@soaf/react-components-layout";
 
 import { Emotion } from "@/shared/types";
-import { DiaryFormType } from "../store";
+import { DiaryFormType } from "../../store";
 
 import { EmotionSticker } from "@/shared/components";
 

@@ -1,5 +1,5 @@
 import { useFlow } from "@/pages/stackflow";
-import { useDiaryStore } from "../store";
+import { useDiaryStore } from "../../store";
 
 import {
   Button,

@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-import { DiaryFormType, useDiaryStore } from "../store";
+import { DiaryFormType, useDiaryStore } from "../../store";
 import { useKeboardHeight } from "@/shared/hooks";
 
 import { Flex } from "@soaf/react-components-layout";
