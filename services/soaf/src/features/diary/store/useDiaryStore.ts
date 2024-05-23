@@ -88,12 +88,18 @@ export const useDiaryStore = create<DiaryRatingStore>((set) => {
         },
       })),
     onChangeContent: (content: string) =>
-      set((state) => ({
-        diary: {
-          ...state.diary,
-          content,
-        },
-      })),
+      set((state) => {
+        if (content.length <= 2000) {
+          return {
+            diary: {
+              ...state.diary,
+              content,
+            },
+          };
+        } else {
+          return { diary: { ...state.diary } };
+        }
+      }),
     togglePrivate: () =>
       set((state) => ({
         diary: {
