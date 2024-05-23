@@ -1,3 +1,5 @@
+import { Flex } from "@soaf/react-components-layout";
+
 type StepProps = {
   currentStep: number;
   totalStep: number;
@@ -12,7 +14,7 @@ export const Step = ({
   subMessage,
 }: StepProps) => {
   return (
-    <>
+    <Flex direction="column" align="center" className="text-center">
       <p className="body2 text-gray300 text-center mb-[6px]">
         STEP {currentStep}/{totalStep}
       </p>
@@ -24,6 +26,6 @@ export const Step = ({
           {subMessage}
         </p>
       )}
-    </>
+    </Flex>
   );
 };

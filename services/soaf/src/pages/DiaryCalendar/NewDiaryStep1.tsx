@@ -4,7 +4,6 @@ import { useFlow } from "../stackflow";
 
 import { useDiaryStore } from "@/features/diary/store";
 
-import { Flex } from "@soaf/react-components-layout";
 import {
   Dialog,
   DialogTrigger,
@@ -52,15 +51,16 @@ const NewDiaryStep1: ActivityComponentType = () => {
 
   return (
     <Dialog>
-      <PageLayout header={{ rightSlot: headerRightButton }}>
-        <Flex direction="column" align="center" className="text-center">
-          <Step currentStep={1} totalStep={2} mainMessage={MAIN_MESSAGE} />
-          <Spacing size={24} />
-          <DailyRaitingWidget
-            selectedRating={diary.rating}
-            handleSelectRating={handleSelectRating}
-          />
-        </Flex>
+      <PageLayout
+        header={{ rightSlot: headerRightButton }}
+        className="items-center"
+      >
+        <Step currentStep={1} totalStep={2} mainMessage={MAIN_MESSAGE} />
+        <Spacing size={24} />
+        <DailyRaitingWidget
+          selectedRating={diary.rating}
+          handleSelectRating={handleSelectRating}
+        />
       </PageLayout>
       <DiaryCancelComfirmDialog popCount={1} />
     </Dialog>

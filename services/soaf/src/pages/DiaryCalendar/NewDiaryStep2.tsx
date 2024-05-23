@@ -10,12 +10,15 @@ import {
   Button,
   Dialog,
   DialogTrigger,
-  EmotionButton,
   PageLayout,
+  Spacing,
   XButton,
 } from "@/shared/components";
-import { Flex } from "@soaf/react-components-layout";
-import { DiaryCancelComfirmDialog, Step } from "@/features/diary/components";
+import {
+  DiaryCancelComfirmDialog,
+  EmotionButtonList,
+  Step,
+} from "@/features/diary/components";
 
 const STEP_MAIN_MESSAGE = `좀 더 구체적인\n감정을 선택해주세요.`;
 const STEP_SUB_MESSAGE = "가장 먼저 선택한 감정이 일기 캘린더에 표시돼요.";
@@ -63,32 +66,17 @@ const NewDiaryStep2: ActivityComponentType = () => {
           ),
         }}
       >
-        <Flex
-          direction="column"
-          align="center"
-          className="text-center mb-[20px]"
-        >
-          <Step
-            currentStep={2}
-            totalStep={2}
-            mainMessage={STEP_MAIN_MESSAGE}
-            subMessage={STEP_SUB_MESSAGE}
-          />
-        </Flex>
-        <div className="grid grid-cols-2 gap-x-[12px] gap-y-[10px] w-full mb-[150px]">
-          {EMOTIONS.map((emotion: Emotion) => {
-            const isSelected = diary.emotions.includes(emotion);
-
-            return (
-              <EmotionButton
-                key={emotion}
-                emotion={emotion}
-                selected={isSelected}
-                onClick={handleEmotionButtonClick}
-              />
-            );
-          })}
-        </div>
+        <Step
+          currentStep={2}
+          totalStep={2}
+          mainMessage={STEP_MAIN_MESSAGE}
+          subMessage={STEP_SUB_MESSAGE}
+        />
+        <Spacing size={20} />
+        <EmotionButtonList
+          diary={diary}
+          handleEmotionButtonClick={handleEmotionButtonClick}
+        />
         <div className="fixed_bottom_button">
           <Button
             onClick={handleActionButtonClick}
@@ -104,18 +92,3 @@ const NewDiaryStep2: ActivityComponentType = () => {
 };
 
 export default NewDiaryStep2;
-
-const EMOTIONS: Emotion[] = [
-  "행복한",
-  "기분좋은",
-  "즐거운",
-  "설레는",
-  "뿌듯한",
-  "편안한",
-  "피곤한",
-  "외로운",
-  "슬픈",
-  "우울한",
-  "불안한",
-  "화난",
-];
