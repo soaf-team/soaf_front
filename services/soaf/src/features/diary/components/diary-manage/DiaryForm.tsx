@@ -2,11 +2,14 @@ import { ForwardedRef, forwardRef, useEffect, useRef } from "react";
 import { Flex } from "@soaf/react-components-layout";
 
 import { Emotion } from "@/shared/types";
-import { DiaryFormType } from "../store";
+import { DiaryFormType } from "../../store";
 
 import { EmotionSticker } from "@/shared/components";
 
+import { AboveKeyboardBar } from "./AboveKeyboardBar";
 import deletePhoto from "@assets/icons/shared/deletePhoto.svg";
+
+const CONTENT_PLACEHOLDER = "오늘 하루는 어땠나요?";
 
 type DiaryFormProps = {
   diary: DiaryFormType;
@@ -14,6 +17,7 @@ type DiaryFormProps = {
   handleTitleChange: (title: string) => void;
   handleContentChange: (content: string) => void;
   handlePhotosChange: (photos: string[]) => void;
+  handleTogglePrivate: () => void;
 };
 
 export const DiaryForm = (props: DiaryFormProps) => {
@@ -23,6 +27,7 @@ export const DiaryForm = (props: DiaryFormProps) => {
     handleTitleChange,
     handleContentChange,
     handlePhotosChange,
+    handleTogglePrivate,
   } = props;
   const titleRef = useRef<HTMLTextAreaElement>(null);
   const contentRef = useRef<HTMLTextAreaElement>(null);
@@ -38,6 +43,10 @@ export const DiaryForm = (props: DiaryFormProps) => {
   const handleDeletePhoto = (index: number) => {
     const newPhotos = diary.photos.filter((_, i) => i !== index);
     handlePhotosChange(newPhotos);
+  };
+
+  const handleKeepKeyboard = () => {
+    contentRef.current?.focus();
   };
 
   useEffect(() => {
@@ -59,49 +68,58 @@ export const DiaryForm = (props: DiaryFormProps) => {
   }, []);
 
   return (
-    <Flex direction="column" className="text-left">
-      <EmotionSticker
-        emotion={diary.emotions[0]}
-        onClick={() => handleReorderEmotions(diary.emotions)}
-      />
-      <span className="head3 mt-[8px]">
-        <span>{monthDay}</span> <span className="text-gray300">{week}</span>
-        <TitleInput
-          ref={titleRef}
-          diary={diary}
-          handleTitleChange={handleTitleChange}
+    <>
+      <Flex direction="column" className="text-left">
+        <EmotionSticker
+          emotion={diary.emotions[0]}
+          onClick={() => handleReorderEmotions(diary.emotions)}
         />
-      </span>
-      {diary.photos.length > 0 && (
-        <Flex gap={8} className="mb-[16px]">
-          {diary.photos.map((photo, index) => (
-            <div
-              key={index}
-              className="w-[92px] h-[92px] rounded-[16px] overflow-hidden relative"
-            >
+        <span className="head3 mt-[8px]">
+          <span>{monthDay}</span> <span className="text-gray300">{week}</span>
+          <TitleInput
+            ref={titleRef}
+            diary={diary}
+            handleTitleChange={handleTitleChange}
+          />
+        </span>
+        {diary.photos.length > 0 && (
+          <Flex gap={8} className="mb-[16px]">
+            {diary.photos.map((photo, index) => (
               <div
-                onClick={() => handleDeletePhoto(index)}
-                className="absolute top-[8px] right-[8px] rounded-full w-[20px] h-[20px]"
+                key={index}
+                className="w-[92px] h-[92px] rounded-[16px] overflow-hidden relative"
               >
-                <img src={deletePhoto} alt="delete_photo" />
+                <div
+                  onClick={() => handleDeletePhoto(index)}
+                  className="absolute top-[8px] right-[8px] rounded-full w-[20px] h-[20px]"
+                >
+                  <img src={deletePhoto} alt="delete_photo" />
+                </div>
+                <img
+                  src={photo}
+                  alt={photo}
+                  className="object-cover w-full h-full"
+                />
               </div>
-              <img
-                src={photo}
-                alt={photo}
-                className="object-cover w-full h-full"
-              />
-            </div>
-          ))}
-        </Flex>
-      )}
-      <textarea
-        ref={contentRef}
-        placeholder="오늘 하루는 어떘나요?"
-        value={diary.content}
-        onChange={(e) => handleContentChange(e.target.value)}
-        className="body2 resize-none focus:outline-none "
+            ))}
+          </Flex>
+        )}
+        <textarea
+          ref={contentRef}
+          placeholder={CONTENT_PLACEHOLDER}
+          value={diary.content}
+          onChange={(e) => handleContentChange(e.target.value)}
+          className="body2 resize-none focus:outline-none h-[300px]"
+        />
+      </Flex>
+      <AboveKeyboardBar
+        diary={diary}
+        handleAddPhoto={handlePhotosChange}
+        handleSaveDiary={() => {}}
+        handleTogglePrivate={handleTogglePrivate}
+        handleKeepKeyboard={handleKeepKeyboard}
       />
-    </Flex>
+    </>
   );
 };
 

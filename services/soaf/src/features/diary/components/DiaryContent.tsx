@@ -1,6 +1,7 @@
 import { EmotionSticker, Image } from "@/shared/components";
 import { Diary, Emotion } from "@/shared/types";
 import { Flex } from "@soaf/react-components-layout";
+import { Fragment } from "react/jsx-runtime";
 
 type DiaryContentProps = {
   diary: Diary;
@@ -32,7 +33,7 @@ export const DiaryContent = ({
         </span>
         <Flex gap={8} className="mb-[16px]">
           {diary.photos.map((photo, index) => (
-            <>
+            <Fragment key={index}>
               {isImageClickable ? (
                 <Image
                   key={index}
@@ -48,7 +49,7 @@ export const DiaryContent = ({
                   className="w-[92px] h-[92px] rounded-[16px]"
                 />
               )}
-            </>
+            </Fragment>
           ))}
         </Flex>
         <div

@@ -33,7 +33,7 @@ const Divider = (props: DividerProps, ref: React.Ref<HTMLHRElement>) => {
       }}
     />
   );
-}; 
+};
 
 const _Divider = React.forwardRef(Divider);
 export { _Divider as Divider };

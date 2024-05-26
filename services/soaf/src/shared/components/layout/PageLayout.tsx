@@ -43,7 +43,12 @@ export const PageLayout = ({
             {header.title}
           </Header>
         ) : null}
-        <main className={cn(["px-[18px] h-full overflow-auto", className])}>
+        <main
+          className={cn([
+            "flex flex-col px-[18px] h-full overflow-auto",
+            className,
+          ])}
+        >
           {children}
         </main>
       </div>

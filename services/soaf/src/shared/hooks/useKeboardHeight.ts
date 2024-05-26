@@ -4,6 +4,8 @@ export const useKeboardHeight = () => {
   const [windowHeight, setWindowHeight] = useState(window.innerHeight);
   const [keyboardHeight, setKeyboardHeight] = useState(0);
 
+  const isOnKeyboard = keyboardHeight > 0;
+
   useEffect(() => {
     function handleResize(event: any) {
       const newHeight = event?.target.height;
@@ -22,5 +24,5 @@ export const useKeboardHeight = () => {
     };
   }, [windowHeight]);
 
-  return { keyboardHeight };
+  return { keyboardHeight, isOnKeyboard };
 };

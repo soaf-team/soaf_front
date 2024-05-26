@@ -6,7 +6,10 @@ import { useAccordionContext } from "./AccordionContext";
 import { useEffect, useRef, useState } from "react";
 import { assignInlineVars } from "@vanilla-extract/dynamic";
 
-const AccordionPanel = (props: AccordionPanelProps, ref: React.Ref<HTMLDivElement>) => {
+const AccordionPanel = (
+  props: AccordionPanelProps,
+  ref: React.Ref<HTMLDivElement>,
+) => {
   const { itemName = "", children, className, style, ...rest } = props;
   const innerRef = useRef<HTMLDivElement>(null);
 
@@ -19,7 +22,7 @@ const AccordionPanel = (props: AccordionPanelProps, ref: React.Ref<HTMLDivElemen
       if (!innerRef.current) return;
 
       setCurrentPanelHeight(`${innerRef.current.clientHeight}px`);
-    }
+    };
 
     if (!innerRef.current) return;
 
@@ -34,11 +37,10 @@ const AccordionPanel = (props: AccordionPanelProps, ref: React.Ref<HTMLDivElemen
 
       return () => {
         observer.disconnect();
-      }
+      };
     } else {
       setCurrentPanelHeight("0");
     }
-
   }, [isActive, activeItems]);
 
   return (
@@ -49,7 +51,8 @@ const AccordionPanel = (props: AccordionPanelProps, ref: React.Ref<HTMLDivElemen
       data-action-item={isActive}
       style={{
         ...assignInlineVars({
-          [panelHeight]: currentPanelHeight ?? `$innerRef.current.clientHeight}px`,
+          [panelHeight]:
+            currentPanelHeight ?? `$innerRef.current.clientHeight}px`,
         }),
         ...style,
       }}
@@ -59,7 +62,7 @@ const AccordionPanel = (props: AccordionPanelProps, ref: React.Ref<HTMLDivElemen
       </div>
     </div>
   );
-}
+};
 
 const _AccordionPanel = React.forwardRef(AccordionPanel);
 export { _AccordionPanel as AccordionPanel };

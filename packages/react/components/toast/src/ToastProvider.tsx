@@ -27,7 +27,7 @@ export const ToastProvider = ({ children }: PropsWithChildren<{}>) => {
       setToastPayload(undefined);
       timeoutRef.current = undefined;
     }, duration);
-  }
+  };
 
   return (
     <ToastContext.Provider value={{ toast: handleToast }}>
@@ -37,7 +37,7 @@ export const ToastProvider = ({ children }: PropsWithChildren<{}>) => {
       </ToastContainer>
     </ToastContext.Provider>
   );
-}
+};
 
 export const useToast = () => {
   const context = useContext(ToastContext);
@@ -47,4 +47,4 @@ export const useToast = () => {
   }
 
   return context;
-}
+};

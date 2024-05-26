@@ -4,15 +4,28 @@ import { useFlow } from "../stackflow";
 
 import { useDiaryStore } from "@/features/diary/store";
 
-import { Flex } from "@soaf/react-components-layout";
-import { DailyRaitingWidget } from "@/features/diary/components";
-import { PageLayout, Spacing, XButton } from "@/shared/components";
+import {
+  Dialog,
+  DialogTrigger,
+  PageLayout,
+  Spacing,
+  XButton,
+} from "@/shared/components";
+import {
+  DailyRaitingWidget,
+  DiaryCancelComfirmDialog,
+  Step,
+} from "@/features/diary/components";
+
+const NICK_NAME = "뽀송하루";
+const MAIN_MESSAGE = `${NICK_NAME}님,\n오늘 하루는 어떠셨나요?`;
 
 const NewDiaryStep1: ActivityComponentType = () => {
   const { diary, onChangeRating, resetAllDiaryState, onChangeDate } =
     useDiaryStore();
   const { push, pop } = useFlow();
-  const nickname = "뽀송하루";
+
+  const canBackWithoutDialog = diary.rating == null;
 
   const handleXButtonClick = () => {
     pop(1);
@@ -28,23 +41,29 @@ const NewDiaryStep1: ActivityComponentType = () => {
     onChangeDate(new Date());
   }, []);
 
+  const headerRightButton = canBackWithoutDialog ? (
+    <XButton onClick={handleXButtonClick} />
+  ) : (
+    <DialogTrigger>
+      <XButton />
+    </DialogTrigger>
+  );
+
   return (
-    <PageLayout
-      header={{
-        rightSlot: <XButton onClick={handleXButtonClick} />,
-      }}
-    >
-      <p className="body2 text-gray300 text-center mb-[6px]">STEP 1/2</p>
-      <Flex direction="column" align="center" className="text-center">
-        <h2 className="head3">{nickname}님,</h2>
-        <h2 className="head3">오늘 하루는 어떠셨나요?</h2>
+    <Dialog>
+      <PageLayout
+        header={{ rightSlot: headerRightButton }}
+        className="items-center"
+      >
+        <Step currentStep={1} totalStep={2} mainMessage={MAIN_MESSAGE} />
         <Spacing size={24} />
         <DailyRaitingWidget
           selectedRating={diary.rating}
           handleSelectRating={handleSelectRating}
         />
-      </Flex>
-    </PageLayout>
+      </PageLayout>
+      <DiaryCancelComfirmDialog popCount={1} />
+    </Dialog>
   );
 };
 
