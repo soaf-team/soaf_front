@@ -10,14 +10,20 @@ COPY package*.json yarn.lock ./
 # Step 4: Install dependencies
 RUN yarn install --frozen-lockfile
 
+# Debug: List the contents of the working directory after installing dependencies
+RUN ls -la /app
+
 # Step 5: Copy the rest of the application code to the container
 COPY . .
 
-# Debug: List the contents of the working directory
-RUN ls -la
+# Debug: List the contents of the working directory after copying the code
+RUN ls -la /app
 
 # Ensure that all workspaces are installed correctly
 RUN yarn workspaces focus --all
+
+# Debug: List the contents of the working directory after focusing workspaces
+RUN ls -la /app
 
 # Step 6: Build the project
 RUN yarn build:soaf
