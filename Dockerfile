@@ -25,6 +25,9 @@ RUN yarn workspaces focus --all
 # Debug: List the contents of the working directory after focusing workspaces
 RUN ls -la /app
 
+# 추가 디버깅: 빌드 전에 node_modules 및 모든 파일 상태 확인
+RUN ls -la /app/node_modules
+
 # Step 7: Build the project
 RUN yarn build:soaf
 
