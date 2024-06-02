@@ -5,13 +5,16 @@ FROM node:18.12.0
 WORKDIR /app
 
 # Step 3: Copy package.json and yarn.lock files to the container
-COPY package.json yarn.lock ./
+COPY package*.json yarn.lock ./
 
 # Step 4: Install dependencies
-RUN yarn install
+RUN yarn install --frozen-lockfile
 
 # Step 5: Copy the rest of the application code to the container
 COPY . .
+
+# Debug: List the contents of the working directory
+RUN ls -la
 
 # Step 6: Build the project
 RUN yarn build:soaf
