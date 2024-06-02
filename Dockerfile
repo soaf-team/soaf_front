@@ -16,6 +16,9 @@ COPY . .
 # Debug: List the contents of the working directory
 RUN ls -la
 
+# Ensure that all workspaces are installed correctly
+RUN yarn workspaces focus --all
+
 # Step 6: Build the project
 RUN yarn build:soaf
 
