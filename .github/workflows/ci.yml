@@ -1,32 +1,66 @@
-name: CI
+name: CI/CD Pipeline
 
 on:
+  push:
+    branches:
+      - dev
+      - master
   pull_request:
     branches:
       - dev
+      - master
 
 jobs:
-  build-and-test:
-    name: Build and Test
+  build_and_test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [20.13.0]
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
+    - uses: actions/checkout@v3
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: "18"
-          cache: "yarn"
+    - name: Install Yarn
+      run: npm install -g yarn
 
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile
+    - name: Verify Yarn Installation
+      run: yarn --version  
 
-      - name: Derive appropriate SHAs for base and head for `nx affected` commands
-        uses: nrwl/nx-set-shas@v3
+    - name: Install dependencies
+      run: yarn install
 
-      - name: Build affected projects
-        run: yarn affected:build --base=origin/dev --head=HEAD --parallel=5
+    - name: Run lint
+      run: yarn lint
+
+    - name: Run tests
+      run: yarn affected:test
+
+    - name: Build project
+      run: yarn affected:build
+
+    - name: Archive production artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: build-artifacts
+        path: dist/
+
+  deploy:
+    needs: build_and_test
+    runs-on: ubuntu-latest
+    # if: github.event_name == 'push' && github.ref == 'refs/heads/dev'
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Download build artifacts
+      uses: actions/download-artifact@v3
+      with:
+        name: build-artifacts
+        path: dist/
+
+    - name: Deploy to Production
+      run: yarn start:soaf
