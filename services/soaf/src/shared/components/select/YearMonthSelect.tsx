@@ -30,7 +30,7 @@ export const YearMonthSelect = ({
     },
   );
   const selectedIndex = yearMonthArray.findIndex(
-    (date) => getYearMonthString(date) === getYearMonthString(currentDate),
+    date => getYearMonthString(date) === getYearMonthString(currentDate),
   );
   const currentYearMonth = getYearMonthString(currentDate);
 

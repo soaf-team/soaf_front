@@ -18,7 +18,7 @@ export const useFunnel = (defaultStep: string) => {
 
   const Funnel = ({ children }: FunnelProps) => {
     const targetStep = children.find(
-      (childStep) => childStep.props.name === step,
+      childStep => childStep.props.name === step,
     );
 
     return <>{targetStep}</>;

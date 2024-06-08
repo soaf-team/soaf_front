@@ -15,7 +15,7 @@ const MatchedUser = () => {
   const [selectedUser, setSelectedUser] = useState<number | null>(null);
 
   const handleSelect = (id: number) => {
-    setSelectedUser((prev) => (prev === id ? null : id));
+    setSelectedUser(prev => (prev === id ? null : id));
   };
 
   return (

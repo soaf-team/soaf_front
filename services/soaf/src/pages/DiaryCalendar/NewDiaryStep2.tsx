@@ -30,7 +30,7 @@ const NewDiaryStep2: ActivityComponentType = () => {
 
   const handleEmotionButtonClick = (emotion: EmotionKey) => {
     const newEmotions = diary.emotions.includes(emotion)
-      ? diary.emotions.filter((e) => e !== emotion)
+      ? diary.emotions.filter(e => e !== emotion)
       : [...diary.emotions, emotion];
 
     onChangeEmotions(newEmotions);

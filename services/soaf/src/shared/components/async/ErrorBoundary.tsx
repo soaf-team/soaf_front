@@ -1,63 +1,151 @@
-import { AxiosError } from "axios";
-import React from "react";
+import {
+  Component,
+  ComponentProps,
+  ComponentPropsWithoutRef,
+  ComponentType,
+  ErrorInfo,
+  forwardRef,
+  JSXElementConstructor,
+  PropsWithChildren,
+  PropsWithRef,
+  ReactNode,
+  useImperativeHandle,
+  useRef,
+  useState,
+} from "react";
+import { isDifferentArray } from "@/shared/utils";
 
-type State = {
-  shouldHandleError: boolean;
-  shouldRethrow: boolean;
-  error: Error | null;
+type ComponentPropsWithoutChildren<
+  Component extends keyof JSX.IntrinsicElements | JSXElementConstructor<any>,
+> = Omit<ComponentProps<Component>, "children">;
+
+export type RenderFallbackProps<ErrorType extends Error = Error> = {
+  error: ErrorType;
+  reset: () => void;
 };
 
-type ErrorBoundaryProps = {
-  children: React.ReactNode;
+type RenderFallbackType = <ErrorType extends Error>(
+  props: RenderFallbackProps<ErrorType>,
+) => ReactNode;
+type IgnoreErrorType = <ErrorType extends Error = Error>(
+  error: ErrorType,
+) => boolean;
+
+type Props<ErrorType extends Error = Error> = {
+  /*
+   * @description 발생할 수 있는 error에 대한 기준값으로 이 값이 변경되면 error를 초기화합니다.
+   */
+  resetKeys?: unknown[];
+  onReset?(): void;
+  renderFallback: RenderFallbackType;
+  onError?(error: ErrorType, info: ErrorInfo): void;
+  /*
+   * @description 이 ErrorBoundary Context에서 처리하지 않고 throw해줄 error의 조건을 명시할 callback
+   */
+  ignoreError?: IgnoreErrorType;
 };
 
-export class ErrorBoundary extends React.Component<ErrorBoundaryProps, State> {
-  constructor(props: ErrorBoundaryProps) {
-    super(props);
-    this.state = {
-      shouldHandleError: false,
-      shouldRethrow: false,
-      error: null,
-    };
+interface State<ErrorType extends Error = Error> {
+  error: ErrorType | null;
+}
+
+const initialState: State = {
+  error: null,
+};
+
+class BaseErrorBoundary extends Component<
+  PropsWithRef<PropsWithChildren<Props>>,
+  State
+> {
+  state = initialState;
+
+  static getDerivedStateFromError(error: Error) {
+    return { error };
   }
 
-  state: State = {
-    shouldHandleError: false,
-    shouldRethrow: false,
-    error: null,
+  componentDidCatch(error: Error, info: ErrorInfo) {
+    const { onError, ignoreError } = this.props;
+
+    if (ignoreError?.(error)) {
+      throw error;
+    }
+
+    onError?.(error, info);
+  }
+
+  resetErrorBoundary = () => {
+    this.props.onReset?.();
+    this.setState(initialState);
   };
 
-  static getDerivedStateFromError(error: Error): State {
-    if (false) {
-      return {
-        shouldHandleError: false,
-        shouldRethrow: true,
-        error,
-      };
+  componentDidUpdate(prevProps: Props) {
+    if (this.state.error == null) {
+      return;
     }
-    return {
-      shouldHandleError: true,
-      shouldRethrow: false,
-      error,
-    };
+
+    if (isDifferentArray(prevProps.resetKeys, this.props.resetKeys)) {
+      this.resetErrorBoundary();
+    }
   }
 
   render() {
-    if (this.state.shouldRethrow) {
-      throw this.state.error;
+    const { children, renderFallback } = this.props;
+    const { error } = this.state;
+
+    if (error != null) {
+      return renderFallback({
+        error,
+        reset: this.resetErrorBoundary,
+      });
     }
-    if (!this.state.shouldHandleError) {
-      return this.props.children;
-    }
-    if (
-      this.state.error instanceof AxiosError &&
-      this.state.error.response?.status === 401
-    ) {
-      return <>인증 에러</>;
-    }
-    if (this.state.error instanceof AxiosError) {
-      return <>네트워크 에러</>;
-    }
-    return <>언노운 에러</>;
+
+    return children;
   }
 }
+
+export const ErrorBoundary = forwardRef<
+  { reset(): void },
+  ComponentPropsWithoutRef<typeof BaseErrorBoundary>
+>((props, resetRef) => {
+  const resetKeys = [...(props.resetKeys || [])];
+
+  const ref = useRef<BaseErrorBoundary>(null);
+  useImperativeHandle(resetRef, () => ({
+    reset: () => ref.current?.resetErrorBoundary(),
+  }));
+
+  return <BaseErrorBoundary {...props} resetKeys={resetKeys} ref={ref} />;
+});
+if (process.env.NODE_ENV !== "production") {
+  ErrorBoundary.displayName = "ErrorBoundary";
+}
+
+export const useErrorBoundary = <ErrorType extends Error>() => {
+  const [error, setError] = useState<ErrorType | null>(null);
+
+  if (error != null) {
+    throw error;
+  }
+
+  return setError;
+};
+
+export const withErrorBoundary = <
+  Props extends Record<string, unknown> = Record<string, never>,
+>(
+  Component: ComponentType<Props>,
+  errorBoundaryProps: ComponentPropsWithoutChildren<typeof ErrorBoundary>,
+) => {
+  const Wrapped = (props: Props) => (
+    <ErrorBoundary {...errorBoundaryProps}>
+      <Component {...props} />
+    </ErrorBoundary>
+  );
+
+  if (process.env.NODE_ENV !== "production") {
+    const name = Component.displayName || Component.name || "Component";
+    Wrapped.displayName = `withErrorBoundary(${name})`;
+  }
+
+  return Wrapped;
+};

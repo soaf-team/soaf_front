@@ -107,7 +107,7 @@ const ReactionCloud = ({
     >
       <div
         className={cn(["absolute inset-0 max-w-window m-auto bg-overlay"])}
-        onClick={(e) => {
+        onClick={e => {
           e.stopPropagation();
           onCloudClose();
         }}

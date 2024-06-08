@@ -6,7 +6,7 @@ import fs from "fs";
 //   --gray-900: #171923
 // }
 
-const toCssCasting = (str) => {
+const toCssCasting = str => {
   return str
     .replace(/([a-z])(\d)/, "$1-$2")
     .replace(/([A-Z])/g, "-$1")

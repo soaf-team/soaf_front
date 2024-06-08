@@ -15,7 +15,7 @@ export const EmotionButtonList = ({
 }: EmotionButtonProps) => {
   return (
     <div className="grid grid-cols-2 gap-x-[12px] gap-y-[10px] w-full mb-[150px]">
-      {(Object.keys(EMOTIONS) as EmotionKey[]).map((emotion) => {
+      {(Object.keys(EMOTIONS) as EmotionKey[]).map(emotion => {
         const isSelected = diary.emotions.includes(emotion);
 
         return (

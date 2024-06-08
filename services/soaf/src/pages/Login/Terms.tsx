@@ -12,14 +12,14 @@ const Terms = () => {
   const { pop, push } = useFlow();
   const [allChecked, setAllChecked] = useState(false);
   const [checked, setChecked] = useState(
-    TERMS.map((term) => (term.optional === false ? allChecked : false)),
+    TERMS.map(term => (term.optional === false ? allChecked : false)),
   );
 
   const handleAllChecked = () => {
     const newAllChecked = !allChecked;
     setAllChecked(newAllChecked);
     setChecked(
-      TERMS.map((term) => (term.optional === false ? newAllChecked : false)),
+      TERMS.map(term => (term.optional === false ? newAllChecked : false)),
     );
   };
 

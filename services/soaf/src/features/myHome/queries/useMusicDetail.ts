@@ -24,7 +24,7 @@ export const useMusicDetail = ({ name, artist }: Props) => {
     queryKey: ["music", name, artist],
     queryFn: fetchMusic,
     staleTime: Infinity,
-    select: (data) => data.album,
+    select: data => data.album,
   });
 
   return {

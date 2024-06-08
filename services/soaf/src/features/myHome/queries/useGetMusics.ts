@@ -22,7 +22,7 @@ export const useGetMusics = ({ value }: { value: string }) => {
     staleTime: Infinity,
     enabled: value.length > 0,
     // select: (data) => data.results.trackmatches.track,
-    select: (data) => data.results.albummatches.album,
+    select: data => data.results.albummatches.album,
   });
 
   return {

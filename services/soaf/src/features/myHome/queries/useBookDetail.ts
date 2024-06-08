@@ -28,7 +28,7 @@ export const useBookDetail = ({ id }: { id: string }) => {
     queryKey: ["book", id],
     queryFn: fetchBook,
     staleTime: Infinity,
-    select: (data) => data.documents[0],
+    select: data => data.documents[0],
   });
 
   return {

@@ -72,7 +72,7 @@ export const DiaryCard = ({
             <div className="absolute top-[16px] right-[16px]">
               <CheckBox
                 isChecked={isSelected}
-                onClick={(e) => {
+                onClick={e => {
                   e.stopPropagation();
                   onClick?.();
                 }}
