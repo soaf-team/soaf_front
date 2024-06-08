@@ -21,13 +21,26 @@
     "lint": "nx run-many --target=lint --all",
     "lint:fix": "nx run-many --target=lint --all --fix",
     "format": "nx format:write",
-    "format:check": "nx format:check"
+    "format:check": "nx format:check",
+    "prepare": "husky"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "yarn eslint",
+      "prettier --write"
+    ]
   },
   "packageManager": "yarn@4.1.1",
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^7.12.0",
     "@typescript-eslint/parser": "^7.12.0",
     "eslint": "^9.4.0",
+    "eslint-config-airbnb": "^19.0.4",
     "eslint-config-next": "^14.2.3",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.29.1",
@@ -38,6 +51,8 @@
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "eslint-plugin-storybook": "^0.6.13",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.5",
     "nx": "^16.8.1",
     "prettier": "^3.0.3",
     "typescript": "^5.2.2"
