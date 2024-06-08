@@ -10,15 +10,18 @@ const resetStyle = style({
 
 export const accordionStyle = style([resetStyle]);
 
-export const accordionItemStyle = style([resetStyle, {
-  width: '100%',
-  borderTop: `1px solid ${vars.colors.$scale.gray[300]}`,
+export const accordionItemStyle = style([
+  resetStyle,
+  {
+    width: "100%",
+    borderTop: `1px solid ${vars.colors.$scale.gray[300]}`,
 
-  // @ts-ignore
-  "&:last-of-type": {
-    borderBottom: `1px solid ${vars.colors.$scale.gray[300]}`,
+    // @ts-ignore
+    "&:last-of-type": {
+      borderBottom: `1px solid ${vars.colors.$scale.gray[300]}`,
+    },
   },
-}]);
+]);
 
 export const accordionButtonStyle = style([
   resetStyle,

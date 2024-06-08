@@ -1,12 +1,25 @@
 import * as React from "react";
 import { FlexProps } from "./types";
-import { clsx } from 'clsx';
+import { clsx } from "clsx";
 import { BaseStyle, StyleSprinkles } from "../core/style.css";
 import { extractSprinkleProps } from "../utils/properties";
 import { vars } from "@soaf/themes";
- 
+
 const Flex = (props: FlexProps, ref: React.Ref<HTMLElement>) => {
-  const { as = "div", color, background, align, basis, direction, grow, justify, shrink, wrap, gap, children } = props;
+  const {
+    as = "div",
+    color,
+    background,
+    align,
+    basis,
+    direction,
+    grow,
+    justify,
+    shrink,
+    wrap,
+    gap,
+    children,
+  } = props;
 
   return React.createElement(
     as,

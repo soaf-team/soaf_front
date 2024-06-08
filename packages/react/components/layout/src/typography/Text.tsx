@@ -7,7 +7,7 @@ import { extractSprinkleProps } from "../utils/properties";
 import { textStyle } from "./style.css";
 
 const Text = (props: TextProps, ref: React.Ref<HTMLElement>) => {
-  const { as = "p", color = 'gray', background, children, fontSize } = props;
+  const { as = "p", color = "gray", background, children, fontSize } = props;
 
   return React.createElement(
     as,
@@ -36,4 +36,3 @@ const Text = (props: TextProps, ref: React.Ref<HTMLElement>) => {
 
 const _Text = React.forwardRef(Text);
 export { _Text as Text };
-

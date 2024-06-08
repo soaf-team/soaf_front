@@ -1,4 +1,14 @@
-export { Box, Divider, Flex, Grid, GridItem, OrderedList, ListItem, UnorderedList, List } from "./layout";
+export {
+  Box,
+  Divider,
+  Flex,
+  Grid,
+  GridItem,
+  OrderedList,
+  ListItem,
+  UnorderedList,
+  List,
+} from "./layout";
 export type {
   BoxProps,
   DividerProps,
@@ -11,5 +21,5 @@ export type {
   ListProps,
 } from "./layout";
 
-export { Text, Heading } from './typography';
+export { Text, Heading } from "./typography";
 export type { TextProps, HeadingProps } from "./typography";

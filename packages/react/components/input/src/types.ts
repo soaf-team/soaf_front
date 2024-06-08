@@ -1,7 +1,7 @@
-import { UseInputProps } from '@soaf/react-hooks-input';
-import { vars } from '@soaf/themes';
+import { UseInputProps } from "@soaf/react-hooks-input";
+import { vars } from "@soaf/themes";
 
-type Size = 'lg' | 'md' | 'sm' | 'xs';
+type Size = "lg" | "md" | "sm" | "xs";
 type Color = keyof typeof vars.colors.$scale;
 
 export type InputProps = UseInputProps & {
@@ -23,4 +23,3 @@ export type InputLeftAddonProps = {
   size?: Size;
   children: React.ReactNode;
 };
-

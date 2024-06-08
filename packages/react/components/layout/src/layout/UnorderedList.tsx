@@ -15,7 +15,10 @@ const UnorderedList = (
       as="ul"
       ref={ref}
       direction="column"
-      style={{ gap: vars.box.spacing[spacing], listStyleType: listStyleType as string, }}
+      style={{
+        gap: vars.box.spacing[spacing],
+        listStyleType: listStyleType as string,
+      }}
     >
       {children}
     </Flex>

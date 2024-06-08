@@ -8,16 +8,15 @@ import { accordionStyle } from "./style.css";
 const Accordion = (props: AccordionProps, ref: React.Ref<HTMLDivElement>) => {
   const { defaultActiveItems = [], children, className, ...rest } = props;
 
-  const [activeItems, setActiveItems] =
-    useState<string[]>(defaultActiveItems);
+  const [activeItems, setActiveItems] = useState<string[]>(defaultActiveItems);
 
   const handleSetActiveItem = (item: string) => {
     if (activeItems.includes(item)) {
-      setActiveItems(activeItems.filter((activeItem) => activeItem !== item));
+      setActiveItems(activeItems.filter(activeItem => activeItem !== item));
     } else {
       setActiveItems([...activeItems, item]);
     }
-  };  
+  };
 
   return (
     <AccordionContext.Provider

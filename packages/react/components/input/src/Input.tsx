@@ -4,7 +4,12 @@ import { useInput } from "@soaf/react-hooks-input";
 
 import { clsx } from "clsx";
 import { assignInlineVars } from "@vanilla-extract/dynamic";
-import { colorVariant, errorBorderColorVariant, focusBorderColorVariant, inputStyle } from "./style.css";
+import {
+  colorVariant,
+  errorBorderColorVariant,
+  focusBorderColorVariant,
+  inputStyle,
+} from "./style.css";
 import { vars } from "@soaf/themes";
 
 const Input = (props: InputProps, ref: React.Ref<HTMLInputElement>) => {
@@ -25,10 +30,13 @@ const Input = (props: InputProps, ref: React.Ref<HTMLInputElement>) => {
     <input
       {...inputProps}
       ref={ref}
-      className={clsx([inputStyle({
-        size,
-        variant,
-      }), className])}
+      className={clsx([
+        inputStyle({
+          size,
+          variant,
+        }),
+        className,
+      ])}
       style={{
         ...assignInlineVars({
           [colorVariant]: vars.colors.$scale[color][900],
