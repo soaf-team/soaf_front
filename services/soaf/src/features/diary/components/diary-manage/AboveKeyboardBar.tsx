@@ -36,7 +36,7 @@ export const AboveKeyboardBar = ({
 
   const onImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
-      let img = event.target.files[0];
+      const img = event.target.files[0];
       const newImage = URL.createObjectURL(img);
 
       onChangePhotos([...diary.photos, newImage]);

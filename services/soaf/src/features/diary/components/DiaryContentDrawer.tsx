@@ -11,7 +11,8 @@ type DiaryContentDrawerProps = {
 };
 
 export const DiaryContentDrawer = ({ diary }: DiaryContentDrawerProps) => {
-  const ref = useRef(null);
+  // 버튼 레프
+  const ref = useRef<HTMLButtonElement>(null);
   const { push } = useFlow();
   const [shouldDisappear, setShouldDisappear] = useState(false);
   const opacity = shouldDisappear ? "opacity-0" : "opacity-100";
@@ -19,11 +20,10 @@ export const DiaryContentDrawer = ({ diary }: DiaryContentDrawerProps) => {
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
+      entries => {
+        entries.forEach(entry => {
           if (entry.isIntersecting) {
-            // @ts-ignore
-            ref.current.click();
+            ref.current?.click();
           }
         });
       },

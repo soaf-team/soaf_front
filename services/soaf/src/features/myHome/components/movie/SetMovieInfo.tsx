@@ -17,8 +17,8 @@ export const SetMovieInfo = ({ onPrevStep, movieId }: Props) => {
   if (!movieInfo) return null;
 
   const actors = movieInfo.credits.cast
-    .filter((actor) => actor.known_for_department === "Acting")
-    .map((actor) => actor.name)
+    .filter(actor => actor.known_for_department === "Acting")
+    .map(actor => actor.name)
     .slice(0, 2)
     .join(", ");
 

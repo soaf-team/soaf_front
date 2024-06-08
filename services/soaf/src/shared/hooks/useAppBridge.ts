@@ -2,14 +2,14 @@ import { useEffect } from "react";
 
 type AppBridgeMessage = {
   type: "LOADING_EVENT";
-  data: any;
+  data: unknown;
 };
 
 export const useAppBridge = () => {
   const sendMessageToNative = (message: AppBridgeMessage) => {
-    // @ts-ignore
+    // @ts-expect-error window is not defined in react-native
     if (typeof window !== "undefined" && window.ReactNativeWebView) {
-      // @ts-ignore
+      // @ts-expect-error window is not defined in react-native
       window.ReactNativeWebView.postMessage(JSON.stringify(message));
     }
   };

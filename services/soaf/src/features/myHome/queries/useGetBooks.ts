@@ -33,7 +33,7 @@ export const useGetBooks = ({ value }: Props) => {
     queryFn: () => fetchBooks(value),
     staleTime: Infinity,
     enabled: value.length > 0,
-    select: (data) => data.documents,
+    select: data => data.documents,
   });
 
   return {

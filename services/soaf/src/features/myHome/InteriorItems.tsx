@@ -40,7 +40,7 @@ export const InteriorItems = ({
 
   const { debounced: handleOnDrag } = useDebounce(
     (name: string, data: DraggableData) => {
-      setPositions((prevPositions) => ({
+      setPositions(prevPositions => ({
         ...prevPositions,
         [name]: { x: data.x, y: data.y },
       }));
@@ -49,7 +49,7 @@ export const InteriorItems = ({
   );
 
   const handleDraggable = (name: string) => {
-    setIsDraggable((prev) => ({
+    setIsDraggable(prev => ({
       ...prev,
       [name]: !prev[name],
     }));
@@ -85,7 +85,7 @@ export const InteriorItems = ({
 
   return (
     <>
-      {interiorItems.map((item) => {
+      {interiorItems.map(item => {
         return (
           <Interior
             key={item.id}
@@ -103,7 +103,7 @@ export const InteriorItems = ({
             position={positions[item.name]}
             initialPosition={initialPositions[item.name]}
             className={CLASS_NAMES[item.name]}
-            handleDrag={(data) => handleOnDrag(item.name, data)}
+            handleDrag={data => handleOnDrag(item.name, data)}
             onItemClick={() => handleItemClick(item.name, isEdit)}
           />
         );

@@ -23,7 +23,7 @@ export const BottomActionButtons = ({ interiorItems }: Props) => {
   const visibilityMap = Object.keys(icons).reduce(
     (acc, key) => {
       const item = interiorItems.find(
-        (interiorItem) => interiorItem.name === key,
+        interiorItem => interiorItem.name === key,
       );
       acc[key] = item ? item.isVisible : false;
       return acc;
@@ -41,7 +41,7 @@ export const BottomActionButtons = ({ interiorItems }: Props) => {
       gap={32}
       className="bg-white w-3/4 h-[56px] px-[32px] py-[16px] opacity-90 rounded-[28px] absolute transform -translate-x-1/2 -translate-y-1/2 left-1/2 bottom-10"
     >
-      {Object.keys(icons).map((key) => (
+      {Object.keys(icons).map(key => (
         <Flex
           key={key}
           align="center"
@@ -52,7 +52,7 @@ export const BottomActionButtons = ({ interiorItems }: Props) => {
               : ""
           }`}
           onClick={() =>
-            setVisibility((prev) => ({ ...prev, [key]: !prev[key] }))
+            setVisibility(prev => ({ ...prev, [key]: !prev[key] }))
           }
         >
           <img src={icons[key]} alt={key} className="w-[24px] h-[24px]" />

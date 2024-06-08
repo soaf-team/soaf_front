@@ -29,7 +29,7 @@ export const useGetMovies = ({ value }: { value: string }) => {
     queryFn: () => fetchMovies(value),
     staleTime: Infinity,
     enabled: value.length > 0,
-    select: (data) => data.results,
+    select: data => data.results,
   });
 
   return {

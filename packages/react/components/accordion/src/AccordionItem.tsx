@@ -12,7 +12,7 @@ const AccordionItem = (
 
   const childrenWithProps = Children.toArray(children);
 
-  const accordionItemChildren = childrenWithProps.map((child) => {
+  const accordionItemChildren = childrenWithProps.map(child => {
     if (isValidElement(child)) {
       return cloneElement(child, { ...child.props, itemName });
     }
