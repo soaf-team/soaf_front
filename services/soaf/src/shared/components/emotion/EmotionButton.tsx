@@ -1,11 +1,11 @@
-import { EMOTION_ICON } from "@/shared/constants";
-import { Emotion } from "@/shared/types";
+import { EMOTIONS } from "@/shared/constants";
+import { EmotionKey } from "@/shared/types";
 import { cn } from "@/shared/utils";
 
 type EmotionButtonProps = {
-  emotion: Emotion;
+  emotion: EmotionKey;
   selected?: boolean;
-  onClick?: (emotion: Emotion) => void;
+  onClick?: (emotion: EmotionKey) => void;
 } & Omit<React.HTMLAttributes<HTMLButtonElement>, "onClick">;
 
 export const EmotionButton = ({
@@ -31,7 +31,7 @@ export const EmotionButton = ({
     >
       {emotion}
       <img
-        src={EMOTION_ICON[emotion]}
+        src={EMOTIONS[emotion].icon}
         alt="emotion_icon"
         className={cn(
           [
