@@ -19,7 +19,7 @@ type ComponentPropsWithoutChildren<
   Component extends keyof JSX.IntrinsicElements | JSXElementConstructor<any>,
 > = Omit<ComponentProps<Component>, "children">;
 
-type RenderFallbackProps<ErrorType extends Error = Error> = {
+export type RenderFallbackProps<ErrorType extends Error = Error> = {
   error: ErrorType;
   reset: () => void;
 };
