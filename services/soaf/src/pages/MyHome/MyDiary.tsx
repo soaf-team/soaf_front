@@ -59,7 +59,7 @@ const MyDiary = () => {
             </div>
           </>
         ) : (
-          <AsyncBoundary loadingFallback={<div>로딩중...</div>}>
+          <AsyncBoundary>
             <DiaryList diariesByMonth={diaries} />
           </AsyncBoundary>
         )}
