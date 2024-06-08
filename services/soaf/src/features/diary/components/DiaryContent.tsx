@@ -1,7 +1,8 @@
-import { EmotionSticker, Image } from "@/shared/components";
-import { Diary, Emotion } from "@/shared/types";
 import { Flex } from "@soaf/react-components-layout";
-import { Fragment } from "react/jsx-runtime";
+import { Fragment } from "react";
+
+import { Diary } from "@/shared/types";
+import { EmotionSticker, Image } from "@/shared/components";
 
 type DiaryContentProps = {
   diary: Diary;
@@ -22,10 +23,7 @@ export const DiaryContent = ({
 
   return (
     <Flex direction="column">
-      <EmotionSticker
-        emotion={diary.emotions[0] as Emotion}
-        className="mb-[10px]"
-      />
+      <EmotionSticker emotion={diary.emotions[0]} className="mb-[10px]" />
       <Flex direction="column" className="text-left">
         <span className="head3 mb-[16px] gap-[4px]">
           <span>{monthDay}</span> <span className="text-gray300">{week}</span>

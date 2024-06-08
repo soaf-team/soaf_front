@@ -8,7 +8,7 @@ import { DiaryStatsCard } from "./DiaryStatsCard";
 
 type EmotionsOfTheMonthProps = {
   data: {
-    [key in EmotionKey]: number;
+    [key in EmotionKey]?: number;
   };
 };
 

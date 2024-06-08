@@ -1,7 +1,7 @@
 import { ForwardedRef, forwardRef, useEffect, useRef } from "react";
 import { Flex } from "@soaf/react-components-layout";
 
-import { Emotion } from "@/shared/types";
+import { EmotionKey } from "@/shared/types";
 import { DiaryFormType } from "../../store";
 
 import { EmotionSticker } from "@/shared/components";
@@ -13,7 +13,7 @@ const CONTENT_PLACEHOLDER = "오늘 하루는 어땠나요?";
 
 type DiaryFormProps = {
   diary: DiaryFormType;
-  handleReorderEmotions: (emotions: Emotion[]) => void;
+  handleReorderEmotions: (emotions: EmotionKey[]) => void;
   handleTitleChange: (title: string) => void;
   handleContentChange: (content: string) => void;
   handlePhotosChange: (photos: string[]) => void;
