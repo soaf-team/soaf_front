@@ -2,19 +2,20 @@
 import * as React from "react";
 import { Drawer as DrawerPrimitive } from "vaul";
 
+import { cn } from "@shared/utils";
 import { useMyHomeActivity } from "@/features/myHome/hooks";
 
-import { cn } from "@shared/utils";
-
-const Drawer = ({
+function Drawer({
   shouldScaleBackground = true,
   ...props
-}: React.ComponentProps<typeof DrawerPrimitive.Root>) => (
-  <DrawerPrimitive.Root
-    shouldScaleBackground={shouldScaleBackground}
-    {...props}
-  />
-);
+}: React.ComponentProps<typeof DrawerPrimitive.Root>) {
+  return (
+    <DrawerPrimitive.Root
+      shouldScaleBackground={shouldScaleBackground}
+      {...props}
+    />
+  );
+}
 Drawer.displayName = "Drawer";
 
 const DrawerTrigger = DrawerPrimitive.Trigger;

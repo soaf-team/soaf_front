@@ -8,7 +8,7 @@ type CardProps = {
   isSelected?: boolean;
 } & FlexProps;
 
-const Card = (
+function Card(
   {
     children,
     shadow,
@@ -18,7 +18,7 @@ const Card = (
     ...props
   }: CardProps,
   ref: Ref<HTMLDivElement>,
-) => {
+) {
   const shadowClass = shadow
     ? "shadow-shadow1"
     : "outline outline-1 outline-[rgba(138,145,168,0.2)]";
@@ -41,7 +41,7 @@ const Card = (
       {children}
     </Flex>
   );
-};
+}
 
 const _Card = forwardRef(Card);
 export { _Card as Card };

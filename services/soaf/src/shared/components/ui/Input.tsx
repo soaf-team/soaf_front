@@ -1,8 +1,8 @@
-import { cn } from "@/shared/utils";
 import { cva } from "class-variance-authority";
 import { forwardRef } from "react";
 
 import ResetIcon from "@assets/icons/input/resetIcon.svg";
+import { cn } from "@/shared/utils";
 
 const inputVariants = cva(
   `flex items-center bg-transparent gap-[4px] w-full text-gray600`,
@@ -33,7 +33,7 @@ type InputProps = {
   isResetButton?: boolean;
 } & Omit<React.InputHTMLAttributes<HTMLInputElement>, "size" | "onChange">;
 
-const Input = (props: InputProps, ref: React.Ref<HTMLInputElement>) => {
+function Input(props: InputProps, ref: React.Ref<HTMLInputElement>) {
   const {
     variant = "underline",
     size = "md",
@@ -64,7 +64,7 @@ const Input = (props: InputProps, ref: React.Ref<HTMLInputElement>) => {
       {rightSlot != null ? rightSlot : null}
     </div>
   );
-};
+}
 
 const _Input = forwardRef<HTMLInputElement, InputProps>(Input);
 export { _Input as Input };
@@ -74,7 +74,7 @@ type ResetButtonProps = {
   onClick: () => void;
 };
 
-const ResetButton = ({ visible, onClick }: ResetButtonProps) => {
+function ResetButton({ visible, onClick }: ResetButtonProps) {
   if (!visible) return null;
   return <img src={ResetIcon} alt="reset_icon" onClick={onClick} />;
-};
+}

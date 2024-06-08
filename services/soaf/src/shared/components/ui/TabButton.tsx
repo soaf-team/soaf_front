@@ -5,7 +5,7 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   active?: boolean;
 }
 
-export const TabButton = ({ children, active = false, ...props }: Props) => {
+export function TabButton({ children, active = false, ...props }: Props) {
   return (
     <button
       {...props}
@@ -25,4 +25,4 @@ export const TabButton = ({ children, active = false, ...props }: Props) => {
       )}
     </button>
   );
-};
+}

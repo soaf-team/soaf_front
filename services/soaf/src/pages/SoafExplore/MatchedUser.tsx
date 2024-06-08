@@ -1,14 +1,14 @@
 import { useState } from "react";
+import { IconBack } from "@stackflow/plugin-basic-ui";
+import { Flex } from "@soaf/react-components-layout";
+import x from "@assets/icons/header/x.svg";
 import { useFlow } from "@/pages/stackflow";
 import { useMatchedUserQuery } from "@/features/explore/queries";
 import { PageLayout, Button } from "@/shared/components";
 import { MatchedUserItem } from "@/features/explore/components";
-import { IconBack } from "@stackflow/plugin-basic-ui";
-import { Flex } from "@soaf/react-components-layout";
-import x from "@assets/icons/header/x.svg";
 import { User } from "@/shared/types";
 
-const MatchedUser = () => {
+function MatchedUser() {
   const { replace } = useFlow();
   const { matchedUsers } = useMatchedUserQuery();
 
@@ -48,6 +48,7 @@ const MatchedUser = () => {
           className="w-[95%]"
         >
           {matchedUsers
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             .sort((a: any, b: any) =>
               a.percent > b.percent ? -1 : a.percent < b.percent ? 1 : 0,
             )
@@ -76,11 +77,11 @@ const MatchedUser = () => {
       </div>
     </PageLayout>
   );
-};
+}
 
 export default MatchedUser;
 
-const LeftIcon = () => {
+function LeftIcon() {
   const { pop } = useFlow();
 
   return (
@@ -88,9 +89,9 @@ const LeftIcon = () => {
       <IconBack />
     </button>
   );
-};
+}
 
-const RightIcon = () => {
+function RightIcon() {
   const { replace } = useFlow();
 
   return (
@@ -98,4 +99,4 @@ const RightIcon = () => {
       <img src={x} alt="x" className="w-[12px] h-[12px]" />
     </button>
   );
-};
+}

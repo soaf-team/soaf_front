@@ -1,7 +1,7 @@
 import { Flex } from "@soaf/react-components-layout";
 import { EmotionSticker } from "@/shared/components";
 
-const EmotionGroup = () => {
+function EmotionGroup() {
   return (
     <Flex direction="column" gap={8} align="center" justify="center">
       <Flex direction="row" gap={4}>
@@ -18,6 +18,6 @@ const EmotionGroup = () => {
       </Flex>
     </Flex>
   );
-};
+}
 
 export default EmotionGroup;

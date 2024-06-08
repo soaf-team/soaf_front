@@ -1,10 +1,10 @@
 import { useState, useEffect, useRef } from "react";
-import { useFlow } from "../stackflow";
-import { PageLayout, Button, Input } from "@/shared/components";
 import { Flex } from "@soaf/react-components-layout";
 import { IconBack } from "@stackflow/plugin-basic-ui";
+import { useFlow } from "../stackflow";
+import { PageLayout, Button, Input } from "@/shared/components";
 
-const NickName = () => {
+function NickName() {
   const { pop, replace } = useFlow();
   const [value, setValue] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
@@ -71,6 +71,6 @@ const NickName = () => {
       </Flex>
     </PageLayout>
   );
-};
+}
 
 export default NickName;

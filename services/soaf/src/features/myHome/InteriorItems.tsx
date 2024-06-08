@@ -1,9 +1,9 @@
+import { DraggableData } from "react-draggable";
 import { useFlow } from "@/pages/stackflow";
 import { useDebounce } from "@/shared/hooks";
 
 import { Interior } from "./components";
 import { Interior as InteriorData, InteriorName } from "@/shared/types";
-import { DraggableData } from "react-draggable";
 
 interface Props {
   interiorItems: InteriorData[];
@@ -26,7 +26,7 @@ interface Props {
   >;
 }
 
-export const InteriorItems = ({
+export function InteriorItems({
   interiorItems,
   isEdit,
   isAfter6PM,
@@ -35,7 +35,7 @@ export const InteriorItems = ({
   positions,
   initialPositions,
   setPositions,
-}: Props) => {
+}: Props) {
   const { push } = useFlow();
 
   const { debounced: handleOnDrag } = useDebounce(
@@ -110,7 +110,7 @@ export const InteriorItems = ({
       })}
     </>
   );
-};
+}
 
 const CLASS_NAMES: Record<InteriorName, string> = {
   books: "absolute w-1/4 top-16",

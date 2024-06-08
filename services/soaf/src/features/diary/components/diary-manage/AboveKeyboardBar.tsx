@@ -1,13 +1,12 @@
 import { useEffect, useRef } from "react";
 
-import { DiaryFormType, useDiaryStore } from "../../store";
-import { useKeboardHeight } from "@/shared/hooks";
-
 import { Flex } from "@soaf/react-components-layout";
 
 import photo from "@assets/icons/shared/photo.svg";
 import lock from "@assets/icons/shared/lock.svg";
 import unLock from "@assets/icons/shared/unLock.svg";
+import { useKeboardHeight } from "@/shared/hooks";
+import { DiaryFormType, useDiaryStore } from "../../store";
 
 type AboveKeyboardBarProps = {
   diary: DiaryFormType;
@@ -17,12 +16,12 @@ type AboveKeyboardBarProps = {
   handleKeepKeyboard: () => void;
 };
 
-export const AboveKeyboardBar = ({
+export function AboveKeyboardBar({
   diary,
   handleSaveDiary,
   handleTogglePrivate,
   handleKeepKeyboard,
-}: AboveKeyboardBarProps) => {
+}: AboveKeyboardBarProps) {
   const photoInputRef = useRef<HTMLInputElement>(null);
   const { keyboardHeight, isOnKeyboard } = useKeboardHeight();
   const { onChangePhotos } = useDiaryStore();
@@ -109,4 +108,4 @@ export const AboveKeyboardBar = ({
       </Flex>
     </Flex>
   );
-};
+}

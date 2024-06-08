@@ -1,3 +1,4 @@
+import { Flex } from "@soaf/react-components-layout";
 import { useFlow } from "@/pages/stackflow";
 import { useDiaryStore } from "../../store";
 
@@ -10,17 +11,16 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/shared/components";
-import { Flex } from "@soaf/react-components-layout";
 
 type DiaryWriteCancelDialogProps = {
   popCount: number;
   type?: "write" | "modify";
 };
 
-export const DiaryCancelComfirmDialog = ({
+export function DiaryCancelComfirmDialog({
   popCount = 1,
   type = "write",
-}: DiaryWriteCancelDialogProps) => {
+}: DiaryWriteCancelDialogProps) {
   const { pop } = useFlow();
   const { resetAllDiaryState } = useDiaryStore();
 
@@ -54,7 +54,7 @@ export const DiaryCancelComfirmDialog = ({
       </DialogFooter>
     </DialogContent>
   );
-};
+}
 
 const TYPE_TITLE = {
   write: "일기를 그만 쓸까요?",

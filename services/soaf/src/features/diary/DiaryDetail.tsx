@@ -5,10 +5,10 @@ type DiaryDetailProps = {
   diaryId: string;
 };
 
-export const DiaryDetail = ({ diaryId }: DiaryDetailProps) => {
+export function DiaryDetail({ diaryId }: DiaryDetailProps) {
   const { diary } = useDiaryQuery({ diaryId });
 
-  const reactions = diary!.reactions;
+  const { reactions } = diary!;
 
   return (
     <div className="flex flex-col justify-between h-full">
@@ -16,4 +16,4 @@ export const DiaryDetail = ({ diaryId }: DiaryDetailProps) => {
       <DiaryReaction reactions={reactions} />
     </div>
   );
-};
+}

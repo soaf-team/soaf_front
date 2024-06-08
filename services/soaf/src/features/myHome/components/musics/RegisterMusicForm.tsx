@@ -7,7 +7,7 @@ import { SearchMusicList, SetMusicInfo } from "@/features/myHome/components";
 
 const STEP = ["음악 검색", "음악 등록"] as const;
 
-export const RegisterMusicForm = () => {
+export function RegisterMusicForm() {
   const [music, setMusic] = useState<Record<string, string>>({
     name: "",
     artist: "",
@@ -39,4 +39,4 @@ export const RegisterMusicForm = () => {
       </Funnel>
     </GenericForm>
   );
-};
+}

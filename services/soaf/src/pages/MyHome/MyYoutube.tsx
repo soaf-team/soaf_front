@@ -5,7 +5,7 @@ import {
   RegisterYoutubeForm,
 } from "@/features/myHome/components";
 
-const MyYoutube = () => {
+function MyYoutube() {
   return (
     <PageLayout
       header={{
@@ -26,6 +26,6 @@ const MyYoutube = () => {
       </Flex>
     </PageLayout>
   );
-};
+}
 
 export default MyYoutube;

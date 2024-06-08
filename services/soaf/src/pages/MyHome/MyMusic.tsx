@@ -2,7 +2,7 @@ import { Flex } from "@soaf/react-components-layout";
 import { BackButton, PageLayout } from "@/shared/components";
 import { MyHomeDrawer, RegisterMusicForm } from "@/features/myHome/components";
 
-const MyMusic = () => {
+function MyMusic() {
   return (
     <PageLayout
       header={{
@@ -23,6 +23,6 @@ const MyMusic = () => {
       </Flex>
     </PageLayout>
   );
-};
+}
 
 export default MyMusic;

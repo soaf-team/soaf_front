@@ -10,7 +10,7 @@ interface Props {
   setYoutubeInfo: React.Dispatch<React.SetStateAction<YoutubeItemProps>>;
 }
 
-export const SearchYoutubeList = ({ onNextStep, setYoutubeInfo }: Props) => {
+export function SearchYoutubeList({ onNextStep, setYoutubeInfo }: Props) {
   const [searchQuery, setSearchQuery] = useState("");
   const { youtube } = useGetYoutube({ videoId: searchQuery.split("v=")[1] });
 
@@ -43,4 +43,4 @@ export const SearchYoutubeList = ({ onNextStep, setYoutubeInfo }: Props) => {
       />
     </>
   );
-};
+}

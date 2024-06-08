@@ -1,6 +1,6 @@
+import { Flex } from "@soaf/react-components-layout";
 import { useMusicDetail } from "../../queries";
 
-import { Flex } from "@soaf/react-components-layout";
 import { Header, BackButton } from "@/shared/components";
 
 import { MusicItem } from "./MusicItem";
@@ -11,7 +11,7 @@ interface Props {
   music: Record<string, string>;
 }
 
-export const SetMusicInfo = ({ onPrevStep, music }: Props) => {
+export function SetMusicInfo({ onPrevStep, music }: Props) {
   const { musicInfo } = useMusicDetail({
     name: music.name,
     artist: music.artist,
@@ -43,4 +43,4 @@ export const SetMusicInfo = ({ onPrevStep, music }: Props) => {
       </Flex>
     </>
   );
-};
+}

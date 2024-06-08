@@ -86,6 +86,7 @@ export const useDiaryQueryByMonth = ({ params }: { params: string }) => {
         emotions: ["뿌듯한"],
         reactions: ["reaction1", "reaction2"],
       },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     ] as any;
   };
 

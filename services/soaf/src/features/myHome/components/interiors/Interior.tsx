@@ -1,3 +1,4 @@
+import Draggable, { DraggableData } from "react-draggable";
 import books from "@/assets/icons/my-home/interior/books.svg";
 import movie from "@/assets/icons/my-home/interior/movie.svg";
 import music from "@/assets/icons/my-home/interior/music.svg";
@@ -13,7 +14,6 @@ import drag from "@/assets/icons/my-home/move.svg";
 
 import { cn } from "@/shared/utils";
 
-import Draggable, { DraggableData } from "react-draggable";
 import { InteriorType } from "@/shared/types";
 
 interface InteriorProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -40,7 +40,7 @@ const images: { [key: string]: string } = {
   youtube,
 };
 
-export const Interior = (props: InteriorProps) => {
+export function Interior(props: InteriorProps) {
   const {
     // src,
     name,
@@ -97,4 +97,4 @@ export const Interior = (props: InteriorProps) => {
   ) : (
     content
   );
-};
+}

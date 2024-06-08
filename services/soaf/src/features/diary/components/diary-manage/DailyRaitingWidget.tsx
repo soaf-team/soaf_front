@@ -7,10 +7,10 @@ type DailyRaitingWidgetProps = {
   handleSelectRating: (index: number) => void;
 };
 
-export const DailyRaitingWidget = ({
+export function DailyRaitingWidget({
   selectedRating,
   handleSelectRating,
-}: DailyRaitingWidgetProps) => {
+}: DailyRaitingWidgetProps) {
   return (
     <Flex gap={12}>
       {LEVELS.map((level, index) => {
@@ -29,4 +29,4 @@ export const DailyRaitingWidget = ({
       })}
     </Flex>
   );
-};
+}

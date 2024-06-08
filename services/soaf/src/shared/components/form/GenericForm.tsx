@@ -12,11 +12,11 @@ interface Props<TFormData extends FieldValues> {
   formOptions?: UseFormProps<TFormData>;
 }
 
-export const GenericForm = <TFormData extends FieldValues>({
+export function GenericForm<TFormData extends FieldValues>({
   children,
   onSubmit,
   formOptions,
-}: Props<TFormData>) => {
+}: Props<TFormData>) {
   const methods = useForm<TFormData>(formOptions);
 
   return (
@@ -26,4 +26,4 @@ export const GenericForm = <TFormData extends FieldValues>({
       </form>
     </FormProvider>
   );
-};
+}

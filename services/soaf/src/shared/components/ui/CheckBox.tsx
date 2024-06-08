@@ -8,14 +8,14 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   isChecked?: boolean;
 }
 
-const CheckBox = ({
+function CheckBox({
   style,
   className = "",
   label,
   isChecked = false,
   onClick,
   ...props
-}: Props) => {
+}: Props) {
   return (
     <Flex direction="row" align="center" gap={8}>
       <div
@@ -37,9 +37,9 @@ const CheckBox = ({
       {label && <span>{label}</span>}
     </Flex>
   );
-};
+}
 
-const Check = ({ isChecked, label, onClick, className, ...props }: Props) => {
+function Check({ isChecked, label, onClick, className, ...props }: Props) {
   return (
     <Flex direction="row" align="center" gap={8}>
       <button type="button" className={className} onClick={onClick} {...props}>
@@ -53,6 +53,6 @@ const Check = ({ isChecked, label, onClick, className, ...props }: Props) => {
       {label && <span>{label}</span>}
     </Flex>
   );
-};
+}
 
 export { CheckBox, Check };

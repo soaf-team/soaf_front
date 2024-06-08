@@ -1,5 +1,5 @@
 import { LoadingSpinner } from "../fallback";
 
-export const LoadingFallback = () => {
+export function LoadingFallback() {
   return <LoadingSpinner />;
-};
+}

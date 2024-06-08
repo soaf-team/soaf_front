@@ -1,13 +1,20 @@
-import { ForwardedRef, forwardRef, useEffect, useRef } from "react";
+import {
+  ForwardedRef,
+  MouseEvent,
+  forwardRef,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+} from "react";
 import { Flex } from "@soaf/react-components-layout";
 
+import deletePhoto from "@assets/icons/shared/deletePhoto.svg";
 import { EmotionKey } from "@/shared/types";
 import { DiaryFormType } from "../../store";
 
 import { EmotionSticker } from "@/shared/components";
 
 import { AboveKeyboardBar } from "./AboveKeyboardBar";
-import deletePhoto from "@assets/icons/shared/deletePhoto.svg";
 
 const CONTENT_PLACEHOLDER = "오늘 하루는 어땠나요?";
 
@@ -20,7 +27,7 @@ type DiaryFormProps = {
   handleTogglePrivate: () => void;
 };
 
-export const DiaryForm = (props: DiaryFormProps) => {
+export function DiaryForm(props: DiaryFormProps) {
   const {
     diary,
     handleReorderEmotions,
@@ -52,18 +59,24 @@ export const DiaryForm = (props: DiaryFormProps) => {
   useEffect(() => {
     contentRef.current?.focus();
 
-    const handleClickOutside = (event: any) => {
-      if (titleRef.current && titleRef.current.contains(event.target)) {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (titleRef.current && titleRef.current.contains(event.target as Node)) {
         titleRef.current.focus();
       } else {
         contentRef.current?.focus();
       }
     };
 
-    document.addEventListener("click", handleClickOutside);
+    document.addEventListener(
+      "click",
+      handleClickOutside as unknown as EventListener,
+    );
 
     return () => {
-      document.removeEventListener("click", handleClickOutside);
+      document.removeEventListener(
+        "click",
+        handleClickOutside as unknown as EventListener,
+      );
     };
   }, []);
 
@@ -121,7 +134,7 @@ export const DiaryForm = (props: DiaryFormProps) => {
       />
     </>
   );
-};
+}
 
 type TitleInputProps = {
   diary: DiaryFormType;
@@ -132,9 +145,12 @@ const TitleInput = forwardRef(
   (props: TitleInputProps, ref: ForwardedRef<HTMLTextAreaElement>) => {
     const { diary, handleTitleChange, ...rest } = props;
     const initialTitle = `${diary.emotions.join(", ")} 하루`;
+    const internalRef = useRef<HTMLTextAreaElement>(null);
+
+    useImperativeHandle(ref, () => internalRef.current as HTMLTextAreaElement);
 
     const adjustHeight = () => {
-      const textarea = (ref as any)?.current;
+      const textarea = internalRef.current;
       if (!textarea) return;
       textarea.style.height = "27px";
       textarea.style.height = `${textarea.scrollHeight}px`;

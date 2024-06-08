@@ -12,7 +12,7 @@ type EmotionsOfTheMonthProps = {
   };
 };
 
-export const EmotionsOfTheMonth = ({ data }: EmotionsOfTheMonthProps) => {
+export function EmotionsOfTheMonth({ data }: EmotionsOfTheMonthProps) {
   return (
     <DiaryStatsCard title="이 달의 감정">
       <Flex direction="column" gap={16} align="center">
@@ -49,4 +49,4 @@ export const EmotionsOfTheMonth = ({ data }: EmotionsOfTheMonthProps) => {
       </Flex>
     </DiaryStatsCard>
   );
-};
+}

@@ -1,10 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { Flex } from "@soaf/react-components-layout";
 
+import triangle from "@assets/icons/triangle.svg";
 import { DrawerTrigger, Drawer, DrawerContent, DrawerClose } from "../dialog";
 import { Check } from "../ui";
-
-import triangle from "@assets/icons/triangle.svg";
 
 const YEAR_MONTH_LIST_LENGTH = 36;
 const ITEM_HEIGHT = 44;
@@ -15,10 +14,10 @@ type YearMonthSelectProps = {
   handleCurrentDate: (newDate: Date) => void;
 };
 
-export const YearMonthSelect = ({
+export function YearMonthSelect({
   currentDate,
   handleCurrentDate,
-}: YearMonthSelectProps) => {
+}: YearMonthSelectProps) {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
@@ -119,4 +118,4 @@ export const YearMonthSelect = ({
       </DrawerContent>
     </Drawer>
   );
-};
+}

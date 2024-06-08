@@ -11,7 +11,7 @@ interface Props {
   isAfter6PM: boolean;
 }
 
-export const DeskAndChair = (props: Props) => {
+export function DeskAndChair(props: Props) {
   const { push } = useFlow();
 
   const { className, isAfter6PM } = props;
@@ -32,4 +32,4 @@ export const DeskAndChair = (props: Props) => {
       />
     </div>
   );
-};
+}

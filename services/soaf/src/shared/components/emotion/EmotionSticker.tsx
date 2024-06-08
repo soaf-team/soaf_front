@@ -7,12 +7,12 @@ interface Props extends React.HTMLAttributes<HTMLDivElement> {
   size?: string;
 }
 
-export const EmotionSticker = ({
+export function EmotionSticker({
   emotion,
   size = "lg",
   className,
   ...props
-}: Props) => {
+}: Props) {
   const stickerSize = {
     sm: "w-[16px] h-[16px]",
     md: "w-[32px] h-[32px]",
@@ -28,4 +28,4 @@ export const EmotionSticker = ({
       />
     </div>
   );
-};
+}

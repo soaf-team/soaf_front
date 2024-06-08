@@ -7,7 +7,7 @@ type HeaderProps = {
   className?: string;
 };
 
-export const Header = (props: HeaderProps) => {
+export function Header(props: HeaderProps) {
   const { children, leftSlot, rightSlot, className } = props;
 
   return (
@@ -30,4 +30,4 @@ export const Header = (props: HeaderProps) => {
       )}
     </div>
   );
-};
+}

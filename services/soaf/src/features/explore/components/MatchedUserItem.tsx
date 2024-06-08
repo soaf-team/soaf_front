@@ -9,13 +9,13 @@ interface Props {
   className?: string;
 }
 
-export const MatchedUserItem = ({
+export function MatchedUserItem({
   name,
   percent,
   onClick,
   isSelected,
   className,
-}: Props) => {
+}: Props) {
   return (
     <Card
       direction="row"
@@ -31,4 +31,4 @@ export const MatchedUserItem = ({
       <p className="text-gray-400 label3">유사율 {percent}%</p>
     </Card>
   );
-};
+}

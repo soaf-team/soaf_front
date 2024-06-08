@@ -7,8 +7,8 @@ import {
   PageLayout,
   YearMonthSelect,
 } from "@shared/components";
-import { MyDiaryList } from "@/features/diary";
 import { Flex } from "@soaf/react-components-layout";
+import { MyDiaryList } from "@/features/diary";
 
 const DiaryListPage: ActivityComponentType = () => {
   const [currentDate, setCurrentDate] = useState(new Date());

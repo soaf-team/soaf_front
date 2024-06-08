@@ -9,7 +9,7 @@ interface Props {
   component: React.ReactNode;
 }
 
-export const MyHomeDrawer = ({ component }: Props) => {
+export function MyHomeDrawer({ component }: Props) {
   return (
     <Drawer>
       <DrawerTrigger>
@@ -20,4 +20,4 @@ export const MyHomeDrawer = ({ component }: Props) => {
       </DrawerContent>
     </Drawer>
   );
-};
+}

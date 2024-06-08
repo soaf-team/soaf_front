@@ -16,7 +16,7 @@ type DiaryDetailPageParams = {
 const DiaryDetailPage: ActivityComponentType<DiaryDetailPageParams> = ({
   params,
 }) => {
-  const diaryId = params.diaryId;
+  const { diaryId } = params;
 
   return (
     <PageLayout

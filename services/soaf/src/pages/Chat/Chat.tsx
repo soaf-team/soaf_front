@@ -28,7 +28,7 @@ const DUMMY_CHAT = [
 
 const CUSTOMER_ID = 1;
 
-const Chat = () => {
+function Chat() {
   return (
     <PageLayout
       header={{
@@ -43,12 +43,11 @@ const Chat = () => {
 
         const currentMessage = arr[index];
         const nextMessage = arr[index + 1];
-        const isGap =
+        const isGap = !(
           isFirst ||
           index === arr.length - 1 ||
           nextMessage.userId === currentMessage.userId
-            ? false
-            : true;
+        );
 
         const isLast = !nextMessage || nextMessage.userId !== data.userId;
 
@@ -69,6 +68,6 @@ const Chat = () => {
       })}
     </PageLayout>
   );
-};
+}
 
 export default Chat;

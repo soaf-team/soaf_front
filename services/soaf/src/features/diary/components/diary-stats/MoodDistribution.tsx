@@ -1,6 +1,6 @@
+import { Flex } from "@soaf/react-components-layout";
 import { LEVELS, LEVEL_COLOR } from "@/shared/constants";
 
-import { Flex } from "@soaf/react-components-layout";
 import { BarChart } from "@/shared/components";
 import { DiaryStatsCard } from "./DiaryStatsCard";
 
@@ -10,7 +10,7 @@ type MoodDistributionProps = {
   };
 };
 
-export const MoodDistribution = ({ data }: MoodDistributionProps) => {
+export function MoodDistribution({ data }: MoodDistributionProps) {
   const barChartData = Object.entries(data).map(([level, ratio], index) => ({
     level,
     ratio,
@@ -41,4 +41,4 @@ export const MoodDistribution = ({ data }: MoodDistributionProps) => {
       </Flex>
     </DiaryStatsCard>
   );
-};
+}

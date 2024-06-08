@@ -1,20 +1,20 @@
 import dayjs from "dayjs";
 
 import { useState } from "react";
-import { useFlow } from "@/pages/stackflow";
-import { useDiaryQueryByMonth } from "@/features/diary/queries";
 import {
   PageLayout,
   Button,
   YearMonthSelect,
   BackButton,
+  NonDataFallback,
 } from "@shared/components";
 import { Flex } from "@soaf/react-components-layout";
+import { useFlow } from "@/pages/stackflow";
+import { useDiaryQueryByMonth } from "@/features/diary/queries";
 import { Diary } from "@/shared/types";
 import { DiaryCard } from "@/features/diary/components";
-import { NonDataFallback } from "@shared/components";
 
-const SoafExplore = () => {
+function SoafExplore() {
   const { replace, push } = useFlow();
   const [currentDate, setCurrentDate] = useState(new Date());
   const { diariesByMonth } = useDiaryQueryByMonth({
@@ -27,9 +27,8 @@ const SoafExplore = () => {
     setIsSelected(prev => {
       if (prev.includes(diariesByMonth[index])) {
         return prev.filter(diary => diary !== diariesByMonth[index]);
-      } else {
-        return [...prev, diariesByMonth[index]];
       }
+      return [...prev, diariesByMonth[index]];
     });
   };
 
@@ -116,6 +115,6 @@ const SoafExplore = () => {
       </Flex>
     </PageLayout>
   );
-};
+}
 
 export default SoafExplore;

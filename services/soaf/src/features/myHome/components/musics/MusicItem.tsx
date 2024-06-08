@@ -11,7 +11,7 @@ interface Props {
   onClick?: () => void;
 }
 
-export const MusicItem = ({ type = "search", onClick, music }: Props) => {
+export function MusicItem({ type = "search", onClick, music }: Props) {
   const coverClass = cn({
     "min-w-[56px] w-[56px] h-[56px] rounded-[4px]": type === "search",
     "w-[88px] h-[88px] rounded-[8px]": type === "list",
@@ -63,4 +63,4 @@ export const MusicItem = ({ type = "search", onClick, music }: Props) => {
       </Flex>
     </Flex>
   );
-};
+}

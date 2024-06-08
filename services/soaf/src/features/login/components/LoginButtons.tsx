@@ -1,8 +1,8 @@
+import { Flex } from "@soaf/react-components-layout";
 import KakaoIcon from "@/assets/icons/oauth/kakao.svg";
 import GoogleIcon from "@/assets/icons/oauth/google.svg";
 import NaverIcon from "@/assets/icons/oauth/naver.svg";
 import AppleIcon from "@/assets/icons/oauth/apple.svg";
-import { Flex } from "@soaf/react-components-layout";
 
 import { cn } from "@/shared/utils";
 
@@ -18,12 +18,12 @@ const buttonStyle =
 
 const iconStyle = "w-[24px] h-[24px] object-cover";
 
-const OAuthButtonGroup = ({
+function OAuthButtonGroup({
   onKakaoClick,
   onGoogleClick,
   onNaverClick,
   onAppleClick,
-}: ButtonProps) => {
+}: ButtonProps) {
   return (
     <Flex direction="column" gap={8}>
       <KakakoLoginButton onClick={onKakaoClick} />
@@ -32,9 +32,9 @@ const OAuthButtonGroup = ({
       <AppleLoginButton onClick={onAppleClick} />
     </Flex>
   );
-};
+}
 
-const KakakoLoginButton = ({ onClick, className, ...props }: ButtonProps) => {
+function KakakoLoginButton({ onClick, className, ...props }: ButtonProps) {
   return (
     <button
       {...props}
@@ -45,9 +45,9 @@ const KakakoLoginButton = ({ onClick, className, ...props }: ButtonProps) => {
       <p>카카오로 시작하기</p>
     </button>
   );
-};
+}
 
-const GoogleLoginButton = ({ onClick, className, ...props }: ButtonProps) => {
+function GoogleLoginButton({ onClick, className, ...props }: ButtonProps) {
   return (
     <button
       {...props}
@@ -62,9 +62,9 @@ const GoogleLoginButton = ({ onClick, className, ...props }: ButtonProps) => {
       <p>구글로 시작하기</p>
     </button>
   );
-};
+}
 
-const NaverLoginButton = ({ onClick, className, ...props }: ButtonProps) => {
+function NaverLoginButton({ onClick, className, ...props }: ButtonProps) {
   return (
     <button
       {...props}
@@ -75,9 +75,9 @@ const NaverLoginButton = ({ onClick, className, ...props }: ButtonProps) => {
       <p>네이버로 시작하기</p>
     </button>
   );
-};
+}
 
-const AppleLoginButton = ({ onClick, className, ...props }: ButtonProps) => {
+function AppleLoginButton({ onClick, className, ...props }: ButtonProps) {
   return (
     <button
       {...props}
@@ -88,7 +88,7 @@ const AppleLoginButton = ({ onClick, className, ...props }: ButtonProps) => {
       <p>애플로 시작하기</p>
     </button>
   );
-};
+}
 
 export {
   OAuthButtonGroup,

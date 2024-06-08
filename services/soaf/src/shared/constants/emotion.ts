@@ -1,5 +1,3 @@
-import { EmotionDetail, EmotionKey } from "../types";
-
 import angry from "@assets/emotions/angry.svg";
 import anxious from "@assets/emotions/anxious.svg";
 import comportable from "@assets/emotions/comportable.svg";
@@ -12,6 +10,7 @@ import proud from "@assets/emotions/proud.svg";
 import pleased from "@assets/emotions/pleased.svg";
 import sad from "@assets/emotions/sad.svg";
 import tired from "@assets/emotions/tired.svg";
+import { EmotionDetail, EmotionKey } from "../types";
 
 export const EMOTIONS: Record<EmotionKey, EmotionDetail> = {
   행복한: { icon: happy, color: "bg-happy", noun: "행복" },

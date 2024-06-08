@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { useGetMusics } from "@/features/myHome/queries";
-
 import { Flex } from "@soaf/react-components-layout";
+import { useGetMusics } from "@/features/myHome/queries";
 
 import { MusicItem } from "./MusicItem";
 import { Album } from "@/shared/types";
@@ -12,7 +11,7 @@ interface Props {
   setMusic: React.Dispatch<React.SetStateAction<Record<string, string>>>;
 }
 
-export const SearchMusicList = ({ onNextStep, setMusic }: Props) => {
+export function SearchMusicList({ onNextStep, setMusic }: Props) {
   const [searchQuery, setSearchQuery] = useState("");
   const { musics } = useGetMusics({ value: searchQuery });
 
@@ -40,4 +39,4 @@ export const SearchMusicList = ({ onNextStep, setMusic }: Props) => {
       ))}
     </Flex>
   );
-};
+}

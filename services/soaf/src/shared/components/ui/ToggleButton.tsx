@@ -4,7 +4,7 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   onToggle?: () => void;
 }
 
-const ToggleButton = ({ className, onToggle, ...props }: Props) => {
+function ToggleButton({ className, onToggle, ...props }: Props) {
   const [isActive, setIsActive] = useState<boolean>(false);
 
   const handleClick = () => {
@@ -30,6 +30,6 @@ const ToggleButton = ({ className, onToggle, ...props }: Props) => {
       />
     </button>
   );
-};
+}
 
 export default ToggleButton;

@@ -4,7 +4,7 @@ interface Props {
   onClick?: () => void;
 }
 
-export const BackButton = ({ onClick }: Props) => {
+export function BackButton({ onClick }: Props) {
   const { pop } = useFlow();
 
   const handleBackClick = () => {
@@ -33,4 +33,4 @@ export const BackButton = ({ onClick }: Props) => {
       </svg>
     </button>
   );
-};
+}

@@ -7,12 +7,12 @@ type StepProps = {
   subMessage?: string;
 };
 
-export const Step = ({
+export function Step({
   currentStep,
   totalStep,
   mainMessage,
   subMessage,
-}: StepProps) => {
+}: StepProps) {
   return (
     <Flex direction="column" align="center" className="text-center">
       <p className="body2 text-gray300 text-center mb-[6px]">
@@ -28,4 +28,4 @@ export const Step = ({
       )}
     </Flex>
   );
-};
+}

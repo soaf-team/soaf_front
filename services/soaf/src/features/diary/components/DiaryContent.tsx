@@ -9,10 +9,7 @@ type DiaryContentProps = {
   isImageClickable?: boolean;
 };
 
-export const DiaryContent = ({
-  diary,
-  isImageClickable,
-}: DiaryContentProps) => {
+export function DiaryContent({ diary, isImageClickable }: DiaryContentProps) {
   const monthDay = new Date(diary.date).toLocaleDateString("ko-KR", {
     month: "short",
     day: "numeric",
@@ -57,4 +54,4 @@ export const DiaryContent = ({
       </Flex>
     </Flex>
   );
-};
+}

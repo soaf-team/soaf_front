@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Flex } from "@soaf/react-components-layout";
 import { useFilterdDiary } from "@/features/diary/queries";
 import { useFlow } from "@/pages/stackflow";
 
@@ -10,11 +11,10 @@ import {
   NonDataFallback,
   Button,
 } from "@/shared/components";
-import { Flex } from "@soaf/react-components-layout";
 import { DiaryFilter } from "@/features/myHome/components";
 import { DiaryList } from "@/features/diary/components";
 
-const MyDiary = () => {
+function MyDiary() {
   const { push } = useFlow();
 
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -66,6 +66,6 @@ const MyDiary = () => {
       </Flex>
     </PageLayout>
   );
-};
+}
 
 export default MyDiary;

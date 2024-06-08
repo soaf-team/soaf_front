@@ -1,6 +1,6 @@
+import { Flex } from "@soaf/react-components-layout";
 import { useMovieDetail } from "../../queries";
 
-import { Flex } from "@soaf/react-components-layout";
 import { Header, BackButton, StarRating } from "@/shared/components";
 
 import { MovieItem } from "./MovieItem";
@@ -11,7 +11,7 @@ interface Props {
   movieId: string;
 }
 
-export const SetMovieInfo = ({ onPrevStep, movieId }: Props) => {
+export function SetMovieInfo({ onPrevStep, movieId }: Props) {
   const { movieInfo } = useMovieDetail({ id: movieId });
 
   if (!movieInfo) return null;
@@ -58,4 +58,4 @@ export const SetMovieInfo = ({ onPrevStep, movieId }: Props) => {
       </Flex>
     </>
   );
-};
+}

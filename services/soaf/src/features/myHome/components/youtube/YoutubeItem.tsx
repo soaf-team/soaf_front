@@ -17,7 +17,7 @@ interface Props {
   youtube: YoutubeItemProps;
 }
 
-export const YoutubeItem = ({ type = "search", onClick, youtube }: Props) => {
+export function YoutubeItem({ type = "search", onClick, youtube }: Props) {
   const posterClass = cn({
     "min-w-[154px] w-[154px] h-[86px] rounded-[8px]":
       type === "search" || "list",
@@ -61,4 +61,4 @@ export const YoutubeItem = ({ type = "search", onClick, youtube }: Props) => {
       </Flex>
     </Flex>
   );
-};
+}

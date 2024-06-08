@@ -1,12 +1,11 @@
+import { Flex } from "@soaf/react-components-layout";
+import { useState } from "react";
 import music from "@/assets/icons/my-home/actions/actions-music.svg";
 import movie from "@/assets/icons/my-home/actions/actions-movie.svg";
 import youtube from "@/assets/icons/my-home/actions/actions-youtube.svg";
 import books from "@/assets/icons/my-home/actions/actions-book.svg";
 
 import { Interior } from "@/shared/types";
-import { Flex } from "@soaf/react-components-layout";
-
-import { useState } from "react";
 
 interface Props {
   interiorItems: Interior[];
@@ -19,7 +18,7 @@ const icons: { [key: string]: string } = {
   books,
 };
 
-export const BottomActionButtons = ({ interiorItems }: Props) => {
+export function BottomActionButtons({ interiorItems }: Props) {
   const visibilityMap = Object.keys(icons).reduce(
     (acc, key) => {
       const item = interiorItems.find(
@@ -60,4 +59,4 @@ export const BottomActionButtons = ({ interiorItems }: Props) => {
       ))}
     </Flex>
   );
-};
+}

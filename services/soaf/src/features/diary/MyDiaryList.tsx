@@ -9,7 +9,7 @@ type MyDiaryListProps = {
   currentDate: Date;
 };
 
-export const MyDiaryList = ({ currentDate }: MyDiaryListProps) => {
+export function MyDiaryList({ currentDate }: MyDiaryListProps) {
   const formattedDate = dayjs(currentDate).format("YYYY.MM");
 
   const { diariesByMonth } = useDiaryQueryByMonth({
@@ -41,4 +41,4 @@ export const MyDiaryList = ({ currentDate }: MyDiaryListProps) => {
   }
 
   return <DiaryList diariesByMonth={diariesByMonth} shadow={false} />;
-};
+}

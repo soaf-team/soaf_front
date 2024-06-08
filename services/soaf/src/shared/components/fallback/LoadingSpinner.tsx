@@ -9,11 +9,11 @@ type LoadingSpinnerProps = {
   color?: string;
 };
 
-export const LoadingSpinner = ({
+export function LoadingSpinner({
   text,
   size = "lg",
   color,
-}: LoadingSpinnerProps) => {
+}: LoadingSpinnerProps) {
   const textColor = `text-${color}`;
 
   return (
@@ -31,7 +31,7 @@ export const LoadingSpinner = ({
       {text && <p className={cn([TYPE_TEXT_SIZE[size], textColor])}>{text}</p>}
     </Flex>
   );
-};
+}
 
 const TYPE_SPINNER_SIZE = {
   sm: "h-10 w-10",

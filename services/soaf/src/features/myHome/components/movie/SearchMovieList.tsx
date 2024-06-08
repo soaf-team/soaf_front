@@ -10,7 +10,7 @@ interface Props {
   setMovieId: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export const SearchMovieList = ({ onNextStep, setMovieId }: Props) => {
+export function SearchMovieList({ onNextStep, setMovieId }: Props) {
   const [searchQuery, setSearchQuery] = useState("");
   const { movies } = useGetMovies({ value: searchQuery });
 
@@ -34,4 +34,4 @@ export const SearchMovieList = ({ onNextStep, setMovieId }: Props) => {
       ))}
     </>
   );
-};
+}

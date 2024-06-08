@@ -93,6 +93,7 @@ export const useDiaryListQuery = () => {
         emotions: ["뿌듯한"],
         reactions: {},
       },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     ] as any;
   };
 

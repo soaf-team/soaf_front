@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 
-import { useFlow } from "@/pages/stackflow";
 import { Flex } from "@soaf/react-components-layout";
+import { useFlow } from "@/pages/stackflow";
 import { EmotionSticker, CheckBox, Card } from "@/shared/components";
 import { Diary } from "@/shared/types";
 import { cn, removeHtmlTags } from "@/shared/utils";
@@ -15,14 +15,14 @@ interface Props {
   className?: string;
 }
 
-export const DiaryCard = ({
+export function DiaryCard({
   diary,
   isCheckable = false,
   isSelected = false,
   shadow,
   onClick,
   className,
-}: Props) => {
+}: Props) {
   const { push } = useFlow();
 
   return (
@@ -96,4 +96,4 @@ export const DiaryCard = ({
       </Flex>
     </Card>
   );
-};
+}

@@ -10,7 +10,7 @@ interface Props {
   setBookId: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export const SearchBookList = ({ onNextStep, setBookId }: Props) => {
+export function SearchBookList({ onNextStep, setBookId }: Props) {
   const [searchQuery, setSearchQuery] = useState("");
   const { books } = useGetBooks({ value: searchQuery });
 
@@ -32,4 +32,4 @@ export const SearchBookList = ({ onNextStep, setBookId }: Props) => {
       ))}
     </>
   );
-};
+}

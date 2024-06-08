@@ -1,6 +1,6 @@
 import { RenderFallbackProps } from "./ErrorBoundary";
 
-export const ErrorFallback = ({ error, reset }: RenderFallbackProps) => {
+export function ErrorFallback({ error, reset }: RenderFallbackProps) {
   return (
     <div role="alert">
       <h2>Something went wrong:</h2>
@@ -8,4 +8,4 @@ export const ErrorFallback = ({ error, reset }: RenderFallbackProps) => {
       <button onClick={reset}>Try again</button>
     </div>
   );
-};
+}

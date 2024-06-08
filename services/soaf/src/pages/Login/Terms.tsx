@@ -1,14 +1,13 @@
 import { useState } from "react";
-import { useFlow } from "@/pages/stackflow";
-import { PageLayout, Button } from "@/shared/components";
-import { CheckBox, Check } from "@/shared/components";
 import { IconBack } from "@stackflow/plugin-basic-ui";
 import { Flex } from "@soaf/react-components-layout";
+import { useFlow } from "@/pages/stackflow";
+import { PageLayout, Button, CheckBox, Check } from "@/shared/components";
 import ChevronRight from "@/assets/icons/shared/chevron-right.svg";
 
 // TODO: 선택 약관 동의 여부를 저장해야함 react-hook-form으로 동의 여부와 닉네임을 저장해서 submit??
 
-const Terms = () => {
+function Terms() {
   const { pop, push } = useFlow();
   const [allChecked, setAllChecked] = useState(false);
   const [checked, setChecked] = useState(
@@ -108,7 +107,7 @@ const Terms = () => {
       </div>
     </PageLayout>
   );
-};
+}
 
 export default Terms;
 

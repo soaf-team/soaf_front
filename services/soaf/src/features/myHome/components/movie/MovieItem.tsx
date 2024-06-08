@@ -12,7 +12,7 @@ interface Props {
   movie: Movie | MovieDetail;
 }
 
-export const MovieItem = ({ type = "search", onClick, movie }: Props) => {
+export function MovieItem({ type = "search", onClick, movie }: Props) {
   const isMovieDetail = (movie: Movie | MovieDetail): movie is MovieDetail => {
     return (movie as MovieDetail).genres !== undefined;
   };
@@ -93,4 +93,4 @@ export const MovieItem = ({ type = "search", onClick, movie }: Props) => {
       )}
     </Flex>
   );
-};
+}

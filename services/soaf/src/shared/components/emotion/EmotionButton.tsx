@@ -8,12 +8,12 @@ type EmotionButtonProps = {
   onClick?: (emotion: EmotionKey) => void;
 } & Omit<React.HTMLAttributes<HTMLButtonElement>, "onClick">;
 
-export const EmotionButton = ({
+export function EmotionButton({
   emotion,
   selected,
   onClick,
   ...props
-}: EmotionButtonProps) => {
+}: EmotionButtonProps) {
   const colorStyle = selected
     ? "bg-white text-black shadow-shadow1"
     : "bg-[#F0F1F4] text-gray300";
@@ -42,4 +42,4 @@ export const EmotionButton = ({
       />
     </button>
   );
-};
+}

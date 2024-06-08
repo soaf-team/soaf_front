@@ -1,6 +1,6 @@
 import { PageLayout } from "@shared/components";
 
-const UserHome = () => {
+function UserHome() {
   return (
     <PageLayout
       header={{
@@ -12,6 +12,6 @@ const UserHome = () => {
       <div>UserHome</div>
     </PageLayout>
   );
-};
+}
 
 export default UserHome;

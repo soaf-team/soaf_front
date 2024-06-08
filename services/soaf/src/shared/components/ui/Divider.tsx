@@ -5,7 +5,7 @@ interface Props {
   vertical?: boolean;
 }
 
-export const Divider = ({ className = "", vertical = false }: Props) => {
+export function Divider({ className = "", vertical = false }: Props) {
   return (
     <div
       className={cn(
@@ -15,4 +15,4 @@ export const Divider = ({ className = "", vertical = false }: Props) => {
       )}
     />
   );
-};
+}

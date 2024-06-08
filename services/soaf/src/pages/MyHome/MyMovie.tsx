@@ -2,7 +2,7 @@ import { Flex } from "@soaf/react-components-layout";
 import { BackButton, PageLayout } from "@/shared/components";
 import { MyHomeDrawer, RegisterMovieForm } from "@/features/myHome/components";
 
-const MyMovie = () => {
+function MyMovie() {
   return (
     <PageLayout
       header={{
@@ -23,6 +23,6 @@ const MyMovie = () => {
       </Flex>
     </PageLayout>
   );
-};
+}
 
 export default MyMovie;

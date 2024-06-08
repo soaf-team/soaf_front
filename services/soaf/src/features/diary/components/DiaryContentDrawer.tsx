@@ -1,16 +1,16 @@
+import { Flex } from "@soaf/react-components-layout";
+import { useEffect, useRef, useState } from "react";
 import { useFlow } from "@/pages/stackflow";
 import { DrawerClose, DrawerContent } from "@/shared/components/dialog";
 import { Diary } from "@/shared/types";
 import { cn } from "@/shared/utils";
-import { Flex } from "@soaf/react-components-layout";
-import { useEffect, useRef, useState } from "react";
 import { DiaryContent } from "./DiaryContent";
 
 type DiaryContentDrawerProps = {
   diary: Diary;
 };
 
-export const DiaryContentDrawer = ({ diary }: DiaryContentDrawerProps) => {
+export function DiaryContentDrawer({ diary }: DiaryContentDrawerProps) {
   // 버튼 레프
   const ref = useRef<HTMLButtonElement>(null);
   const { push } = useFlow();
@@ -71,4 +71,4 @@ export const DiaryContentDrawer = ({ diary }: DiaryContentDrawerProps) => {
       </Flex>
     </DrawerContent>
   );
-};
+}

@@ -1,16 +1,15 @@
+import { useState } from "react";
+import { Flex } from "@soaf/react-components-layout";
 import search from "@/assets/icons/input/search.svg";
 
-import { useState } from "react";
-
 import { DrawerClose, Input } from "@/shared/components";
-import { Flex } from "@soaf/react-components-layout";
 
 interface Props {
   type: "music" | "movie" | "book" | "youtube";
   setSearchQuery: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export const SearchInput = ({ type, setSearchQuery }: Props) => {
+export function SearchInput({ type, setSearchQuery }: Props) {
   const placeholder = {
     music: "좋아하는 음악을 검색해보세요",
     movie: "좋아하는 영화를 검색해보세요",
@@ -38,7 +37,7 @@ export const SearchInput = ({ type, setSearchQuery }: Props) => {
         value={inputValue}
         placeholder={placeholder[type]}
         onChange={handleInputChange}
-        isResetButton={true}
+        isResetButton
         className="flex-1"
       />
       {isSearch === false ? (
@@ -54,4 +53,4 @@ export const SearchInput = ({ type, setSearchQuery }: Props) => {
       )}
     </Flex>
   );
-};
+}

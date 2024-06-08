@@ -5,7 +5,7 @@ type NonDataFallbackProps = {
   children: React.ReactNode;
 };
 
-export const NonDataFallback = ({ children }: NonDataFallbackProps) => {
+export function NonDataFallback({ children }: NonDataFallbackProps) {
   return (
     <Flex direction="column" align="center" justify="center" gap={12}>
       <div className="w-[52px] h-[52px]">
@@ -21,4 +21,4 @@ export const NonDataFallback = ({ children }: NonDataFallbackProps) => {
       </Flex>
     </Flex>
   );
-};
+}

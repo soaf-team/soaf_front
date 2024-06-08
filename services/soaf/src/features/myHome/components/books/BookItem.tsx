@@ -1,6 +1,6 @@
+import { Flex } from "@soaf/react-components-layout";
 import default_cover from "@/assets/icons/my-home/books-default.svg";
 
-import { Flex } from "@soaf/react-components-layout";
 import { StarRating } from "@/shared/components";
 import { Document } from "@/shared/types";
 
@@ -12,7 +12,7 @@ interface Props {
   book: Document;
 }
 
-export const BookItem = ({ type = "search", onClick, book }: Props) => {
+export function BookItem({ type = "search", onClick, book }: Props) {
   const posterClass = cn({
     "min-w-[92px] w-[92px] h-[134px] rounded-[8px]": type === "search",
     "min-w-[85px] w-[85px] h-[124px] rounded-[8px] ": type === "set",
@@ -69,4 +69,4 @@ export const BookItem = ({ type = "search", onClick, book }: Props) => {
       </Flex>
     </Flex>
   );
-};
+}

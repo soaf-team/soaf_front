@@ -1,10 +1,9 @@
-import up from "@/assets/icons/my-home/up.svg";
-
 import { Flex } from "@soaf/react-components-layout";
+import up from "@/assets/icons/my-home/up.svg";
 
 import { useBottomTabStore } from "@/shared/store";
 
-export const UpButton = () => {
+export function UpButton() {
   const { handleOpen } = useBottomTabStore();
 
   return (
@@ -18,4 +17,4 @@ export const UpButton = () => {
       </button>
     </Flex>
   );
-};
+}

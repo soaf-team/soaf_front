@@ -1,5 +1,7 @@
 import dayjs from "dayjs";
 
+import { PageLayout, XButton } from "@shared/components";
+import { useState, useEffect } from "react";
 import {
   DeskAndChair,
   Soaf,
@@ -9,9 +11,7 @@ import {
   CheckButton,
 } from "@/features/myHome/components";
 import { InteriorItems } from "@/features/myHome";
-import { PageLayout, XButton } from "@shared/components";
 
-import { useState, useEffect } from "react";
 import { useBottomTabStore } from "@/shared/store";
 import { useInteriorItems } from "@/features/myHome/queries";
 
@@ -20,7 +20,7 @@ import { cn } from "@/shared/utils";
 const isAfter6PM = dayjs().hour() >= 18;
 const backgroundClass = isAfter6PM ? "bg-[#BECFDC]" : "bg-[#D3E6F4]";
 
-const MyHome = () => {
+function MyHome() {
   const { interiorItems } = useInteriorItems();
   const { isOpen, handleClose } = useBottomTabStore();
 
@@ -128,6 +128,6 @@ const MyHome = () => {
       {isEdit && <BottomActionButtons interiorItems={interiorItems} />}
     </PageLayout>
   );
-};
+}
 
 export default MyHome;

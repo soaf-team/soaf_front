@@ -7,7 +7,7 @@ import { SearchMovieList, SetMovieInfo } from "@/features/myHome/components";
 
 const STEP = ["영화 검색", "영화 등록"] as const;
 
-export const RegisterMovieForm = () => {
+export function RegisterMovieForm() {
   const [movieId, setMovieId] = useState("" as string);
   const { Funnel, Step, setStep } = useFunnel(STEP[0]);
 
@@ -38,4 +38,4 @@ export const RegisterMovieForm = () => {
       </Funnel>
     </GenericForm>
   );
-};
+}

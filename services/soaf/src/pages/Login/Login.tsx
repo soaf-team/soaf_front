@@ -1,10 +1,10 @@
+import { PageLayout } from "@shared/components";
+import { Flex } from "@soaf/react-components-layout";
 import { useFlow } from "@/pages/stackflow";
 import { OAuthButtonGroup } from "@/features/login/components";
 import EmotionGroup from "@/features/login/components/EmotionGroup";
-import { PageLayout } from "@shared/components";
-import { Flex } from "@soaf/react-components-layout";
 
-const Login = () => {
+function Login() {
   const { push } = useFlow();
 
   const handleButtonClick = () => {
@@ -45,6 +45,6 @@ const Login = () => {
       </Flex>
     </PageLayout>
   );
-};
+}
 
 export default Login;

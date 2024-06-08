@@ -6,7 +6,7 @@ type CalendarProps = {
   render: (day: Date, index: number, isToday: boolean) => JSX.Element;
 };
 
-export const Calendar = ({ currentDate, render }: CalendarProps) => {
+export function Calendar({ currentDate, render }: CalendarProps) {
   const today = new Date();
 
   const getMonthMatrix = () => {
@@ -45,4 +45,4 @@ export const Calendar = ({ currentDate, render }: CalendarProps) => {
       </div>
     </div>
   );
-};
+}

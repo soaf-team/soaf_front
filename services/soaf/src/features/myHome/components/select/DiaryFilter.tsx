@@ -7,7 +7,7 @@ interface Props {
   setIsPrivate: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const DiaryFilter = ({ setIsPrivate }: Props) => {
+export function DiaryFilter({ setIsPrivate }: Props) {
   const [isSelect, setIsSelect] = useState(true);
 
   const handleTabClick = (isSelect: boolean) => {
@@ -25,4 +25,4 @@ export const DiaryFilter = ({ setIsPrivate }: Props) => {
       </TabButton>
     </Flex>
   );
-};
+}

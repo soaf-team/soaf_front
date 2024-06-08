@@ -28,7 +28,7 @@ interface Props
   isGap?: boolean;
 }
 
-const SpeechBubble = ({
+function SpeechBubble({
   nickname,
   message,
   sentAt,
@@ -38,7 +38,7 @@ const SpeechBubble = ({
   order,
   className,
   ...props
-}: Props) => {
+}: Props) {
   const isMine = variant === "isMine";
 
   return (
@@ -71,6 +71,6 @@ const SpeechBubble = ({
       </div>
     </article>
   );
-};
+}
 
 export default SpeechBubble;

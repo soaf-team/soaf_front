@@ -1,6 +1,7 @@
 import { AxiosRequestHeaders } from "axios";
 import { axiosBase } from "./axios";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type RequestType<TData = any, THeaders = AxiosRequestHeaders> = {
   url: string;
   method: "GET" | "POST" | "PUT" | "DELETE";

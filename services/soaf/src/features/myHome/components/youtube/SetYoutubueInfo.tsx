@@ -9,7 +9,7 @@ interface Props {
   youtubeInfo: YoutubeItemProps;
 }
 
-export const SetYoutubeInfo = ({ onPrevStep, youtubeInfo }: Props) => {
+export function SetYoutubeInfo({ onPrevStep, youtubeInfo }: Props) {
   return (
     <>
       <Header
@@ -34,4 +34,4 @@ export const SetYoutubeInfo = ({ onPrevStep, youtubeInfo }: Props) => {
       </Flex>
     </>
   );
-};
+}

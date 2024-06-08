@@ -1,6 +1,6 @@
+import { Flex } from "@soaf/react-components-layout";
 import { Diary } from "@/shared/types";
 import { DiaryCard } from "./DiaryCard";
-import { Flex } from "@soaf/react-components-layout";
 
 type DiaryListProps = {
   diariesByMonth: Diary[];
@@ -10,13 +10,13 @@ type DiaryListProps = {
   handleDiarySelect?: (index: number) => void;
 };
 
-export const DiaryList = ({
+export function DiaryList({
   diariesByMonth,
   isSelected,
   isCheckable,
   shadow,
   handleDiarySelect,
-}: DiaryListProps) => {
+}: DiaryListProps) {
   const _handleDiarySelect = (index: number) => {
     if (!handleDiarySelect) return;
 
@@ -40,4 +40,4 @@ export const DiaryList = ({
       ))}
     </Flex>
   );
-};
+}

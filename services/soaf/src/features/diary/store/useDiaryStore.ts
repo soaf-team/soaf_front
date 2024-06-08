@@ -1,5 +1,5 @@
-import { EmotionKey } from "@/shared/types";
 import { create } from "zustand";
+import { EmotionKey } from "@/shared/types";
 
 export type DiaryFormType = {
   id?: string;
@@ -8,7 +8,7 @@ export type DiaryFormType = {
   content: string;
   photos: string[];
   emotions: EmotionKey[];
-  reactions: any[];
+  reactions: string[];
   date: Date | string;
   private: boolean;
 };
@@ -96,9 +96,8 @@ export const useDiaryStore = create<DiaryRatingStore>(set => {
               content,
             },
           };
-        } else {
-          return { diary: { ...state.diary } };
         }
+        return { diary: { ...state.diary } };
       }),
     togglePrivate: () =>
       set(state => ({

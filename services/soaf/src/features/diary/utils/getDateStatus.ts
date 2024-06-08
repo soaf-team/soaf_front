@@ -4,9 +4,9 @@ export const getDateStatus = (a: Date, b: Date) => {
 
   if (aDate > bDate) {
     return "future";
-  } else if (aDate < bDate) {
-    return "past";
-  } else {
-    return "today";
   }
+  if (aDate < bDate) {
+    return "past";
+  }
+  return "today";
 };

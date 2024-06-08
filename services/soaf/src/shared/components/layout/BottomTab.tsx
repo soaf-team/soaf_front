@@ -15,7 +15,7 @@ import { useActiveActivity } from "@shared/hooks";
 import { useBottomTabStore } from "@/shared/store";
 import { useFlow } from "@/pages/stackflow";
 
-export const BottomTab = ({ stack }: { stack: Stack }) => {
+export function BottomTab({ stack }: { stack: Stack }) {
   const { push } = useFlow();
   const { isBottomTabAcitivity, activeActivity } = useActiveActivity(stack);
   const { isOpen } = useBottomTabStore();
@@ -57,7 +57,7 @@ export const BottomTab = ({ stack }: { stack: Stack }) => {
       })}
     </div>
   );
-};
+}
 
 export const TABS = [
   {

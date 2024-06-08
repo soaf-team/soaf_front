@@ -7,7 +7,7 @@ import { SearchBookList, SetBookInfo } from "@/features/myHome/components";
 
 const STEP = ["도서 검색", "도서 등록"] as const;
 
-export const RegisterBookForm = () => {
+export function RegisterBookForm() {
   const [bookId, setBookId] = useState("" as string);
   const { Funnel, Step, setStep } = useFunnel(STEP[0]);
 
@@ -35,4 +35,4 @@ export const RegisterBookForm = () => {
       </Funnel>
     </GenericForm>
   );
-};
+}

@@ -1,6 +1,6 @@
+import { Flex } from "@soaf/react-components-layout";
 import { useBookDetail } from "../../queries";
 
-import { Flex } from "@soaf/react-components-layout";
 import { Header, BackButton, StarRating } from "@/shared/components";
 
 import { ReviewSection } from "../ReviewSection";
@@ -11,7 +11,7 @@ interface Props {
   bookId: string;
 }
 
-export const SetBookInfo = ({ onPrevStep, bookId }: Props) => {
+export function SetBookInfo({ onPrevStep, bookId }: Props) {
   const { bookInfo } = useBookDetail({
     id: bookId.split(" ")[0] || bookId.split(" ")[1],
   });
@@ -52,4 +52,4 @@ export const SetBookInfo = ({ onPrevStep, bookId }: Props) => {
       </Flex>
     </>
   );
-};
+}

@@ -8,7 +8,7 @@ type DiaryStatsProps = {
   currentDate: Date;
 };
 
-export const DiaryStats = ({ currentDate }: DiaryStatsProps) => {
+export function DiaryStats({ currentDate }: DiaryStatsProps) {
   console.log(currentDate);
 
   return (
@@ -18,7 +18,7 @@ export const DiaryStats = ({ currentDate }: DiaryStatsProps) => {
       <EmotionsOfTheMonth data={EMOTIONS_OF_THE_MONTH_DATA} />
     </>
   );
-};
+}
 
 const MOOD_FLOW_DATA = [2, 3, 3];
 

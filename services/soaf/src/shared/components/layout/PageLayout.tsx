@@ -1,9 +1,9 @@
 import { AppScreen } from "@stackflow/plugin-basic-ui";
 import { useStack } from "@stackflow/react";
-import { Header } from "./Header";
 
 import { cn } from "@shared/utils";
 import { useActiveActivity } from "@shared/hooks";
+import { Header } from "./Header";
 
 type PageLayoutProps = {
   children: React.ReactNode;
@@ -16,11 +16,7 @@ type PageLayoutProps = {
   className?: string;
 };
 
-export const PageLayout = ({
-  children,
-  header,
-  className,
-}: PageLayoutProps) => {
+export function PageLayout({ children, header, className }: PageLayoutProps) {
   const isMyHome = window.location.pathname === "/my-home/";
   const stack = useStack();
   const { isBottomTabAcitivity } = useActiveActivity(stack);
@@ -54,4 +50,4 @@ export const PageLayout = ({
       </div>
     </AppScreen>
   );
-};
+}

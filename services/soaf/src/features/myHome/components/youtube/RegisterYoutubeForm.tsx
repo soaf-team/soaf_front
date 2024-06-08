@@ -10,7 +10,7 @@ import {
 
 const STEP = ["유튜브 검색", "유튜브 등록"] as const;
 
-export const RegisterYoutubeForm = () => {
+export function RegisterYoutubeForm() {
   const [youtubeInfo, setYoutubeInfo] = useState<YoutubeItemProps>({
     title: "",
     channelTitle: "",
@@ -49,4 +49,4 @@ export const RegisterYoutubeForm = () => {
       </Funnel>
     </GenericForm>
   );
-};
+}

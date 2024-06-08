@@ -2,7 +2,7 @@ import { Flex } from "@soaf/react-components-layout";
 import { BackButton, PageLayout } from "@/shared/components";
 import { MyHomeDrawer, RegisterBookForm } from "@/features/myHome/components";
 
-const MyBooks = () => {
+function MyBooks() {
   return (
     <PageLayout
       header={{
@@ -23,6 +23,6 @@ const MyBooks = () => {
       </Flex>
     </PageLayout>
   );
-};
+}
 
 export default MyBooks;

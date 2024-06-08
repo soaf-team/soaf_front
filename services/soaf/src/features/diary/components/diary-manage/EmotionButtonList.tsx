@@ -9,10 +9,10 @@ type EmotionButtonProps = {
   handleEmotionButtonClick: (emotion: EmotionKey) => void;
 };
 
-export const EmotionButtonList = ({
+export function EmotionButtonList({
   diary,
   handleEmotionButtonClick,
-}: EmotionButtonProps) => {
+}: EmotionButtonProps) {
   return (
     <div className="grid grid-cols-2 gap-x-[12px] gap-y-[10px] w-full mb-[150px]">
       {(Object.keys(EMOTIONS) as EmotionKey[]).map(emotion => {
@@ -29,4 +29,4 @@ export const EmotionButtonList = ({
       })}
     </div>
   );
-};
+}

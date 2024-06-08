@@ -13,13 +13,13 @@ interface Props {
   maxLength?: number;
 }
 
-export const ReviewSection = ({
+export function ReviewSection({
   placeholder,
   title,
   className,
   data,
   maxLength = 1000,
-}: Props) => {
+}: Props) {
   const [value, setValue] = useState(data);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
@@ -56,4 +56,4 @@ export const ReviewSection = ({
       <Divider />
     </Flex>
   );
-};
+}

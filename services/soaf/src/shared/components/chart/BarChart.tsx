@@ -1,5 +1,5 @@
-import { cn } from "@/shared/utils";
 import { HTMLAttributes } from "react";
+import { cn } from "@/shared/utils";
 
 type BarChartItem = {
   level: string;
@@ -12,7 +12,7 @@ type BarChartProps = {
   className?: string;
 } & HTMLAttributes<HTMLDivElement>;
 
-export const BarChart = ({ data, className }: BarChartProps) => {
+export function BarChart({ data, className }: BarChartProps) {
   return (
     <div
       className={cn([
@@ -30,4 +30,4 @@ export const BarChart = ({ data, className }: BarChartProps) => {
       ))}
     </div>
   );
-};
+}

@@ -37,19 +37,19 @@ export const { Stack, useFlow, useStepFlow } = stackflow({
     }),
     historySyncPlugin({
       routes: {
-        /*** 메인 탭 ***/
+        /** * 메인 탭 ** */
         DiaryCalendar: "/diary-calendar",
         DiaryStatsPage: "/diary-stats",
         SoafExplore: "/soaf-explore",
         Chat: "/chat",
         MyHome: "/my-home",
 
-        /*** 인증 ***/
+        /** * 인증 ** */
         Login: "/auth/login",
         Terms: "/auth/terms",
         NickName: "/auth/nick-name",
 
-        /*** 다이어리 ***/
+        /** * 다이어리 ** */
         DiaryDetailPage: "/diary-detail/:diaryId",
         DiaryListPage: "/diary-list",
         // 다이어리 작성
@@ -57,18 +57,18 @@ export const { Stack, useFlow, useStepFlow } = stackflow({
         NewDiaryStep2: "/new-diary/step2",
         NewDiaryPage: "/new-diary/form",
 
-        /*** 유저 ***/
+        /** * 유저 ** */
         MatchedUser: "/matched-user",
         UserHome: "/user-home/:userId",
 
-        /*** 마이 홈 ***/
+        /** * 마이 홈 ** */
         MyBooks: "/my-home/books",
         MyMovie: "/my-home/movie",
         MyMusic: "/my-home/music",
         MyYoutube: "/my-home/youtube",
         MyDiary: "/my-home/diary",
 
-        /*** 기타  ***/
+        /** * 기타  ** */
         ImageDetailPage: "/image-detail/:src/:alt",
       },
       fallbackActivity: () => "DiaryCalendar",
@@ -88,19 +88,19 @@ export const { Stack, useFlow, useStepFlow } = stackflow({
     },
   ],
   activities: {
-    /*** 메인 탭 ***/
+    /** * 메인 탭 ** */
     DiaryCalendar,
     DiaryStatsPage,
     SoafExplore,
     Chat,
     MyHome,
 
-    /*** 인증 ***/
+    /** * 인증 ** */
     Login,
     Terms,
     NickName,
 
-    /*** 다이어리 ***/
+    /** * 다이어리 ** */
     DiaryListPage,
     DiaryDetailPage,
     // 다이어리 작성
@@ -108,18 +108,18 @@ export const { Stack, useFlow, useStepFlow } = stackflow({
     NewDiaryStep2,
     NewDiaryPage,
 
-    /*** 유저 ***/
+    /** * 유저 ** */
     MatchedUser,
     UserHome,
 
-    /*** 마이 홈 ***/
+    /** * 마이 홈 ** */
     MyBooks,
     MyMovie,
     MyMusic,
     MyYoutube,
     MyDiary,
 
-    /*** 기타 ***/
+    /** * 기타 ** */
     ImageDetailPage,
   },
   initialActivity: () => "DiaryCalendar",

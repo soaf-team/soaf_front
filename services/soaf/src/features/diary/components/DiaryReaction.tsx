@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-import { cn } from "@/shared/utils";
 import heartCircle from "@assets/icons/heart-circle.svg";
 import reactionCloud from "@assets/icons/reaction-cloud.svg";
 
@@ -14,6 +13,7 @@ import fighting from "@assets/icons/emoji/fighting.svg";
 import funny from "@assets/icons/emoji/funny.svg";
 import angry from "@assets/icons/emoji/angry.svg";
 import sad from "@assets/icons/emoji/sad.svg";
+import { cn } from "@/shared/utils";
 
 type DiaryReactionProps = {
   reactions: {
@@ -21,7 +21,7 @@ type DiaryReactionProps = {
   };
 };
 
-export const DiaryReaction = ({ reactions }: DiaryReactionProps) => {
+export function DiaryReaction({ reactions }: DiaryReactionProps) {
   const [isOpened, setIsOpened] = useState(false);
 
   const handleHeartButtonClick = () => {
@@ -66,15 +66,15 @@ export const DiaryReaction = ({ reactions }: DiaryReactionProps) => {
       )}
     </div>
   );
-};
+}
 
-const ReactionCloud = ({
+function ReactionCloud({
   isVisible,
   onCloudClose,
 }: {
   isVisible: boolean;
   onCloudClose: () => void;
-}) => {
+}) {
   const [visible, setVisible] = useState(isVisible);
   const visibleStyle = isVisible ? "animate-fadeIn" : "animate-fadeOut";
 
@@ -137,7 +137,7 @@ const ReactionCloud = ({
       </div>
     </div>
   );
-};
+}
 
 const REACTION_EMOJI = {
   best: { label: "최고예요", icon: best },

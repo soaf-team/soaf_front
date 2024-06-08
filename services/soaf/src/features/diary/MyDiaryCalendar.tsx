@@ -1,6 +1,7 @@
-import { useDiaryListQuery } from "@/features/diary/queries";
 import { Flex } from "@soaf/react-components-layout";
 import { useState } from "react";
+import plus from "@assets/icons/plus.svg";
+import { useDiaryListQuery } from "@/features/diary/queries";
 
 import { getDateStatus } from "./utils";
 import { cn } from "@/shared/utils";
@@ -14,9 +15,8 @@ import {
   YearMonthSelect,
   EmotionSticker,
 } from "@/shared/components";
-import plus from "@assets/icons/plus.svg";
 
-export const MyDiaryCalendar = () => {
+export function MyDiaryCalendar() {
   const { push } = useFlow();
   const { myDiaries } = useDiaryListQuery();
   const [selectedDiary, setSelectedDiary] = useState<Diary | null>(null);
@@ -120,4 +120,4 @@ export const MyDiaryCalendar = () => {
       {selectedDiary && <DiaryContentDrawer diary={selectedDiary} />}
     </Drawer>
   );
-};
+}

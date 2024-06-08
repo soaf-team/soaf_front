@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 
-import { PageLayout, XButton } from "@/shared/components";
 import { ActivityComponentType } from "@stackflow/react";
+import { PageLayout, XButton } from "@/shared/components";
 
 type ImageDetailPageParams = {
   src: string;

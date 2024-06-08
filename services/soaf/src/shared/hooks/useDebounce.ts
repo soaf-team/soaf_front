@@ -12,11 +12,13 @@
 
 import { useState, useEffect } from "react";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 interface UseDebounceReturnTypes<T extends (...args: any[]) => any> {
   debounced: (...args: Parameters<T>) => Promise<ReturnType<T>>;
   cancel: () => void;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const useDebounce = <T extends (...args: any[]) => any>(
   func: T,
   wait: number = 500,

@@ -16,6 +16,7 @@ import {
 import { isDifferentArray } from "@/shared/utils";
 
 type ComponentPropsWithoutChildren<
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   Component extends keyof JSX.IntrinsicElements | JSXElementConstructor<any>,
 > = Omit<ComponentProps<Component>, "children">;
 
@@ -136,11 +137,13 @@ export const withErrorBoundary = <
   Component: ComponentType<Props>,
   errorBoundaryProps: ComponentPropsWithoutChildren<typeof ErrorBoundary>,
 ) => {
-  const Wrapped = (props: Props) => (
-    <ErrorBoundary {...errorBoundaryProps}>
-      <Component {...props} />
-    </ErrorBoundary>
-  );
+  function Wrapped(props: Props) {
+    return (
+      <ErrorBoundary {...errorBoundaryProps}>
+        <Component {...props} />
+      </ErrorBoundary>
+    );
+  }
 
   if (process.env.NODE_ENV !== "production") {
     const name = Component.displayName || Component.name || "Component";
