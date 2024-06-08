@@ -12,7 +12,7 @@ import {
   NewDiaryStep1,
   NewDiaryStep2,
 } from "./DiaryCalendar";
-import { DiaryStats } from "./DiaryStats";
+import { DiaryStatsPage } from "./DiaryStats";
 import { SoafExplore, MatchedUser } from "./SoafExplore";
 import { Chat } from "./Chat";
 import {
@@ -39,7 +39,7 @@ export const { Stack, useFlow, useStepFlow } = stackflow({
       routes: {
         /*** 메인 탭 ***/
         DiaryCalendar: "/diary-calendar",
-        DiaryStats: "/diary-stats",
+        DiaryStatsPage: "/diary-stats",
         SoafExplore: "/soaf-explore",
         Chat: "/chat",
         MyHome: "/my-home",
@@ -90,7 +90,7 @@ export const { Stack, useFlow, useStepFlow } = stackflow({
   activities: {
     /*** 메인 탭 ***/
     DiaryCalendar,
-    DiaryStats,
+    DiaryStatsPage,
     SoafExplore,
     Chat,
     MyHome,

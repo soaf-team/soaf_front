@@ -1,9 +1,9 @@
-import { EMOTION_ICON } from "@/shared/constants";
-import { Emotion } from "@/shared/types";
+import { EMOTIONS } from "@/shared/constants";
+import { EmotionKey } from "@/shared/types";
 import { cn } from "@/shared/utils";
 
 interface Props extends React.HTMLAttributes<HTMLDivElement> {
-  emotion: Emotion;
+  emotion: EmotionKey;
   size?: string;
 }
 
@@ -22,7 +22,7 @@ export const EmotionSticker = ({
   return (
     <div className={cn(stickerSize, className)} {...props}>
       <img
-        src={EMOTION_ICON[emotion]}
+        src={EMOTIONS[emotion].icon}
         alt="emotion_icon"
         className="object-cover w-full h-full"
       />

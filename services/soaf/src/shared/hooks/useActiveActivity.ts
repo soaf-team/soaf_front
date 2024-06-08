@@ -6,7 +6,7 @@ export const useActiveActivity = (stack: Stack) => {
   )!;
   const isBottomTabAcitivity = [
     "DiaryCalendar",
-    "DiaryStats",
+    "DiaryStatsPage",
     "SoafExplore",
     "Chat",
     "MyHome",

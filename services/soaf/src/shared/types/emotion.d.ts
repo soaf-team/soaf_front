@@ -1,4 +1,4 @@
-export type Emotion =
+export type EmotionKey =
   | "행복한"
   | "기분좋은"
   | "즐거운"
@@ -11,3 +11,9 @@ export type Emotion =
   | "우울한"
   | "불안한"
   | "화난";
+
+export type EmotionDetail = {
+  icon: string;
+  color: string;
+  noun: string;
+};

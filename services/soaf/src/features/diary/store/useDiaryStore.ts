@@ -1,4 +1,4 @@
-import { Emotion } from "@/shared/types";
+import { EmotionKey } from "@/shared/types";
 import { create } from "zustand";
 
 export type DiaryFormType = {
@@ -7,7 +7,7 @@ export type DiaryFormType = {
   title: string;
   content: string;
   photos: string[];
-  emotions: Emotion[];
+  emotions: EmotionKey[];
   reactions: any[];
   date: Date | string;
   private: boolean;
@@ -17,8 +17,8 @@ type DiaryRatingStore = {
   diary: DiaryFormType;
   onChangeDate: (date: Date | string) => void;
   onChangeRating: (rating: number) => void;
-  onChangeEmotions: (emotions: Emotion[]) => void;
-  onChangeEmotionOrder: (emotions: Emotion[]) => void;
+  onChangeEmotions: (emotions: EmotionKey[]) => void;
+  onChangeEmotionOrder: (emotions: EmotionKey[]) => void;
   onChangePhotos: (photos: string[]) => void;
   onChangeTitle: (title: string) => void;
   onChangeContent: (content: string) => void;
@@ -38,7 +38,7 @@ export const useDiaryStore = create<DiaryRatingStore>((set) => {
     private: true,
   };
 
-  const reorderEmotions = (emotions: Emotion[]) => {
+  const reorderEmotions = (emotions: EmotionKey[]) => {
     const [first, ...rest] = emotions;
     return [...rest, first];
   };
@@ -59,14 +59,14 @@ export const useDiaryStore = create<DiaryRatingStore>((set) => {
           rating,
         },
       })),
-    onChangeEmotions: (emotions: Emotion[]) =>
+    onChangeEmotions: (emotions: EmotionKey[]) =>
       set((state) => ({
         diary: {
           ...state.diary,
           emotions,
         },
       })),
-    onChangeEmotionOrder: (emotions: Emotion[]) =>
+    onChangeEmotionOrder: (emotions: EmotionKey[]) =>
       set((state) => ({
         diary: {
           ...state.diary,
