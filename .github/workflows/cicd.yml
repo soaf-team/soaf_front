@@ -62,7 +62,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: build-artifacts
-          path: soaf_front/services/soaf/dist/**
+          path: soaf_front/services/soaf/dist/
 
       - name: Deploy to S3
         env:
