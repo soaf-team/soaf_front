@@ -20,9 +20,9 @@ jobs:
         node-version: [20.13.0]
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
 
@@ -44,8 +44,11 @@ jobs:
       - name: Build project
         run: yarn affected:build
 
+      - name: List build directory contents
+        run: ls -al soaf_front/services/soaf/dist
+
       - name: Archive production artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: build-artifacts
           path: soaf_front/services/soaf/dist/**
@@ -56,10 +59,10 @@ jobs:
     # if: github.event_name == 'push' && github.ref == 'refs/heads/test/cicd'
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Download build artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: build-artifacts
           path: soaf_front/services/soaf/dist/
