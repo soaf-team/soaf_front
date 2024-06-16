@@ -19,7 +19,6 @@ const DiaryCalendar: ActivityComponentType = () => {
         ),
       }}
     >
-      하이루
       <MyDiaryCalendar />
     </PageLayout>
   );
