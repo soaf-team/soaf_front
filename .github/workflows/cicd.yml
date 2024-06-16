@@ -5,10 +5,12 @@ on:
     branches:
       - dev
       - master
+      - test/cicd
   pull_request:
     branches:
       - dev
       - master
+      - test/cicd
 
 jobs:
   build_and_test:
@@ -51,7 +53,7 @@ jobs:
   deploy:
     needs: build_and_test
     runs-on: ubuntu-latest
-    # if: github.event_name == 'push' && github.ref == 'refs/heads/dev'
+    # if: github.event_name == 'push' && github.ref == 'refs/heads/test/cicd'
 
     steps:
       - uses: actions/checkout@v3
