@@ -122,5 +122,4 @@ export const { Stack, useFlow, useStepFlow } = stackflow({
     /*** 기타 ***/
     ImageDetailPage,
   },
-  initialActivity: () => "DiaryCalendar",
 });
