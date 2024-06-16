@@ -9,27 +9,27 @@ export default defineConfig({
   plugins: [
     react(),
     tsconfigPaths(),
-    VitePWA({
-      registerType: "autoUpdate",
-      manifest: {
-        name: "소프",
-        short_name: "소프",
-        description: "감정일기로 찾는 소울프렌드",
-        theme_color: "#ffffff",
-        background_color: "#ffffff",
-        icons: [
-          {
-            src: "/logo.png",
-            sizes: "192x192",
-            type: "image/png",
-          },
-          {
-            src: "/logo.png",
-            sizes: "512x512",
-            type: "image/png",
-          },
-        ],
-      },
-    }),
+    // VitePWA({
+    //   registerType: "autoUpdate",
+    //   manifest: {
+    //     name: "소프",
+    //     short_name: "소프",
+    //     description: "감정일기로 찾는 소울프렌드",
+    //     theme_color: "#ffffff",
+    //     background_color: "#ffffff",
+    //     icons: [
+    //       {
+    //         src: "/logo.png",
+    //         sizes: "192x192",
+    //         type: "image/png",
+    //       },
+    //       {
+    //         src: "/logo.png",
+    //         sizes: "512x512",
+    //         type: "image/png",
+    //       },
+    //     ],
+    //   },
+    // }),
   ],
 });
