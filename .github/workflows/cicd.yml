@@ -31,14 +31,14 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
-      # - name: Run lint
-      #   run: yarn lint
+      - name: Run lint
+        run: yarn lint
 
-      # - name: Run tests
-      #   run: yarn affected:test
+      - name: Run tests
+        run: yarn affected:test
 
       - name: Build project
-        run: yarn build:all
+        run: yarn affceted:build
 
       - name: Archive production artifacts
         uses: actions/upload-artifact@v4
