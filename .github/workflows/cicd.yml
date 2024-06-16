@@ -45,7 +45,7 @@ jobs:
         run: yarn affected:build
 
       - name: List build directory contents
-        run: ls -al
+        run: ls -al services/soaf/dist
 
       - name: Archive production artifacts
         uses: actions/upload-artifact@v4
