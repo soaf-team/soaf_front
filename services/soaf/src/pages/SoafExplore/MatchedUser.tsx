@@ -24,15 +24,8 @@ const MatchedUser = () => {
         leftSlot: <LeftIcon />,
         rightSlot: <RightIcon />,
       }}
-      className="overflow-y-auto"
     >
-      <Flex
-        direction="column"
-        align="center"
-        justify="center"
-        className="overflow-hidden"
-        gap={8}
-      >
+      <Flex direction="column" align="center" justify="center" gap={8}>
         <p className="head4b">매칭된 유저 목록</p>
 
         <Flex direction="column" className="body3 mb-[12px]">
