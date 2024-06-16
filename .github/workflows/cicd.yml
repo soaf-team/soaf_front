@@ -84,4 +84,4 @@ jobs:
           S3_BUCKET: "soaf-pront"
         run: |
           npm install -g aws-cli
-          aws s3 sync dist/ s3://$S3_BUCKET --acl public-read
+          aws s3 sync services/soaf/dist/ s3://$S3_BUCKET --acl public-read
