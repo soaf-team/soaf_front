@@ -59,7 +59,7 @@ export const useGetBooks = ({ value }: Props) => {
   };
 
   return {
-    books: data?.pages.flatMap((page) => page.documents),
+    books: data?.pages.flatMap(page => page.documents),
     handleFetchNextPage,
     isFetching,
   };

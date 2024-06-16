@@ -1,9 +1,14 @@
 # soaf Front Projects
 
-실행 방법
+### 설치
 
 ```
 yarn
+```
+
+### 개발서버 실행
+
+```
 yarn build:packages
-yarn dev:soaf_web
+yarn dev:soaf
 ```

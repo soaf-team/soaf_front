@@ -4,7 +4,7 @@ import { vanillaExtractPlugin } from "@vanilla-extract/esbuild-plugin";
 import postcss from "postcss";
 import autoprefixer from "autoprefixer";
 
-const processCSS = async (css) => {
+const processCSS = async css => {
   const style = await postcss([autoprefixer]).process(
     css,
     { from: undefined }, // suppress sourcemap warning

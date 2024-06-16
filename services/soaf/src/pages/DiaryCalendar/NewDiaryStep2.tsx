@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { ActivityComponentType } from "@stackflow/react";
 
 import { useFlow } from "../stackflow";
-import { Emotion } from "@/shared/types";
+import { EmotionKey } from "@/shared/types";
 import { useDiaryStore } from "@/features/diary/store";
 
 import {
@@ -28,9 +28,9 @@ const NewDiaryStep2: ActivityComponentType = () => {
   const { push, replace } = useFlow();
   const isUnusualApproach = diary.rating === 0 || !diary.date;
 
-  const handleEmotionButtonClick = (emotion: Emotion) => {
+  const handleEmotionButtonClick = (emotion: EmotionKey) => {
     const newEmotions = diary.emotions.includes(emotion)
-      ? diary.emotions.filter((e) => e !== emotion)
+      ? diary.emotions.filter(e => e !== emotion)
       : [...diary.emotions, emotion];
 
     onChangeEmotions(newEmotions);

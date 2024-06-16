@@ -53,8 +53,8 @@ export const useGetMusics = ({ value }: { value: string }) => {
 
   return {
     musics: data?.pages
-      .flatMap((page) => page.results)
-      .flatMap((result) => result.albummatches.album),
+      .flatMap(page => page.results)
+      .flatMap(result => result.albummatches.album),
     handleFetchNextPage,
     isFetching,
   };

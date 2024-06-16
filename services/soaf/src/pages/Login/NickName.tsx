@@ -48,7 +48,7 @@ const NickName = () => {
             id="nickname"
             ref={inputRef}
             value={value}
-            onChange={(e) => setValue(e)}
+            onChange={e => setValue(e)}
             placeholder="사용할 닉네임을 적어주세요"
             isResetButton
             maxLength={10}

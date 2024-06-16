@@ -77,8 +77,8 @@ export const StarRating = ({ size = 16, onChange }: Props) => {
         <span
           key={index}
           style={{ width: size, height: size }}
-          onClick={(e) => handleStarClick(index, e)}
-          onMouseMove={(e) => handleMouseOver(index, e)}
+          onClick={e => handleStarClick(index, e)}
+          onMouseMove={e => handleMouseOver(index, e)}
           onMouseLeave={() => setHover(null)}
         >
           {renderStar(index)}

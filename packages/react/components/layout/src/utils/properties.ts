@@ -4,7 +4,7 @@ export const extractSprinkleProps = <T extends Object>(
 ) => {
   const result: any = {};
 
-  keys.forEach((key) => {
+  keys.forEach(key => {
     if (props?.[key]) {
       result[key] = props[key];
     }

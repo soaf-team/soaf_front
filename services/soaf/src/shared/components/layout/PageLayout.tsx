@@ -26,7 +26,7 @@ export const PageLayout = ({
   const { isBottomTabAcitivity } = useActiveActivity(stack);
   const paddingBottom =
     isBottomTabAcitivity && !isMyHome ? "pb-[83px]" : "pb-0";
-  const paddingTop = header !== null && !isMyHome ? "pt-[56px]" : "pt-0";
+  const paddingTop = header && !isMyHome ? "pt-[56px]" : "pt-0";
 
   return (
     <AppScreen>
@@ -34,7 +34,7 @@ export const PageLayout = ({
         className={cn(["h-screen box-border", paddingBottom, paddingTop])}
         vaul-drawer-wrapper="" // eslint-disable-line
       >
-        {header != null ? (
+        {header ? (
           <Header
             leftSlot={header.leftSlot}
             rightSlot={header.rightSlot}

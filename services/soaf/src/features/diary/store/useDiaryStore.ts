@@ -1,4 +1,4 @@
-import { Emotion } from "@/shared/types";
+import { EmotionKey } from "@/shared/types";
 import { create } from "zustand";
 
 export type DiaryFormType = {
@@ -7,7 +7,7 @@ export type DiaryFormType = {
   title: string;
   content: string;
   photos: string[];
-  emotions: Emotion[];
+  emotions: EmotionKey[];
   reactions: any[];
   date: Date | string;
   private: boolean;
@@ -17,8 +17,8 @@ type DiaryRatingStore = {
   diary: DiaryFormType;
   onChangeDate: (date: Date | string) => void;
   onChangeRating: (rating: number) => void;
-  onChangeEmotions: (emotions: Emotion[]) => void;
-  onChangeEmotionOrder: (emotions: Emotion[]) => void;
+  onChangeEmotions: (emotions: EmotionKey[]) => void;
+  onChangeEmotionOrder: (emotions: EmotionKey[]) => void;
   onChangePhotos: (photos: string[]) => void;
   onChangeTitle: (title: string) => void;
   onChangeContent: (content: string) => void;
@@ -26,7 +26,7 @@ type DiaryRatingStore = {
   togglePrivate: () => void;
 };
 
-export const useDiaryStore = create<DiaryRatingStore>((set) => {
+export const useDiaryStore = create<DiaryRatingStore>(set => {
   const defaultDiary: DiaryFormType = {
     rating: null,
     title: "",
@@ -38,57 +38,57 @@ export const useDiaryStore = create<DiaryRatingStore>((set) => {
     private: true,
   };
 
-  const reorderEmotions = (emotions: Emotion[]) => {
+  const reorderEmotions = (emotions: EmotionKey[]) => {
     const [first, ...rest] = emotions;
     return [...rest, first];
   };
 
   return {
     diary: defaultDiary,
-    onChangeDate: (date) =>
-      set((state) => ({
+    onChangeDate: date =>
+      set(state => ({
         diary: {
           ...state.diary,
           date,
         },
       })),
-    onChangeRating: (rating) =>
-      set((state) => ({
+    onChangeRating: rating =>
+      set(state => ({
         diary: {
           ...state.diary,
           rating,
         },
       })),
-    onChangeEmotions: (emotions: Emotion[]) =>
-      set((state) => ({
+    onChangeEmotions: (emotions: EmotionKey[]) =>
+      set(state => ({
         diary: {
           ...state.diary,
           emotions,
         },
       })),
-    onChangeEmotionOrder: (emotions: Emotion[]) =>
-      set((state) => ({
+    onChangeEmotionOrder: (emotions: EmotionKey[]) =>
+      set(state => ({
         diary: {
           ...state.diary,
           emotions: reorderEmotions(emotions),
         },
       })),
     onChangePhotos: (photos: string[]) =>
-      set((state) => ({
+      set(state => ({
         diary: {
           ...state.diary,
           photos,
         },
       })),
     onChangeTitle: (title: string) =>
-      set((state) => ({
+      set(state => ({
         diary: {
           ...state.diary,
           title,
         },
       })),
     onChangeContent: (content: string) =>
-      set((state) => {
+      set(state => {
         if (content.length <= 2000) {
           return {
             diary: {
@@ -101,7 +101,7 @@ export const useDiaryStore = create<DiaryRatingStore>((set) => {
         }
       }),
     togglePrivate: () =>
-      set((state) => ({
+      set(state => ({
         diary: {
           ...state.diary,
           private: !state.diary.private,

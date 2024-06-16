@@ -8,3 +8,4 @@ export * from "./dialog";
 export * from "./headerButton";
 export * from "./form";
 export * from "./rating";
+export * from "./chart";

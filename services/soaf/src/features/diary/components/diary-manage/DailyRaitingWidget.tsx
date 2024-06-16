@@ -1,13 +1,6 @@
 import { Flex } from "@soaf/react-components-layout";
 import { cn } from "@/shared/utils";
-
-import level1 from "@assets/emotions/5level/level1.svg";
-import level2 from "@assets/emotions/5level/level2.svg";
-import level3 from "@assets/emotions/5level/level3.svg";
-import level4 from "@assets/emotions/5level/level4.svg";
-import level5 from "@assets/emotions/5level/level5.svg";
-
-const LEVELS = [level1, level2, level3, level4, level5];
+import { LEVELS } from "@/shared/constants";
 
 type DailyRaitingWidgetProps = {
   selectedRating: number | null;

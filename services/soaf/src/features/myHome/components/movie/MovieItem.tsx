@@ -22,9 +22,8 @@ export const MovieItem = ({ type = "search", onClick, movie }: Props) => {
   const director = useMemo((): string => {
     if (!isMovieDetail(movie)) return "";
 
-    return movie.credits.crew.filter(
-      (crew) => crew.department === "Directing",
-    )[0].name;
+    return movie.credits.crew.filter(crew => crew.department === "Directing")[0]
+      .name;
   }, [movie]);
 
   const genre = useMemo((): string => {

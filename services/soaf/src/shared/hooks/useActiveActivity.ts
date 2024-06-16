@@ -1,12 +1,10 @@
 import { Stack } from "@stackflow/core";
 
 export const useActiveActivity = (stack: Stack) => {
-  const activeActivity = stack.activities.find(
-    (activity) => activity.isActive,
-  )!;
+  const activeActivity = stack.activities.find(activity => activity.isActive)!;
   const isBottomTabAcitivity = [
     "DiaryCalendar",
-    "DiaryStats",
+    "DiaryStatsPage",
     "SoafExplore",
     "Chat",
     "MyHome",

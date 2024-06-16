@@ -55,7 +55,7 @@ const Input = (props: InputProps, ref: React.Ref<HTMLInputElement>) => {
         ref={ref}
         {...rest}
         value={value}
-        onChange={(e) => onChange(e.target.value)}
+        onChange={e => onChange(e.target.value)}
         className="outline-none shadow-none border-none appearance-none bg-transparent flex-1 placeholder:text-gray300"
       />
       {isResetButton && (

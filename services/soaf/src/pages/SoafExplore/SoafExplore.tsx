@@ -24,9 +24,9 @@ const SoafExplore = () => {
   const [isSelected, setIsSelected] = useState<Diary[]>([]);
 
   const handleDiarySelect = (index: number) => {
-    setIsSelected((prev) => {
+    setIsSelected(prev => {
       if (prev.includes(diariesByMonth[index])) {
-        return prev.filter((diary) => diary !== diariesByMonth[index]);
+        return prev.filter(diary => diary !== diariesByMonth[index]);
       } else {
         return [...prev, diariesByMonth[index]];
       }

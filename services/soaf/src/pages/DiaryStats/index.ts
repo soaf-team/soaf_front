@@ -1,3 +1,3 @@
-import DiaryStats from "./DiaryStats";
+import DiaryStatsPage from "./DiaryStatisticsPage";
 
-export { DiaryStats };
+export { DiaryStatsPage };

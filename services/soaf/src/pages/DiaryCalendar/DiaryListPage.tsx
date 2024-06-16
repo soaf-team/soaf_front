@@ -20,7 +20,7 @@ const DiaryListPage: ActivityComponentType = () => {
           currentDate={currentDate}
           handleCurrentDate={setCurrentDate}
         />
-        <AsyncBoundary loadingFallback={<>로딩중...</>}>
+        <AsyncBoundary>
           <MyDiaryList currentDate={currentDate} />
         </AsyncBoundary>
       </Flex>

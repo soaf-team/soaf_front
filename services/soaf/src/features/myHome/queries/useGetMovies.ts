@@ -58,7 +58,7 @@ export const useGetMovies = ({ value }: { value: string }) => {
   };
 
   return {
-    movies: data?.pages.flatMap((page) => page.results),
+    movies: data?.pages.flatMap(page => page.results),
     handleFetchNextPage,
     isFetching,
   };
