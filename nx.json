@@ -1,7 +1,7 @@
 {
   "extends": "nx/presets/npm.json",
   "affected": {
-    "defaultBase": "master"
+    "defaultBase": "dev"
   },
   "workspaceLayout": {
     "appsDir": "services",
