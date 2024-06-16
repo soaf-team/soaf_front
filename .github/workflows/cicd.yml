@@ -42,7 +42,7 @@ jobs:
       #   run: yarn affected:test
 
       - name: Build project
-        run: yarn affected:build
+        run: yarn build:all
 
       - name: List 1
         run: ls -al
