@@ -44,10 +44,16 @@ jobs:
       - name: Build project
         run: yarn affected:build
 
-      - name: List build directory
+      - name: List 1
         run: ls -al
 
-      - name: List build directory contents
+      - name: List 2
+        run: ls -al services
+
+      - name: List 3
+        run: ls -al services/soaf
+
+      - name: List 4
         run: ls -al services/soaf/dist
 
       - name: Archive production artifacts
