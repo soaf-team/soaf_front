@@ -34,8 +34,8 @@ type MoodFlowProps = {
 };
 
 export const MoodFlow = ({ data }: MoodFlowProps) => {
-  const labelData = data.map((e) => e.date);
-  const moodData = data.map((e) => e.rating);
+  const labelData = data.map(e => e.date);
+  const moodData = data.map(e => e.rating);
 
   const chartData: ChartData<"line", number[], string> = {
     labels: labelData,
@@ -58,8 +58,13 @@ export const MoodFlow = ({ data }: MoodFlowProps) => {
     <DiaryStatsCard title="감정 흐름">
       <div className="h-[138px] flex">
         <div className="absolute flex flex-col-reverse justify-around py-3">
-          {MOOD_RATINGS.map((rating) => (
-            <img src={rating} alt="rating" className="w-[19px] h-[19px]" />
+          {MOOD_RATINGS.map((rating, index) => (
+            <img
+              key={index}
+              src={rating}
+              alt="rating"
+              className="w-[19px] h-[19px]"
+            />
           ))}
         </div>
         <Line options={CHART_OPTIONS} data={chartData} />
