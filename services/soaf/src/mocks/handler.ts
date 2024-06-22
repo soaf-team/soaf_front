@@ -26,10 +26,10 @@ export const handlers = [
   }),
 
   // 월 별 일기 데이터 조회
-  http.get("/diary/:date", async (req) => {
+  http.get("/diary/:date", async req => {
     const { date } = req.params;
 
-    const diaryByDate = diary.filter((diary) =>
+    const diaryByDate = diary.filter(diary =>
       diary.date.includes(date as string),
     );
 
@@ -54,11 +54,11 @@ export const handlers = [
   }),
 
   // isPrivate와 date 에 따른 일기 조회
-  http.get("/diary/:isPrivate/:date", async (req) => {
+  http.get("/diary/:isPrivate/:date", async req => {
     const { isPrivate, date } = req.params;
 
     const filteredDiary = diary.filter(
-      (diary) =>
+      diary =>
         diary.isPrivate.toString() === isPrivate &&
         diary.date.includes(date as string),
     );

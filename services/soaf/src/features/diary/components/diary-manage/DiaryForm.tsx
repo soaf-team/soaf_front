@@ -108,7 +108,7 @@ export const DiaryForm = (props: DiaryFormProps) => {
           ref={contentRef}
           placeholder={CONTENT_PLACEHOLDER}
           value={diary.content}
-          onChange={(e) => handleContentChange(e.target.value)}
+          onChange={e => handleContentChange(e.target.value)}
           className="body2 resize-none focus:outline-none h-[300px]"
         />
       </Flex>
@@ -151,7 +151,7 @@ const TitleInput = forwardRef(
         ref={ref}
         value={diary.title}
         className="focus:outline-none w-full caret-primary resize-none"
-        onChange={(e) => {
+        onChange={e => {
           adjustHeight();
           handleTitleChange(e.target.value);
         }}
@@ -162,3 +162,5 @@ const TitleInput = forwardRef(
     );
   },
 );
+
+TitleInput.displayName = "TitleInput";

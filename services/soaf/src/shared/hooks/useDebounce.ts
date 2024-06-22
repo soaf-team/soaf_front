@@ -30,7 +30,7 @@ export const useDebounce = <T extends (...args: any[]) => any>(
   >(null);
 
   const debounced = (...args: Parameters<T>): Promise<ReturnType<T>> => {
-    return new Promise<ReturnType<T>>((res) => {
+    return new Promise<ReturnType<T>>(res => {
       const runImmediately = immediate && timeoutId === null;
 
       if (runImmediately) {

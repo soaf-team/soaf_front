@@ -8,7 +8,7 @@ const ToggleButton = ({ className, onToggle, ...props }: Props) => {
   const [isActive, setIsActive] = useState<boolean>(false);
 
   const handleClick = () => {
-    setIsActive((prev) => !prev);
+    setIsActive(prev => !prev);
 
     onToggle?.();
   };

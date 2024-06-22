@@ -7,7 +7,7 @@ export const useToggle = ({
   const [toggle, setToggle] = useState<boolean>(isSelected);
 
   const handleToggle = useCallback(() => {
-    setToggle((prevState) => !prevState);
+    setToggle(prevState => !prevState);
   }, []);
 
   return {

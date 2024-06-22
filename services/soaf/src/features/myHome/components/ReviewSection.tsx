@@ -44,7 +44,7 @@ export const ReviewSection = ({
         ref={textareaRef}
         placeholder={placeholder}
         value={value}
-        onChange={(e) => setValue(e.target.value)}
+        onChange={e => setValue(e.target.value)}
         maxLength={maxLength}
         className={cn(
           "min-h-0 p-0 border-none rounded-none resize-none focus-visible:ring-0 focus-visible:ring-offset-0 body2",

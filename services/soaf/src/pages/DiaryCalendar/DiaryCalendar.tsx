@@ -19,6 +19,7 @@ const DiaryCalendar: ActivityComponentType = () => {
         ),
       }}
     >
+      수정됨
       <MyDiaryCalendar />
     </PageLayout>
   );

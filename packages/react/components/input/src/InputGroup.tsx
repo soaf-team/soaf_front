@@ -11,7 +11,7 @@ const InputGroup = (props: InputGroupProps, ref: React.Ref<HTMLDivElement>) => {
 
   const inputStyle: React.CSSProperties = {};
 
-  childrenWithProps.forEach((child) => {
+  childrenWithProps.forEach(child => {
     // @ts-ignore
     if (child.type.displayName === "InputLeftAddon") {
       inputStyle.borderStartStartRadius = 0;
@@ -19,7 +19,7 @@ const InputGroup = (props: InputGroupProps, ref: React.Ref<HTMLDivElement>) => {
     }
   });
 
-  const inputGroupChildren = childrenWithProps.map((child) => {
+  const inputGroupChildren = childrenWithProps.map(child => {
     if (isValidElement(child)) {
       // AddonLeft이 들어오면 Input 의 왼쪽 상단, 왼쪽 하단의 BorderRadius를 0으로 만들어준다.
 

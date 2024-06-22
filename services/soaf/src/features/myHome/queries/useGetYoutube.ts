@@ -34,7 +34,7 @@ export const useGetYoutube = ({ videoId }: Props) => {
     queryFn: () => fetchVideo(videoId),
     staleTime: Infinity,
     enabled: !!videoId,
-    select: (data) => data.items[0],
+    select: data => data.items[0],
   });
 
   return {

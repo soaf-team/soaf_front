@@ -25,7 +25,7 @@ export const BottomTab = ({ stack }: { stack: Stack }) => {
       return;
     }
 
-    // @ts-ignore
+    // @ts-expect-error expect
     push(activity, {}, { animate: false });
   };
 
@@ -41,7 +41,7 @@ export const BottomTab = ({ stack }: { stack: Stack }) => {
     transition-transform duration-500 ease-in-out
     ${isOpen ? "translate-y-0" : "translate-y-full"}`}
     >
-      {TABS.map((tab) => {
+      {TABS.map(tab => {
         const Icon =
           tab.activity === activeActivity.name ? tab.activeIcon : tab.icon;
 

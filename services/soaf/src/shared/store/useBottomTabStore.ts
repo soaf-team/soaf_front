@@ -8,7 +8,7 @@ type BottomTabStore = {
   handleClose: () => void;
 };
 
-const useBottomTab = create<BottomTabStore>((set) => ({
+const useBottomTab = create<BottomTabStore>(set => ({
   isOpen: !window.location.pathname.includes("my-home"),
   handleOpen: () => set({ isOpen: true }),
   handleClose: () => set({ isOpen: false }),
@@ -23,7 +23,7 @@ export const useBottomTabStore = () => {
     } else {
       handleOpen();
     }
-  }, [handleOpen, handleClose, window.location.pathname]); // eslint-disable-line
+  }, [handleOpen, handleClose, window.location.pathname]);
 
   return { isOpen, handleOpen, handleClose };
 };
