@@ -5,7 +5,7 @@ import { MoodRating } from "@/shared/types";
 
 type DailyRaitingWidgetProps = {
   selectedRating: MoodRating | null;
-  handleSelectRating: (index: number) => void;
+  handleSelectRating: (index: MoodRating) => void;
 };
 
 export const DailyRaitingWidget = ({
@@ -20,7 +20,7 @@ export const DailyRaitingWidget = ({
 
         return (
           <img
-            onClick={() => handleSelectRating(index + 1)}
+            onClick={() => handleSelectRating((index + 1) as MoodRating)}
             key={index}
             src={level}
             alt={`level${index + 1}`}
