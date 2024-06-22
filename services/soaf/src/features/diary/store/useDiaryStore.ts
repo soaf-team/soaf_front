@@ -1,9 +1,9 @@
-import { EmotionKey } from "@/shared/types";
+import { EmotionKey, MoodRating } from "@/shared/types";
 import { create } from "zustand";
 
 export type DiaryFormType = {
   id?: string;
-  rating: number | null;
+  rating: MoodRating | null;
   title: string;
   content: string;
   photos: string[];
@@ -16,7 +16,7 @@ export type DiaryFormType = {
 type DiaryRatingStore = {
   diary: DiaryFormType;
   onChangeDate: (date: Date | string) => void;
-  onChangeRating: (rating: number) => void;
+  onChangeRating: (rating: MoodRating) => void;
   onChangeEmotions: (emotions: EmotionKey[]) => void;
   onChangeEmotionOrder: (emotions: EmotionKey[]) => void;
   onChangePhotos: (photos: string[]) => void;

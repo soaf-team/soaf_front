@@ -12,3 +12,5 @@ export type Diary = {
     [key: string]: number;
   };
 };
+
+export type MoodRating = 1 | 2 | 3 | 4 | 5;
