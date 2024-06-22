@@ -1,9 +1,10 @@
 import { Flex } from "@soaf/react-components-layout";
 import { cn } from "@/shared/utils";
-import { LEVELS } from "@/shared/constants";
+import { MOOD_RATINGS } from "@/shared/constants";
+import { MoodRating } from "@/shared/types";
 
 type DailyRaitingWidgetProps = {
-  selectedRating: number | null;
+  selectedRating: MoodRating | null;
   handleSelectRating: (index: number) => void;
 };
 
@@ -13,7 +14,7 @@ export const DailyRaitingWidget = ({
 }: DailyRaitingWidgetProps) => {
   return (
     <Flex gap={12}>
-      {LEVELS.map((level, index) => {
+      {MOOD_RATINGS.map((level, index) => {
         const isSelected = selectedRating === index + 1;
         const selectedClass = isSelected ? "opacity-100" : "opacity-30";
 
