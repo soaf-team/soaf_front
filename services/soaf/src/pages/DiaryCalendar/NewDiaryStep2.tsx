@@ -26,7 +26,7 @@ const STEP_SUB_MESSAGE = "가장 먼저 선택한 감정이 일기 캘린더에 
 const NewDiaryStep2: ActivityComponentType = () => {
   const { diary, resetAllDiaryState, onChangeEmotions } = useDiaryStore();
   const { push, replace } = useFlow();
-  const isUnusualApproach = diary.rating === 0 || !diary.date;
+  const isUnusualApproach = diary.rating === null || !diary.date;
 
   const handleEmotionButtonClick = (emotion: EmotionKey) => {
     const newEmotions = diary.emotions.includes(emotion)
