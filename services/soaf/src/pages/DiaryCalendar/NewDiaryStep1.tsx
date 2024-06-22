@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useFlow } from "../stackflow";
 
 import { useDiaryStore } from "@/features/diary/store";
+import { MoodRating } from "@/shared/types";
 
 import {
   Dialog,
@@ -32,7 +33,7 @@ const NewDiaryStep1: ActivityComponentType = () => {
     resetAllDiaryState();
   };
 
-  const handleSelectRating = (rating: number) => {
+  const handleSelectRating = (rating: MoodRating) => {
     onChangeRating(rating);
     push("NewDiaryStep2", {});
   };

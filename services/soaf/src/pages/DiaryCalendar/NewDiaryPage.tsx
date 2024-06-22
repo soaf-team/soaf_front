@@ -28,7 +28,7 @@ const NewDiaryPage: ActivityComponentType = () => {
     resetAllDiaryState,
   } = useDiaryStore();
   const isUnusualApproach =
-    diary.emotions.length === 0 || diary.rating === 0 || !diary.date;
+    diary.emotions.length === 0 || diary.rating === null || !diary.date;
 
   useEffect(() => {
     if (isUnusualApproach) {
